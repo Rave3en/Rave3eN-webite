@@ -1,139 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Twitch Embed — Rave3eN Live</title>
-<meta name="description" content="Mobile-optimierte Twitch Embed Vorlage für Rave3eN mit Chat & Socials (sichtbar & erlaubt)." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c4dff'/><text x='50' y='60' font-size='48' text-anchor='middle' fill='white' font-family='Arial'>R3</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rave3eN — Twitch Stream</title>
 <style>
-:root{ --bg:#0b1020; --card:#0f1626; --accent:#7c4dff; --accent2:#3ba6ff; --muted:#aab3c7; }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#081022);color:#e6eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden;position:relative;}
-canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
-
-.wrap{position:relative;z-index:1;width:100%;max-width:1100px}
-header{display:flex;gap:16px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-
-/* Pulsierendes Logo */
-.logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041;box-shadow:0 0 20px var(--accent),0 0 40px var(--accent2);animation:glow 2s ease-in-out infinite alternate;}
-@keyframes glow{
-  0%{box-shadow:0 0 10px var(--accent),0 0 20px var(--accent2);}
-  50%{box-shadow:0 0 25px var(--accent),0 0 50px var(--accent2);}
-  100%{box-shadow:0 0 10px var(--accent),0 0 20px var(--accent2);}
-}
-
-h1{font-size:22px;margin:0}
-p.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
-.bio{margin-top:6px;font-size:13px;color:#cfdcff}
-
-/* Grid */
-.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}
-@media (max-width:900px){.grid{grid-template-columns:1fr}.side{order:2}}
-
-/* Player Cards */
-.player{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;}
-#twitch-embed{width:100%;height:60vh;min-height:300px;}
-#twitch-chat{height:400px}
-@media (max-width:768px){#twitch-embed{height:50vh}#twitch-chat{height:300px}}
-
-/* Side Cards */
-.side{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px}
-.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;cursor:pointer;transition:0.2s}
-.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#041}
-.btn-ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-.btn:hover{opacity:0.85}
-
-label{font-size:12px;color:var(--muted)}
-input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-.small{font-size:12px;color:var(--muted)}
-footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
-
-/* Socials */
-.socials{display:flex;flex-direction:column;gap:8px}
-.info-box{border-left:4px solid var(--accent);background:rgba(124,77,255,0.1);padding:10px;border-radius:8px;margin-top:10px;font-size:13px}
+  :root{--bg:#0b1020;--card:#0f1626;--accent:#7c4dff;--accent2:#3ba6ff;--muted:#aab3c7;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#081022);color:#e6eef8;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px;}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px;flex-wrap:wrap;}
+  .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041;box-shadow:0 0 20px var(--accent),0 0 40px var(--accent2);animation:glow 2s ease-in-out infinite alternate;}
+  @keyframes glow{0%{box-shadow:0 0 10px var(--accent),0 0 20px var(--accent2);}50%{box-shadow:0 0 25px var(--accent),0 0 50px var(--accent2);}100%{box-shadow:0 0 10px var(--accent),0 0 20px var(--accent2);}}
+  h1{font-size:22px;margin:0;}
+  p.lead{margin:4px 0 0;color:var(--muted);font-size:14px;}
+  p.bio{margin-top:6px;font-size:13px;color:#cfdcff;}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;width:100%;max-width:1100px;}
+  @media (max-width:900px){.grid{grid-template-columns:1fr;}}
+  .player{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;gap:8px;position:relative;}
+  #twitch-embed{width:100%;height:60vh;min-height:300px;}
+  #twitch-chat{height:400px;border:none;}
+  @media (max-width:768px){#twitch-embed{height:50vh}#twitch-chat{height:300px}}
+  .side{display:flex;flex-direction:column;gap:12px;}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;cursor:pointer;transition:0.2s;}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#041;}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted);}
+  .btn:hover{opacity:0.85;}
+  .socials{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+  footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center;}
 </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-<div class="wrap">
+
 <header>
-<div class="logo">R3</div>
-<div>
-<h1>Rave3eN — Twitch Embed</h1>
-<p class="lead">Sichtbarer Twitch-Player mit Chat & Socials — optimiert für Desktop & Mobile.</p>
-<p class="bio">Hey zusammen, ich bin Rave3eN aka Daniel aus Potsdam. Streame täglich Arena Breakout mit PvP-Action & positivem EDM-Vibe! 🎮⚡</p>
-</div>
+  <div class="logo">R3</div>
+  <div>
+    <h1>Rave3eN — Twitch Stream</h1>
+    <p class="lead">Sichtbarer Twitch-Player mit Chat & Socials — optimiert für Desktop & Mobile.</p>
+    <p class="bio">Hey zusammen, ich bin Rave3eN aka Daniel aus Potsdam. Streame täglich Arena Breakout mit PvP-Action & positivem EDM-Vibe! 🎮⚡</p>
+  </div>
 </header>
 
 <div class="grid">
-<main class="player card">
-<div id="twitch-embed"></div>
-<iframe id="twitch-chat" src="https://www.twitch.tv/embed/Rave3eN/chat?parent=PARENT_DOMAIN" frameborder="0"></iframe>
-</main>
+  <main class="player card">
+    <div id="twitch-embed"></div>
+    <iframe id="twitch-chat" src="https://www.twitch.tv/embed/Rave3eN/chat?parent=rave3en.github.io" frameborder="0"></iframe>
+  </main>
 
-<aside class="side">
-<div class="card">
-<div class="meta">
-<div style="flex:1">
-<label>Channel</label>
-<input id="channel-input" value="Rave3eN" />
-</div>
-<div style="flex:1">
-<label>Parent Domain</label>
-<input id="parent-input" value="PARENT_DOMAIN" />
-</div>
-</div>
-<div style="margin-top:10px" class="small">Ersetze Kanal & Domain, dann auf „Anwenden“ klicken.</div>
-<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-<button class="btn btn-primary" id="apply">Anwenden</button>
-<button class="btn btn-ghost" id="download-html">HTML herunterladen</button>
-</div>
-</div>
-
-<div class="card">
-<strong>Socials</strong>
-<div class="socials" style="margin-top:8px">
-<a class="btn btn-ghost" href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
-<a class="btn btn-ghost" href="https://www.tiktok.com/@rave3en?lang=de-DE" target="_blank">TikTok</a>
-<a class="btn btn-ghost" href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
-</div>
-</div>
-
-<div class="info-box">
-💡 Diese Seite nutzt sichtbare Twitch-Einbettung mit Chat. Besucher, die sie aktiv geöffnet haben, zählen als legitime Views.
-</div>
-</aside>
+  <aside class="side">
+    <div class="card">
+      <strong>Socials</strong>
+      <div class="socials">
+        <a class="btn btn-ghost" href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
+        <a class="btn btn-ghost" href="https://www.tiktok.com/@rave3en?lang=de-DE" target="_blank">TikTok</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </aside>
 </div>
 
 <footer>
-<p>© 2025 Rave3eN — Erlaubte Twitch-Embed Vorlage. Kein Auto-Traffic oder versteckte Einbettungen!</p>
+  © 2025 Rave3eN — Erlaubte Twitch-Embed Vorlage
 </footer>
-</div>
 
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 <script>
-// Twitch Player & Chat
-const channelInput=document.getElementById('channel-input');
-const parentInput=document.getElementById('parent-input');
-let embed;
+const embed = new Twitch.Embed("twitch-embed", {
+  width: "100%",
+  height: "100%",
+  channel: "Rave3eN",
+  parent: ["rave3en.github.io"],
+  autoplay: true,
+  muted: false
+});
 
-function createEmbed(channel, parent){
-  if(embed) embed.remove();
-  embed=new Twitch.Embed("twitch-embed", {
-    width: "100%",
-    height: "100%",
-    channel: channel,
-    parent: [parent],
-    autoplay: true,
-    muted: false
-  });
-  embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
-    const player=embed.getPlayer();
-    player.setVolume(0.1); // Lautstärke auf 0,1
-  });
+embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+  const player = embed.getPlayer();
+  player.setVolume(0.1);
+});
 }
 
 createEmbed("Rave3eN", "PARENT_DOMAIN");
@@ -180,3 +124,4 @@ class Particle{
   }
   draw(){
     ctx.fillStyle=`hsla(${hue}, 80
+
