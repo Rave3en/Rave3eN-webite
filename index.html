@@ -81,49 +81,22 @@ embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
 </script>
 }
 
-createEmbed("Rave3eN", "PARENT_DOMAIN");
-
-document.getElementById('apply').addEventListener('click',()=>{
-  const ch=channelInput.value.trim()||'Rave3eN';
-  const pa=parentInput.value.trim()||'PARENT_DOMAIN';
-  createEmbed(ch, pa);
-  document.getElementById('twitch-chat').src=`https://www.twitch.tv/embed/${ch}/chat?parent=${pa}`;
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script>
+const embed = new Twitch.Embed("twitch-embed", {
+  width: "100%",
+  height: "100%",
+  channel: "Rave3eN",
+  parent: ["rave3en.github.io"], // ROOT DOMAIN korrekt!
+  autoplay: true,
+  muted: false
 });
 
-// Download HTML
-document.getElementById('download-html').addEventListener('click',()=>{
-  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download='rave3en_twitch_embed.html';
-  a.click();
-  URL.revokeObjectURL(url);
+embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+  const player = embed.getPlayer();
+  player.setVolume(0.1);
 });
+</script>
 
-// Partikel Hintergrund mit pulsendem Glow
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particlesArray,hue=0;
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-window.addEventListener('resize',resizeCanvas);
-resizeCanvas();
-
-class Particle{
-  constructor(){
-    this.x=Math.random()*canvas.width;
-    this.y=Math.random()*canvas.height;
-    this.size=Math.random()*2+1;
-    this.speedX=(Math.random()-0.5)*0.5;
-    this.speedY=(Math.random()-0.5)*0.5;
-  }
-  update(){
-    this.x+=this.speedX;
-    this.y+=this.speedY;
-    if(this.x<0||this.x>canvas.width)this.speedX*=-1;
-    if(this.y<0||this.y>canvas.height)this.speedY*=-1;
-  }
-  draw(){
-    ctx.fillStyle=`hsla(${hue}, 80
 
 
