@@ -6,115 +6,152 @@
 <title>Rave3eN — Official</title>
 <meta name="description" content="Rave3eN — EDM x Gaming | Live on Twitch" />
 
-
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
-
 <style>
-:root{
---bg:#060607;
---panel:#0f0f14;
---neon1:#9b5cff; /* purple */
---neon2:#00d2ff; /* cyan */
---glass: rgba(255,255,255,0.03);
+:root {
+  --bg:#060607;
+  --panel:#0f0f14;
+  --neon1:#9b5cff; /* purple */
+  --neon2:#00d2ff; /* cyan */
+  --glass: rgba(255,255,255,0.03);
 }
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);color:#e9eef8}
-
+* {box-sizing:border-box}
+html,body {
+  height:100%;margin:0;
+  font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
+  background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);
+  color:#e9eef8;
+}
 
 /* Layout */
-header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px}
-.logo{display:flex;align-items:center;gap:14px}
-.logo-mark{width:54px;height:54px;display:inline-grid;place-items:center;font-family:Orbitron;font-weight:700;font-size:20px;background:linear-gradient(45deg,var(--neon1),var(--neon2));-webkit-background-clip:text;background-clip:text;color:transparent}
-nav a{color:#cfe8ff; text-decoration:none;margin-left:18px;font-weight:600}
-
+header {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;
+}
+.logo {display:flex;align-items:center;gap:14px}
+.logo-mark {
+  width:54px;height:54px;display:inline-grid;place-items:center;
+  font-family:Orbitron;font-weight:700;font-size:20px;
+  background:linear-gradient(45deg,var(--neon1),var(--neon2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+nav a {
+  color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600;
+}
 
 /* Hero */
-.hero{max-width:1200px;margin:18px auto;padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(0,0,0,0.6);display:grid;grid-template-columns:1fr 380px;gap:18px}
+.hero {
+  max-width:1200px;margin:18px auto;padding:22px;
+  border-radius:16px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  display:grid;grid-template-columns:1fr 380px;gap:18px;
+}
 
+.player-wrap {
+  position:relative;border-radius:12px;overflow:hidden;background:#000;
+}
+#twitch-embed {width:100%;height:100%;min-height:360px;}
 
-.player-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000}
-#twitch-embed{width:100%;height:100%;min-height:360px}
-
-
-.right-card{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px}
-.slogan{font-family:Orbitron;font-size:22px;margin:6px 0}
-.bio{font-size:14px;color:#cbd8e6;line-height:1.4}
-
+.right-card {
+  padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px;
+}
+.slogan {font-family:Orbitron;font-size:22px;margin:6px 0}
+.bio {font-size:14px;color:#cbd8e6;line-height:1.4}
 
 /* Events */
-.events{margin-top:16px}
-.events h3{margin:0 0 8px 0;color:var(--neon2)}
-.event{padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(155,92,255,0.04), rgba(0,210,255,0.03));margin-bottom:10px;border:1px solid rgba(255,255,255,0.03)}
-.event .date{font-weight:700}
-
+.events {margin-top:16px}
+.events h3 {margin:0 0 8px 0;color:var(--neon2)}
+.event {
+  padding:10px;border-radius:10px;
+  background:linear-gradient(90deg, rgba(155,92,255,0.04), rgba(0,210,255,0.03));
+  margin-bottom:10px;border:1px solid rgba(255,255,255,0.03);
+}
+.event .date {font-weight:700}
 
 /* Socials */
-.socials{display:flex;gap:10px;margin-top:12px}
-.btn{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#08101a;font-weight:700;text-decoration:none}
-
+.socials {display:flex;gap:10px;margin-top:12px}
+.btn {
+  padding:10px 12px;border-radius:10px;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  color:#08101a;font-weight:700;text-decoration:none;
+}
 
 /* Footer */
-footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;color:#99a9bf}
-
+footer {
+  max-width:1200px;margin:22px auto;padding:12px 22px;
+  text-align:center;color:#99a9bf;
+}
 
 /* responsive */
 @media (max-width:980px){
-.hero{grid-template-columns:1fr}
-nav a{margin-left:12px}
+  .hero{grid-template-columns:1fr}
+  nav a{margin-left:12px}
 }
-
 
 /* subtle neon glow */
 .glow{text-shadow:0 0 8px rgba(155,92,255,0.14), 0 0 20px rgba(0,210,255,0.06)}
-
-
-/* simple style for manual event editor note */
 .note{font-size:12px;color:#9fb7d7;margin-top:8px}
 </style>
 </head>
 <body>
 
-
 <header>
-<div class="logo">
-<div class="logo-mark">R3N</div>
-<div>
-<div style="font-weight:700">Rave3eN</div>
-<div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
-</div>
-</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#events">Events</a>
-<a href="#contact">Contact</a>
-</nav>
+  <div class="logo">
+    <div class="logo-mark">R3N</div>
+    <div>
+      <div style="font-weight:700">Rave3eN</div>
+      <div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-
 <main>
-<section class="hero" id="home">
-<div class="player-wrap" aria-label="Twitch Player">
-<!-- Twitch embed container -->
-<div id="twitch-embed"></div>
+  <section class="hero" id="home">
+    <div class="player-wrap" aria-label="Twitch Player">
+      <div id="twitch-embed"></div>
+    </div>
+    <div class="right-card">
+      <div class="slogan glow">Live on Twitch</div>
+      <div class="bio">EDM x Gaming — Feel the beat, join the vibe. Let's rave on 💜</div>
+      <div class="socials">
+        <a href="https://www.twitch.tv/rave3en" class="btn">Twitch</a>
+        <a href="https://www.youtube.com/@rave3en30" class="btn">YouTube</a>
+        <a href="https://www.tiktok.com/@rave3en" class="btn">TikTok</a>
+        <a href="https://discord.gg/3TbArexH5H" class="btn">Discord</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <script src="https://embed.twitch.tv/embed/v2.js"></script>
 <script>
-  (function(){
-    const parentDomain = 'rave3en.github.io'; // <== anpassen, falls du später eine eigene Domain hast
-    const embed = new Twitch.Embed("twitch-embed", {
-      width: '100%',
-      height: 480,
-      channel: 'rave3en',
-      parent: [parentDomain]
-    });
-    embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
-      const player = embed.getPlayer();
-      player.setVolume(0.1);
-    });
-  })();
+(function(){
+  const parentDomain = 'rave3en.github.io'; // später: eigene Domain hier eintragen
+  const embed = new Twitch.Embed("twitch-embed", {
+    width: '100%',
+    height: 480,
+    channel: 'rave3en',
+    parent: [parentDomain]
+  });
+  embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
+    const player = embed.getPlayer();
+    player.setVolume(0.1);
+  });
+})();
 </script>
+
+<footer>
+  © 2025 Rave3eN — EDM × Gaming
+</footer>
+
 </body>
 </html>
