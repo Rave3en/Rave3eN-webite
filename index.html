@@ -100,26 +100,21 @@ nav a{margin-left:12px}
 <!-- Twitch embed container -->
 <div id="twitch-embed"></div>
 
-
-<!-- Fallback iframe in case JS is blocked: adjust 'parent' to your GitHub Pages domain -->
-<noscript>
-
-    <script src="https://embed.twitch.tv/embed/v2.js"></script>
-  <script>
-    (function(){
-      const parentDomain = 'rave3en.github.io';
-      const embed = new Twitch.Embed("twitch-embed", {
-        width: '100%',
-        height: 480,
-        channel: 'rave3en',
-        parent: [parentDomain]
-      });
-      embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
-        const player = embed.getPlayer();
-        player.setVolume(0.1);
-      });
-    })();
-  </script>
-
+<script src="https://embed.twitch.tv/embed/v2.js"></script>
+<script>
+  (function(){
+    const parentDomain = 'rave3en.github.io'; // <== anpassen, falls du später eine eigene Domain hast
+    const embed = new Twitch.Embed("twitch-embed", {
+      width: '100%',
+      height: 480,
+      channel: 'rave3en',
+      parent: [parentDomain]
+    });
+    embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
+      const player = embed.getPlayer();
+      player.setVolume(0.1);
+    });
+  })();
+</script>
 </body>
 </html>
