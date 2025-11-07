@@ -3,123 +3,119 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rave3eN — About Me</title>
-<meta name="description" content="Die Geschichte hinter Rave3eN — Ehrlich, emotional und echt." />
+<title>About Me — Rave3eN</title>
+<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Gaming, Leidenschaft und die Geschichte dahinter." />
+
+<!-- HTTPS-Redirect -->
+<script>
+  if (location.protocol !== 'https:') {
+    location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
+  }
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#060607;
-  --panel:#0f0f14;
-  --neon1:#9b5cff;
-  --neon2:#00d2ff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
 body{
-  background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);
   font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
+  background:#060607;
   color:#e9eef8;
-  line-height:1.7;
+  margin:0;
+  padding:0;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* Header */
-header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;}
-.logo{display:flex;align-items:center;gap:14px}
-.logo img{width:60px;filter:drop-shadow(0 0 10px var(--neon1));}
-nav a{color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600;}
-nav a:hover{color:var(--neon2);}
+/* Überschrift mit Neon-Glow */
+h1{
+  text-align:center;
+  font-family:Orbitron;
+  font-size:2.5rem;
+  color:#b784ff;
+  text-shadow:0 0 15px rgba(155,92,255,0.6),0 0 30px rgba(0,210,255,0.3);
+  margin-bottom:24px;
+  animation:glowPulse 3s ease-in-out infinite alternate;
+}
+@keyframes glowPulse{
+  from{text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 20px rgba(0,210,255,0.2);}
+  to{text-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.5);}
+}
 
-/* Main section */
-main{max-width:900px;margin:40px auto;padding:32px;background:var(--panel);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.6);}
-h1{color:var(--neon2);font-family:Orbitron;text-align:center;text-shadow:0 0 10px var(--neon2),0 0 25px rgba(155,92,255,0.6);}
-.divider{width:160px;height:2px;margin:14px auto 28px;background:linear-gradient(90deg,var(--neon1),var(--neon2));border-radius:4px;animation:glowline 3s ease-in-out infinite alternate;}
-
-/* Profilbild */
-.profile-pic{
+.profile{
   display:flex;
-  justify-content:center;
-  margin-bottom:26px;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:20px;
 }
-.profile-pic img{
+.profile img{
   width:180px;
   height:180px;
   object-fit:cover;
   border-radius:50%;
   border:3px solid rgba(155,92,255,0.6);
   box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
-  animation:neonPulse 3s ease-in-out infinite alternate;
 }
-
-/* Footer */
-footer{text-align:center;padding:18px;color:#9fb7d7;font-size:13px;margin-top:40px;}
-
-@keyframes glowline{
-  from{box-shadow:0 0 10px var(--neon1);opacity:0.6;}
-  to{box-shadow:0 0 25px var(--neon2);opacity:1;}
+p{
+  line-height:1.6;
+  color:#cbd8e6;
+  white-space:pre-line;
 }
-@keyframes neonPulse{
-  from{box-shadow:0 0 15px rgba(155,92,255,0.5),0 0 25px rgba(0,210,255,0.3);}
-  to{box-shadow:0 0 30px rgba(155,92,255,0.9),0 0 60px rgba(0,210,255,0.6);}
+p.intro{
+  font-size:1.25rem;
+  color:#fff;
+  text-align:center;
+  font-weight:600;
+  margin-bottom:18px;
+  text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.2);
 }
-p{margin-bottom:16px;color:#cbd8e6;}
-strong{color:#fff;}
+a.back{
+  display:inline-block;
+  margin-top:20px;
+  color:#00d2ff;
+  text-decoration:none;
+  font-weight:600;
+}
+a.back:hover{
+  text-decoration:underline;
+}
 </style>
 </head>
 
 <body>
-
-<header>
-  <div class="logo">
-    <img src="images/logo.png" alt="Rave3eN Logo" onerror="this.onerror=null;this.src='logo druck.png';">
-    <div>
-      <div style="font-weight:700">Rave3eN</div>
-      <div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
-    </div>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About me</a>
-    <a href="index.html#events">Events</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
-</header>
-
-<main>
+<div class="container">
   <h1>About Me</h1>
-  <div class="divider"></div>
-
-  <div class="profile-pic">
-    <img src="images/me.png" alt="Daniel Hein aka Rave3eN">
+  <div class="profile">
+    <img src="me.png" alt="Daniel Hein aka Rave3eN">
   </div>
 
-  <p>🎧 <strong>Hey und herzlich willkommen auf meiner eigenen Website.</strong><br>
-  Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.<br>
-  Das Leben hat vor meiner Geschichte keinen Halt gemacht.</p>
+  <p class="intro">
+    Hey und herzlich willkommen auf meiner eigenen Website.
+  </p>
 
-  <p>💔 In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt. Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.</p>
+  <p>
+Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.
+Das Leben hat vor meiner Geschichte keinen Halt gemacht.
 
-  <p>📘 Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Das hatte Folgen: schulisch ging es bergab. Ich habe nur die 6. Klasse bestanden, ab der 7. Klasse kam mein Tiefpunkt. Nach der 8. Klasse stand ich da – ohne Abschluss, ohne Ziel.</p>
+In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt. Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
 
-  <p>💪 Zum Glück bin ich irgendwann aufgewacht und habe begonnen, meine Vergangenheit aufzuarbeiten. Schritt für Schritt habe ich mich zurückgekämpft: die 10. Klasse nachgeholt, das Abitur begonnen, die 11. Klasse bestanden. Doch in der 12. habe ich gemerkt, dass ich ein praktischer Mensch bin – kein Theoretiker. Ich wollte Musik studieren oder Psychologie, aber das Leben hat mir gezeigt, wie wichtig es ist, ehrlich zu sich selbst zu sein.</p>
+Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Somit ging es auch bergab, was die schulische Leistung anging. Ich habe nur die 6. Klasse bestanden, ab der 7. Klasse hatte ich meinen Tiefpunkt. Mit der 8. Klasse hatte ich meine 10 Schuljahre rum und ich stand da mit nichts. Zweimal durch die 7. Klasse gefallen und automatisch aufgerückt in die 8. Klasse und auch nicht bestanden. Ich bin zum Glück wach geworden und habe alles nach und nach aufgearbeitet, was in meiner Vergangenheit schief gelaufen ist. Nun stehe ich an diesem Punkt, ich habe die 10. Klasse nachgeholt und mit dem Abitur angefangen, 11. Klasse bestanden, ab in die 12. und ich dachte mir so: Für was mache ich das jetzt? Habe dann im Halbjahr der 12. Klasse das Abitur abgebrochen, weil ich gemerkt habe, dass ich der praktische Typ bin und nicht der Theorie-Typ. Ich wollte Musik studieren oder Psychologie. Das war mein Ziel. Nur das Leben hatte mir gezeigt, dass es auch wichtig ist, ehrlich zu sich selbst zu sein.
 
-  <p>🏓 <strong>Tischtennis</strong> wurde mein Rettungsanker. Hätte ich diesen Sport nicht gehabt, wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe. Doch irgendetwas – oder irgendwer – wollte, dass ich weitermache.</p>
+Tischtennis wurde mein Rettungsanker. Hätte ich diesen Sport nicht gehabt, wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe. Doch irgendetwas – oder irgendwer – wollte, dass ich weitermache.
 
-  <p>🌟 Durch harte Arbeit und unzählige Überstunden habe ich mir meinen Traum erfüllt: überregional Tischtennis zu spielen – in der <strong>Verbandsoberliga</strong>. Es ist ein seltsames Gefühl, besser als der Durchschnitt zu sein, aber zu wissen, dass es für ganz oben nicht reicht.</p>
+Durch harte Arbeit und unzählige Überstunden habe ich mir meinen Traum erfüllt: überregional Tischtennis zu spielen, in der Verbandsoberliga. Es ist ein seltsames Gefühl, besser als der Durchschnitt zu sein – aber zu wissen, dass es für ganz oben nicht reicht.
 
-  <p>🎮 Diese Erfahrung zieht sich durch mein Leben – ob im Tischtennis, in <strong>Counter-Strike 1.5</strong> oder im <strong>Gesang</strong>. Ich durfte in der E-Sport-Szene einiges erleben und war sogar Teil des Nachwuchsteams von <strong>e2sports</strong>, zusammen mit Blizzard, Johnny R., Roman und anderen. Für die erste Division der EAS hat es gereicht – und darauf bin ich stolz.</p>
+Diese Erfahrung zieht sich durch mein Leben – ob im Tischtennis, in Counter-Strike 1.5 oder im Gesang. Doch genau das hat mich zu dem gemacht, der ich heute bin: jemand, der trotz Rückschlägen nicht aufgibt, sondern seinen eigenen Weg geht. Auch durch Counterstrike konnte ich mich zu den besten in Deutschland zählen. Evtl kennt ja wer noch e2sports. Ich war im Nachwuchsteam und durfte mit Blizzard, Johnny R., Roman und Co. spielen. Dennoch sollte es nicht so sein und es hatte in dieser Zeit nur für die erste Division der EAS gereicht. Dennoch kann ich darauf stolz sein.
 
-  <p>📺 Heute bin ich auf <strong>Twitch</strong> aktiv. Ich bin älter geworden, gereift, habe meine Vergangenheit verarbeitet und weiß, was mir wirklich wichtig ist.</p>
+Jetzt bin ich bei Twitch, älter, reifer und habe die Vergangenheit so gut es geht aufgearbeitet. Ich weiß nun, was für mich wichtig ist: Die Welt, in der wir leben, braucht Hilfe – und vor allem auch Tiere, die nicht mit uns kommunizieren können. Das Rave steht für Liebe, Unsinn und vor allem Hilfsbereitschaft. Wo Leidenschaft auf EDM trifft, Gefühle das sind, was uns menschlich macht, und wir füreinander einstehen sollten, um den Schwächeren zu helfen – das sind die Tiere, die wir lieben und brauchen.
+  </p>
 
-  <p>🌍 Die Welt, in der wir leben, braucht Hilfe – und vor allem Tiere, die nicht mit uns sprechen können, aber genauso fühlen.</p>
-
-  <p><strong style="color:var(--neon1)">Rave</strong> steht für Liebe, Unsinn und Hilfsbereitschaft.<br>
-  Wo Leidenschaft auf EDM trifft, wo Gefühle uns menschlich machen, da entsteht das, was ich mit <strong>Rave3eN</strong> zeigen möchte:<br>
-  💜 Wir sollten füreinander da sein – und besonders für die, die keine Stimme haben.</p>
-</main>
-
-<footer>
-  © 2025 Rave3eN · EDM × Gaming · Potsdam
-</footer>
-
+  <a href="index.html" class="back">← Zurück zur Startseite</a>
+</div>
 </body>
 </html>
