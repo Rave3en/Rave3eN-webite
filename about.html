@@ -6,6 +6,7 @@
 <title>Rave3eN — About Me</title>
 <meta name="description" content="Die Geschichte hinter Rave3eN — Ehrlich, emotional und echt." />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#060607;
@@ -30,20 +31,41 @@ nav a:hover{color:var(--neon2);}
 
 /* Main section */
 main{max-width:900px;margin:40px auto;padding:32px;background:var(--panel);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.6);}
-
 h1{color:var(--neon2);font-family:Orbitron;text-align:center;text-shadow:0 0 10px var(--neon2),0 0 25px rgba(155,92,255,0.6);}
 .divider{width:160px;height:2px;margin:14px auto 28px;background:linear-gradient(90deg,var(--neon1),var(--neon2));border-radius:4px;animation:glowline 3s ease-in-out infinite alternate;}
+
+/* Profilbild */
+.profile-pic{
+  display:flex;
+  justify-content:center;
+  margin-bottom:26px;
+}
+.profile-pic img{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid rgba(155,92,255,0.6);
+  box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
+  animation:neonPulse 3s ease-in-out infinite alternate;
+}
+
+/* Footer */
+footer{text-align:center;padding:18px;color:#9fb7d7;font-size:13px;margin-top:40px;}
 
 @keyframes glowline{
   from{box-shadow:0 0 10px var(--neon1);opacity:0.6;}
   to{box-shadow:0 0 25px var(--neon2);opacity:1;}
 }
-
+@keyframes neonPulse{
+  from{box-shadow:0 0 15px rgba(155,92,255,0.5),0 0 25px rgba(0,210,255,0.3);}
+  to{box-shadow:0 0 30px rgba(155,92,255,0.9),0 0 60px rgba(0,210,255,0.6);}
+}
 p{margin-bottom:16px;color:#cbd8e6;}
 strong{color:#fff;}
-footer{text-align:center;padding:18px;color:#9fb7d7;font-size:13px;margin-top:40px;}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -65,6 +87,10 @@ footer{text-align:center;padding:18px;color:#9fb7d7;font-size:13px;margin-top:40
 <main>
   <h1>About Me</h1>
   <div class="divider"></div>
+
+  <div class="profile-pic">
+    <img src="images/me.png" alt="Daniel Hein aka Rave3eN">
+  </div>
 
   <p>🎧 <strong>Hey und herzlich willkommen auf meiner eigenen Website.</strong><br>
   Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.<br>
