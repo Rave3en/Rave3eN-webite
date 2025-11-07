@@ -6,164 +6,122 @@
 <title>Rave3eN — Official</title>
 <meta name="description" content="Rave3eN — EDM x Gaming | Live on Twitch" />
 
-
-<!-- Google Font -->
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
-
 <style>
-:root{ --bg:#060607; --panel:#0f0f14; --neon1:#9b5cff; --neon2:#00d2ff; }
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);color:#e9eef8}
-html{scroll-behavior:smooth}
+:root{
+  --bg:#060607;
+  --panel:#0f0f14;
+  --neon1:#9b5cff;
+  --neon2:#00d2ff;
+  --glass:rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;margin:0;font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);color:#e9eef8;scroll-behavior:smooth}
 
-
+/* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px}
 .logo{display:flex;align-items:center;gap:14px}
 .logo img{width:64px;height:auto;filter:drop-shadow(0 0 10px var(--neon1));}
-nav a{color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600}
+nav a{color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600;}
+nav a:hover{color:var(--neon2);}
 
-
-.hero{max-width:1200px;margin:18px auto;padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(0,0,0,0.6);display:grid;grid-template-columns:1fr 380px;gap:18px}
-
-
-.player-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000}
-#twitch-embed{width:100%;height:100%;min-height:360px}
-
-
-.right-card{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px}
-.slogan{font-family:Orbitron;font-size:22px;margin:6px 0}
-.bio{font-size:14px;color:#cbd8e6;line-height:1.4}
-
-
-.events{margin-top:16px}
-.events h3{margin:0 0 8px 0;color:var(--neon2)}
-.event{padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(155,92,255,0.04), rgba(0,210,255,0.03));margin-bottom:10px;border:1px solid rgba(255,255,255,0.03)}
-.event .date{font-weight:700}
-
-
-.socials{display:flex;gap:10px;margin-top:12px}
-.btn{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#08101a;font-weight:700;text-decoration:none}
-
-
-footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;color:#99a9bf}
-
-
-@media (max-width:980px){ .hero{grid-template-columns:1fr} nav a{margin-left:12px}}
-.glow{text-shadow:0 0 8px rgba(155,92,255,0.14), 0 0 20px rgba(0,210,255,0.06)}
-.note{font-size:12px;color:#9fb7d7;margin-top:8px}
+/* Hero Section */
+.hero{max-width:1200px;margin:18px auto;padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(0,0,0,0.6);display:grid;grid-template-columns:1fr 380px;gap:18px;}
+.player-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000;}
+#twitch-embed{width:100%;height:100%;min-height:360px;}
+.right-card{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px;}
+.slogan{font-family:Orbitron;font-size:22px;margin:6px 0;}
+.bio{font-size:14px;color:#cbd8e6;line-height:1.4;}
+.events{margin-top:16px;}
+.events h3{margin:0 0 8px 0;color:var(--neon2);}
+.event{padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(155,92,255,0.04), rgba(0,210,255,0.03));margin-bottom:10px;border:1px solid rgba(255,255,255,0.03);}
+.event .date{font-weight:700;}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.btn{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#08101a;font-weight:700;text-decoration:none;transition:opacity .25s;}
+.btn:hover{opacity:0.85;}
+footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;color:#99a9bf;font-size:13px;}
+@media (max-width:980px){.hero{grid-template-columns:1fr}nav a{margin-left:12px}}
 </style>
 </head>
+
 <body>
 
-
 <header>
-<div class="logo">
-<!-- Logo-Datei in /images/logo.png ablegen -->
-<img id="brandLogo" src="images/logo.png" alt="Rave3eN Logo" style="width:64px;height:auto;filter:drop-shadow(0 0 10px var(--neon1));" onerror="this.onerror=null; this.src='logo druck.png';">
-<div>
-<div style="font-weight:700">Rave3eN</div>
-<div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
-</div>
-</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About me</a>
-<a href="#events">Events</a>
-<a href="#contact">Contact</a>
-</nav>
+  <div class="logo">
+    <img id="brandLogo" src="images/logo.png" alt="Rave3eN Logo" onerror="this.onerror=null; this.src='logo druck.png';">
+    <div>
+      <div style="font-weight:700">Rave3eN</div>
+      <div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About me</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-
 <main>
-<section class="hero" id="home">
-<div class="player-wrap" aria-label="Twitch Player">
-<div id="twitch-embed"></div>
+  <section class="hero" id="home">
 
+    <!-- Twitch Player -->
+    <div class="player-wrap" aria-label="Twitch Player">
+      <div id="twitch-embed"></div>
 
-<!-- Silent Watch Mode -->
-<div id="silent-watch" style="margin-top:10px;text-align:center;font-size:14px;color:#9fb7d7">
-<p>👀 Du unterstützt Rave3eN einfach durch Zuschauen – danke dir!</p>
-<button id="enable-sound" class="btn" style="margin-top:8px;">🔊 Ton aktivieren</button>
-</div>
-</div>
-<div class="right-card">
-<div class="slogan glow">Live on Twitch</div>
-<div class="bio">EDM x Gaming — Feel the beat, join the vibe. Let's Rave ON 💜</div>
+      <!-- Silent Watch Mode -->
+      <div id="silent-watch" style="margin-top:10px;text-align:center;font-size:14px;color:#9fb7d7">
+        <p>👀 Du unterstützt Rave3eN einfach durch Zuschauen – danke dir!</p>
+        <button id="enable-sound" class="btn" style="margin-top:8px;">🔊 Ton aktivieren</button>
+      </div>
+    </div>
 
+    <!-- Right Info Card -->
+    <div class="right-card">
+      <div class="slogan glow">Live on Twitch</div>
+      <div class="bio">EDM × Gaming — Feel the beat, join the vibe. Let's Rave ON 💜</div>
 
-<div class="events">
-  <h3>Upcoming Events</h3>
-  <div class="event">
-    <div class="date">🩵 Aktuell ist Daniel krank</div>
-    <div class="title">Es wird bald wieder losgehen — danke für eure Geduld 💜</div>
-  </div>
-</div>
+      <div class="events" id="events">
+        <h3>Upcoming Events</h3>
+        <div class="event">
+          <div class="date">🩵 Aktuell ist Daniel krank</div>
+          <div class="title">Es wird bald wieder losgehen — danke für eure Geduld 💜</div>
+        </div>
+      </div>
 
+      <div class="socials">
+        <a class="btn" href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn" href="https://www.tiktok.com/@rave3en?lang=de-DE" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a class="btn" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-<div class="socials">
-  <a class="btn" href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer">Discord</a>
-  <a class="btn" href="https://www.tiktok.com/@rave3en?lang=de-DE" target="_blank" rel="noopener noreferrer">TikTok</a>
-  <a class="btn" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer">YouTube</a>
-  <a class="btn" href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer">Instagram</a>
-</div>
+<footer>
+  © 2025 Rave3eN · EDM × Gaming · Potsdam
+</footer>
 
-<!-- About Section -->
-<section id="about" style="max-width:1200px;margin:60px auto;padding:40px 24px;border-radius:16px;background:var(--panel);box-shadow:0 8px 24px rgba(0,0,0,0.6);overflow:hidden">
-  <h2 style="margin-top:0;color:var(--neon2);font-family:Orbitron;font-size:28px;text-align:center;text-shadow:0 0 10px var(--neon2), 0 0 25px rgba(155,92,255,0.6);letter-spacing:1px;">
-    About Me
-  </h2>
+<!-- Twitch Embed Script -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<script>
+  const options = {
+    width: "100%",
+    height: "100%",
+    channel: "rave3en",
+    parent: ["rave3en.github.io", "rave3en.de"],
+    autoplay: true,
+    muted: true
+  };
+  const player = new Twitch.Player("twitch-embed", options);
+  document.getElementById("enable-sound").addEventListener("click",()=>{
+    player.setMuted(false);
+    player.setVolume(0.1);
+  });
+</script>
 
-  <div style="width:180px;height:2px;margin:14px auto 32px;background:linear-gradient(90deg,var(--neon1),var(--neon2));border-radius:4px;box-shadow:0 0 12px rgba(0,210,255,0.6);animation:glowline 3s ease-in-out infinite alternate;"></div>
-
-  <div class="about-text" style="color:#cbd8e6;line-height:1.7;font-size:15px;animation:fadeIn 1.2s ease both;">
-    <p>🎧 <strong>Hey und herzlich willkommen auf meiner eigenen Website.</strong><br>
-    Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.<br>
-    Das Leben hat vor meiner Geschichte keinen Halt gemacht.</p>
-
-    <p>💔 In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt. Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.</p>
-
-    <p>📘 Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Das hatte Folgen: schulisch ging es bergab. Ich habe nur die 6. Klasse bestanden, ab der 7. Klasse kam mein Tiefpunkt. Nach der 8. Klasse stand ich da – ohne Abschluss, ohne Ziel.</p>
-
-    <p>💪 Zum Glück bin ich irgendwann aufgewacht und habe begonnen, meine Vergangenheit aufzuarbeiten. Schritt für Schritt habe ich mich zurückgekämpft: die 10. Klasse nachgeholt, das Abitur begonnen, die 11. Klasse bestanden. Doch in der 12. habe ich gemerkt, dass ich ein praktischer Mensch bin – kein Theoretiker. Ich wollte Musik studieren oder Psychologie, aber das Leben hat mir gezeigt, wie wichtig es ist, ehrlich zu sich selbst zu sein.</p>
-
-    <p>🏓 <strong>Tischtennis</strong> wurde mein Rettungsanker. Hätte ich diesen Sport nicht gehabt, wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe. Doch irgendetwas – oder irgendwer – wollte, dass ich weitermache.</p>
-
-    <p>🌟 Durch harte Arbeit und unzählige Überstunden habe ich mir meinen Traum erfüllt: überregional Tischtennis zu spielen – in der <strong>Verbandsoberliga</strong>. Es ist ein seltsames Gefühl, besser als der Durchschnitt zu sein, aber zu wissen, dass es für ganz oben nicht reicht.</p>
-
-    <p>🎮 Diese Erfahrung zieht sich durch mein Leben – ob im Tischtennis, in <strong>Counter-Strike 1.5</strong> oder im <strong>Gesang</strong>. Ich durfte in der E-Sport-Szene einiges erleben und war sogar Teil des Nachwuchsteams von <strong>e2sports</strong>, zusammen mit Blizzard, Johnny R., Roman und anderen. Für die erste Division der EAS hat es gereicht – und darauf bin ich stolz.</p>
-
-    <p>📺 Heute bin ich auf <strong>Twitch</strong> aktiv. Ich bin älter geworden, gereift, habe meine Vergangenheit verarbeitet und weiß, was mir wirklich wichtig ist.</p>
-
-    <p>🌍 Die Welt, in der wir leben, braucht Hilfe – und vor allem Tiere, die nicht mit uns sprechen können, aber genauso fühlen.</p>
-
-    <p><strong style="color:var(--neon1)">Rave</strong> steht für Liebe, Unsinn und Hilfsbereitschaft.<br>
-    Wo Leidenschaft auf EDM trifft, wo Gefühle uns menschlich machen, da entsteht das, was ich mit <strong>Rave3eN</strong> zeigen möchte:<br>
-    💜 Wir sollten füreinander da sein – und besonders für die, die keine Stimme haben.</p>
-  </div>
-
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes glowline {
-      from { box-shadow: 0 0 10px var(--neon1); opacity: 0.6; }
-      to { box-shadow: 0 0 25px var(--neon2); opacity: 1; }
-    }
-  </style>
-</section>
-
-
-<!-- Full Events Section -->
-<section id="events" style="max-width:1200px;margin:28px auto;padding:24px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 24px rgba(0,0,0,0.5)">
-<h2 style="margin-top:0">Events</h2>
-<div class="event">
+</body>
 </html>
-
-
-
-
-
-
-
