@@ -141,6 +141,59 @@ header .live-title{
   border-radius:14px;
 }
 
+/* FEEDBACK */
+.feedback-box{
+  margin-top:20px;
+  padding:20px;
+  background:rgba(255,255,255,0.05);
+  border-radius:14px;
+  box-shadow:0 0 30px rgba(155,92,255,0.3),0 0 40px rgba(0,210,255,0.2);
+  text-align:center;
+}
+.feedback-box h2{
+  font-family:'Orbitron';
+  color:var(--neon2);
+  margin-bottom:15px;
+  text-shadow:0 0 15px rgba(0,180,255,0.5);
+}
+.feedback-box form{
+  display:flex;flex-direction:column;gap:12px;align-items:center;
+}
+.feedback-box input, .feedback-box textarea{
+  width:90%;max-width:600px;
+  background:#000;
+  color:#e9eef8;
+  border:2px solid rgba(0,180,255,0.4);
+  border-radius:10px;
+  padding:10px;
+  font-family:'Rajdhani';
+  font-size:1rem;
+  box-shadow:0 0 10px rgba(155,92,255,0.3),inset 0 0 10px rgba(0,180,255,0.2);
+}
+.feedback-box textarea{min-height:90px;resize:vertical;}
+.feedback-box button{
+  padding:10px 30px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  color:#fff;
+  font-weight:700;
+  font-family:'Rajdhani';
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(155,92,255,0.6);
+}
+.feedback-box button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 30px rgba(0,210,255,0.9);
+}
+#feedbackStatus{
+  margin-top:10px;
+  font-size:1rem;
+  color:#00ffff;
+  text-shadow:0 0 10px rgba(0,210,255,0.6);
+}
+
 /* CANVAS */
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
@@ -174,30 +227,42 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <!-- Twitch Player -->
     <iframe id="twitchPlayer" allowfullscreen></iframe>
 
-    <!-- Aktuelles Box -->
+    <!-- Aktuelles -->
     <div class="news-box">
       <h2>Aktuelles</h2>
       <p id="statusText">Lade Status...</p>
     </div>
 
-    <!-- Spotify Playlist -->
+    <!-- Spotify -->
     <div class="playlist-box">
       <iframe 
         src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator" 
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     </div>
+
+    <!-- Feedback -->
+    <div class="feedback-box">
+      <h2>💬 Dein Feedback an Daniel</h2>
+      <form id="feedbackForm">
+        <input type="text" name="name" placeholder="Dein Name (optional)" maxlength="40" />
+        <textarea name="message" placeholder="Schreib dein Feedback hier..." maxlength="500" required></textarea>
+        <input type="text" name="honeypot" id="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+        <button type="submit">Senden</button>
+        <p id="feedbackStatus"></p>
+      </form>
+    </div>
   </div>
 </div>
 
 <script>
-/* Dynamischer Twitch-Parent (funktioniert auf www.rave3en.de & rave3en.de) */
+/* Twitch Player mit dynamischem Parent */
 const hostname = window.location.hostname.replace(/^www\./, '');
 const twitchParent = encodeURIComponent(hostname);
 const twitchPlayer = document.getElementById('twitchPlayer');
 twitchPlayer.src = `https://player.twitch.tv/?channel=Rave3eN&parent=${twitchParent}&parent=www.${twitchParent}&muted=true`;
 
-/* Lade Text aus status.txt */
+/* Status laden */
 fetch('status.txt')
   .then(res => res.text())
   .then(text => {
@@ -205,12 +270,9 @@ fetch('status.txt')
     document.getElementById('statusText').innerText =
       cleaned.length > 0 ? cleaned : 'Zurzeit keine Neuigkeiten 💬';
   })
-  .catch(err => {
-    document.getElementById('statusText').innerText = 'Status konnte nicht geladen werden.';
-    console.error(err);
-  });
+  .catch(() => document.getElementById('statusText').innerText = 'Status konnte nicht geladen werden.');
 
-/* Hintergrund: Waves */
+/* Waves Hintergrund */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
@@ -219,6 +281,23 @@ class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Mat
 for(let i=0;i<90;i++)parts.push(new P());
 function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
 function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
+
+/* Feedback Senden */
+const feedbackForm=document.getElementById("feedbackForm");
+const feedbackStatus=document.getElementById("feedbackStatus");
+feedbackForm.dataset.startTime=Date.now();
+feedbackForm.addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(document.getElementById("honeypot").value!=="")return;
+  const duration=Date.now()-feedbackForm.dataset.startTime;
+  if(duration<5000){feedbackStatus.textContent="⏳ Bitte schreibe ein echtes Feedback :)";return;}
+  const data={name:feedbackForm.name.value.trim()||"Anonym",message:feedbackForm.message.value.trim()};
+  try{
+    const res=await fetch("/.netlify/functions/feedback",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+    if(res.ok){feedbackStatus.textContent="💜 Danke für dein Feedback — Daniel liest mit!";feedbackForm.reset();}
+    else{feedbackStatus.textContent="❌ Fehler beim Senden. Versuch es später nochmal.";}
+  }catch(err){console.error(err);feedbackStatus.textContent="⚠️ Verbindung fehlgeschlagen.";}
+});
 </script>
 </body>
 </html>
