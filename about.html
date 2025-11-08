@@ -117,7 +117,22 @@ p.intro{
   text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.3);
 }
 
-/* Link */
+/* FOOTER */
+footer{
+  text-align:center;
+  font-family:'Orbitron';
+  font-size:0.95rem;
+  color:var(--neon2);
+  padding:30px 0 50px;
+  text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.4);
+  animation:footerPulse 4s ease-in-out infinite alternate;
+}
+@keyframes footerPulse{
+  from{text-shadow:0 0 10px rgba(155,92,255,0.3),0 0 20px rgba(0,210,255,0.3);}
+  to{text-shadow:0 0 25px rgba(155,92,255,0.8),0 0 40px rgba(0,210,255,0.6);}
+}
+
+/* BACK BUTTON */
 a.back{
   display:inline-block;
   margin-top:25px;
@@ -224,6 +239,10 @@ canvas#waves{
 
   <a href="index.html" class="back">← Zurück zur Startseite</a>
 </main>
+
+<footer>
+  Rave3eN © 2025 — Music. Emotion. Energy.
+</footer>
 
 <script>
 /* Waves Hintergrund */
