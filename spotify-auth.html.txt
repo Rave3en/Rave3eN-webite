@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spotify Login — Rave3eN</title>
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:'Rajdhani',sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  text-align:center;
+}
+a{
+  display:inline-block;
+  background:#1db954;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1.1rem;
+  transition:.3s;
+}
+a:hover{background:#1ed760;}
+</style>
+</head>
+<body>
+<h1>Rave3eN × Spotify Login</h1>
+<p>Melde dich bei Spotify an, um deinen Visualizer zu aktivieren 🎧</p>
+
+<script>
+const clientId = '3734a32da72c4be1a7e9ea4ea3b00a00';
+const redirectUri = window.location.origin + '/index.html';
+const scopes = [
+  'streaming',
+  'user-read-email',
+  'user-read-private',
+  'user-modify-playback-state',
+  'user-read-playback-state'
+].join(' ');
+
+const authUrl =
+  'https://accounts.spotify.com/authorize' +
+  '?response_type=token' +
+  '&client_id=' + encodeURIComponent(clientId) +
+  '&scope=' + encodeURIComponent(scopes) +
+  '&redirect_uri=' + encodeURIComponent(redirectUri);
+
+document.write(`<a href="${authUrl}">Mit Spotify einloggen</a>`);
+</script>
+</body>
+</html>
