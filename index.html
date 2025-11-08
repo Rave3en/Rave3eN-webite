@@ -110,7 +110,7 @@ header .spruch{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* NAVIGATION UNTER DEM HEADER */
+/* NAVIGATION */
 .nav-top{
   margin:160px auto 0;
   display:flex;
@@ -204,22 +204,25 @@ footer{
   text-align:center;
   font-family:'Orbitron';
   font-size:0.9rem;
-  color:var(--neon2);
+  color:#fff;
   padding:25px 0 40px;
-  text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.4);
-  animation:footerPulse 4s ease-in-out infinite alternate;
+  text-shadow:0 0 15px rgba(155,92,255,0.7),0 0 25px rgba(0,210,255,0.8);
 }
 #visitorCount{
   display:block;
   margin-top:8px;
-  font-size:0.85rem;
-  color:#9b5cff;
-  text-shadow:0 0 10px rgba(155,92,255,0.8);
+  font-size:0.9rem;
+  font-weight:600;
+  color:#fff;
+  text-shadow:
+    0 0 8px rgba(155,92,255,0.9),
+    0 0 16px rgba(0,210,255,0.9),
+    0 0 28px rgba(155,92,255,0.7);
   animation:glow 3s ease-in-out infinite alternate;
 }
 @keyframes glow{
-  0%{text-shadow:0 0 10px rgba(155,92,255,0.5);}
-  100%{text-shadow:0 0 20px rgba(0,210,255,0.9);}
+  0%{text-shadow:0 0 8px rgba(155,92,255,0.5);}
+  100%{text-shadow:0 0 22px rgba(0,210,255,1);}
 }
 </style>
 </head>
@@ -366,7 +369,8 @@ async function updateVisitorCount() {
   try {
     const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
     const data = await res.json();
-    document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
+    document.getElementById('visitorCount').textContent =
+      "Besucher: " + data.value.toLocaleString('de-DE');
   } catch (e) {
     document.getElementById('visitorCount').textContent = "Besucher: —";
   }
