@@ -78,6 +78,14 @@ header .live-title{
 .top-nav a:hover{color:var(--neon1);transform:scale(1.05);}
 iframe{border:0;width:100%;border-radius:15px;}
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+#relogin {
+  position:fixed;bottom:20px;right:20px;
+  background:#1db954;border:none;color:#fff;
+  padding:10px 20px;border-radius:30px;
+  cursor:pointer;font-weight:600;font-size:1rem;
+  display:none;
+}
+#relogin:hover{background:#1ed760;}
 </style>
 </head>
 
@@ -109,7 +117,43 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </div>
 
+<button id="relogin" onclick="logoutSpotify()">Neu verbinden</button>
+
 <script>
+const CLIENT_ID = '3734a32da72c4be1a7e9ea4ea3b00a00';
+let accessToken = '';
+
+function getTokenFromHash(){
+  if(window.location.hash){
+    const hash = window.location.hash.substring(1).split('&')
+      .reduce((res,item)=>{let p=item.split('=');res[p[0]]=p[1];return res;},{});
+    accessToken = hash.access_token || '';
+    if(accessToken){
+      localStorage.setItem('spotify_token', accessToken);
+      localStorage.setItem('spotify_token_time', Date.now());
+    }
+    window.location.hash='';
+  }
+}
+
+function loadToken(){
+  const token = localStorage.getItem('spotify_token');
+  const time = localStorage.getItem('spotify_token_time');
+  if(token && time && Date.now() - time < 3500000){ // 3500 Sekunden ≈ 1 Stunde
+    accessToken = token;
+  }
+}
+
+function logoutSpotify(){
+  localStorage.removeItem('spotify_token');
+  localStorage.removeItem('spotify_token_time');
+  window.location.href = 'spotify-auth.html';
+}
+
+getTokenFromHash();
+if(!accessToken) loadToken();
+if(!accessToken) document.getElementById('relogin').style.display = 'block';
+
 // ---------- Hintergrund-Waves ----------
 const canvas=document.getElementById('waves');
 const ctx=canvas.getContext('2d');
@@ -139,20 +183,7 @@ function animate(){
 }
 animate();
 
-// ---------- Spotify Visualizer ----------
-const CLIENT_ID = '3734a32da72c4be1a7e9ea4ea3b00a00';
-let accessToken = '';
-
-function getTokenFromHash(){
-  if(window.location.hash){
-    const hash=window.location.hash.substring(1).split('&')
-      .reduce((res,item)=>{let p=item.split('=');res[p[0]]=p[1];return res;},{});
-    accessToken=hash.access_token||'';
-    window.location.hash='';
-  }
-}
-getTokenFromHash();
-
+// ---------- Spotify Web Playback SDK ----------
 window.onSpotifyWebPlaybackSDKReady=()=>{
   if(!accessToken){
     console.warn('Kein Spotify-Token. Bitte über spotify-auth.html einloggen.');
