@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rave3eN — Official</title>
+<meta name="description" content="Rave3eN — EDM x Gaming | Live on Twitch" />
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -37,11 +38,11 @@ header{
   z-index:10;
 }
 
-/* LOGO + TEXT */
+/* LOGO */
 header .logo{
   display:flex;
   align-items:center;
-  gap:28px; /* Abstand zwischen Logo & Schriftzug */
+  gap:28px;
   animation:logoPulse 4s ease-in-out infinite alternate;
 }
 header .logo img{
@@ -60,8 +61,6 @@ header .logo span{
   letter-spacing:1.5px;
   text-shadow:0 0 22px rgba(168,92,255,0.6),0 0 50px rgba(0,210,255,0.4);
 }
-
-/* Schönerer Farbverlauf + Glow */
 @keyframes gradientFlow {
   0% {background-position:0% 50%;}
   50% {background-position:100% 50%;}
@@ -76,7 +75,25 @@ header .logo span{
   to {transform:scale(1.03);}
 }
 
-/* Spruch */
+/* NAVIGATION */
+nav{
+  display:flex;
+  gap:40px;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-family:'Orbitron';
+  font-size:1.1rem;
+  transition:0.3s;
+  text-shadow:0 0 8px rgba(155,92,255,0.5);
+}
+nav a:hover{
+  color:var(--neon2);
+  text-shadow:0 0 15px rgba(0,210,255,0.8), 0 0 25px rgba(155,92,255,0.6);
+}
+
+/* SPRUCH */
 header .rave-spruch{
   font-family:'Orbitron';
   font-size:1.45rem;
@@ -108,82 +125,61 @@ header .rave-spruch{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* MAIN */
-.container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
-.player-box{
-  width:750px;max-width:90vw;
-  background:rgba(255,255,255,0.06);
-  border-radius:20px;
-  backdrop-filter:blur(18px);
-  padding:20px;
+/* CONTENT */
+main{
+  margin-top:140px;
   text-align:center;
-  box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
 }
-.top-nav{display:flex;justify-content:center;gap:25px;margin-bottom:22px;}
-.top-nav a{
-  min-width:90px;height:46px;padding:0 16px;
-  border-radius:999px;
-  display:flex;align-items:center;justify-content:center;
-  background:#000;
-  color:var(--neon2);
-  border:2px solid rgba(0,180,255,0.4);
-  text-decoration:none;font-weight:600;
-  box-shadow:0 0 18px rgba(155,92,255,0.65),inset 0 0 10px rgba(0,180,255,0.3);
-  transition:.3s;
-}
-.top-nav a:hover{
-  color:var(--neon1);
-  transform:translateY(-1px) scale(1.06);
-  border-color:var(--neon1);
-  box-shadow:0 0 26px rgba(155,92,255,0.9),inset 0 0 12px rgba(0,180,255,0.7);
+section{
+  margin-bottom:50px;
 }
 
-/* TWITCH PLAYER */
-#twitchPlayer{
+/* PLAYER */
+.twitch-box{
+  max-width:900px;
+  margin:0 auto;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
+  padding:25px;
+  backdrop-filter:blur(15px);
+}
+iframe{
   width:100%;
-  height:520px;
+  height:500px;
   border:none;
-  border-radius:15px;
-  box-shadow:0 0 35px rgba(0,180,255,0.6), 0 0 55px rgba(155,92,255,0.4);
+  border-radius:14px;
 }
 
 /* AKTUELLES */
-.news-box{
-  margin:20px 0;
-  padding:18px;
-  background:rgba(255,255,255,0.05);
+.aktuelles{
+  margin:40px auto;
+  max-width:900px;
+  background:rgba(0,0,0,0.6);
+  border:1px solid rgba(155,92,255,0.3);
   border-radius:14px;
-  box-shadow:0 0 25px rgba(155,92,255,0.3),0 0 40px rgba(0,210,255,0.2);
+  padding:20px;
+  box-shadow:0 0 25px rgba(155,92,255,0.3), 0 0 45px rgba(0,210,255,0.2);
 }
-.news-box h2{
+.aktuelles h2{
   font-family:'Orbitron';
   color:var(--neon2);
   font-size:1.3rem;
   margin-bottom:8px;
   text-shadow:0 0 10px rgba(0,180,255,0.4);
-  animation:headlinePulse 3.5s ease-in-out infinite alternate;
 }
-@keyframes headlinePulse {
-  0% { text-shadow:0 0 10px rgba(0,180,255,0.4), 0 0 20px rgba(155,92,255,0.2); color:var(--neon2); }
-  50% { text-shadow:0 0 20px rgba(155,92,255,0.9), 0 0 35px rgba(0,255,255,0.6); color:var(--neon1); }
-  100% { text-shadow:0 0 10px rgba(0,180,255,0.4), 0 0 20px rgba(155,92,255,0.2); color:var(--neon2); }
-}
-.news-box p{
-  color:#fff;
-  font-weight:500;
-  text-shadow:0 0 6px rgba(155,92,255,0.3);
+.aktuelles p{
+  color:#dbe4f5;
+  font-size:1rem;
 }
 
 /* SPOTIFY */
-.playlist-box{
-  border-radius:14px;
-  margin-top:18px;
+.spotify-box{
+  margin:40px auto;
+  max-width:900px;
+  border-radius:16px;
+  box-shadow:0 0 40px rgba(0,210,255,0.3), 0 0 70px rgba(155,92,255,0.2);
   overflow:hidden;
-  box-shadow:0 0 25px rgba(0,0,0,0.6);
-}
-.playlist-box iframe{
-  border:0;width:100%;height:152px;
-  border-radius:14px;
 }
 
 /* FOOTER */
@@ -201,8 +197,11 @@ footer{
   to{text-shadow:0 0 25px rgba(155,92,255,0.8),0 0 40px rgba(0,210,255,0.6);}
 }
 
-/* CANVAS */
-canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+/* WAVES */
+canvas#waves{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;
+}
 </style>
 </head>
 
@@ -215,7 +214,11 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <span>Rave3eN</span>
   </div>
 
-  <div class="rave-spruch">Wo Musik das Herz berührt 💜</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="events.html">Events</a>
+  </nav>
 
   <div class="social-header">
     <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -225,42 +228,27 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </header>
 
-<div class="container">
-  <div class="player-box">
-    <nav class="top-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="events.html">Events</a>
-    </nav>
+<main>
+  <section class="twitch-box">
+    <h2>Live on Twitch</h2>
+    <iframe src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&muted=true" allowfullscreen></iframe>
+  </section>
 
-    <!-- Twitch Player -->
-    <iframe id="twitchPlayer" allowfullscreen></iframe>
+  <section class="aktuelles">
+    <h2>Aktuelles</h2>
+    <p>Daniel ist aktuell krank, aber er kommt stärker zurück 💜</p>
+  </section>
 
-    <!-- Aktuelles -->
-    <div class="news-box">
-      <h2>Aktuelles</h2>
-      <p>Daniel ist leider krank, aber er kommt gestärkt zurück 💜</p>
-    </div>
-
-    <!-- Spotify -->
-    <div class="playlist-box">
-      <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    </div>
-  </div>
-</div>
+  <section class="spotify-box">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" width="100%" height="380" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
+</main>
 
 <footer>
   Rave3eN © 2025 — Music. Emotion. Energy.
 </footer>
 
 <script>
-/* Twitch Player */
-const hostname = window.location.hostname.replace(/^www\./, '');
-const twitchParent = encodeURIComponent(hostname);
-const twitchPlayer = document.getElementById('twitchPlayer');
-twitchPlayer.src = `https://player.twitch.tv/?channel=Rave3eN&parent=${twitchParent}&parent=www.${twitchParent}&muted=true`;
-
 /* Waves Hintergrund */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
