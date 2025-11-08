@@ -32,7 +32,8 @@ header{
   padding:15px 40px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-start;
+  gap:100px;
   z-index:10;
   background:rgba(0,0,0,0.5);
   backdrop-filter:blur(10px);
@@ -42,7 +43,6 @@ header .logo{
   display:flex;
   align-items:center;
   gap:10px;
-  flex:1;
 }
 header .logo img{
   height:45px;
@@ -57,12 +57,7 @@ header .logo span{
   letter-spacing:1px;
 }
 
-/* Menü mittig, Neon Glow stärker */
-.nav-area{
-  flex:2;
-  display:flex;
-  justify-content:center;
-}
+/* Menü leicht nach links, Neon Glow */
 .nav-icons{
   display:flex;
   align-items:center;
@@ -104,24 +99,6 @@ header .logo span{
              inset 0 0 10px rgba(0,210,255,0.5);
 }
 .nav-icons a:hover::after{opacity:1;}
-
-/* Spotify Button rechts */
-#spotify-connect{
-  width:60px;height:60px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin-left:auto;
-  background:rgba(255,255,255,0.05);
-  box-shadow:0 0 15px rgba(155,92,255,0.4),
-             inset 0 0 10px rgba(0,210,255,0.3);
-  color:var(--neon2);
-  border:none;cursor:pointer;transition:all .4s ease;
-}
-#spotify-connect:hover{
-  color:var(--neon1);
-  transform:scale(1.1);
-  box-shadow:0 0 25px rgba(0,210,255,0.7),
-             inset 0 0 10px rgba(155,92,255,0.4);
-}
 
 /* ---------- Inhalt ---------- */
 .container{
@@ -205,15 +182,11 @@ canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <span>Rave3eN</span>
   </div>
 
-  <div class="nav-area">
-    <div class="nav-icons">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="#events">Events</a>
-    </div>
+  <div class="nav-icons">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#events">Events</a>
   </div>
-
-  <button id="spotify-connect"><i class="fab fa-spotify"></i></button>
 </header>
 
 <div class="container">
