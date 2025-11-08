@@ -25,6 +25,54 @@ html,body{
   overflow:hidden;
 }
 
+/* ---------- Header mit Logo ---------- */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:15px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:10;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+header .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+header .logo img{
+  height:45px;
+  width:auto;
+  filter:drop-shadow(0 0 10px var(--neon2));
+}
+header .logo span{
+  font-family:'Orbitron';
+  font-size:1.6rem;
+  color:var(--neon2);
+  text-shadow:0 0 8px var(--neon2);
+  letter-spacing:1px;
+}
+header nav{
+  display:flex;
+  gap:25px;
+}
+header nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1rem;
+  transition:color .3s,text-shadow .3s;
+}
+header nav a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 8px var(--neon1);
+}
+
 /* ---------- Layout ---------- */
 .container{
   display:flex;
@@ -35,6 +83,7 @@ html,body{
   position:relative;
   z-index:1;
   padding:20px;
+  margin-top:80px;
 }
 
 /* ---------- Twitch Box ---------- */
@@ -75,27 +124,27 @@ html,body{
   line-height:1.4;
 }
 
-/* ---------- Menü rechts ---------- */
+/* ---------- Sidebar rechts ---------- */
 .sidebar{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:35px;
 }
-nav{
+nav.side{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:18px;
 }
-nav a{
+nav.side a{
   color:white;
   text-decoration:none;
   font-size:1.1rem;
   font-weight:600;
   transition:color .3s,text-shadow .3s;
 }
-nav a:hover{
+nav.side a:hover{
   color:var(--neon1);
   text-shadow:0 0 8px var(--neon1);
 }
@@ -132,8 +181,19 @@ canvas#particles{
 <body>
 <canvas id="particles"></canvas>
 
-<div class="container">
+<header>
+  <div class="logo">
+    <img src="logo druck.png" alt="Rave3eN Logo">
+    <span>Rave3eN</span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="#events">Events</a>
+  </nav>
+</header>
 
+<div class="container">
   <div class="player-box">
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
 
@@ -144,7 +204,7 @@ canvas#particles{
   </div>
 
   <div class="sidebar">
-    <nav>
+    <nav class="side">
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
       <a href="#events">Events</a>
@@ -157,7 +217,6 @@ canvas#particles{
       <a href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
     </div>
   </div>
-
 </div>
 
 <script>
