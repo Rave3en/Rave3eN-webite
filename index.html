@@ -174,7 +174,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <!-- Aktuelles Box -->
     <div class="news-box">
       <h2>Aktuelles</h2>
-      <p>Daniel ist leider krank 🤒, aber er kommt gestärkt zurück 💪💜 — bleibt dran, bald geht’s wieder weiter mit EDM & Gaming!</p>
+      <p id="statusText">Lade Status...</p>
     </div>
 
     <!-- Spotify Playlist -->
@@ -188,7 +188,18 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </div>
 
 <script>
-/* HINTERGRUND: Waves */
+/* Lese Text aus status.txt */
+fetch('status.txt')
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById('statusText').innerText = text.trim();
+  })
+  .catch(err => {
+    document.getElementById('statusText').innerText = 'Status konnte nicht geladen werden.';
+    console.error(err);
+  });
+
+/* Hintergrund: Waves */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
