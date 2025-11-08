@@ -6,10 +6,8 @@
 <title>Rave3eN — Official</title>
 <meta name="description" content="Rave3eN — EDM × Gaming × Vibes | Live on Twitch" />
 
-<!-- Fonts -->
+<!-- Fonts + Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-
-<!-- Icon Library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -17,7 +15,6 @@
   --bg:#060607;
   --neon1:#9b5cff;
   --neon2:#00d2ff;
-  --neon3:#ff66ff;
   --glass:rgba(255,255,255,0.05);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -29,7 +26,7 @@ html,body{
   overflow:hidden;
 }
 
-/* ---------- Header mit Logo ---------- */
+/* ---------- Header mit Logo & Menü ---------- */
 header{
   position:fixed;
   top:0;
@@ -62,32 +59,61 @@ header .logo span{
   letter-spacing:1px;
 }
 
-/* ---------- Menü über dem Player ---------- */
-.top-nav{
-  position:relative;
-  margin-top:100px;
+/* ---------- Navigation rechts vom Logo ---------- */
+.nav-icons{
   display:flex;
-  justify-content:center;
   align-items:center;
-  gap:50px;
-  z-index:2;
+  gap:25px;
 }
-.top-nav a{
-  color:white;
+.nav-icons a{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 15px rgba(155,92,255,0.4),inset 0 0 10px rgba(0,210,255,0.3);
+  color:var(--neon2);
+  font-size:1.1rem;
   text-decoration:none;
   font-weight:600;
-  font-size:1.2rem;
-  transition:color .3s,text-shadow .3s;
-  animation:menuPulse 3.5s ease-in-out infinite alternate;
+  letter-spacing:.5px;
+  transition:all .4s ease;
+  position:relative;
+  overflow:hidden;
 }
-.top-nav a:hover{
+.nav-icons a::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  box-shadow:0 0 20px rgba(155,92,255,0.7),0 0 40px rgba(0,210,255,0.4);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.nav-icons a::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:-100%;
+  width:50%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--neon1),var(--neon2),transparent);
+  transform:translateY(-50%);
+  opacity:0;
+}
+.nav-icons a:hover::before{
+  left:150%;
+  opacity:1;
+  transition:all 0.8s ease;
+}
+.nav-icons a:hover{
   color:var(--neon1);
-  text-shadow:0 0 10px var(--neon1);
+  transform:scale(1.1);
 }
-@keyframes menuPulse{
-  0%{text-shadow:0 0 6px rgba(155,92,255,0.4),0 0 10px rgba(0,210,255,0.3);}
-  100%{text-shadow:0 0 15px rgba(155,92,255,0.9),0 0 25px rgba(0,210,255,0.5);}
-}
+.nav-icons a:hover::after{opacity:1;}
 
 /* ---------- Hauptinhalt ---------- */
 .container{
@@ -99,7 +125,7 @@ header .logo span{
   position:relative;
   z-index:1;
   padding:20px;
-  margin-top:40px;
+  margin-top:120px;
 }
 
 /* ---------- Twitch Box ---------- */
@@ -109,10 +135,27 @@ header .logo span{
   background:var(--glass);
   border-radius:20px;
   backdrop-filter:blur(10px);
-  box-shadow:0 0 25px rgba(0,210,255,0.25),
-             0 0 45px rgba(155,92,255,0.25);
   overflow:hidden;
   padding:15px;
+  transition:transform .4s ease;
+  animation:chillGlow 8s ease-in-out infinite;
+}
+.player-box:hover{
+  transform:scale(1.01);
+}
+@keyframes chillGlow {
+  0% {
+    box-shadow:0 0 25px rgba(0,210,255,0.25),
+               0 0 45px rgba(155,92,255,0.25);
+  }
+  50% {
+    box-shadow:0 0 55px rgba(0,210,255,0.5),
+               0 0 90px rgba(155,92,255,0.45);
+  }
+  100% {
+    box-shadow:0 0 25px rgba(0,210,255,0.25),
+               0 0 45px rgba(155,92,255,0.25);
+  }
 }
 .player-box iframe{
   border:0;
@@ -120,7 +163,12 @@ header .logo span{
   height:420px;
   border-radius:15px;
   box-shadow:0 0 20px rgba(155,92,255,0.2);
+  transition:box-shadow .5s ease;
 }
+.player-box:hover iframe{
+  box-shadow:0 0 25px rgba(0,210,255,0.7),0 0 50px rgba(155,92,255,0.5);
+}
+
 .player-info{
   margin-top:18px;
   background:rgba(0,0,0,0.3);
@@ -146,6 +194,7 @@ header .logo span{
   border-radius:12px;
   overflow:hidden;
   box-shadow:0 0 15px rgba(155,92,255,0.3),0 0 30px rgba(0,210,255,0.3);
+  animation:chillGlow 8s ease-in-out infinite;
 }
 .spotify iframe{
   width:100%;
@@ -153,7 +202,7 @@ header .logo span{
   border:0;
 }
 
-/* ---------- Sidebar Social Buttons ---------- */
+/* ---------- Sidebar Social Icons ---------- */
 .sidebar{
   display:flex;
   flex-direction:column;
@@ -161,14 +210,12 @@ header .logo span{
   gap:35px;
   margin-top:140px;
 }
-
 .social-icons{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:18px;
 }
-
 .social-icons a{
   width:60px;
   height:60px;
@@ -183,8 +230,8 @@ header .logo span{
   text-decoration:none;
   transition:all .4s ease;
   position:relative;
+  overflow:hidden;
 }
-
 .social-icons a::after{
   content:'';
   position:absolute;
@@ -195,14 +242,27 @@ header .logo span{
   opacity:0;
   transition:opacity .4s ease;
 }
-
+.social-icons a::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:-100%;
+  width:50%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--neon1),var(--neon2),transparent);
+  transform:translateY(-50%);
+  opacity:0;
+}
+.social-icons a:hover::before{
+  left:150%;
+  opacity:1;
+  transition:all 0.8s ease;
+}
 .social-icons a:hover{
   color:var(--neon1);
   transform:scale(1.1);
 }
-.social-icons a:hover::after{
-  opacity:1;
-}
+.social-icons a:hover::after{opacity:1;}
 
 /* ---------- Partikel ---------- */
 canvas#particles{
@@ -222,14 +282,13 @@ canvas#particles{
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-</header>
 
-<!-- Menü über Player -->
-<div class="top-nav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Me</a>
-  <a href="#events">Events</a>
-</div>
+  <div class="nav-icons">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#events">Events</a>
+  </div>
+</header>
 
 <div class="container">
   <div class="player-box">
@@ -241,7 +300,7 @@ canvas#particles{
     </div>
 
     <div class="spotify">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </div>
 
