@@ -16,6 +16,7 @@
   --neon1:#9b5cff;
   --neon2:#00d2ff;
   --glass:rgba(255,255,255,0.05);
+  --beat-duration:1s;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
@@ -26,251 +27,127 @@ html,body{
   overflow:hidden;
 }
 
-/* ---------- Header mit Logo & Menü ---------- */
+/* ---------- Header ---------- */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
+  position:fixed;top:0;left:0;width:100%;
   padding:15px 40px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display:flex;align-items:center;justify-content:space-between;
   z-index:10;
   background:rgba(0,0,0,0.5);
   backdrop-filter:blur(10px);
   box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
-header .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-header .logo img{
-  height:45px;
-  width:auto;
-  filter:drop-shadow(0 0 10px var(--neon2));
-}
-header .logo span{
-  font-family:'Orbitron';
-  font-size:1.6rem;
-  color:var(--neon2);
-  text-shadow:0 0 8px var(--neon2);
-  letter-spacing:1px;
-}
+header .logo{display:flex;align-items:center;gap:10px;}
+header .logo img{height:45px;width:auto;filter:drop-shadow(0 0 10px var(--neon2));}
+header .logo span{font-family:'Orbitron';font-size:1.6rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);letter-spacing:1px;}
 
-/* ---------- Navigation rechts vom Logo ---------- */
-.nav-icons{
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-.nav-icons a{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.nav-icons{display:flex;align-items:center;gap:25px;}
+.nav-icons a,.nav-icons button{
+  width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,0.05);
   box-shadow:0 0 15px rgba(155,92,255,0.4),inset 0 0 10px rgba(0,210,255,0.3);
   color:var(--neon2);
-  font-size:1.1rem;
-  text-decoration:none;
-  font-weight:600;
-  letter-spacing:.5px;
-  transition:all .4s ease;
-  position:relative;
-  overflow:hidden;
+  font-size:1.1rem;font-weight:600;
+  border:none;cursor:pointer;
+  transition:all .4s ease;position:relative;overflow:hidden;
 }
-.nav-icons a::after{
-  content:'';
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:50%;
+.nav-icons a::after,.nav-icons button::after{
+  content:'';position:absolute;width:100%;height:100%;border-radius:50%;
   box-shadow:0 0 20px rgba(155,92,255,0.7),0 0 40px rgba(0,210,255,0.4);
-  opacity:0;
-  transition:opacity .4s ease;
+  opacity:0;transition:opacity .4s ease;
 }
-.nav-icons a::before{
-  content:'';
-  position:absolute;
-  top:50%;
-  left:-100%;
-  width:50%;
-  height:2px;
+.nav-icons a::before,.nav-icons button::before{
+  content:'';position:absolute;top:50%;left:-100%;
+  width:50%;height:2px;
   background:linear-gradient(90deg,transparent,var(--neon1),var(--neon2),transparent);
-  transform:translateY(-50%);
-  opacity:0;
+  transform:translateY(-50%);opacity:0;
 }
-.nav-icons a:hover::before{
-  left:150%;
-  opacity:1;
-  transition:all 0.8s ease;
-}
-.nav-icons a:hover{
-  color:var(--neon1);
-  transform:scale(1.1);
-}
-.nav-icons a:hover::after{opacity:1;}
+.nav-icons a:hover::before,.nav-icons button:hover::before{left:150%;opacity:1;transition:all .8s ease;}
+.nav-icons a:hover,.nav-icons button:hover{color:var(--neon1);transform:scale(1.1);}
+.nav-icons a:hover::after,.nav-icons button:hover::after{opacity:1;}
 
-/* ---------- Hauptinhalt ---------- */
+/* ---------- Inhalt ---------- */
 .container{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  height:100vh;
-  gap:50px;
-  position:relative;
-  z-index:1;
-  padding:20px;
-  margin-top:120px;
+  display:flex;justify-content:center;align-items:flex-start;
+  height:100vh;gap:50px;position:relative;z-index:1;
+  padding:20px;margin-top:120px;
 }
 
 /* ---------- Twitch Box ---------- */
 .player-box{
-  width:750px;
-  max-width:90vw;
-  background:var(--glass);
-  border-radius:20px;
-  backdrop-filter:blur(10px);
-  overflow:hidden;
-  padding:15px;
-  transition:transform .4s ease;
-  animation:chillGlow 8s ease-in-out infinite;
+  width:750px;max-width:90vw;
+  background:var(--glass);border-radius:20px;
+  backdrop-filter:blur(10px);overflow:hidden;
+  padding:15px;transition:transform .4s ease;
+  animation:chillGlow var(--beat-duration) ease-in-out infinite;
 }
-.player-box:hover{
-  transform:scale(1.01);
+.player-box:hover{transform:scale(1.01);}
+@keyframes chillGlow{
+  0%{box-shadow:0 0 25px rgba(0,210,255,.25),0 0 45px rgba(155,92,255,.25);}
+  50%{box-shadow:0 0 55px rgba(0,210,255,.5),0 0 90px rgba(155,92,255,.45);}
+  100%{box-shadow:0 0 25px rgba(0,210,255,.25),0 0 45px rgba(155,92,255,.25);}
 }
-@keyframes chillGlow {
-  0% {
-    box-shadow:0 0 25px rgba(0,210,255,0.25),
-               0 0 45px rgba(155,92,255,0.25);
-  }
-  50% {
-    box-shadow:0 0 55px rgba(0,210,255,0.5),
-               0 0 90px rgba(155,92,255,0.45);
-  }
-  100% {
-    box-shadow:0 0 25px rgba(0,210,255,0.25),
-               0 0 45px rgba(155,92,255,0.25);
-  }
-}
-.player-box iframe{
-  border:0;
-  width:100%;
-  height:420px;
-  border-radius:15px;
-  box-shadow:0 0 20px rgba(155,92,255,0.2);
-  transition:box-shadow .5s ease;
-}
-.player-box:hover iframe{
-  box-shadow:0 0 25px rgba(0,210,255,0.7),0 0 50px rgba(155,92,255,0.5);
-}
-
-.player-info{
-  margin-top:18px;
-  background:rgba(0,0,0,0.3);
-  border-radius:12px;
-  padding:15px;
-}
-.player-info h2{
-  font-family:'Orbitron';
-  font-size:1.2rem;
-  color:var(--neon2);
-  text-shadow:0 0 8px var(--neon2);
-  margin-bottom:6px;
-}
-.player-info p{
-  font-size:1rem;
-  color:#cbd8e6;
-  line-height:1.4;
-}
+.player-box iframe{border:0;width:100%;height:420px;border-radius:15px;
+  box-shadow:0 0 20px rgba(155,92,255,.2);transition:box-shadow .5s ease;}
+.player-box:hover iframe{box-shadow:0 0 25px rgba(0,210,255,.7),0 0 50px rgba(155,92,255,.5);}
+.player-info{margin-top:18px;background:rgba(0,0,0,.3);border-radius:12px;padding:15px;}
+.player-info h2{font-family:'Orbitron';font-size:1.2rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);margin-bottom:6px;}
+.player-info p{font-size:1rem;color:#cbd8e6;line-height:1.4;}
 
 /* ---------- Spotify ---------- */
 .spotify{
-  margin-top:20px;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 0 15px rgba(155,92,255,0.3),0 0 30px rgba(0,210,255,0.3);
-  animation:chillGlow 8s ease-in-out infinite;
+  margin-top:20px;border-radius:12px;overflow:hidden;
+  box-shadow:0 0 15px rgba(155,92,255,.3),0 0 30px rgba(0,210,255,.3);
+  animation:chillGlow var(--beat-duration) ease-in-out infinite;
 }
-.spotify iframe{
-  width:100%;
-  height:152px;
-  border:0;
+.spotify iframe{width:100%;height:152px;border:0;}
+
+/* ---------- Tänzer ---------- */
+.dancers{
+  position:absolute;bottom:35px;left:50%;transform:translateX(-50%);
+  display:flex;gap:10px;z-index:2;pointer-events:none;
+}
+.dancer{
+  width:14px;height:40px;border-radius:10px 10px 4px 4px;
+  background:linear-gradient(180deg,var(--neon2),var(--neon1));
+  box-shadow:0 0 15px rgba(0,210,255,.6);
+  animation:dance var(--beat-duration) ease-in-out infinite;
+  transform-origin:50% 100%;opacity:.9;
+}
+.dancer:nth-child(2){animation-delay:.05s;opacity:.8;}
+.dancer:nth-child(3){animation-delay:.1s;}
+.dancer:nth-child(4){animation-delay:.15s;opacity:.8;}
+.dancer:nth-child(5){animation-delay:.2s;}
+@keyframes dance{
+  0%{transform:translateY(0)scaleY(1)rotate(0);}
+  25%{transform:translateY(-6px)scaleY(.95)rotate(-3deg);}
+  50%{transform:translateY(-10px)scaleY(.9)rotate(3deg);}
+  75%{transform:translateY(-6px)scaleY(.95)rotate(-2deg);}
+  100%{transform:translateY(0)scaleY(1)rotate(0);}
 }
 
-/* ---------- Sidebar Social Icons ---------- */
-.sidebar{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:35px;
-  margin-top:140px;
-}
-.social-icons{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
-}
+/* ---------- Socials ---------- */
+.sidebar{display:flex;flex-direction:column;align-items:center;gap:35px;margin-top:140px;}
+.social-icons{display:flex;flex-direction:column;align-items:center;gap:18px;}
 .social-icons a{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,0.05);
-  box-shadow:0 0 15px rgba(155,92,255,0.4),inset 0 0 10px rgba(0,210,255,0.3);
-  color:var(--neon2);
-  font-size:1.5rem;
-  text-decoration:none;
-  transition:all .4s ease;
-  position:relative;
-  overflow:hidden;
+  width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);
+  box-shadow:0 0 15px rgba(155,92,255,.4),inset 0 0 10px rgba(0,210,255,.3);
+  color:var(--neon2);font-size:1.5rem;text-decoration:none;
+  transition:all .4s ease;position:relative;overflow:hidden;
 }
-.social-icons a::after{
-  content:'';
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  box-shadow:0 0 20px rgba(155,92,255,0.7),0 0 40px rgba(0,210,255,0.4);
-  opacity:0;
-  transition:opacity .4s ease;
-}
-.social-icons a::before{
-  content:'';
-  position:absolute;
-  top:50%;
-  left:-100%;
-  width:50%;
-  height:2px;
+.social-icons a::after{content:'';position:absolute;width:100%;height:100%;border-radius:50%;
+  box-shadow:0 0 20px rgba(155,92,255,.7),0 0 40px rgba(0,210,255,.4);opacity:0;transition:opacity .4s ease;}
+.social-icons a::before{content:'';position:absolute;top:50%;left:-100%;width:50%;height:2px;
   background:linear-gradient(90deg,transparent,var(--neon1),var(--neon2),transparent);
-  transform:translateY(-50%);
-  opacity:0;
-}
-.social-icons a:hover::before{
-  left:150%;
-  opacity:1;
-  transition:all 0.8s ease;
-}
-.social-icons a:hover{
-  color:var(--neon1);
-  transform:scale(1.1);
-}
+  transform:translateY(-50%);opacity:0;}
+.social-icons a:hover::before{left:150%;opacity:1;transition:all .8s ease;}
+.social-icons a:hover{color:var(--neon1);transform:scale(1.1);}
 .social-icons a:hover::after{opacity:1;}
 
 /* ---------- Partikel ---------- */
-canvas#particles{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:0;
-}
+canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
 
@@ -282,96 +159,88 @@ canvas#particles{
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-
   <div class="nav-icons">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="#events">Events</a>
+    <button id="spotify-connect"><i class="fab fa-spotify"></i></button>
   </div>
 </header>
 
 <div class="container">
   <div class="player-box">
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
-
     <div class="player-info">
       <h2>Aktuelles</h2>
       <p>Daniel ist aktuell krank 🤒 — Stimme muss geschont werden, aber im Hintergrund läuft die Vorbereitung für neue Projekte 💜</p>
     </div>
-
     <div class="spotify">
       <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="dancers">
+      <div class="dancer"></div><div class="dancer"></div><div class="dancer"></div><div class="dancer"></div><div class="dancer"></div>
     </div>
   </div>
 
   <div class="sidebar">
     <div class="social-icons">
-      <a href="https://www.youtube.com/@rave3en30" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@rave3en" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://discord.gg/3TbArexH5H" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.gg/3TbArexH5H" target="_blank"><i class="fab fa-discord"></i></a>
     </div>
   </div>
 </div>
 
 <script>
-// ---------- Soft Laser Light Partikel ----------
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particlesArray=[];
-const colors=['#9b5cff','#00d2ff','#ff66ff','#66ffff'];
-
-function resizeCanvas(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-}
-window.addEventListener('resize',resizeCanvas);
-resizeCanvas();
-
-class LaserParticle{
-  constructor(){
-    this.x=Math.random()*canvas.width;
-    this.y=Math.random()*canvas.height;
-    this.size=Math.random()*2+1;
-    this.speedX=(Math.random()-0.5)*0.3;
-    this.speedY=(Math.random()-0.5)*0.3;
-    this.color=colors[Math.floor(Math.random()*colors.length)];
-    this.alpha=Math.random()*0.7+0.3;
-    this.glowDir=Math.random()<0.5?-1:1;
-  }
-  update(){
-    this.x+=this.speedX;
-    this.y+=this.speedY;
-    this.alpha+=this.glowDir*0.01;
-    if(this.alpha<=0.2||this.alpha>=0.8)this.glowDir*=-1;
-    if(this.x<0)this.x=canvas.width;
-    if(this.x>canvas.width)this.x=0;
-    if(this.y<0)this.y=canvas.height;
-    if(this.y>canvas.height)this.y=0;
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.shadowBlur=20;
-    ctx.shadowColor=this.color;
-    ctx.fillStyle=`${this.color}${Math.floor(this.alpha*255).toString(16)}`;
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-  }
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(particlesArray.length<120){
-    particlesArray.push(new LaserParticle());
-  }
-  particlesArray.forEach(p=>{
-    p.update();
-    p.draw();
-  });
-  requestAnimationFrame(animate);
-}
+// ---------- Partikel ----------
+const canvas=document.getElementById('particles');const ctx=canvas.getContext('2d');
+let particlesArray=[];const colors=['#9b5cff','#00d2ff','#ff66ff','#66ffff'];
+function resizeCanvas(){canvas.width=innerWidth;canvas.height=innerHeight;}
+addEventListener('resize',resizeCanvas);resizeCanvas();
+class LaserParticle{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;
+  this.size=Math.random()*2+1;this.speedX=(Math.random()-.5)*.3;this.speedY=(Math.random()-.5)*.3;
+  this.color=colors[Math.floor(Math.random()*colors.length)];this.alpha=Math.random()*.7+.3;this.glowDir=Math.random()<.5?-1:1;}
+  update(){this.x+=this.speedX;this.y+=this.speedY;this.alpha+=this.glowDir*.01;
+    if(this.alpha<=.2||this.alpha>=.8)this.glowDir*=-1;
+    if(this.x<0)this.x=canvas.width;if(this.x>canvas.width)this.x=0;if(this.y<0)this.y=canvas.height;if(this.y>canvas.height)this.y=0;}
+  draw(){ctx.beginPath();ctx.shadowBlur=20;ctx.shadowColor=this.color;ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;}}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(particlesArray.length<120)particlesArray.push(new LaserParticle());
+  particlesArray.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}
 animate();
-</script>
 
+// ---------- Spotify Beat Sync ----------
+const SPOTIFY_CLIENT_ID='3734a32da72c4be1a7e9ea4ea3b00a00';
+const SCOPES='user-read-currently-playing user-read-playback-state';
+const REDIRECT_URI=location.origin+location.pathname;
+
+function storeToken(t){localStorage.setItem('spotify_token',t);}
+function getToken(){return localStorage.getItem('spotify_token');}
+function parseHash(){const h=new URLSearchParams(location.hash.substring(1));
+  if(h.get('access_token')){storeToken(h.get('access_token'));location.hash='';}}
+parseHash();
+document.getElementById('spotify-connect').onclick=()=>{
+  const url=`https://accounts.spotify.com/authorize?response_type=token&client_id=${SPOTIFY_CLIENT_ID}&scope=${encodeURIComponent(SCOPES)}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+  location.href=url;
+};
+
+async function updateTempo(){
+  const t=getToken();if(!t)return;
+  try{
+    const now=await fetch('https://api.spotify.com/v1/me/player/currently-playing',{headers:{Authorization:'Bearer '+t}});
+    if(!now.ok)return;
+    const n=await now.json();if(!n?.item?.id)return;
+    const id=n.item.id;
+    const feat=await fetch(`https://api.spotify.com/v1/audio-features/${id}`,{headers:{Authorization:'Bearer '+t}});
+    if(!feat.ok)return;
+    const f=await feat.json();if(!f?.tempo)return;
+    let sec=60/f.tempo;if(sec<.25)sec=.25;if(sec>1.5)sec=1.5;
+    document.documentElement.style.setProperty('--beat-duration',sec.toFixed(2)+'s');
+  }catch(e){console.warn('Spotify Sync Fehler',e);}
+}
+setInterval(updateTempo,10000);updateTempo();
+</script>
 </body>
 </html>
