@@ -1,58 +1,87 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spotify Login — Rave3eN</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-body{
-  background:#000;
-  color:#fff;
-  font-family:'Rajdhani',sans-serif;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  text-align:center;
+body {
+  background: #000;
+  color: #e9eef8;
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
 }
-a{
-  display:inline-block;
-  background:#1db954;
-  color:#fff;
-  padding:14px 26px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  font-size:1.1rem;
-  transition:.3s;
+h1 {
+  color: #00b4ff;
+  text-shadow: 0 0 10px #00b4ff, 0 0 30px #9b5cff;
+  margin-bottom: 30px;
 }
-a:hover{background:#1ed760;}
+button {
+  background: linear-gradient(90deg, #9b5cff, #00b4ff);
+  border: none;
+  border-radius: 30px;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(0,180,255,0.4);
+  transition: all .3s;
+}
+button:hover {
+  box-shadow: 0 0 35px rgba(155,92,255,0.9);
+  transform: scale(1.05);
+}
 </style>
 </head>
+
 <body>
-<h1>Rave3eN × Spotify Login</h1>
-<p>Melde dich bei Spotify an, um deinen Visualizer zu aktivieren 🎧</p>
+  <h1>Spotify verbinden 🎧</h1>
+  <p>Klicke unten, um dein Spotify-Konto mit Rave3eN zu verbinden.</p>
+  <button id="login-btn">Mit Spotify verbinden</button>
 
 <script>
 const clientId = '3734a32da72c4be1a7e9ea4ea3b00a00';
-const redirectUri = window.location.origin + '/index.html';
+const redirectUri = 'https://rave3en.github.io/Rave3eN-webite/spotify-auth.html';
 const scopes = [
+  'user-read-playback-state',
+  'user-modify-playback-state',
+  'user-read-currently-playing',
   'streaming',
   'user-read-email',
-  'user-read-private',
-  'user-modify-playback-state',
-  'user-read-playback-state'
-].join(' ');
+  'user-read-private'
+];
 
-const authUrl =
-  'https://accounts.spotify.com/authorize' +
-  '?response_type=token' +
-  '&client_id=' + encodeURIComponent(clientId) +
-  '&scope=' + encodeURIComponent(scopes) +
-  '&redirect_uri=' + encodeURIComponent(redirectUri);
+document.getElementById('login-btn').addEventListener('click', () => {
+  const authUrl = 'https://accounts.spotify.com/authorize' +
+    '?response_type=token' +
+    '&client_id=' + encodeURIComponent(clientId) +
+    '&scope=' + encodeURIComponent(scopes.join(' ')) +
+    '&redirect_uri=' + encodeURIComponent(redirectUri);
 
-document.write(`<a href="${authUrl}">Mit Spotify einloggen</a>`);
+  window.location = authUrl;
+});
+
+// Wenn Redirect von Spotify kommt → Token speichern & weiterleiten
+if (window.location.hash) {
+  const hash = window.location.hash.substring(1).split('&').reduce((res, item) => {
+    let parts = item.split('=');
+    res[parts[0]] = decodeURIComponent(parts[1]);
+    return res;
+  }, {});
+  if (hash.access_token) {
+    localStorage.setItem('spotify_token', hash.access_token);
+    localStorage.setItem('spotify_token_time', Date.now());
+    window.location.href = 'index.html';
+  }
+}
 </script>
 </body>
 </html>
