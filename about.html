@@ -12,9 +12,10 @@
 <style>
 :root{
   --bg:#000;
-  --neon1:#9b5cff;
-  --neon2:#00b4ff;
-  --neon3:#00ffff;
+  --neon1:#a85cff;
+  --neon2:#007bff;
+  --neon3:#00eaff;
+  --neon4:#ff00cc;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
@@ -37,45 +38,44 @@ header{
   z-index:10;
 }
 
-/* LOGO mit Farbverlauf */
+/* LOGO + SCHRIFT */
 header .logo{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:28px;
   animation:logoPulse 4s ease-in-out infinite alternate;
 }
 header .logo img{
   height:45px;
-  filter:drop-shadow(0 0 14px var(--neon2)) drop-shadow(0 0 22px var(--neon1));
+  filter:drop-shadow(0 0 12px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
 }
 header .logo span{
   font-family:'Orbitron';
-  font-size:1.7rem;
+  font-size:1.9rem;
   font-weight:700;
-  background:linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3), var(--neon1));
-  background-size:300%;
+  background:linear-gradient(90deg, var(--neon1), var(--neon4), var(--neon2), var(--neon3), var(--neon1));
+  background-size:400%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite, logoGlow 3s ease-in-out infinite alternate;
-  letter-spacing:1px;
-  text-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,180,255,0.3);
+  letter-spacing:1.5px;
+  text-shadow:0 0 22px rgba(168,92,255,0.6),0 0 50px rgba(0,210,255,0.4);
 }
-
 @keyframes gradientFlow {
   0% {background-position:0% 50%;}
   50% {background-position:100% 50%;}
   100% {background-position:0% 50%;}
 }
 @keyframes logoGlow {
-  from {text-shadow:0 0 14px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.2);}
-  to {text-shadow:0 0 28px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.6);}
+  from {text-shadow:0 0 18px rgba(168,92,255,0.5),0 0 25px rgba(0,210,255,0.3);}
+  to {text-shadow:0 0 35px rgba(168,92,255,0.9),0 0 60px rgba(0,255,255,0.7);}
 }
 @keyframes logoPulse {
   from {transform:scale(1);}
   to {transform:scale(1.03);}
 }
 
-/* Spruch */
+/* SPRUCH */
 header .rave-spruch{
   font-family:'Orbitron';
   font-size:1.45rem;
