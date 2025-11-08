@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 <style>
 :root{
@@ -64,7 +63,7 @@ header .live-title{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* CONTENT */
+/* MAIN CONTAINER */
 .container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
 .player-box{
   width:750px;max-width:90vw;
@@ -93,12 +92,42 @@ header .live-title{
   border-color:var(--neon1);
   box-shadow:0 0 26px rgba(155,92,255,0.9),inset 0 0 12px rgba(0,180,255,0.7);
 }
-.player-box iframe{
-  border:0;width:100%;height:420px;border-radius:15px;
+
+/* TWITCH PLAYER */
+#twitchPlayer{
+  width:100%;
+  height:420px;
+  border:none;
+  border-radius:15px;
   box-shadow:0 0 24px rgba(0,0,0,0.9);
 }
 
-/* SPOTIFY CLEAN */
+/* AKTUELLES */
+.news-box{
+  margin:20px 0;
+  padding:18px;
+  background:rgba(255,255,255,0.05);
+  border-radius:14px;
+  box-shadow:0 0 25px rgba(155,92,255,0.3),0 0 40px rgba(0,210,255,0.2);
+}
+.news-box h2{
+  font-family:'Orbitron';
+  color:var(--neon2);
+  font-size:1.3rem;
+  margin-bottom:8px;
+  text-shadow:0 0 10px rgba(0,180,255,0.4);
+}
+.news-box p{
+  color:#fff;
+  font-weight:500;
+  text-shadow:0 0 6px rgba(155,92,255,0.3);
+}
+#liveStatus span{
+  font-weight:700;
+  margin-right:8px;
+}
+
+/* SPOTIFY */
 .playlist-box{
   border-radius:14px;
   margin-top:18px;
@@ -110,20 +139,7 @@ header .live-title{
   border-radius:14px;
 }
 
-/* ADMIN BUTTON */
-#relogin{
-  position:fixed;bottom:20px;right:20px;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  border:none;color:#fff;
-  padding:10px 22px;border-radius:30px;
-  cursor:pointer;font-weight:600;font-size:1rem;
-  display:none;
-  opacity:0.7;
-  box-shadow:0 0 25px rgba(155,92,255,.6),0 0 40px rgba(0,180,255,.4);
-  z-index:20;
-  transition:all .3s;
-}
-#relogin:hover{opacity:1;transform:scale(1.05);}
+/* CANVAS */
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
@@ -150,12 +166,19 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <nav class="top-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
-      <a href="#events">Events</a>
+      <a href="events.html">Events</a>
     </nav>
 
-    <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
+    <!-- Twitch Player -->
+    <div id="twitchPlayer"></div>
 
-    <!-- Spotify Playlist clean eingebettet -->
+    <!-- Aktuelles Box -->
+    <div class="news-box">
+      <h2>Aktuelles</h2>
+      <p id="liveStatus">Überprüfe Twitch-Status...</p>
+    </div>
+
+    <!-- Spotify Playlist -->
     <div class="playlist-box">
       <iframe 
         src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator" 
@@ -165,67 +188,65 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </div>
 
-<button id="relogin" onclick="logoutSpotify()">Spotify neu verbinden</button>
-
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
 <script>
-/* BACKGROUND: Waves */
+/* TWITCH PLAYER MIT LAUTSTÄRKE */
+const player = new Twitch.Player("twitchPlayer", {
+  channel: "Rave3eN",
+  parent: ["rave3en.github.io"],
+  width: "100%",
+  height: 420
+});
+player.addEventListener(Twitch.Player.READY, () => {
+  player.setMuted(false);
+  player.setVolume(0.1);
+});
+
+/* TWITCH LIVE STATUS */
+const clientId = "twr34f7aqy7vyjpaw3e00geot9a8ft";
+const username = "rave3en";
+const statusEl = document.getElementById("liveStatus");
+
+async function checkLiveStatus() {
+  try {
+    const resUser = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
+      headers: { "Client-ID": clientId }
+    });
+    const userData = await resUser.json();
+    const userId = userData.data[0]?.id;
+
+    if (!userId) {
+      statusEl.innerHTML = "Fehler: Benutzer nicht gefunden.";
+      return;
+    }
+
+    const resStream = await fetch(`https://api.twitch.tv/helix/streams?user_id=${userId}`, {
+      headers: { "Client-ID": clientId }
+    });
+    const streamData = await resStream.json();
+
+    if (streamData.data && streamData.data.length > 0) {
+      statusEl.innerHTML = `<span style="color:#00ff88;">🟢</span> Daniel ist jetzt <strong>LIVE</strong> auf Twitch!<br><a href="https://twitch.tv/${username}" target="_blank" style="color:#00b4ff;text-decoration:none;">Jetzt einschalten 🎧</a>`;
+    } else {
+      statusEl.innerHTML = `<span style="color:#ff4d6d;">🔴</span> Daniel ist aktuell offline.<br><small>Bald wieder live mit EDM & Gaming 💜</small>`;
+    }
+  } catch (err) {
+    statusEl.innerText = "Status konnte nicht geladen werden.";
+    console.error(err);
+  }
+}
+checkLiveStatus();
+setInterval(checkLiveStatus, 180000);
+
+/* HINTERGRUND */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{
-  constructor(){
-    this.x=Math.random()*w;
-    this.y=Math.random()*h;
-    this.vx=(Math.random()-.5)*.2;
-    this.vy=(Math.random()-.5)*.2;
-    this.s=1+Math.random()*2;
-    this.a=.3+Math.random()*.3;
-  }
-  u(){
-    this.x+=this.vx;this.y+=this.vy;
-    if(this.x<0)this.x=w;if(this.x>w)this.x=0;
-    if(this.y<0)this.y=h;if(this.y>h)this.y=0;
-  }
-  d(){
-    ctx.beginPath();
-    ctx.globalAlpha=this.a;
-    ctx.fillStyle='#b5e4ff';
-    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
-    ctx.fill();
-    ctx.globalAlpha=1;
-  }
-}
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
 for(let i=0;i<90;i++)parts.push(new P());
-function wave(c,y,a,f,s,o){
-  ctx.beginPath();
-  const ang=-Math.PI/6;
-  ctx.save();
-  ctx.translate(w/2,h/2);
-  ctx.rotate(ang);
-  ctx.translate(-w/2,-h/2);
-  for(let x=0;x<w;x++){
-    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
-    ctx.lineTo(x,yy);
-  }
-  ctx.strokeStyle=c;
-  ctx.lineWidth=2;
-  ctx.shadowBlur=20;
-  ctx.shadowColor=c;
-  ctx.stroke();
-  ctx.restore();
-}
-function anim(){
-  ctx.fillStyle='#000';
-  ctx.fillRect(0,0,w,h);
-  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
-  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
-  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
-  parts.forEach(p=>{p.u();p.d();});
-  t+=0.02;
-  requestAnimationFrame(anim);
-}
-anim();
+function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
+function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
 </script>
 </body>
 </html>
