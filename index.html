@@ -12,8 +12,8 @@
 <style>
 :root{
   --bg:#000000;
-  --neon1:#9b5cff; /* lila */
-  --neon2:#00b4ff; /* blau/cyan */
+  --neon1:#9b5cff;
+  --neon2:#00b4ff;
   --glass:rgba(255,255,255,0.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -255,7 +255,6 @@ canvas#waves{
 
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
 
-    <!-- Spotify Now Playing Bar (konstant, nicht bass-reaktiv vom Style her) -->
     <div class="spotify-player" id="spotifyPlayerBar">
       <img id="cover" src="https://i.imgur.com/8kmV3KZ.png" alt="Cover">
       <div class="song-info">
@@ -274,11 +273,11 @@ canvas#waves{
 <button id="relogin" onclick="logoutSpotify()">Spotify neu verbinden</button>
 
 <script>
-/* ------------ Spotify Token Handling (wie zuvor) ------------ */
 const CLIENT_ID = '3734a32da72c4be1a7e9ea4ea3b00a00';
 let accessToken = '';
 let player;
 
+/* Spotify Token Handling */
 function getTokenFromHash(){
   if(window.location.hash){
     const hash = window.location.hash.substring(1).split('&')
@@ -298,7 +297,7 @@ function getTokenFromHash(){
 function loadToken(){
   const token = localStorage.getItem('spotify_token');
   const time  = localStorage.getItem('spotify_token_time');
-  if(token && time && Date.now() - time < 3500000){ // ~58min
+  if(token && time && Date.now() - time < 3500000){
     accessToken = token;
   }
 }
@@ -307,16 +306,15 @@ function logoutSpotify(){
   localStorage.removeItem('spotify_token_time');
   window.location.href = 'spotify-auth.html';
 }
-
 getTokenFromHash();
 if(!accessToken) loadToken();
 if(!accessToken) document.getElementById('relogin').style.display='block';
 
-/* ------------ Canvas: diagonale Waves + feine Lichtpartikel ------------ */
+/* Canvas: diagonale Waves + Partikel */
 const canvas = document.getElementById('waves');
 const ctx    = canvas.getContext('2d');
 let w,h,t=0;
-let ampScale = 0.9; // Audio-Reaktionsfaktor
+let ampScale = 0.9;
 const particles = [];
 
 function resize(){
@@ -331,7 +329,6 @@ class LightParticle{
     this.reset(true);
   }
   reset(first=false){
-    // zufällige Position / Richtung
     this.x  = Math.random()*w;
     this.y  = Math.random()*h;
     const angle = Math.random()*Math.PI*2;
@@ -339,7 +336,7 @@ class LightParticle{
     this.vx = Math.cos(angle)*speed;
     this.vy = Math.sin(angle)*speed;
     this.size  = 1 + Math.random()*2;
-    this.baseAlpha = 0.2 + Math.random()*0.4;
+    this.baseAlpha = 0.25 + Math.random()*0.4;
     if(first) this.alpha = this.baseAlpha;
   }
   update(){
@@ -351,31 +348,26 @@ class LightParticle{
     if(this.y>h) this.y=0;
   }
   draw(){
-    const pulse = 0.6 + 0.4*ampScale; // leichte Pulsation durch Musik
+    const pulse = 0.6 + 0.4*ampScale;
     ctx.beginPath();
     ctx.globalAlpha = this.baseAlpha * pulse;
-    ctx.fillStyle = '#9fcfff';
-    ctx.shadowBlur = 12;
-    ctx.shadowColor = '#9fcfff';
+    ctx.fillStyle = '#b5e4ff';
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = '#9bcdff';
     ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
     ctx.fill();
     ctx.globalAlpha = 1;
   }
 }
-
-// Partikel initialisieren
-for(let i=0;i<90;i++){
-  particles.push(new LightParticle(true));
-}
+for(let i=0;i<90;i++) particles.push(new LightParticle(true));
 
 function drawDiagonalWave(color,baseY,amp,freq,speed,offset){
   ctx.beginPath();
-  const angle = -Math.PI/6; // ~ -30° für diagonalen Verlauf
+  const angle = -Math.PI/6;
   ctx.save();
   ctx.translate(w/2,h/2);
   ctx.rotate(angle);
   ctx.translate(-w/2,-h/2);
-
   for(let x=0;x<w;x++){
     const y = baseY + Math.sin(x*freq + t*speed + offset)*amp*ampScale;
     ctx.lineTo(x,y);
@@ -389,33 +381,27 @@ function drawDiagonalWave(color,baseY,amp,freq,speed,offset){
 }
 
 function animate(){
-  // Tiefer schwarzer Hintergrund
-  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  // Pechschwarzer Hintergrund (kein Nebel)
+  ctx.fillStyle = '#000';
   ctx.fillRect(0,0,w,h);
 
-  // Diagonale Waves (Lila & Blau)
   drawDiagonalWave('rgba(155,92,255,0.9)', h*0.3, 40, 0.008, 0.018, 0);
   drawDiagonalWave('rgba(0,180,255,0.85)', h*0.55, 30, 0.01, 0.022, 2.5);
   drawDiagonalWave('rgba(90,120,255,0.65)', h*0.75, 20, 0.013, 0.026, 5.0);
 
-  // Lichtpartikel
-  particles.forEach(p=>{
-    p.update();
-    p.draw();
-  });
+  particles.forEach(p=>{ p.update(); p.draw(); });
 
   t += 0.02;
   requestAnimationFrame(animate);
 }
 animate();
 
-/* ------------ Spotify Web Playback SDK ------------ */
+/* Spotify Web Playback SDK */
 window.onSpotifyWebPlaybackSDKReady = () => {
   if(!accessToken){
     console.warn('Kein Spotify-Token. Bitte über spotify-auth.html einloggen.');
     return;
   }
-
   player = new Spotify.Player({
     name: 'Rave3eN Web Player',
     getOAuthToken: cb => cb(accessToken),
@@ -431,19 +417,15 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
   player.addListener('player_state_changed', state => {
     if(!state) return;
-
     const track = state.track_window.current_track;
     if(track){
       titleEl.textContent  = track.name;
       artistEl.textContent = track.artists.map(a=>a.name).join(', ');
-      if(track.album && track.album.images && track.album.images.length){
+      if(track.album?.images?.length){
         coverEl.src = track.album.images[0].url;
       }
-
-      // sanfte, musikbasierte Reaktion (nur Waves & Hintergrund)
       const progress = state.position / state.duration || 0;
       const base = state.paused ? 0.85 : 1.0;
-      // Fake-Beat: leicht pulsierende Sinusfunktion über die Zeit
       ampScale = base + 0.35*Math.abs(Math.sin(progress * Math.PI * 4));
     }else{
       titleEl.textContent  = 'Kein Song aktiv';
@@ -452,11 +434,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     }
   });
 
-  // Steuerung
   btnPlay.addEventListener('click', ()=>player.togglePlay());
   btnNext.addEventListener('click', ()=>player.nextTrack());
   btnPrev.addEventListener('click', ()=>player.previousTrack());
-
   player.connect();
 };
 </script>
