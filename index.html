@@ -4,17 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rave3eN — Official</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 <style>
 :root{
-  --bg:#000000;
+  --bg:#000;
   --neon1:#9b5cff;
   --neon2:#00b4ff;
-  --glass:rgba(255,255,255,0.06);
+  --neon3:#00ffff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
@@ -25,7 +24,7 @@ html,body{
   overflow:hidden;
 }
 
-/* -------- Header -------- */
+/* Header / Socials / Buttons ... (identisch zur letzten Version) */
 header{
   position:fixed;top:0;left:0;width:100%;
   padding:15px 40px;
@@ -36,185 +35,33 @@ header{
   z-index:10;
 }
 header .logo{display:flex;align-items:center;gap:10px;}
-header .logo img{
-  height:45px;
-  filter:drop-shadow(0 0 10px var(--neon2));
-}
-header .logo span{
-  font-family:'Orbitron';
-  font-size:1.6rem;
-  color:var(--neon2);
-  text-shadow:0 0 8px var(--neon2);
-  letter-spacing:1px;
-}
-header .live-title{
-  font-family:'Orbitron';
-  font-size:1.4rem;
-  color:var(--neon2);
-  text-shadow:0 0 14px var(--neon2),0 0 26px var(--neon1);
-  animation:liveGlow 3s ease-in-out infinite alternate;
-}
-@keyframes liveGlow{
-  from{ text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1); }
-  to  { text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1); }
-}
-.social-header{
-  display:flex;gap:18px;
-}
-.social-header a{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.05);
-  color:var(--neon2);font-size:1.2rem;
-  box-shadow:0 0 12px rgba(155,92,255,.5),
-             inset 0 0 8px rgba(0,180,255,.4);
-  transition:.3s;
-}
-.social-header a:hover{
-  color:var(--neon1);
-  transform:scale(1.15);
-  box-shadow:0 0 22px rgba(0,180,255,.9),
-             inset 0 0 10px rgba(155,92,255,.7);
-}
+header .logo img{height:45px;filter:drop-shadow(0 0 10px var(--neon2));}
+header .logo span{font-family:'Orbitron';font-size:1.6rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);}
+header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);text-shadow:0 0 14px var(--neon2),0 0 26px var(--neon1);animation:liveGlow 3s ease-in-out infinite alternate;}
+@keyframes liveGlow{from{text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1);}to{text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1);}}
+.social-header{display:flex;gap:18px;}
+.social-header a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);color:var(--neon2);font-size:1.2rem;box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);transition:.3s;}
+.social-header a:hover{color:var(--neon1);transform:scale(1.15);box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);}
+.container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
+.player-box{width:750px;max-width:90vw;background:rgba(255,255,255,0.06);border-radius:20px;backdrop-filter:blur(18px);padding:20px;text-align:center;box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);}
+.top-nav{display:flex;justify-content:center;gap:25px;margin-bottom:22px;}
+.top-nav a{min-width:90px;height:46px;padding:0 16px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#000;color:var(--neon2);border:2px solid rgba(0,180,255,0.4);text-decoration:none;font-weight:600;box-shadow:0 0 18px rgba(155,92,255,0.65),inset 0 0 10px rgba(0,180,255,0.3);transition:.3s;}
+.top-nav a:hover{color:var(--neon1);transform:translateY(-1px) scale(1.06);border-color:var(--neon1);box-shadow:0 0 26px rgba(155,92,255,0.9),inset 0 0 12px rgba(0,180,255,0.7);}
+.player-box iframe{border:0;width:100%;height:420px;border-radius:15px;box-shadow:0 0 24px rgba(0,0,0,0.9);}
 
-/* -------- Layout -------- */
-.container{
-  display:flex;
-  justify-content:center;
-  margin-top:120px;
-  position:relative;
-  z-index:1;
-}
-.player-box{
-  width:750px;
-  max-width:90vw;
-  background:var(--glass);
-  border-radius:20px;
-  backdrop-filter:blur(18px);
-  padding:20px 22px 24px;
-  text-align:center;
-  box-shadow:
-    0 0 60px rgba(0,180,255,.45),
-    0 0 90px rgba(155,92,255,.35);
-  position:relative;
-}
-
-/* Navigation */
-.top-nav{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  margin-bottom:22px;
-}
-.top-nav a{
-  min-width:90px;height:46px;
-  padding:0 16px;
-  border-radius:999px;
-  display:flex;align-items:center;justify-content:center;
-  background:#000;
-  color:var(--neon2);
-  border:2px solid rgba(0,180,255,0.4);
-  text-decoration:none;
-  font-weight:600;
-  letter-spacing:.5px;
-  box-shadow:
-    0 0 18px rgba(155,92,255,0.65),
-    inset 0 0 10px rgba(0,180,255,0.3);
-  transition:.3s;
-}
-.top-nav a:hover{
-  color:var(--neon1);
-  transform:translateY(-1px) scale(1.06);
-  border-color:var(--neon1);
-  box-shadow:
-    0 0 26px rgba(155,92,255,0.9),
-    inset 0 0 12px rgba(0,180,255,0.7);
-}
-
-/* Twitch Player */
-.player-box iframe{
-  border:0;
-  width:100%;
-  height:420px;
-  border-radius:15px;
-  box-shadow:0 0 24px rgba(0,0,0,0.9);
-}
-
-/* Spotify Player Bar (konstantes Glühen, nicht reaktiv) */
-.spotify-player{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:rgba(0,0,0,0.75);
-  border-radius:14px;
-  padding:10px 20px;
-  margin-top:20px;
-  box-shadow:
-    0 0 25px rgba(0,180,255,.55),
-    0 0 45px rgba(155,92,255,.45);
-}
-.spotify-player img{
-  width:64px;height:64px;
-  border-radius:10px;
-  object-fit:cover;
-  box-shadow:0 0 16px rgba(0,0,0,0.9);
-}
-.song-info{
-  flex:1;
-  margin-left:15px;
-  text-align:left;
-}
-.song-info h3{
-  font-size:1rem;
-  color:#ffffff;
-  margin:0 0 4px;
-}
-.song-info p{
-  font-size:.9rem;
-  color:#a0b3d9;
-  margin:0;
-}
-.controls button{
-  background:none;
-  border:none;
-  color:var(--neon2);
-  font-size:1.2rem;
-  margin:0 8px;
-  cursor:pointer;
-  transition:.3s;
-}
-.controls button:hover{
-  color:var(--neon1);
-  transform:scale(1.2);
-}
-
-/* Relogin Button */
-#relogin{
-  position:fixed;
-  bottom:20px;right:20px;
-  background:#1db954;
-  border:none;
-  color:#fff;
-  padding:10px 20px;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:600;
-  font-size:1rem;
-  display:none;
-  box-shadow:0 0 20px rgba(0,0,0,0.8);
-}
-#relogin:hover{background:#1ed760;}
-
-/* Canvas für Waves + Partikel */
-canvas#waves{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:0;
-}
+/* Spotify Bar + Puls */
+.spotify-player{display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.75);border-radius:14px;padding:10px 20px;margin-top:20px;box-shadow:0 0 25px rgba(0,180,255,.55),0 0 45px rgba(155,92,255,.45);transition:box-shadow .5s ease;}
+.spotify-player.playing{animation:glowPulse 4s ease-in-out infinite alternate;}
+@keyframes glowPulse{from{box-shadow:0 0 30px rgba(0,180,255,0.5),0 0 60px rgba(155,92,255,0.35);}to{box-shadow:0 0 50px rgba(0,180,255,0.85),0 0 90px rgba(155,92,255,0.6);}}
+.spotify-player img{width:64px;height:64px;border-radius:10px;object-fit:cover;}
+.song-info{flex:1;margin-left:15px;text-align:left;}
+.song-info h3{font-size:1rem;color:#fff;margin:0 0 4px;}
+.song-info p{font-size:.9rem;color:#a0b3d9;margin:0;}
+.controls button{background:none;border:none;color:var(--neon2);font-size:1.2rem;margin:0 8px;cursor:pointer;transition:.3s;}
+.controls button:hover{color:var(--neon1);transform:scale(1.2);}
+canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
-
 <body>
 <canvas id="waves"></canvas>
 
@@ -257,174 +104,25 @@ canvas#waves{
   </div>
 </div>
 
-<button id="relogin" onclick="logoutSpotify()">Spotify neu verbinden</button>
-
 <script>
-const CLIENT_ID = '3734a32da72c4be1a7e9ea4ea3b00a00';
-let accessToken = '';
-let player;
+const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
+let w,h,t=0,ampScale=0.9;const particles=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
 
-/* Spotify Token Handling */
-function getTokenFromHash(){
-  if(window.location.hash){
-    const hash = window.location.hash.substring(1).split('&')
-      .reduce((res,item)=>{
-        let p=item.split('=');
-        res[p[0]]=decodeURIComponent(p[1]);
-        return res;
-      },{});
-    accessToken = hash.access_token || '';
-    if(accessToken){
-      localStorage.setItem('spotify_token', accessToken);
-      localStorage.setItem('spotify_token_time', Date.now());
-    }
-    window.location.hash='';
-  }
-}
-function loadToken(){
-  const token = localStorage.getItem('spotify_token');
-  const time  = localStorage.getItem('spotify_token_time');
-  if(token && time && Date.now() - time < 3500000){
-    accessToken = token;
-  }
-}
-function logoutSpotify(){
-  localStorage.removeItem('spotify_token');
-  localStorage.removeItem('spotify_token_time');
-  window.location.href = 'spotify-auth.html';
-}
-getTokenFromHash();
-if(!accessToken) loadToken();
-if(!accessToken) document.getElementById('relogin').style.display='block';
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
+u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
+d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<90;i++)particles.push(new P());
 
-/* Canvas: diagonale Waves + Partikel */
-const canvas = document.getElementById('waves');
-const ctx    = canvas.getContext('2d');
-let w,h,t=0;
-let ampScale = 0.9;
-const particles = [];
+function drawWave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
 
-function resize(){
-  w = canvas.width  = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-window.addEventListener('resize',resize);
-resize();
-
-class LightParticle{
-  constructor(){
-    this.reset(true);
-  }
-  reset(first=false){
-    this.x  = Math.random()*w;
-    this.y  = Math.random()*h;
-    const angle = Math.random()*Math.PI*2;
-    const speed = 0.05 + Math.random()*0.08;
-    this.vx = Math.cos(angle)*speed;
-    this.vy = Math.sin(angle)*speed;
-    this.size  = 1 + Math.random()*2;
-    this.baseAlpha = 0.25 + Math.random()*0.4;
-    if(first) this.alpha = this.baseAlpha;
-  }
-  update(){
-    this.x += this.vx;
-    this.y += this.vy;
-    if(this.x<0) this.x=w;
-    if(this.x>w) this.x=0;
-    if(this.y<0) this.y=h;
-    if(this.y>h) this.y=0;
-  }
-  draw(){
-    const pulse = 0.6 + 0.4*ampScale;
-    ctx.beginPath();
-    ctx.globalAlpha = this.baseAlpha * pulse;
-    ctx.fillStyle = '#b5e4ff';
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = '#9bcdff';
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-}
-for(let i=0;i<90;i++) particles.push(new LightParticle(true));
-
-function drawDiagonalWave(color,baseY,amp,freq,speed,offset){
-  ctx.beginPath();
-  const angle = -Math.PI/6;
-  ctx.save();
-  ctx.translate(w/2,h/2);
-  ctx.rotate(angle);
-  ctx.translate(-w/2,-h/2);
-  for(let x=0;x<w;x++){
-    const y = baseY + Math.sin(x*freq + t*speed + offset)*amp*ampScale;
-    ctx.lineTo(x,y);
-  }
-  ctx.strokeStyle = color;
-  ctx.lineWidth   = 2;
-  ctx.shadowBlur  = 20;
-  ctx.shadowColor = color;
-  ctx.stroke();
-  ctx.restore();
-}
-
-function animate(){
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0,0,w,h);
-
-  drawDiagonalWave('rgba(155,92,255,0.9)', h*0.3, 40, 0.008, 0.018, 0);
-  drawDiagonalWave('rgba(0,180,255,0.85)', h*0.55, 30, 0.01, 0.022, 2.5);
-  drawDiagonalWave('rgba(90,120,255,0.65)', h*0.75, 20, 0.013, 0.026, 5.0);
-
-  particles.forEach(p=>{ p.update(); p.draw(); });
-
-  t += 0.02;
-  requestAnimationFrame(animate);
-}
-animate();
-
-/* Spotify Web Playback SDK */
-window.onSpotifyWebPlaybackSDKReady = () => {
-  if(!accessToken){
-    console.warn('Kein Spotify-Token. Bitte über spotify-auth.html einloggen.');
-    return;
-  }
-  player = new Spotify.Player({
-    name: 'Rave3eN Web Player',
-    getOAuthToken: cb => cb(accessToken),
-    volume: 0.5
-  });
-
-  const titleEl  = document.getElementById('songTitle');
-  const artistEl = document.getElementById('songArtist');
-  const coverEl  = document.getElementById('cover');
-  const btnPlay  = document.getElementById('play');
-  const btnNext  = document.getElementById('next');
-  const btnPrev  = document.getElementById('prev');
-
-  player.addListener('player_state_changed', state => {
-    if(!state) return;
-    const track = state.track_window.current_track;
-    if(track){
-      titleEl.textContent  = track.name;
-      artistEl.textContent = track.artists.map(a=>a.name).join(', ');
-      if(track.album?.images?.length){
-        coverEl.src = track.album.images[0].url;
-      }
-      const progress = state.position / state.duration || 0;
-      const base = state.paused ? 0.85 : 1.0;
-      ampScale = base + 0.35*Math.abs(Math.sin(progress * Math.PI * 4));
-    }else{
-      titleEl.textContent  = 'Kein Song aktiv';
-      artistEl.textContent = '---';
-      ampScale = 0.9;
-    }
-  });
-
-  btnPlay.addEventListener('click', ()=>player.togglePlay());
-  btnNext.addEventListener('click', ()=>player.nextTrack());
-  btnPrev.addEventListener('click', ()=>player.previousTrack());
-  player.connect();
-};
+function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
+  drawWave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);   // Blau
+  drawWave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);  // Lila
+  drawWave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);  // Cyan
+  particles.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}
+anim();
 </script>
 </body>
 </html>
