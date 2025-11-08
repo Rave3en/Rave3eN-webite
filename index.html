@@ -57,7 +57,7 @@ header .logo span{
   letter-spacing:1px;
 }
 
-/* Menü mittiger, Neon Glow stärker */
+/* Menü mittig, Neon Glow stärker */
 .nav-area{
   flex:2;
   display:flex;
@@ -146,43 +146,38 @@ header .logo span{
 .player-info h2{font-family:'Orbitron';font-size:1.2rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);margin-bottom:6px;}
 .player-info p{font-size:1rem;color:#cbd8e6;line-height:1.4;}
 
+/* ---------- Neon Tänzer (SVG) ---------- */
+.dancers{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:25px;
+  margin-bottom:10px;
+}
+.dancer svg{
+  width:70px;
+  height:120px;
+  stroke:var(--neon2);
+  stroke-width:2.5;
+  fill:rgba(155,92,255,0.15);
+  filter:drop-shadow(0 0 15px var(--neon1));
+  animation:danceMove 1.4s infinite ease-in-out;
+}
+.dancer:nth-child(2) svg{animation-delay:.2s;}
+.dancer:nth-child(3) svg{animation-delay:.4s;}
+@keyframes danceMove{
+  0%,100%{transform:translateY(0) rotate(0);}
+  25%{transform:translateY(-8px) rotate(-3deg);}
+  50%{transform:translateY(-15px) rotate(3deg);}
+  75%{transform:translateY(-5px) rotate(-2deg);}
+}
+
 /* ---------- Spotify ---------- */
 .spotify{
-  margin-top:20px;border-radius:12px;overflow:hidden;
+  margin-top:10px;border-radius:12px;overflow:hidden;
   box-shadow:0 0 20px rgba(155,92,255,.4),0 0 40px rgba(0,210,255,.4);
 }
 .spotify iframe{width:100%;height:152px;border:0;}
-
-/* ---------- Tänzer ---------- */
-.dancers{
-  position:absolute;
-  bottom:50px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:20px;
-  z-index:3;
-  pointer-events:none;
-}
-.dancer{
-  width:22px;
-  height:70px;
-  border-radius:10px;
-  background:linear-gradient(180deg,var(--neon2),var(--neon1));
-  box-shadow:0 0 25px rgba(0,210,255,.8);
-  animation:dance 1s ease-in-out infinite;
-  transform-origin:bottom center;
-}
-.dancer:nth-child(2){animation-delay:.1s;}
-.dancer:nth-child(3){animation-delay:.2s;}
-.dancer:nth-child(4){animation-delay:.3s;}
-.dancer:nth-child(5){animation-delay:.4s;}
-@keyframes dance{
-  0%,100%{transform:scaleY(1);}
-  25%{transform:scaleY(0.7) rotate(-3deg);}
-  50%{transform:scaleY(1.2) rotate(3deg);}
-  75%{transform:scaleY(0.85) rotate(-2deg);}
-}
 
 /* ---------- Socials ---------- */
 .sidebar{display:flex;flex-direction:column;align-items:center;gap:35px;margin-top:140px;}
@@ -230,17 +225,42 @@ canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
       <p>Daniel ist aktuell krank 🤒 — Stimme muss geschont werden, aber im Hintergrund läuft die Vorbereitung für neue Projekte 💜</p>
     </div>
 
-    <div class="spotify">
-      <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <!-- SVG Tänzer -->
+    <div class="dancers">
+      <div class="dancer">
+        <svg viewBox="0 0 50 100">
+          <circle cx="25" cy="15" r="10"/>
+          <line x1="25" y1="25" x2="25" y2="60"/>
+          <line x1="25" y1="40" x2="10" y2="35"/>
+          <line x1="25" y1="40" x2="40" y2="35"/>
+          <line x1="25" y1="60" x2="15" y2="85"/>
+          <line x1="25" y1="60" x2="35" y2="85"/>
+        </svg>
+      </div>
+      <div class="dancer">
+        <svg viewBox="0 0 50 100">
+          <circle cx="25" cy="15" r="10"/>
+          <line x1="25" y1="25" x2="25" y2="60"/>
+          <line x1="25" y1="40" x2="10" y2="35"/>
+          <line x1="25" y1="40" x2="40" y2="35"/>
+          <line x1="25" y1="60" x2="15" y2="85"/>
+          <line x1="25" y1="60" x2="35" y2="85"/>
+        </svg>
+      </div>
+      <div class="dancer">
+        <svg viewBox="0 0 50 100">
+          <circle cx="25" cy="15" r="10"/>
+          <line x1="25" y1="25" x2="25" y2="60"/>
+          <line x1="25" y1="40" x2="10" y2="35"/>
+          <line x1="25" y1="40" x2="40" y2="35"/>
+          <line x1="25" y1="60" x2="15" y2="85"/>
+          <line x1="25" y1="60" x2="35" y2="85"/>
+        </svg>
+      </div>
     </div>
 
-    <!-- Sichtbare Tänzer -->
-    <div class="dancers">
-      <div class="dancer"></div>
-      <div class="dancer"></div>
-      <div class="dancer"></div>
-      <div class="dancer"></div>
-      <div class="dancer"></div>
+    <div class="spotify">
+      <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </div>
 
