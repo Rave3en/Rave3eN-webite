@@ -38,17 +38,23 @@ header{
 header .logo{display:flex;align-items:center;gap:10px;}
 header .logo img{height:45px;filter:drop-shadow(0 0 10px var(--neon2));}
 header .logo span{font-family:'Orbitron';font-size:1.6rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);}
-header .live-title{
+
+/* Rave Spruch */
+header .rave-spruch{
   font-family:'Orbitron';
-  font-size:1.4rem;
-  color:var(--neon2);
-  text-shadow:0 0 14px var(--neon2),0 0 26px var(--neon1);
-  animation:liveGlow 3s ease-in-out infinite alternate;
+  font-size:1.45rem;
+  letter-spacing:1px;
+  background:linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 18px rgba(155,92,255,0.5),0 0 35px rgba(0,210,255,0.4);
+  animation:ravePulse 4s ease-in-out infinite alternate;
 }
-@keyframes liveGlow{
-  from{text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1);}
-  to{text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1);}
+@keyframes ravePulse{
+  from{text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 24px rgba(0,210,255,0.3);}
+  to{text-shadow:0 0 28px rgba(155,92,255,0.8),0 0 45px rgba(0,210,255,0.6);}
 }
+
 .social-header{display:flex;gap:18px;}
 .social-header a{
   width:42px;height:42px;border-radius:50%;
@@ -155,7 +161,9 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-  <div class="live-title">🎧 Live on Twitch</div>
+
+  <div class="rave-spruch">Wo Musik das Herz berührt 💜</div>
+
   <div class="social-header">
     <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -192,7 +200,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </div>
 
 <script>
-/* Twitch Player mit dynamischem Parent */
+/* Twitch Player */
 const hostname = window.location.hostname.replace(/^www\./, '');
 const twitchParent = encodeURIComponent(hostname);
 const twitchPlayer = document.getElementById('twitchPlayer');
