@@ -116,6 +116,12 @@ header .live-title{
   font-size:1.3rem;
   margin-bottom:8px;
   text-shadow:0 0 10px rgba(0,180,255,0.4);
+  animation:headlinePulse 3.5s ease-in-out infinite alternate;
+}
+@keyframes headlinePulse {
+  0% { text-shadow:0 0 10px rgba(0,180,255,0.4), 0 0 20px rgba(155,92,255,0.2); color:var(--neon2); }
+  50% { text-shadow:0 0 20px rgba(155,92,255,0.9), 0 0 35px rgba(0,255,255,0.6); color:var(--neon1); }
+  100% { text-shadow:0 0 10px rgba(0,180,255,0.4), 0 0 20px rgba(155,92,255,0.2); color:var(--neon2); }
 }
 .news-box p{
   color:#fff;
@@ -167,7 +173,8 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 
     <!-- Twitch Player -->
     <iframe 
-      src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true"
+      src="https://player.twitch.tv/?channel=Rave3E
+N&parent=rave3en.github.io&muted=true"
       allowfullscreen>
     </iframe>
 
@@ -188,11 +195,13 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </div>
 
 <script>
-/* Lese Text aus status.txt */
+/* Lade Text aus status.txt, mit Fallback */
 fetch('status.txt')
   .then(res => res.text())
   .then(text => {
-    document.getElementById('statusText').innerText = text.trim();
+    const cleaned = text.trim();
+    document.getElementById('statusText').innerText =
+      cleaned.length > 0 ? cleaned : 'Zurzeit keine Neuigkeiten 💬';
   })
   .catch(err => {
     document.getElementById('statusText').innerText = 'Status konnte nicht geladen werden.';
