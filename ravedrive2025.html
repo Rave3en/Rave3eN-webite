@@ -67,15 +67,15 @@ h1{
   margin-bottom:50px;
 }
 
-/* Galerie oben */
-.gallery-row{
+/* Galerie alle in Raster */
+.gallery-grid{
   display:flex;
+  flex-wrap:wrap;
   justify-content:center;
   gap:30px;
-  flex-wrap:wrap;
   margin-bottom:60px;
 }
-.gallery-row img{
+.gallery-grid img{
   width:400px;
   max-width:90vw;
   border-radius:12px;
@@ -84,46 +84,20 @@ h1{
   opacity:0;
   transform:translateY(30px);
 }
-.gallery-row img.visible{
+.gallery-grid img.visible{
   opacity:1;
   transform:translateY(0);
   box-shadow:0 0 40px rgba(0,255,255,0.6),0 0 60px rgba(168,92,255,0.4);
 }
-.gallery-row img:hover{
+.gallery-grid img:hover{
   transform:scale(1.03);
-  box-shadow:0 0 50px rgba(0,255,255,0.8),0 0 100px rgba(168,92,255,0.6);
-}
-
-/* Galerie unten */
-.gallery-column{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:40px;
-}
-.gallery-column img{
-  width:700px;
-  max-width:95vw;
-  border-radius:12px;
-  box-shadow:0 0 30px rgba(0,255,255,0.3);
-  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
-  opacity:0;
-  transform:translateY(30px);
-}
-.gallery-column img.visible{
-  opacity:1;
-  transform:translateY(0);
-  box-shadow:0 0 40px rgba(0,255,255,0.6),0 0 60px rgba(168,92,255,0.4);
-}
-.gallery-column img:hover{
-  transform:scale(1.02);
   box-shadow:0 0 50px rgba(0,255,255,0.8),0 0 100px rgba(168,92,255,0.6);
 }
 
 /* Zurück-Button */
 a.back-btn{
   display:inline-block;
-  margin-top:60px;
+  margin-top:40px;
   padding:10px 26px;
   font-weight:700;
   font-size:1.1rem;
@@ -168,15 +142,10 @@ canvas#waves{
 <main>
   <h1>Rave Drive 2025</h1>
 
-  <!-- Obere Galerie-Reihe -->
-  <div class="gallery-row">
+  <div class="gallery-grid">
     <img src="drive1.jpg" alt="Rave Drive Bild 1">
     <img src="drive2.jpg" alt="Rave Drive Bild 2">
     <img src="drive3.jpg" alt="Rave Drive Bild 3">
-  </div>
-
-  <!-- Untere Galerie (größere Einzelbilder) -->
-  <div class="gallery-column">
     <img src="drive4.jpg" alt="Rave Drive Bild 4">
     <img src="drive5.jpg" alt="Rave Drive Bild 5">
     <img src="drive6.jpg" alt="Rave Drive Bild 6">
