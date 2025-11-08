@@ -315,19 +315,22 @@ setInterval(loadStatus,30000);
 async function updateVisitorCount(){
   try{
     const startwert = 231; // dein gewünschter Startwert
-    const apiKey = "rave3en_visitors"; // stabiler Key-Name unabhängig von Domain
-    const res = await fetch(`https://api.countapi.xyz/hit/${apiKey}`);
+    const namespace = "rave3en_visitors";
+    const key = "hits";
+    const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
     const data = await res.json();
-    const anzeige = document.getElementById('visitorCount');
-    anzeige.textContent = "Besucher: " + (data.value + startwert).toLocaleString('de-DE');
+    const total = data.value + startwert;
+    document.getElementById('visitorCount').textContent =
+      "Besucher: " + total.toLocaleString('de-DE');
   }catch(e){
-    document.getElementById('visitorCount').textContent = "Besucher: 231";
+    document.getElementById('visitorCount').textContent = "Besucher: —";
   }
 }
 updateVisitorCount();
 </script>
 </body>
 </html>
+
 
 
 
