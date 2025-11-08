@@ -15,18 +15,19 @@
   --bg:#060607;
   --neon1:#9b5cff;
   --neon2:#00d2ff;
+  --neon3:#4fc3ff;
   --glass:rgba(255,255,255,0.05);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
   height:100%;
   font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
-  background:radial-gradient(circle at top,#0b0b10 0%,#050507 85%);
+  background:#000;
   color:#e9eef8;
   overflow:hidden;
 }
 
-/* ---------- Header: nur Logo ---------- */
+/* ---------- Header ---------- */
 header{
   position:fixed;top:0;left:0;width:100%;
   padding:15px 40px;
@@ -36,6 +37,7 @@ header{
   background:rgba(0,0,0,0.5);
   backdrop-filter:blur(10px);
   box-shadow:0 0 20px rgba(0,0,0,0.4);
+  justify-content:space-between;
 }
 header .logo{
   display:flex;
@@ -55,20 +57,41 @@ header .logo span{
   letter-spacing:1px;
 }
 
-/* ---------- Hauptbereich ---------- */
+/* ---------- Social Media rechts im Header ---------- */
+.social-header{
+  display:flex;
+  gap:18px;
+}
+.social-header a{
+  width:42px;height:42px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);
+  box-shadow:0 0 12px rgba(155,92,255,.4),inset 0 0 8px rgba(0,210,255,.3);
+  color:var(--neon2);
+  font-size:1.2rem;
+  text-decoration:none;
+  transition:all .3s ease;
+}
+.social-header a:hover{
+  color:var(--neon1);
+  transform:scale(1.15);
+  box-shadow:0 0 22px rgba(0,210,255,.7),inset 0 0 10px rgba(155,92,255,.4);
+}
+
+/* ---------- Hauptcontainer ---------- */
 .container{
   display:flex;
   justify-content:center;
   align-items:flex-start;
   height:100vh;
-  gap:50px;
   position:relative;
   z-index:1;
   padding:20px;
   margin-top:120px;
 }
 
-/* ---------- Twitch-Box ---------- */
+/* ---------- Twitch Box ---------- */
 .player-box{
   width:750px;
   max-width:90vw;
@@ -79,15 +102,31 @@ header .logo span{
   padding:20px;
   box-shadow:0 0 55px rgba(0,210,255,.4),0 0 90px rgba(155,92,255,.3);
   position:relative;
+  text-align:center;
 }
 
-/* Menü etwas höher positioniert */
+/* ---------- Titel ---------- */
+.player-box h1{
+  font-family:'Orbitron';
+  font-size:1.6rem;
+  color:var(--neon2);
+  text-shadow:0 0 12px var(--neon2),0 0 25px var(--neon1);
+  letter-spacing:1px;
+  animation:glowPulse 3s ease-in-out infinite alternate;
+  margin-bottom:10px;
+}
+@keyframes glowPulse{
+  from{text-shadow:0 0 8px var(--neon2),0 0 15px var(--neon1);}
+  to{text-shadow:0 0 20px var(--neon2),0 0 40px var(--neon1);}
+}
+
+/* ---------- Menü ---------- */
 .top-nav{
   display:flex;
   justify-content:center;
   gap:25px;
-  margin-bottom:25px; /* mehr Abstand zum Player */
-  margin-top:-10px;   /* leicht nach oben verschoben */
+  margin-bottom:22px;
+  margin-top:-5px;
 }
 .top-nav a{
   min-width:90px;
@@ -109,30 +148,11 @@ header .logo span{
   position:relative;
   overflow:hidden;
 }
-.top-nav a::after{
-  content:'';
-  position:absolute;
-  width:140%;
-  height:180%;
-  top:-40%;
-  left:-120%;
-  background:linear-gradient(120deg,transparent,var(--neon1),var(--neon2),transparent);
-  opacity:0;
-  transform:skewX(-20deg);
-}
 .top-nav a:hover{
   color:var(--neon1);
   transform:translateY(-1px) scale(1.05);
   box-shadow:0 0 26px rgba(155,92,255,0.8),
              inset 0 0 10px rgba(0,210,255,0.6);
-}
-.top-nav a:hover::after{
-  opacity:0.9;
-  animation:navSweep .8s ease-out forwards;
-}
-@keyframes navSweep{
-  from{left:-120%;}
-  to{left:40%;}
 }
 
 .player-box iframe{
@@ -147,6 +167,7 @@ header .logo span{
   box-shadow:0 0 25px rgba(0,210,255,.7),0 0 50px rgba(155,92,255,.5);
 }
 
+/* ---------- Info ---------- */
 .player-info{
   margin-top:18px;
   background:rgba(0,0,0,.3);
@@ -166,7 +187,7 @@ header .logo span{
   line-height:1.4;
 }
 
-/* ---------- MP4-Tänzerin ---------- */
+/* ---------- MP4 Tänzerin ---------- */
 .dancer-video{
   margin-top:18px;
   border-radius:16px;
@@ -174,15 +195,6 @@ header .logo span{
   position:relative;
   box-shadow:0 0 25px rgba(155,92,255,0.7),
              0 0 40px rgba(0,210,255,0.6);
-}
-.dancer-video::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top,
-    rgba(155,92,255,0.25) 0%,
-    transparent 55%);
-  pointer-events:none;
 }
 .dancer-video video{
   width:100%;
@@ -203,64 +215,39 @@ header .logo span{
   border:0;
 }
 
-/* ---------- Socials ---------- */
-.sidebar{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:35px;
-  margin-top:140px;
-}
-.social-icons{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
-}
-.social-icons a{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,.05);
-  box-shadow:0 0 15px rgba(155,92,255,.4),inset 0 0 10px rgba(0,210,255,.3);
-  color:var(--neon2);
-  font-size:1.5rem;
-  text-decoration:none;
-  transition:all .4s ease;
-  position:relative;
-  overflow:hidden;
-}
-.social-icons a:hover{
-  color:var(--neon1);
-  transform:scale(1.1);
-  box-shadow:0 0 25px rgba(0,210,255,.7),inset 0 0 10px rgba(155,92,255,.4);
-}
-
-/* ---------- Partikel ---------- */
-canvas#particles{
+/* ---------- Canvas ---------- */
+canvas#waves{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   z-index:0;
 }
 </style>
 </head>
 
 <body>
-<canvas id="particles"></canvas>
+<canvas id="waves"></canvas>
 
 <header>
   <div class="logo">
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
+
+  <div class="social-header">
+    <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/rave3en_/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/3TbArexH5H" target="_blank"><i class="fab fa-discord"></i></a>
+  </div>
 </header>
 
 <div class="container">
   <div class="player-box">
+    <h1>🎧 Live on Twitch</h1>
+
     <nav class="top-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -284,73 +271,42 @@ canvas#particles{
               loading="lazy"></iframe>
     </div>
   </div>
-
-  <div class="sidebar">
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@rave3en30" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@rave3en" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/rave3en_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://discord.gg/3TbArexH5H" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-    </div>
-  </div>
 </div>
 
 <script>
-// ---------- Partikel ----------
-const canvas=document.getElementById('particles');
+// ---------- EDM Wave Hintergrund ----------
+const canvas=document.getElementById('waves');
 const ctx=canvas.getContext('2d');
-let particlesArray=[];
-const colors=['#9b5cff','#00d2ff','#ff66ff','#66ffff'];
-
-function resizeCanvas(){
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
+let w,h,t=0;
+function resize(){
+  w=canvas.width=innerWidth;
+  h=canvas.height=innerHeight;
 }
-addEventListener('resize',resizeCanvas);
-resizeCanvas();
+window.addEventListener('resize',resize);
+resize();
 
-class LaserParticle{
-  constructor(){
-    this.x=Math.random()*canvas.width;
-    this.y=Math.random()*canvas.height;
-    this.size=Math.random()*2+1;
-    this.speedX=(Math.random()-.5)*.3;
-    this.speedY=(Math.random()-.5)*.3;
-    this.color=colors[Math.floor(Math.random()*colors.length)];
-    this.alpha=Math.random()*.7+.3;
-    this.glowDir=Math.random()<.5?-1:1;
+function drawWave(color,amp,freq,speed,offset){
+  ctx.beginPath();
+  ctx.moveTo(0,h/2);
+  for(let x=0;x<w;x++){
+    const y=h/2 + Math.sin(x*freq + t*speed + offset)*amp*Math.sin(t*0.2);
+    ctx.lineTo(x,y);
   }
-  update(){
-    this.x+=this.speedX;
-    this.y+=this.speedY;
-    this.alpha+=this.glowDir*.01;
-    if(this.alpha<=.2||this.alpha>=.8)this.glowDir*=-1;
-    if(this.x<0)this.x=canvas.width;
-    if(this.x>canvas.width)this.x=0;
-    if(this.y<0)this.y=canvas.height;
-    if(this.y>canvas.height)this.y=0;
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.shadowBlur=20;
-    ctx.shadowColor=this.color;
-    ctx.fillStyle=this.color;
-    ctx.globalAlpha=this.alpha;
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-    ctx.globalAlpha=1;
-  }
+  ctx.strokeStyle=color;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=color;
+  ctx.stroke();
 }
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(particlesArray.length<120){
-    particlesArray.push(new LaserParticle());
-  }
-  particlesArray.forEach(p=>{
-    p.update();
-    p.draw();
-  });
+  ctx.fillStyle='rgba(0,0,0,0.08)';
+  ctx.fillRect(0,0,w,h);
+  drawWave('#9b5cff',80,0.008,0.015,0);
+  drawWave('#00d2ff',60,0.009,0.02,2);
+  drawWave('#4fc3ff',40,0.012,0.018,4);
+  drawWave('#6600ff',30,0.015,0.022,6);
+  t+=0.02;
   requestAnimationFrame(animate);
 }
 animate();
