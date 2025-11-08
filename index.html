@@ -311,32 +311,26 @@ async function loadStatus(){
 loadStatus();
 setInterval(loadStatus,30000);
 
-/* BESUCHERZÄHLER */
-async function updateVisitorCount() {
-  const startwert = 231;             // dein gewünschter Startwert
-  const namespace = "rave3en_counter";
-  const key = "visits";
-  const anzeige = document.getElementById('visitorCount');
+/* BESUCHERZÄHLER (lokal, offline-fähig) */
+function updateVisitorCount(){
+  const startwert = 231; // dein Startwert
+  const key = "rave3en_visitor_count";
+  let count = parseInt(localStorage.getItem(key) || "0");
 
-  try {
-    const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`, { cache: "no-store" });
-    if (!res.ok) throw new Error("API-Fehler");
-    const data = await res.json();
-    const total = (data.value ?? 0) + startwert;
-    anzeige.textContent = "Besucher: " + total.toLocaleString('de-DE');
-  } catch (e) {
-    console.warn("CountAPI konnte nicht geladen werden:", e);
-    anzeige.textContent = "Besucher: " + startwert.toLocaleString('de-DE');
+  // Wenn noch kein Zähler gespeichert ist, beginne beim Startwert
+  if(count === 0){
+    count = startwert;
+  } else {
+    count += 1; // Bei jedem Aufruf um 1 erhöhen
   }
+
+  localStorage.setItem(key, count);
+  document.getElementById("visitorCount").textContent =
+    "Besucher: " + count.toLocaleString('de-DE');
 }
+
 updateVisitorCount();
   
 </script>
 </body>
 </html>
-
-
-
-
-
-
