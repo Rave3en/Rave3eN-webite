@@ -252,9 +252,25 @@ footer{
 
 <footer>
   Rave3eN © 2025 — Music. Emotion. Energy.
+  <br>
+  <span id="visitorCount" style="font-size:0.85rem; color:#9b5cff; text-shadow:0 0 10px rgba(155,92,255,0.7);">
+    Besucher: ...
+  </span>
 </footer>
 
 <script>
+/* Besucherzähler (countapi.xyz) */
+async function updateVisitorCount(){
+  try{
+    const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
+    const data = await res.json();
+    document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
+  }catch(e){
+    document.getElementById('visitorCount').textContent = "Besucher: —";
+  }
+}
+updateVisitorCount();
+</script>
 /* Waves Hintergrund */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
@@ -298,3 +314,4 @@ setInterval(loadStatus, 30000); // alle 30 Sekunden neu laden
 </script>
 </body>
 </html>
+
