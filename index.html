@@ -215,6 +215,11 @@ footer{
   font-size:0.85rem;
   color:#9b5cff;
   text-shadow:0 0 10px rgba(155,92,255,0.8);
+  animation:glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow{
+  0%{text-shadow:0 0 10px rgba(155,92,255,0.5);}
+  100%{text-shadow:0 0 20px rgba(0,210,255,0.9);}
 }
 </style>
 </head>
@@ -265,58 +270,104 @@ footer{
 
 <script>
 /* Waves Hintergrund */
-const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
-let w,h,t=0,ampScale=0.9;const parts=[];
-function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
-addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
-for(let i=0;i<60;i++)parts.push(new P());
-function wave(c,y,a,f,s,o){
-  ctx.beginPath();
-  const ang=-Math.PI/6;
-  ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
-  for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}
-  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();
+const canvas = document.getElementById('waves');
+const ctx = canvas.getContext('2d');
+let w, h, t = 0, ampScale = 0.9;
+const parts = [];
+
+function resize() {
+  w = canvas.width = innerWidth;
+  h = canvas.height = innerHeight;
 }
-function anim(){
-  ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
-  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
-  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
-  parts.forEach(p=>{p.u();p.d();});
-  t+=0.02;
+addEventListener('resize', resize);
+resize();
+
+class P {
+  constructor() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.2;
+    this.vy = (Math.random() - 0.5) * 0.2;
+    this.s = 1 + Math.random() * 2;
+    this.a = 0.3 + Math.random() * 0.3;
+  }
+  u() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0) this.x = w;
+    if (this.x > w) this.x = 0;
+    if (this.y < 0) this.y = h;
+    if (this.y > h) this.y = 0;
+  }
+  d() {
+    ctx.beginPath();
+    ctx.globalAlpha = this.a;
+    ctx.fillStyle = '#b5e4ff';
+    ctx.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+for (let i = 0; i < 60; i++) parts.push(new P());
+
+function wave(c, y, a, f, s, o) {
+  ctx.beginPath();
+  const ang = -Math.PI / 6;
+  ctx.save();
+  ctx.translate(w / 2, h / 2);
+  ctx.rotate(ang);
+  ctx.translate(-w / 2, -h / 2);
+  for (let x = 0; x < w; x++) {
+    const yy = y + Math.sin(x * f + t * s + o) * a * ampScale;
+    ctx.lineTo(x, yy);
+  }
+  ctx.strokeStyle = c;
+  ctx.lineWidth = 2;
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = c;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function anim() {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, w, h);
+  wave('rgba(90,120,255,0.65)', h * 0.3, 40, 0.008, 0.018, 0);
+  wave('rgba(155,92,255,0.9)', h * 0.55, 30, 0.01, 0.022, 2.5);
+  wave('rgba(0,255,255,0.8)', h * 0.75, 20, 0.013, 0.026, 5.0);
+  parts.forEach(p => { p.u(); p.d(); });
+  t += 0.02;
   requestAnimationFrame(anim);
 }
 anim();
 
 /* STATUS LADEN */
-async function loadStatus(){
-  try{
+async function loadStatus() {
+  try {
     const res = await fetch('status.txt?cache=' + Date.now());
-    if(!res.ok) throw new Error("Kein Status gefunden");
+    if (!res.ok) throw new Error("Kein Status gefunden");
     const text = await res.text();
     const el = document.getElementById('statusText');
     el.style.opacity = 0;
-    setTimeout(()=>{
+    setTimeout(() => {
       el.textContent = text.trim();
       el.style.opacity = 1;
-    },300);
-  }catch(e){
+    }, 300);
+  } catch (e) {
     document.getElementById('statusText').textContent = "Status konnte nicht geladen werden.";
   }
 }
 loadStatus();
-setInterval(loadStatus, 30000); // alle 30 Sekunden neu laden
+setInterval(loadStatus, 30000);
 
 /* Besucherzähler */
-async function updateVisitorCount(){
-  try{
+async function updateVisitorCount() {
+  try {
     const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
     const data = await res.json();
     document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
-  }catch(e){
+  } catch (e) {
     document.getElementById('visitorCount').textContent = "Besucher: —";
   }
 }
