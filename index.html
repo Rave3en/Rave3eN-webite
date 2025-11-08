@@ -55,9 +55,19 @@ nav a:hover{color:var(--neon2);}
   box-shadow:0 10px 30px rgba(0,0,0,0.6);
   display:grid;grid-template-columns:1fr 380px;gap:18px;
 }
-.player-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000;}
+.player-wrap{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  background:#000;
+}
 #twitch-embed{width:100%;height:360px;}
-#twitch-chat{width:100%;height:400px;border:none;border-top:1px solid rgba(255,255,255,0.05);}
+#twitch-chat{
+  width:100%;
+  height:400px;
+  border:none;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
 .chat-toggle{
   width:100%;padding:10px;margin-top:5px;
   background:linear-gradient(90deg,var(--neon1),var(--neon2));
@@ -67,7 +77,8 @@ nav a:hover{color:var(--neon2);}
 .chat-toggle:hover{opacity:0.85;}
 
 .right-card{
-  padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
+  padding:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
   border-radius:12px;
 }
 .slogan{font-family:Orbitron;font-size:22px;margin:6px 0;}
@@ -106,12 +117,22 @@ nav a:hover{color:var(--neon2);}
 
 /* Footer */
 footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;color:#99a9bf;font-size:13px;}
-@media(max-width:980px){.hero{grid-template-columns:1fr}nav a{margin-left:12px}}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  nav a{margin-left:12px}
+}
 
-/* Profilbild */
-.profile-pic{display:flex;justify-content:center;margin:24px 0;}
+/* Profilbild (jetzt nur rechts) */
+.profile-pic{
+  display:flex;
+  justify-content:center;
+  margin:10px 0 18px;
+}
 .profile-pic img{
-  width:180px;height:180px;object-fit:cover;border-radius:50%;
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
   border:3px solid rgba(155,92,255,0.6);
   box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
   animation:neonPulse 3s ease-in-out infinite alternate;
@@ -158,14 +179,15 @@ footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;col
         allowfullscreen
         style="display:none;">
       </iframe>
-
-      <div class="profile-pic">
-        <img src="me.png" alt="Daniel Hein aka Rave3eN">
-      </div>
     </div>
 
     <!-- Right Card -->
     <div class="right-card">
+      <!-- Profilbild jetzt HIER -->
+      <div class="profile-pic">
+        <img src="me.png" alt="Daniel Hein aka Rave3eN">
+      </div>
+
       <div class="slogan glow">Live on Twitch</div>
       <div class="bio">EDM × Gaming — Feel the beat, join the vibe. Let's Rave ON 💜</div>
 
@@ -246,7 +268,8 @@ const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 let particles=[];
 function resizeCanvas(){
-  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 }
 window.addEventListener("resize",resizeCanvas);
 resizeCanvas();
