@@ -31,17 +31,30 @@ header{
   position:fixed;
   top:0;left:0;width:100%;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:center;
   padding:15px 30px;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   z-index:10;
 }
 
-header h1{
+/* Logo links */
+.logo-box{
+  position:absolute;
+  left:30px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo-box img{
+  height:40px;
+  width:auto;
+  filter:drop-shadow(0 0 8px var(--neon2));
+}
+.logo-box h1{
   font-family:'Orbitron';
-  font-size:1.5rem;
+  font-size:1.4rem;
   color:var(--neon2);
   text-shadow:0 0 8px var(--neon2);
   margin:0;
@@ -49,15 +62,11 @@ header h1{
 
 /* Menü mittig */
 nav{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
   display:flex;
   justify-content:center;
   align-items:center;
   gap:40px;
 }
-
 nav a{
   color:white;
   text-decoration:none;
@@ -71,7 +80,7 @@ nav a:hover{
 }
 
 main{
-  padding-top:90px;
+  padding-top:100px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -156,17 +165,20 @@ iframe{
 <canvas id="particles"></canvas>
 
 <header>
-  <h1>Rave3eN</h1>
+  <div class="logo-box">
+    <img src="logo.png" alt="Rave3eN Logo">
+    <h1>Rave3eN</h1>
+  </div>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Me</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
     <a href="#events">Events</a>
   </nav>
 </header>
 
 <main id="home">
   <div class="player-box">
-    <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=github.io&muted=true" allowfullscreen></iframe>
+    <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
   </div>
 
   <section id="aktuelles">
@@ -198,7 +210,7 @@ class Particle{
   update(){
     this.x+=this.speedX;
     this.y+=this.speedY;
-    if(this.size>0.2)this.size-=0.02;
+    if(this.size>0.15)this.size-=0.015;
   }
   draw(){
     ctx.fillStyle=this.color;
@@ -212,20 +224,7 @@ function handleParticles(){
     const p=particlesArray[i];
     p.update();
     p.draw();
-    for(let j=i;j<particlesArray.length;j++){
-      const dx=p.x-particlesArray[j].x;
-      const dy=p.y-particlesArray[j].y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<80){
-        ctx.beginPath();
-        ctx.strokeStyle=p.color;
-        ctx.lineWidth=0.1;
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(particlesArray[j].x,particlesArray[j].y);
-        ctx.stroke();
-      }
-    }
-    if(p.size<=0.2){
+    if(p.size<=0.15){
       particlesArray.splice(i,1);
       i--;
     }
@@ -234,8 +233,10 @@ function handleParticles(){
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  hue+=0.5;
-  particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*2+1,(Math.random()-0.5)*0.5,(Math.random()-0.5)*0.5,'hsl('+hue+',100%,60%)'));
+  hue+=0.6;
+  for(let i=0;i<3;i++){
+    particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*1.5+0.5,(Math.random()-0.5)*0.5,(Math.random()-0.5)*0.5,'hsl('+hue+',100%,60%)'));
+  }
   handleParticles();
   requestAnimationFrame(animate);
 }
