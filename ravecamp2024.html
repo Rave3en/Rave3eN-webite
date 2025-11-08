@@ -7,7 +7,6 @@
 <meta name="description" content="Erlebe das Rave Camp 2024 von Rave3eN – Musik, Emotionen, Gemeinschaft und unvergessliche Nächte." />
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
@@ -86,6 +85,7 @@ h1{
   opacity:0;
   transform:translateY(50px) scale(1.05);
   transition:1s ease;
+  cursor:pointer;
 }
 .gallery img.visible{
   opacity:1;
@@ -104,6 +104,39 @@ a.back{
 }
 a.back:hover{text-decoration:underline;color:var(--neon1);}
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  flex-direction:column;
+}
+.lightbox img{
+  max-width:90%;
+  max-height:80%;
+  border-radius:12px;
+  box-shadow:0 0 50px rgba(155,92,255,0.6),0 0 90px rgba(0,210,255,0.5);
+  object-fit:contain;
+}
+.lightbox .close, .lightbox .prev, .lightbox .next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+  user-select:none;
+  text-shadow:0 0 20px var(--neon3);
+}
+.lightbox .close{top:5%;right:5%;font-size:2.5rem;}
+.lightbox .prev{left:5%;}
+.lightbox .next{right:5%;}
 </style>
 </head>
 <body>
@@ -139,7 +172,16 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   <a href="events.html" class="back">← Zurück zu Events</a>
 </main>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close" id="close">&times;</span>
+  <span class="prev" id="prev">&#10094;</span>
+  <img id="lightbox-img" src="" alt="Rave Camp Image">
+  <span class="next" id="next">&#10095;</span>
+</div>
+
 <script>
+// Scroll Animation
 const imgs=document.querySelectorAll('.gallery img');
 function reveal(){
   imgs.forEach(img=>{
@@ -150,7 +192,34 @@ function reveal(){
 window.addEventListener('scroll',reveal);
 reveal();
 
-/* WAVES */
+// Lightbox
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightbox-img');
+const closeBtn=document.getElementById('close');
+const nextBtn=document.getElementById('next');
+const prevBtn=document.getElementById('prev');
+let current=0;
+
+imgs.forEach((img,i)=>{
+  img.addEventListener('click',()=>{
+    lightbox.style.display='flex';
+    lightboxImg.src=img.src;
+    current=i;
+  });
+});
+
+closeBtn.onclick=()=>lightbox.style.display='none';
+nextBtn.onclick=()=>showImg(current+1);
+prevBtn.onclick=()=>showImg(current-1);
+function showImg(n){
+  if(n<0)n=imgs.length-1;
+  if(n>=imgs.length)n=0;
+  lightboxImg.src=imgs[n].src;
+  current=n;
+}
+window.onclick=e=>{if(e.target===lightbox)lightbox.style.display='none';};
+
+// Waves
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
