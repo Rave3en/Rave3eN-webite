@@ -142,26 +142,6 @@ header .live-title{
   border-radius:14px;
 }
 
-/* FEEDBACK BUTTON */
-.feedback-link{
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 36px;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  border:none;
-  border-radius:999px;
-  color:#fff;
-  font-weight:700;
-  font-family:'Rajdhani';
-  text-decoration:none;
-  box-shadow:0 0 25px rgba(155,92,255,0.6),0 0 45px rgba(0,210,255,0.4);
-  transition:.3s;
-}
-.feedback-link:hover{
-  transform:scale(1.07);
-  box-shadow:0 0 35px rgba(0,210,255,0.9),0 0 55px rgba(155,92,255,0.8);
-}
-
 /* CANVAS */
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
@@ -198,7 +178,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <!-- Aktuelles -->
     <div class="news-box">
       <h2>Aktuelles</h2>
-      <p id="statusText">Lade Status...</p>
+      <p>Daniel ist leider krank, aber er kommt gestärkt zurück 💜</p>
     </div>
 
     <!-- Spotify -->
@@ -208,9 +188,6 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     </div>
-
-    <!-- Feedback Button -->
-    <a href="feedback.html" class="feedback-link">💬 Feedback abgeben / ansehen</a>
   </div>
 </div>
 
@@ -220,16 +197,6 @@ const hostname = window.location.hostname.replace(/^www\./, '');
 const twitchParent = encodeURIComponent(hostname);
 const twitchPlayer = document.getElementById('twitchPlayer');
 twitchPlayer.src = `https://player.twitch.tv/?channel=Rave3eN&parent=${twitchParent}&parent=www.${twitchParent}&muted=true`;
-
-/* Status laden */
-fetch('status.txt')
-  .then(res => res.text())
-  .then(text => {
-    const cleaned = text.trim();
-    document.getElementById('statusText').innerText =
-      cleaned.length > 0 ? cleaned : 'Zurzeit keine Neuigkeiten 💬';
-  })
-  .catch(() => document.getElementById('statusText').innerText = 'Status konnte nicht geladen werden.');
 
 /* Waves Hintergrund */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
