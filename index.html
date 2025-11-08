@@ -111,26 +111,33 @@ header .spruch{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* NAVIGATION */
+/* NAVIGATION - jetzt im Social Button Stil */
 .nav-top{
   margin-top:100px;
   display:flex;
   justify-content:center;
-  gap:50px;
+  gap:25px;
   position:relative;
   z-index:5;
 }
 .nav-top a{
-  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 24px;
+  border-radius:30px;
   text-decoration:none;
+  color:var(--neon3);
   font-family:'Orbitron';
-  font-size:1.2rem;
-  transition:0.3s;
-  text-shadow:0 0 10px rgba(155,92,255,0.5);
+  font-size:1.1rem;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 12px rgba(155,92,255,0.4),inset 0 0 6px rgba(0,210,255,0.4);
+  transition:all 0.3s ease;
 }
 .nav-top a:hover{
-  color:var(--neon3);
-  text-shadow:0 0 20px rgba(0,210,255,0.8),0 0 30px rgba(155,92,255,0.6);
+  color:var(--neon1);
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(0,210,255,0.8),inset 0 0 10px rgba(155,92,255,0.6);
 }
 
 /* TWITCH BOX */
