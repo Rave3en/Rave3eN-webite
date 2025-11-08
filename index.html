@@ -38,6 +38,7 @@ header{
   backdrop-filter:blur(10px);
   z-index:10;
 }
+
 header h1{
   font-family:'Orbitron';
   font-size:1.5rem;
@@ -45,14 +46,29 @@ header h1{
   text-shadow:0 0 8px var(--neon2);
   margin:0;
 }
+
+/* Menü mittig */
+nav{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+}
+
 nav a{
   color:white;
   text-decoration:none;
-  margin-left:25px;
   font-weight:500;
-  transition:color 0.3s;
+  font-size:1rem;
+  transition:color 0.3s, text-shadow 0.3s;
 }
-nav a:hover{color:var(--neon1);text-shadow:0 0 6px var(--neon1);}
+nav a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 6px var(--neon1);
+}
 
 main{
   padding-top:90px;
