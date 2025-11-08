@@ -6,266 +6,224 @@
 <title>Rave3eN — Official</title>
 <meta name="description" content="Rave3eN — EDM x Gaming | Live on Twitch" />
 
-<!-- HTTPS Redirect -->
-<script>
-if (location.protocol !== 'https:') {
-  location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
-}
-</script>
-
-<!-- Fonts -->
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
+:root {
   --bg:#060607;
+  --panel:#0f0f14;
   --neon1:#9b5cff;
   --neon2:#00d2ff;
+  --glass:rgba(255,255,255,0.03);
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 html,body{
   height:100%;
-  font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
-  color:#e9eef8;
+  margin:0;
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:radial-gradient(circle at top, #0a0a0f 0%, #050507 80%);
+  color:white;
   overflow-x:hidden;
-  background: radial-gradient(600px 300px at 10% 10%, rgba(155,92,255,0.05), transparent), #060607;
 }
 
-/* --- Particles --- */
-#particles{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  z-index:0;pointer-events:none;background:transparent;
-}
-header,.hero,footer{position:relative;z-index:2;}
-
-/* Header */
 header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 28px;
-}
-.logo{display:flex;align-items:center;gap:14px;}
-.logo img{width:64px;height:auto;filter:drop-shadow(0 0 10px var(--neon1));}
-nav a{color:#cfe8ff;text-decoration:none;margin-left:18px;font-weight:600;}
-nav a:hover{color:var(--neon2);}
-
-/* Hero */
-.hero{
-  max-width:1200px;margin:18px auto;padding:22px;
-  border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-  display:grid;grid-template-columns:1fr 380px;gap:18px;
-}
-.player-wrap{
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  background:#000;
-}
-#twitch-embed{width:100%;height:480px;}
-
-.right-card{
-  padding:18px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
-  border-radius:12px;
-}
-.slogan{font-family:Orbitron;font-size:22px;margin:6px 0;}
-.bio{font-size:14px;color:#cbd8e6;line-height:1.4;}
-
-/* --- Sections --- */
-.section-block{
-  margin-top:25px;padding-top:10px;
-  border-top:1px solid rgba(255,255,255,0.05);
-}
-.section-block h3{
-  margin-bottom:12px;color:var(--neon2);font-family:Orbitron;
-  font-size:20px;text-shadow:0 0 8px rgba(0,210,255,0.4);
-}
-.item{
-  padding:14px;border-radius:12px;margin-bottom:14px;
-  background:linear-gradient(90deg,rgba(155,92,255,0.06),rgba(0,210,255,0.04));
-  border:1px solid rgba(255,255,255,0.05);
-  box-shadow:0 0 10px rgba(155,92,255,0.15);
-  transition:transform .3s,box-shadow .3s;
-}
-.item:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(0,210,255,0.3);}
-.item .date{font-weight:700;color:var(--neon2);}
-.item .title{font-size:15px;font-weight:600;color:#e9eef8;margin-top:3px;}
-.item .desc{font-size:13px;color:#b0c2de;margin-top:3px;}
-
-/* Socials */
-.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
-.btn{
-  padding:10px 12px;border-radius:10px;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  color:#08101a;font-weight:700;text-decoration:none;
-  transition:opacity .25s;
-}
-.btn:hover{opacity:0.85;}
-
-/* Footer */
-footer{max-width:1200px;margin:22px auto;padding:12px 22px;text-align:center;color:#99a9bf;font-size:13px;}
-@media(max-width:980px){
-  .hero{grid-template-columns:1fr}
-  nav a{margin-left:12px}
-}
-
-/* Profilbild */
-.profile-pic{
+  position:fixed;
+  top:0;left:0;width:100%;
   display:flex;
-  justify-content:center;
-  margin:10px 0 18px;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:10;
 }
-.profile-pic img{
-  width:160px;
-  height:160px;
-  object-fit:cover;
-  border-radius:50%;
-  border:3px solid rgba(155,92,255,0.6);
-  box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
-  animation:neonPulse 3s ease-in-out infinite alternate;
+header h1{
+  font-family:'Orbitron';
+  font-size:1.5rem;
+  color:var(--neon2);
+  text-shadow:0 0 8px var(--neon2);
+  margin:0;
 }
-@keyframes neonPulse{
-  from{box-shadow:0 0 15px rgba(155,92,255,0.5),0 0 25px rgba(0,210,255,0.3);}
-  to{box-shadow:0 0 30px rgba(155,92,255,0.9),0 0 60px rgba(0,210,255,0.6);}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:500;
+  transition:color 0.3s;
+}
+nav a:hover{color:var(--neon1);text-shadow:0 0 6px var(--neon1);}
+
+main{
+  padding-top:90px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+}
+
+/* Twitch Player Styling */
+.player-box{
+  width:90%;
+  max-width:1000px;
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 25px rgba(0,210,255,0.2),
+             0 0 40px rgba(155,92,255,0.15);
+  transition:box-shadow 0.4s ease;
+}
+.player-box:hover{
+  box-shadow:0 0 30px rgba(0,210,255,0.4),
+             0 0 50px rgba(155,92,255,0.25);
+}
+iframe{
+  border:0;
+  width:100%;
+  height:600px;
+}
+
+/* Aktuelles */
+.section-title{
+  font-family:'Orbitron';
+  font-size:1.3rem;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  color:var(--neon2);
+  text-shadow:0 0 10px var(--neon2);
+  letter-spacing:1px;
+}
+
+#aktuelles{
+  width:90%;
+  max-width:1000px;
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:15px;
+  padding:20px 30px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.aktuelles-item{
+  background:rgba(255,255,255,0.03);
+  border-left:3px solid var(--neon1);
+  padding:15px 20px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 0 10px rgba(155,92,255,0.2);
+}
+
+.aktuelles-item h3{
+  margin:0;
+  font-size:1.1rem;
+  color:var(--neon1);
+}
+
+.aktuelles-item p{
+  margin:8px 0 0;
+  font-size:1rem;
+  color:#ccc;
+}
+
+/* Partikel Hintergrund */
+#particles{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
 }
 </style>
 </head>
-
 <body>
 
 <canvas id="particles"></canvas>
 
 <header>
-  <div class="logo">
-    <img src="images/logo.png" alt="Rave3eN Logo" onerror="this.onerror=null;this.src='logo druck.png';">
-    <div>
-      <div style="font-weight:700">Rave3eN</div>
-      <div style="font-size:12px;color:#9fb7d7">EDM × Gaming · Potsdam</div>
-    </div>
-  </div>
+  <h1>Rave3eN</h1>
   <nav>
     <a href="#home">Home</a>
-    <a href="about.html">About Me</a>
+    <a href="#about">About Me</a>
     <a href="#events">Events</a>
   </nav>
 </header>
 
-<main>
-  <section class="hero" id="home">
-    <!-- Player -->
-    <div class="player-wrap">
-      <div id="twitch-embed"></div>
-    </div>
+<main id="home">
+  <div class="player-box">
+    <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=github.io&muted=true" allowfullscreen></iframe>
+  </div>
 
-    <!-- Right Card -->
-    <div class="right-card">
-      <div class="profile-pic">
-        <img src="me.png" alt="Daniel Hein aka Rave3eN">
-      </div>
-
-      <div class="slogan glow">Live on Twitch</div>
-      <div class="bio">EDM × Gaming — Feel the beat, join the vibe. Let's Rave ON 💜</div>
-
-      <!-- Aktuelles -->
-      <div class="section-block" id="aktuelles">
-        <h3>📰 Aktuelles</h3>
-        <div class="item">
-          <div class="date">💜 08. November 2025</div>
-          <div class="title">Daniel ist noch angeschlagen</div>
-          <div class="desc">Ich erhole mich aktuell von einer Halsentzündung – Streams starten bald wieder. Danke für euren Support 💜</div>
-        </div>
-        <div class="item">
-          <div class="date">📢 09. November 2025</div>
-          <div class="title">Neue Clips auf TikTok</div>
-          <div class="desc">Checkt meine neuesten Arena Breakout Highlights auf TikTok aus!</div>
-        </div>
-      </div>
-
-      <!-- Events -->
-      <div class="section-block" id="events">
-        <h3>🎵 Events</h3>
-        <div class="item">
-          <div class="date">🔥 14. November 2025</div>
-          <div class="title">Arena Breakout LIVE</div>
-          <div class="desc">Full Energy, PvP & EDM-Vibes – sei live dabei, wenn’s wieder richtig losgeht!</div>
-        </div>
-        <div class="item">
-          <div class="date">🎶 Bald verfügbar</div>
-          <div class="title">EDM × Gaming Night</div>
-          <div class="desc">Ein Special-Abend mit Sound, Emotion & Community – Termin folgt!</div>
-        </div>
-      </div>
-
-      <!-- Socials -->
-      <div class="socials">
-        <a class="btn" href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
-        <a class="btn" href="https://www.tiktok.com/@rave3en?lang=de-DE" target="_blank">TikTok</a>
-        <a class="btn" href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
-        <a class="btn" href="https://www.instagram.com/rave3en_/" target="_blank">Instagram</a>
-      </div>
+  <section id="aktuelles">
+    <h2 class="section-title">Aktuelles</h2>
+    <div class="aktuelles-item">
+      <h3>Daniel ist noch angeschlagen 🤒</h3>
+      <p>Leider muss ich heute zum Arzt, weil die Schmerzen im Hals stärker geworden sind. Dadurch, dass es was mit dem Sprechen zu tun hat, muss ich eine kurze Zwangspause einlegen. Wir sehen/hören uns frühestens am Sonntag wieder. Doch nur weil ich nicht quatschen kann, werde ich die Dinge im Hintergrund vorantreiben 💜</p>
     </div>
   </section>
 </main>
 
-<footer>
-  © 2025 Rave3eN · EDM × Gaming · Potsdam
-</footer>
-
-<!-- Twitch Player -->
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
 <script>
-const player = new Twitch.Player("twitch-embed", {
-  width:"100%",height:"100%",channel:"rave3en",
-  parent:["rave3en.github.io","www.rave3en.de","localhost"],
-  autoplay:true,muted:false
-});
-player.setVolume(0.1);
-</script>
+// Partikel Hintergrund
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particlesArray=[],hue=0;
 
-<!-- Smaller Particles -->
-<script>
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-let particles=[];
 function resizeCanvas(){
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
 }
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener('resize',resizeCanvas);
 resizeCanvas();
 
-for(let i=0;i<130;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*0.8+0.3,
-    dx:(Math.random()-0.5)*0.25,
-    dy:(Math.random()-0.5)*0.25,
-    color:Math.random()>0.5?"rgba(155,92,255,1)":"rgba(0,210,255,1)",
-    pulse:Math.random()
-  });
-}
-
-function drawParticles(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  for(const p of particles){
-    const pulse=(Math.sin(Date.now()/700+p.pulse*Math.PI*2)+1)/2;
-    const glow=0.2+pulse*0.4;
-    const grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*8);
-    grad.addColorStop(0,p.color.replace("1)",`${glow})`));
-    grad.addColorStop(1,p.color.replace("1)","0)"));
-    ctx.fillStyle=grad;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r*8,0,Math.PI*2);
-    ctx.fill();
-
-    p.x+=p.dx;p.y+=p.dy;
-    if(p.x<0||p.x>canvas.width)p.dx*=-1;
-    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+class Particle{
+  constructor(x,y,size,speedX,speedY,color){
+    this.x=x;this.y=y;this.size=size;this.speedX=speedX;this.speedY=speedY;this.color=color;
   }
-  requestAnimationFrame(drawParticles);
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY;
+    if(this.size>0.2)this.size-=0.02;
+  }
+  draw(){
+    ctx.fillStyle=this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
 }
-drawParticles();
+function handleParticles(){
+  for(let i=0;i<particlesArray.length;i++){
+    const p=particlesArray[i];
+    p.update();
+    p.draw();
+    for(let j=i;j<particlesArray.length;j++){
+      const dx=p.x-particlesArray[j].x;
+      const dy=p.y-particlesArray[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<80){
+        ctx.beginPath();
+        ctx.strokeStyle=p.color;
+        ctx.lineWidth=0.1;
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(particlesArray[j].x,particlesArray[j].y);
+        ctx.stroke();
+      }
+    }
+    if(p.size<=0.2){
+      particlesArray.splice(i,1);
+      i--;
+    }
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hue+=0.5;
+  particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*2+1,(Math.random()-0.5)*0.5,(Math.random()-0.5)*0.5,'hsl('+hue+',100%,60%)'));
+  handleParticles();
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
