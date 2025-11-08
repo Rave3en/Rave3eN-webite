@@ -1,101 +1,220 @@
-<!-- RAVE3EN – LIVE EMBLEM (klein & fein) -->
-<div class="r3-live" id="r3-live">
-  <span class="dot" aria-hidden="true"></span>
-  <span class="label">LIVE</span>
-  <button class="watch" id="r3-watch" aria-label="Stream abspielen">Ansehen</button>
-</div>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rave3eN — Official</title>
+<meta name="description" content="Rave3eN — EDM × Gaming × Vibes | Live on Twitch" />
 
-<!-- Mini-Container für den kleinen Player (klappt beim Klick aus) -->
-<div class="r3-mini" id="r3-mini" hidden>
-  <div id="r3-player"></div>
-  <button class="mute" id="r3-mute" aria-label="Ton an/aus">🔊 0.1</button>
-</div>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
-<!-- Styles -->
 <style>
-.r3-live{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(90deg,#9b5cff, #00d2ff);
-  color:#08101a;font:700 13px/1.1 Rajdhani,system-ui,Segoe UI,Roboto,Arial;
-  padding:6px 10px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.35);
+:root{
+  --bg:#060607;
+  --neon1:#9b5cff;
+  --neon2:#00d2ff;
+  --glass:rgba(255,255,255,0.05);
 }
-.r3-live .dot{
-  width:8px;height:8px;border-radius:50%;
-  background:#ff2d55;box-shadow:0 0 10px #ff2d55; display:inline-block;
-  animation:r3-pulse 1.2s infinite ease-in-out alternate;
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:radial-gradient(circle at top,#0b0b10 0%,#050507 85%);
+  color:#e9eef8;
+  overflow:hidden;
 }
-@keyframes r3-pulse{
-  from{transform:scale(.9); box-shadow:0 0 6px #ff2d55;}
-  to{transform:scale(1.15); box-shadow:0 0 14px #ff2d55;}
+
+/* ---------- Layout ---------- */
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  gap:50px;
+  position:relative;
+  z-index:1;
+  padding:20px;
 }
-.r3-live .label{letter-spacing:.6px}
-.r3-live .watch{
-  appearance:none;border:0;background:#08101a;color:#cfe8ff;cursor:pointer;
-  padding:6px 10px;border-radius:999px;font-weight:800;
+
+/* ---------- Twitch Box ---------- */
+.player-box{
+  width:750px;
+  max-width:90vw;
+  background:var(--glass);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,210,255,0.25),
+             0 0 45px rgba(155,92,255,0.25);
+  overflow:hidden;
+  padding:15px;
 }
-.r3-live .watch:hover{filter:brightness(1.05)}
-.r3-mini{
-  width:320px; /* schön klein */
-  border-radius:12px;overflow:hidden;margin-top:8px;
-  background:#000;border:1px solid rgba(255,255,255,.08);position:relative;
-  box-shadow:0 8px 24px rgba(0,0,0,.5);
+.player-box iframe{
+  border:0;
+  width:100%;
+  height:420px;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(155,92,255,0.2);
 }
-#r3-player{width:100%;height:180px;} /* 16:9 mini */
-.r3-mute{
-  position:absolute;right:8px;bottom:8px;z-index:5;
-  background:rgba(255,255,255,.12);backdrop-filter:blur(6px);
-  color:#fff;border:0;border-radius:10px;padding:6px 8px;font-weight:700;cursor:pointer
+.player-info{
+  margin-top:18px;
+  background:rgba(0,0,0,0.3);
+  border-radius:12px;
+  padding:15px;
+}
+.player-info h2{
+  font-family:'Orbitron';
+  font-size:1.2rem;
+  color:var(--neon2);
+  text-shadow:0 0 8px var(--neon2);
+  margin-bottom:6px;
+}
+.player-info p{
+  font-size:1rem;
+  color:#cbd8e6;
+  line-height:1.4;
+}
+
+/* ---------- Menü rechts ---------- */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:35px;
+}
+nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:1.1rem;
+  font-weight:600;
+  transition:color .3s,text-shadow .3s;
+}
+nav a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 8px var(--neon1);
+}
+
+/* ---------- Social Links ---------- */
+.socials{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:20px;
+}
+.socials a{
+  color:var(--neon2);
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:.5px;
+  transition:color .3s,text-shadow .3s;
+}
+.socials a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 8px var(--neon1);
+}
+
+/* ---------- Partikel ---------- */
+canvas#particles{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:0;
 }
 </style>
+</head>
 
-<!-- Twitch Player -->
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+  <div class="player-box">
+    <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
+
+    <div class="player-info">
+      <h2>Aktuelles</h2>
+      <p>Daniel ist aktuell krank 🤒 — Stimme muss geschont werden, aber im Hintergrund läuft die Vorbereitung für neue Projekte 💜</p>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="#events">Events</a>
+    </nav>
+
+    <div class="socials">
+      <a href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
+      <a href="https://www.tiktok.com/@rave3en" target="_blank">TikTok</a>
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+      <a href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
+    </div>
+  </div>
+
+</div>
+
 <script>
-(function(){
-  const DOMAIN = "www.rave3en.de";       // <- falls nötig anpassen
-  const CHANNEL = "Rave3eN";             // <- dein Kanal
-  const mini = document.getElementById('r3-mini');
-  const btnWatch = document.getElementById('r3-watch');
-  const btnMute = document.getElementById('r3-mute');
-  let player = null;
-  let unlocked = false;
+// ---------- Partikel Hintergrund ----------
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particlesArray=[],hue=0;
 
-  function createPlayer(){
-    if(player) return;
-    player = new Twitch.Player("r3-player", {
-      width: "100%",
-      height: "100%",
-      channel: CHANNEL,
-      parent: [DOMAIN, "rave3en.github.io","localhost"],
-      autoplay: true,
-      muted: true  // Autoplay-Policy: erst stumm starten
-    });
-    // Sobald irgendeine Interaktion erfolgt, setzen wir Lautstärke 0.1
-    const unlockVolume = () => {
-      if(player){ player.setMuted(false); player.setVolume(0.1); }
-      unlocked = true;
-      window.removeEventListener('pointerdown', unlockVolume, {once:true});
-    };
-    window.addEventListener('pointerdown', unlockVolume, {once:true});
+function resizeCanvas(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
+
+class Particle{
+  constructor(x,y,size,speedX,speedY,color){
+    this.x=x;this.y=y;this.size=size;
+    this.speedX=speedX;this.speedY=speedY;this.color=color;
   }
-
-  btnWatch.addEventListener('click', () => {
-    mini.hidden = false;
-    createPlayer();
-    // Wenn schon Interaktion → direkt 0.1
-    if(unlocked && player){ player.setMuted(false); player.setVolume(0.1); }
-  });
-
-  btnMute.addEventListener('click', () => {
-    if(!player) return;
-    const muted = player.getMuted?.();
-    if(muted){
-      player.setMuted(false); player.setVolume(0.1);
-      btnMute.textContent = "🔊 0.1";
-    }else{
-      player.setMuted(true);
-      btnMute.textContent = "🔇";
-    }
-  });
-})();
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY;
+    if(this.size>0.15)this.size-=0.015;
+  }
+  draw(){
+    ctx.fillStyle=this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+function handleParticles(){
+  for(let i=0;i<particlesArray.length;i++){
+    const p=particlesArray[i];
+    p.update();p.draw();
+    if(p.size<=0.15){particlesArray.splice(i,1);i--;}
+  }
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hue+=0.6;
+  for(let i=0;i<3;i++){
+    particlesArray.push(new Particle(
+      Math.random()*canvas.width,
+      Math.random()*canvas.height,
+      Math.random()*1.5+0.5,
+      (Math.random()-0.5)*0.5,
+      (Math.random()-0.5)*0.5,
+      'hsl('+hue+',100%,60%)'
+    ));
+  }
+  handleParticles();
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
+
+</body>
+</html>
