@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Events</title>
-<meta name="description" content="Rave3eN Events — Rave Camp 2024 & Rave Drive 2025. Erlebnisse, Gemeinschaft und Emotion in Bewegung 💜" />
+<title>Events — Rave3eN</title>
+<meta name="description" content="Rave3eN Events — Gemeinschaft, Reisen und echte Emotion in Bewegung 💜" />
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,11 +13,10 @@
 :root{
   --bg:#000;
   --neon1:#a85cff;
-  --neon2:#007bff;
+  --neon2:#00bfff;
   --neon3:#00eaff;
-  --neon4:#ff00cc;
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0;}
 html,body{
   min-height:100%;
   font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
@@ -26,7 +25,7 @@ html,body{
   overflow-x:hidden;
 }
 
-/* Waves Hintergrund */
+/* Hintergrund */
 canvas#waves{
   position:fixed;
   top:0;left:0;width:100%;height:100%;
@@ -39,7 +38,9 @@ header{
   position:fixed;
   top:0;left:0;width:100%;
   padding:12px 24px;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   box-shadow:0 0 25px rgba(0,0,0,0.8);
@@ -50,49 +51,32 @@ header{
 
 /* LOGO */
 header .logo{
-  display:flex;align-items:center;gap:12px;
+  display:flex;align-items:center;gap:14px;
 }
 header .logo img{
-  height:42px;
-  filter:drop-shadow(0 0 12px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
+  height:45px;
+  filter:drop-shadow(0 0 10px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
 }
 header .logo span{
   font-family:'Orbitron';
-  font-size:1.7rem;
+  font-size:1.8rem;
   font-weight:700;
-  background:linear-gradient(90deg,var(--neon1),var(--neon4),var(--neon2),var(--neon3),var(--neon1));
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
   background-size:400%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite;
+  text-shadow:0 0 15px rgba(0,191,255,0.5),0 0 30px rgba(168,92,255,0.3);
 }
 @keyframes gradientFlow{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* SPRUCH */
-header .spruch{
-  font-family:'Orbitron';
-  font-size:1.2rem;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 15px rgba(155,92,255,0.5),0 0 30px rgba(0,210,255,0.3);
-  animation:heartBeat 3s ease-in-out infinite;
-  text-align:center;
-  flex:1 1 100%;
-}
-@keyframes heartBeat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.04);}
-}
-
-/* SOCIALS */
+/* SOCIAL ICONS */
 .social-header{
-  display:flex;
-  gap:12px;
+  display:flex;gap:12px;
 }
 .social-header a{
   width:38px;height:38px;border-radius:50%;
@@ -111,14 +95,27 @@ header .spruch{
 
 /* CONTENT */
 main{
-  margin-top:160px;
+  margin-top:150px;
   position:relative;
   z-index:5;
   text-align:center;
   padding:0 20px;
 }
 
-/* EVENT-CARDS */
+/* TITEL */
+h1{
+  font-family:'Orbitron';
+  font-size:2.3rem;
+  color:var(--neon2);
+  text-shadow:0 0 18px rgba(0,210,255,0.6),0 0 40px rgba(168,92,255,0.4);
+  margin-bottom:40px;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientFlow 6s linear infinite;
+}
+
+/* EVENT-KARTEN */
 .event-container{
   display:flex;
   justify-content:center;
@@ -168,7 +165,7 @@ main{
   text-shadow:0 0 20px rgba(155,92,255,0.7);
 }
 
-/* BACK BUTTON */
+/* BACK HOME */
 .back-home{
   text-align:center;
   margin:60px 0;
@@ -198,7 +195,19 @@ footer{
   color:var(--neon2);
   padding:25px 0 40px;
   text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.4);
-  animation:footerPulse 4s ease-in-out infinite alternate;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  header{flex-direction:column;gap:10px;}
+  header .logo span{font-size:1.5rem;}
+  h1{font-size:2rem;}
+  .event-card{width:90%;}
+}
+@media(max-width:500px){
+  header .logo img{height:38px;}
+  header .logo span{font-size:1.3rem;}
+  h1{font-size:1.7rem;}
 }
 </style>
 </head>
@@ -211,7 +220,6 @@ footer{
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-  <div class="spruch">Wo Musik das Herz berührt 💜</div>
   <div class="social-header">
     <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -221,7 +229,7 @@ footer{
 </header>
 
 <main>
-  <h1 style="font-family:'Orbitron'; color:var(--neon3); text-shadow:0 0 18px rgba(0,210,255,0.6); margin-bottom:40px;">Rave3eN Events</h1>
+  <h1>Events</h1>
 
   <div class="event-container">
     <div class="event-card">
@@ -249,7 +257,7 @@ footer{
 </footer>
 
 <script>
-/* Waves Hintergrund */
+/* Hintergrund-Waves */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
@@ -260,10 +268,8 @@ d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.
 for(let i=0;i<60;i++)parts.push(new P());
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
-  const ang=-Math.PI/6;
-  ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
   for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}
-  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();
+  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();
 }
 function anim(){
   ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
@@ -278,5 +284,3 @@ anim();
 </script>
 </body>
 </html>
-
-
