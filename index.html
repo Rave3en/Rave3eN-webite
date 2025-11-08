@@ -44,7 +44,7 @@ header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);te
 .social-header a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);color:var(--neon2);font-size:1.2rem;box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);transition:.3s;}
 .social-header a:hover{color:var(--neon1);transform:scale(1.15);box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);}
 
-/* CONTENT */
+/* CONTAINER */
 .container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
 .player-box{width:750px;max-width:90vw;background:rgba(255,255,255,0.06);border-radius:20px;backdrop-filter:blur(18px);padding:20px;text-align:center;box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);}
 .top-nav{display:flex;justify-content:center;gap:25px;margin-bottom:22px;}
@@ -63,25 +63,20 @@ header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);te
 .controls button{background:none;border:none;color:var(--neon2);font-size:1.2rem;margin:0 8px;cursor:pointer;transition:.3s;}
 .controls button:hover{color:var(--neon1);transform:scale(1.2);}
 
-/* ADMIN BUTTON */
+/* RELOGIN BUTTON */
 #relogin{
   position:fixed;bottom:20px;right:20px;
   background:linear-gradient(90deg,var(--neon1),var(--neon2));
   border:none;color:#fff;
   padding:10px 22px;border-radius:30px;
   cursor:pointer;font-weight:600;font-size:1rem;
-  display:none; /* wird nur durch JS sichtbar */
+  display:none;
   opacity:0.7;
   box-shadow:0 0 25px rgba(155,92,255,.6),0 0 40px rgba(0,180,255,.4);
   z-index:20;
   transition:all .3s;
 }
-#relogin:hover{
-  opacity:1;
-  transform:scale(1.05);
-}
-
-/* CANVAS */
+#relogin:hover{opacity:1;transform:scale(1.05);}
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
@@ -113,6 +108,17 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
 
+    <!-- Sichtbare Spotify Playlist für alle -->
+    <iframe 
+      style="border-radius:12px; margin-top:15px; box-shadow:0 0 25px rgba(155,92,255,0.4);" 
+      src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator" 
+      width="100%" 
+      height="152" 
+      frameborder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+    <!-- Dein Spotify Player mit Glow -->
     <div class="spotify-player" id="spotifyPlayerBar">
       <img id="cover" src="https://i.imgur.com/8kmV3KZ.png" alt="Cover">
       <div class="song-info">
@@ -161,9 +167,8 @@ getTokenFromHash();
 if(!accessToken)loadToken();
 
 /* === ADMIN BUTTON VISIBILITY === */
-// Der Button erscheint nur lokal bei dir
-const adminIPs = ['127.0.0.1','localhost']; // Nur du lokal
-if(!accessToken && adminIPs.includes(location.hostname)){
+const adminIPs=['127.0.0.1','localhost'];
+if(!accessToken&&adminIPs.includes(location.hostname)){
   document.getElementById('relogin').style.display='block';
 }
 
