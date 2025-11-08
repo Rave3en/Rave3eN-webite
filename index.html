@@ -8,9 +8,9 @@
 
 <!-- HTTPS-Auto-Redirect -->
 <script>
-  if (location.protocol !== 'https:') {
-    location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
-  }
+if (location.protocol !== 'https:') {
+  location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
+}
 </script>
 
 <!-- Fonts -->
@@ -28,8 +28,20 @@
 html,body{
   height:100%;
   font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
-  background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent), var(--bg);
+  background:var(--bg);
   color:#e9eef8;
+  overflow-x:hidden;
+}
+
+/* --- Animated Particles Background --- */
+#particles{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  background:radial-gradient(1000px 400px at 10% 10%, rgba(155,92,255,0.05), transparent);
 }
 
 /* Header */
@@ -55,9 +67,7 @@ nav a{
   margin-left:18px;
   font-weight:600;
 }
-nav a:hover{
-  color:var(--neon2);
-}
+nav a:hover{color:var(--neon2);}
 
 /* Hero Section */
 .hero{
@@ -97,23 +107,50 @@ nav a:hover{
   color:#cbd8e6;
   line-height:1.4;
 }
-.events{
-  margin-top:16px;
+
+/* --- Aktuelles --- */
+.events {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
-.events h3{
-  margin:0 0 8px 0;
-  color:var(--neon2);
+.events h3 {
+  margin-bottom: 12px;
+  color: var(--neon2);
+  font-family: Orbitron;
+  font-size: 20px;
+  text-shadow: 0 0 8px rgba(0,210,255,0.4);
 }
-.event{
-  padding:10px;
-  border-radius:10px;
-  background:linear-gradient(90deg, rgba(155,92,255,0.04), rgba(0,210,255,0.03));
-  margin-bottom:10px;
-  border:1px solid rgba(255,255,255,0.03);
+.event {
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: linear-gradient(90deg, rgba(155,92,255,0.06), rgba(0,210,255,0.04));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 0 10px rgba(155,92,255,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.event .date{
-  font-weight:700;
+.event:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0,210,255,0.3);
 }
+.event .date {
+  font-weight: 700;
+  color: var(--neon2);
+}
+.event .title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e9eef8;
+  margin-top: 3px;
+}
+.event .desc {
+  font-size: 13px;
+  color: #b0c2de;
+  margin-top: 3px;
+}
+
+/* Social Buttons */
 .socials{
   display:flex;
   flex-wrap:wrap;
@@ -129,9 +166,9 @@ nav a:hover{
   text-decoration:none;
   transition:opacity .25s;
 }
-.btn:hover{
-  opacity:0.85;
-}
+.btn:hover{opacity:0.85;}
+
+/* Footer */
 footer{
   max-width:1200px;
   margin:22px auto;
@@ -169,6 +206,8 @@ footer{
 
 <body>
 
+<canvas id="particles"></canvas>
+
 <header>
   <div class="logo">
     <img id="brandLogo" src="images/logo.png" alt="Rave3eN Logo" onerror="this.onerror=null; this.src='logo druck.png';">
@@ -180,7 +219,7 @@ footer{
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About me</a>
-    <a href="#events">Events</a>
+    <a href="#events">Aktuelles</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -191,14 +230,6 @@ footer{
     <!-- Twitch Player -->
     <div class="player-wrap" aria-label="Twitch Player">
       <div id="twitch-embed"></div>
-
-      <!-- Silent Watch Mode -->
-      <div id="silent-watch" style="margin-top:10px;text-align:center;font-size:14px;color:#9fb7d7">
-        <p>👀 Du unterstützt Rave3eN einfach durch Zuschauen – danke dir!</p>
-        <button id="enable-sound" class="btn" style="margin-top:8px;">🔊 Ton aktivieren</button>
-      </div>
-
-      <!-- Profilbild -->
       <div class="profile-pic">
         <img src="me.png" alt="Daniel Hein aka Rave3eN">
       </div>
@@ -209,11 +240,26 @@ footer{
       <div class="slogan glow">Live on Twitch</div>
       <div class="bio">EDM × Gaming — Feel the beat, join the vibe. Let's Rave ON 💜</div>
 
+      <!-- Aktuelles -->
       <div class="events" id="events">
-        <h3>Upcoming Events</h3>
+        <h3>📰 Aktuelles</h3>
+
         <div class="event">
-          <div class="date">🩵 Aktuell ist Daniel krank</div>
-          <div class="title">Es wird bald wieder losgehen — danke für eure Geduld 💜</div>
+          <div class="date">💜 08. November 2025</div>
+          <div class="title">Daniel ist noch angeschlagen</div>
+          <div class="desc">Ich erhole mich aktuell von einer Halsentzündung – Streams starten bald wieder. Danke für euren Support 💜</div>
+        </div>
+
+        <div class="event">
+          <div class="date">🔥 14. November 2025</div>
+          <div class="title">Arena Breakout LIVE</div>
+          <div class="desc">Full Energy, PvP & EDM-Vibes – sei live dabei, wenn’s wieder richtig losgeht!</div>
+        </div>
+
+        <div class="event">
+          <div class="date">🎶 Bald verfügbar</div>
+          <div class="title">EDM × Gaming Night</div>
+          <div class="desc">Ein Special-Abend mit Sound, Emotion & Community – Termin folgt!</div>
         </div>
       </div>
 
@@ -234,21 +280,59 @@ footer{
 <!-- Twitch Embed Script -->
 <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 <script>
-  const player = new Twitch.Player("twitch-embed", {
-    width: "100%",
-    height: "100%",
-    channel: "rave3en",
-    parent: ["www.rave3en.de", "rave3en.github.io", "localhost"],
-    autoplay: true,
-    muted: true
-  });
+const player = new Twitch.Player("twitch-embed", {
+  width: "100%",
+  height: "100%",
+  channel: "rave3en",
+  parent: ["www.rave3en.de", "rave3en.github.io", "localhost"],
+  autoplay: true,
+  muted: false
+});
+player.setVolume(0.1);
+console.log("Twitch Embed läuft auf:", window.location.hostname);
+</script>
 
-  document.getElementById("enable-sound").addEventListener("click", () => {
-    player.setMuted(false);
-    player.setVolume(0.1);
-  });
+<!-- Neon Particle Animation -->
+<script>
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particles=[];
+function resizeCanvas(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
 
-  console.log("Twitch Embed läuft auf:", window.location.hostname);
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    dx:(Math.random()-0.5)*0.4,
+    dy:(Math.random()-0.5)*0.4,
+    glow:Math.random()*0.5+0.5
+  });
+}
+function drawParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(const p of particles){
+    const grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*6);
+    grad.addColorStop(0,`rgba(155,92,255,${p.glow})`);
+    grad.addColorStop(1,`rgba(0,210,255,0)`);
+    ctx.fillStyle=grad;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r*6,0,Math.PI*2);
+    ctx.fill();
+
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
 </script>
 
 </body>
