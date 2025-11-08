@@ -65,7 +65,7 @@ header .logo span{
   position:relative;
   z-index:1;
   padding:20px;
-  margin-top:120px; /* Abstand unter dem Header */
+  margin-top:120px;
 }
 
 /* ---------- Twitch-Box ---------- */
@@ -81,12 +81,13 @@ header .logo span{
   position:relative;
 }
 
-/* Menü direkt über dem Player, mittig */
+/* Menü etwas höher positioniert */
 .top-nav{
   display:flex;
   justify-content:center;
   gap:25px;
-  margin-bottom:18px;
+  margin-bottom:25px; /* mehr Abstand zum Player */
+  margin-top:-10px;   /* leicht nach oben verschoben */
 }
 .top-nav a{
   min-width:90px;
@@ -202,7 +203,7 @@ header .logo span{
   border:0;
 }
 
-/* ---------- Socials rechts ---------- */
+/* ---------- Socials ---------- */
 .sidebar{
   display:flex;
   flex-direction:column;
@@ -260,14 +261,12 @@ canvas#particles{
 
 <div class="container">
   <div class="player-box">
-    <!-- Menü direkt über dem Twitch-Player, mittig -->
     <nav class="top-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="#events">Events</a>
     </nav>
 
-    <!-- Twitch Player -->
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
 
     <div class="player-info">
@@ -275,9 +274,7 @@ canvas#particles{
       <p>Daniel ist aktuell krank 🤒 — Stimme muss geschont werden, aber im Hintergrund läuft die Vorbereitung für neue Projekte 💜</p>
     </div>
 
-    <!-- MP4 Tänzerin (Variante B) -->
     <div class="dancer-video">
-      <!-- HINWEIS: Ersetze "dancer.mp4" durch den Namen deiner Datei -->
       <video src="dancer.mp4" autoplay loop muted playsinline></video>
     </div>
 
