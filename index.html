@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rave3eN — Official</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
@@ -24,7 +25,7 @@ html,body{
   overflow:hidden;
 }
 
-/* Header / Socials / Buttons ... (identisch zur letzten Version) */
+/* HEADER */
 header{
   position:fixed;top:0;left:0;width:100%;
   padding:15px 40px;
@@ -42,6 +43,8 @@ header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);te
 .social-header{display:flex;gap:18px;}
 .social-header a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);color:var(--neon2);font-size:1.2rem;box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);transition:.3s;}
 .social-header a:hover{color:var(--neon1);transform:scale(1.15);box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);}
+
+/* CONTENT */
 .container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
 .player-box{width:750px;max-width:90vw;background:rgba(255,255,255,0.06);border-radius:20px;backdrop-filter:blur(18px);padding:20px;text-align:center;box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);}
 .top-nav{display:flex;justify-content:center;gap:25px;margin-bottom:22px;}
@@ -49,7 +52,7 @@ header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);te
 .top-nav a:hover{color:var(--neon1);transform:translateY(-1px) scale(1.06);border-color:var(--neon1);box-shadow:0 0 26px rgba(155,92,255,0.9),inset 0 0 12px rgba(0,180,255,0.7);}
 .player-box iframe{border:0;width:100%;height:420px;border-radius:15px;box-shadow:0 0 24px rgba(0,0,0,0.9);}
 
-/* Spotify Bar + Puls */
+/* SPOTIFY BAR */
 .spotify-player{display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.75);border-radius:14px;padding:10px 20px;margin-top:20px;box-shadow:0 0 25px rgba(0,180,255,.55),0 0 45px rgba(155,92,255,.45);transition:box-shadow .5s ease;}
 .spotify-player.playing{animation:glowPulse 4s ease-in-out infinite alternate;}
 @keyframes glowPulse{from{box-shadow:0 0 30px rgba(0,180,255,0.5),0 0 60px rgba(155,92,255,0.35);}to{box-shadow:0 0 50px rgba(0,180,255,0.85),0 0 90px rgba(155,92,255,0.6);}}
@@ -59,9 +62,30 @@ header .live-title{font-family:'Orbitron';font-size:1.4rem;color:var(--neon2);te
 .song-info p{font-size:.9rem;color:#a0b3d9;margin:0;}
 .controls button{background:none;border:none;color:var(--neon2);font-size:1.2rem;margin:0 8px;cursor:pointer;transition:.3s;}
 .controls button:hover{color:var(--neon1);transform:scale(1.2);}
+
+/* ADMIN BUTTON */
+#relogin{
+  position:fixed;bottom:20px;right:20px;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  border:none;color:#fff;
+  padding:10px 22px;border-radius:30px;
+  cursor:pointer;font-weight:600;font-size:1rem;
+  display:none; /* wird nur durch JS sichtbar */
+  opacity:0.7;
+  box-shadow:0 0 25px rgba(155,92,255,.6),0 0 40px rgba(0,180,255,.4);
+  z-index:20;
+  transition:all .3s;
+}
+#relogin:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* CANVAS */
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
+
 <body>
 <canvas id="waves"></canvas>
 
@@ -104,25 +128,99 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </div>
 
+<button id="relogin" onclick="logoutSpotify()">Spotify neu verbinden</button>
+
 <script>
+const CLIENT_ID='3734a32da72c4be1a7e9ea4ea3b00a00';
+let accessToken='';let player;
+
+/* === SPOTIFY AUTH HANDLING === */
+function getTokenFromHash(){
+  if(location.hash){
+    const h=location.hash.substring(1).split('&').reduce((r,i)=>{
+      let p=i.split('=');r[p[0]]=decodeURIComponent(p[1]);return r;
+    },{});
+    accessToken=h.access_token||'';
+    if(accessToken){
+      localStorage.setItem('spotify_token',accessToken);
+      localStorage.setItem('spotify_token_time',Date.now());
+    }
+    location.hash='';
+  }
+}
+function loadToken(){
+  const t=localStorage.getItem('spotify_token'),tm=localStorage.getItem('spotify_token_time');
+  if(t&&tm&&Date.now()-tm<3500000){accessToken=t;}
+}
+function logoutSpotify(){
+  localStorage.removeItem('spotify_token');
+  localStorage.removeItem('spotify_token_time');
+  location.href='spotify-auth.html';
+}
+getTokenFromHash();
+if(!accessToken)loadToken();
+
+/* === ADMIN BUTTON VISIBILITY === */
+// Der Button erscheint nur lokal bei dir
+const adminIPs = ['127.0.0.1','localhost']; // Nur du lokal
+if(!accessToken && adminIPs.includes(location.hostname)){
+  document.getElementById('relogin').style.display='block';
+}
+
+/* === CANVAS: Waves === */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
-let w,h,t=0,ampScale=0.9;const particles=[];
+let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-
 class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
 u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
 d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
-for(let i=0;i<90;i++)particles.push(new P());
-
-function drawWave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
-
+for(let i=0;i<90;i++)parts.push(new P());
+function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
 function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-  drawWave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);   // Blau
-  drawWave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);  // Lila
-  drawWave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);  // Cyan
-  particles.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}
+  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
+  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
+  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;requestAnimationFrame(anim);}
 anim();
+
+/* === SPOTIFY WEB PLAYBACK SDK === */
+window.onSpotifyWebPlaybackSDKReady=()=>{
+  if(!accessToken){console.warn('Kein Token');return;}
+  player=new Spotify.Player({name:'Rave3eN Web Player',getOAuthToken:cb=>cb(accessToken),volume:0.5});
+  const bar=document.getElementById('spotifyPlayerBar');
+  const title=document.getElementById('songTitle');
+  const artist=document.getElementById('songArtist');
+  const cover=document.getElementById('cover');
+  const bPlay=document.getElementById('play');
+  const bNext=document.getElementById('next');
+  const bPrev=document.getElementById('prev');
+
+  player.addListener('player_state_changed',s=>{
+    if(!s)return;
+    const tr=s.track_window.current_track;
+    if(tr){
+      title.textContent=tr.name;
+      artist.textContent=tr.artists.map(a=>a.name).join(', ');
+      if(tr.album?.images?.length)cover.src=tr.album.images[0].url;
+      const prog=s.position/s.duration||0;
+      const base=s.paused?0.85:1;
+      ampScale=base+0.35*Math.abs(Math.sin(prog*Math.PI*4));
+      if(!s.paused){bar.classList.add('playing');}
+      else{bar.classList.remove('playing');}
+    }else{
+      title.textContent='Kein Song aktiv';
+      artist.textContent='---';
+      bar.classList.remove('playing');
+      ampScale=0.9;
+    }
+  });
+  bPlay.addEventListener('click',()=>player.togglePlay());
+  bNext.addEventListener('click',()=>player.nextTrack());
+  bPrev.addEventListener('click',()=>player.previousTrack());
+  player.connect();
+};
 </script>
 </body>
 </html>
