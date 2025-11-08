@@ -4,118 +4,207 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Me — Rave3eN</title>
-<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Gaming, Leidenschaft und die Geschichte dahinter." />
-
-<!-- HTTPS-Redirect -->
-<script>
-  if (location.protocol !== 'https:') {
-    location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
-  }
-</script>
+<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Gaming × Leidenschaft × Emotion.">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body{
-  font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
-  background:#060607;
-  color:#e9eef8;
-  margin:0;
-  padding:0;
+:root{
+  --bg:#000;
+  --neon1:#9b5cff;
+  --neon2:#00b4ff;
+  --neon3:#00ffff;
 }
-.container{
-  max-width:900px;
-  margin:40px auto;
-  padding:24px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  min-height:100%;
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:#000;
+  color:#e9eef8;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
-/* Überschrift mit Neon-Glow */
+/* HEADER */
+header{
+  position:fixed;top:0;left:0;width:100%;
+  padding:15px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,0,0,0.8);
+  z-index:10;
+}
+header .logo{display:flex;align-items:center;gap:10px;}
+header .logo img{height:45px;filter:drop-shadow(0 0 10px var(--neon2));}
+header .logo span{font-family:'Orbitron';font-size:1.6rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);}
+header .live-title{
+  font-family:'Orbitron';
+  font-size:1.4rem;
+  color:var(--neon2);
+  text-shadow:0 0 14px var(--neon2),0 0 26px var(--neon1);
+  animation:liveGlow 3s ease-in-out infinite alternate;
+}
+@keyframes liveGlow{
+  from{text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1);}
+  to{text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1);}
+}
+.social-header{display:flex;gap:18px;}
+.social-header a{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:var(--neon2);font-size:1.2rem;
+  box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);
+  transition:.3s;
+}
+.social-header a:hover{
+  color:var(--neon1);
+  transform:scale(1.15);
+  box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
+}
+
+/* MAIN */
+.container{
+  max-width:900px;
+  margin:140px auto 60px;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:40px;
+  text-align:left;
+  box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
+  backdrop-filter:blur(18px);
+  z-index:1;
+  position:relative;
+}
 h1{
   text-align:center;
-  font-family:Orbitron;
-  font-size:2.5rem;
-  color:#b784ff;
-  text-shadow:0 0 15px rgba(155,92,255,0.6),0 0 30px rgba(0,210,255,0.3);
-  margin-bottom:24px;
+  font-family:'Orbitron';
+  color:var(--neon2);
+  font-size:2.2rem;
+  text-shadow:0 0 20px var(--neon1),0 0 30px var(--neon3);
   animation:glowPulse 3s ease-in-out infinite alternate;
 }
-@keyframes glowPulse{
-  from{text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 20px rgba(0,210,255,0.2);}
-  to{text-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.5);}
+@keyframes glowPulse {
+  from{text-shadow:0 0 10px var(--neon2),0 0 20px var(--neon1);}
+  to{text-shadow:0 0 25px var(--neon1),0 0 45px var(--neon3);}
 }
 
 .profile{
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin-bottom:20px;
+  margin:30px 0;
 }
 .profile img{
-  width:180px;
-  height:180px;
+  width:220px;
+  height:220px;
   object-fit:cover;
   border-radius:50%;
   border:3px solid rgba(155,92,255,0.6);
-  box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
+  box-shadow:0 0 30px rgba(155,92,255,0.7),0 0 50px rgba(0,210,255,0.5);
+  margin-bottom:20px;
 }
+
 p{
-  line-height:1.6;
+  line-height:1.7;
   color:#cbd8e6;
-  white-space:pre-line;
+  margin-bottom:16px;
 }
 p.intro{
-  font-size:1.25rem;
-  color:#fff;
   text-align:center;
-  font-weight:600;
-  margin-bottom:18px;
+  font-size:1.2rem;
+  color:#fff;
   text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.2);
+  margin-bottom:25px;
 }
+
 a.back{
   display:inline-block;
-  margin-top:20px;
-  color:#00d2ff;
+  margin-top:25px;
+  color:var(--neon2);
   text-decoration:none;
   font-weight:600;
 }
-a.back:hover{
-  text-decoration:underline;
-}
+a.back:hover{text-decoration:underline;}
+
+canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
 
 <body>
+<canvas id="waves"></canvas>
+
+<header>
+  <div class="logo">
+    <img src="logo druck.png" alt="Rave3eN Logo">
+    <span>Rave3eN</span>
+  </div>
+  <div class="live-title">🎧 Live on Twitch</div>
+  <div class="social-header">
+    <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/rave3en_/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/3TbArexH5H" target="_blank"><i class="fab fa-discord"></i></a>
+  </div>
+</header>
+
 <div class="container">
   <h1>About Me</h1>
+
   <div class="profile">
-    <img src="me.png" alt="Daniel Hein aka Rave3eN">
+    <img src="me.jpg" alt="Daniel Hein aka Rave3eN">
   </div>
 
   <p class="intro">
-    Hey und herzlich willkommen auf meiner eigenen Website.
+    Hey, ich bin Daniel – aka Rave3eN. Willkommen in meiner Welt aus EDM, Emotion und Gaming 🎧
   </p>
 
   <p>
-Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.
-Das Leben hat vor meiner Geschichte keinen Halt gemacht.
+Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.  
+Das Leben hat vor meiner Geschichte keinen Halt gemacht. In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt.  
+Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
+  </p>
 
-In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt. Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
+  <p>
+Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Somit ging es bergab, was die schulische Leistung anging.  
+Ich bin zweimal durch die 7. Klasse gefallen und hatte keinen Abschluss.  
+Aber ich bin wach geworden und habe alles aufgearbeitet, was in meiner Vergangenheit schiefgelaufen ist.
+  </p>
 
-Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Somit ging es auch bergab, was die schulische Leistung anging. Ich habe nur die 6. Klasse bestanden, ab der 7. Klasse hatte ich meinen Tiefpunkt. Mit der 8. Klasse hatte ich meine 10 Schuljahre rum und ich stand da mit nichts. Zweimal durch die 7. Klasse gefallen und automatisch aufgerückt in die 8. Klasse und auch nicht bestanden. Ich bin zum Glück wach geworden und habe alles nach und nach aufgearbeitet, was in meiner Vergangenheit schief gelaufen ist. Nun stehe ich an diesem Punkt, ich habe die 10. Klasse nachgeholt und mit dem Abitur angefangen, 11. Klasse bestanden, ab in die 12. und ich dachte mir so: Für was mache ich das jetzt? Habe dann im Halbjahr der 12. Klasse das Abitur abgebrochen, weil ich gemerkt habe, dass ich der praktische Typ bin und nicht der Theorie-Typ. Ich wollte Musik studieren oder Psychologie. Das war mein Ziel. Nur das Leben hatte mir gezeigt, dass es auch wichtig ist, ehrlich zu sich selbst zu sein.
+  <p>
+Ich habe die 10. Klasse nachgeholt, mit dem Abitur begonnen, dann gemerkt, dass ich eher der praktische Typ bin.  
+Musik und Psychologie waren immer meine Leidenschaft, aber das Leben hat mir gezeigt: Ehrlichkeit zu sich selbst ist der wahre Erfolg.
+  </p>
 
-Tischtennis wurde mein Rettungsanker. Hätte ich diesen Sport nicht gehabt, wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe. Doch irgendetwas – oder irgendwer – wollte, dass ich weitermache.
+  <p>
+Tischtennis wurde mein Rettungsanker – ohne diesen Sport wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe.  
+Durch harte Arbeit habe ich es geschafft, überregional in der Verbandsoberliga zu spielen.  
+Auch in Counter-Strike 1.5 war ich unter den besten Nachwuchsspielern Deutschlands, bei e2sports mit Blizzard und Co.  
+Diese Erfahrungen haben mich geprägt.
+  </p>
 
-Durch harte Arbeit und unzählige Überstunden habe ich mir meinen Traum erfüllt: überregional Tischtennis zu spielen, in der Verbandsoberliga. Es ist ein seltsames Gefühl, besser als der Durchschnitt zu sein – aber zu wissen, dass es für ganz oben nicht reicht.
-
-Diese Erfahrung zieht sich durch mein Leben – ob im Tischtennis, in Counter-Strike 1.5 oder im Gesang. Doch genau das hat mich zu dem gemacht, der ich heute bin: jemand, der trotz Rückschlägen nicht aufgibt, sondern seinen eigenen Weg geht. Auch durch Counterstrike konnte ich mich zu den besten in Deutschland zählen. Evtl kennt ja wer noch e2sports. Ich war im Nachwuchsteam und durfte mit Blizzard, Johnny R., Roman und Co. spielen. Dennoch sollte es nicht so sein und es hatte in dieser Zeit nur für die erste Division der EAS gereicht. Dennoch kann ich darauf stolz sein.
-
-Jetzt bin ich bei Twitch, älter, reifer und habe die Vergangenheit so gut es geht aufgearbeitet. Ich weiß nun, was für mich wichtig ist: Die Welt, in der wir leben, braucht Hilfe – und vor allem auch Tiere, die nicht mit uns kommunizieren können. Das Rave steht für Liebe, Unsinn und vor allem Hilfsbereitschaft. Wo Leidenschaft auf EDM trifft, Gefühle das sind, was uns menschlich macht, und wir füreinander einstehen sollten, um den Schwächeren zu helfen – das sind die Tiere, die wir lieben und brauchen.
+  <p>
+Heute bin ich älter, reifer, und habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern trotz allem weiterzugehen.  
+Twitch ist für mich der Ort, an dem ich Musik, Gaming und Emotion vereine.  
+Das „Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.  
+Wo Leidenschaft auf EDM trifft, und Gefühle uns menschlich machen – da bin ich zuhause. 💜
   </p>
 
   <a href="index.html" class="back">← Zurück zur Startseite</a>
 </div>
+
+<script>
+/* Waves Hintergrund */
+const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
+let w,h,t=0,ampScale=0.9;const parts=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<90;i++)parts.push(new P());
+function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
+function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
+</script>
 </body>
 </html>
