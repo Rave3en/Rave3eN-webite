@@ -122,10 +122,6 @@ header .live-title{
   font-weight:500;
   text-shadow:0 0 6px rgba(155,92,255,0.3);
 }
-#liveStatus span{
-  font-weight:700;
-  margin-right:8px;
-}
 
 /* SPOTIFY */
 .playlist-box{
@@ -170,12 +166,15 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     </nav>
 
     <!-- Twitch Player -->
-    <div id="twitchPlayer"></div>
+    <iframe 
+      src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true"
+      allowfullscreen>
+    </iframe>
 
     <!-- Aktuelles Box -->
     <div class="news-box">
       <h2>Aktuelles</h2>
-      <p id="liveStatus">Überprüfe Twitch-Status...</p>
+      <p>Daniel ist leider krank 🤒, aber er kommt gestärkt zurück 💪💜 — bleibt dran, bald geht’s wieder weiter mit EDM & Gaming!</p>
     </div>
 
     <!-- Spotify Playlist -->
@@ -188,64 +187,8 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </div>
 
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
 <script>
-/* TWITCH PLAYER + LAUTSTÄRKE NUR BEI LIVE */
-let twitchPlayer;
-const clientId = "twr34f7aqy7vyjpaw3e00geot9a8ft";
-const username = "rave3en";
-const statusEl = document.getElementById("liveStatus");
-
-function createPlayer(isLive){
-  if(twitchPlayer){twitchPlayer.destroy();}
-  twitchPlayer = new Twitch.Player("twitchPlayer", {
-    channel: "Rave3eN",
-    parent: ["rave3en.github.io"],
-    width: "100%",
-    height: 420
-  });
-  twitchPlayer.addEventListener(Twitch.Player.READY, () => {
-    twitchPlayer.setMuted(!isLive);
-    if(isLive) twitchPlayer.setVolume(0.1);
-  });
-}
-
-/* LIVE STATUS CHECK */
-async function checkLiveStatus() {
-  try {
-    const resUser = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
-      headers: { "Client-ID": clientId }
-    });
-    const userData = await resUser.json();
-    const userId = userData.data[0]?.id;
-    if (!userId) {
-      statusEl.innerHTML = "Fehler: Benutzer nicht gefunden.";
-      return;
-    }
-
-    const resStream = await fetch(`https://api.twitch.tv/helix/streams?user_id=${userId}`, {
-      headers: { "Client-ID": clientId }
-    });
-    const streamData = await resStream.json();
-    const isLive = streamData.data && streamData.data.length > 0;
-
-    if (isLive) {
-      statusEl.innerHTML = `<span style="color:#00ff88;">🟢</span> Daniel ist jetzt <strong>LIVE</strong> auf Twitch!<br><a href="https://twitch.tv/${username}" target="_blank" style="color:#00b4ff;text-decoration:none;">Jetzt einschalten 🎧</a>`;
-    } else {
-      statusEl.innerHTML = `<span style="color:#ff4d6d;">🔴</span> Daniel ist aktuell offline.<br><small>Bald wieder live mit EDM & Gaming 💜</small>`;
-    }
-
-    createPlayer(isLive);
-  } catch (err) {
-    statusEl.innerText = "Status konnte nicht geladen werden.";
-    console.error(err);
-  }
-}
-
-checkLiveStatus();
-setInterval(checkLiveStatus, 180000);
-
-/* HINTERGRUND */
+/* HINTERGRUND: Waves */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
