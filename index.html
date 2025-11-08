@@ -96,7 +96,7 @@ header .live-title{
 /* TWITCH PLAYER */
 #twitchPlayer{
   width:100%;
-  height:520px; /* Größerer Player */
+  height:520px;
   border:none;
   border-radius:15px;
   box-shadow:0 0 35px rgba(0,180,255,0.6), 0 0 55px rgba(155,92,255,0.4);
@@ -172,11 +172,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     </nav>
 
     <!-- Twitch Player -->
-    <iframe 
-      id="twitchPlayer"
-      src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true"
-      allowfullscreen>
-    </iframe>
+    <iframe id="twitchPlayer" allowfullscreen></iframe>
 
     <!-- Aktuelles Box -->
     <div class="news-box">
@@ -195,7 +191,13 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </div>
 
 <script>
-/* Lade Text aus status.txt, mit Fallback */
+/* Dynamischer Twitch-Parent (funktioniert auf www.rave3en.de & rave3en.de) */
+const hostname = window.location.hostname.replace(/^www\./, '');
+const twitchParent = encodeURIComponent(hostname);
+const twitchPlayer = document.getElementById('twitchPlayer');
+twitchPlayer.src = `https://player.twitch.tv/?channel=Rave3eN&parent=${twitchParent}&parent=www.${twitchParent}&muted=true`;
+
+/* Lade Text aus status.txt */
 fetch('status.txt')
   .then(res => res.text())
   .then(text => {
