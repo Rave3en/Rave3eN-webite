@@ -115,6 +115,26 @@ h1{
   100% { text-shadow:0 0 15px rgba(155,92,255,0.5), 0 0 25px rgba(0,210,255,0.4); }
 }
 
+/* Zurück-Button */
+a.back-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:10px 26px;
+  font-weight:700;
+  font-size:1.1rem;
+  color:#fff;
+  text-decoration:none;
+  border:2px solid rgba(155,92,255,0.6);
+  border-radius:10px;
+  transition:0.3s ease;
+  box-shadow:0 0 10px rgba(155,92,255,0.4);
+}
+a.back-btn:hover{
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
+  color:#fff;
+  box-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.6);
+}
+
 /* Canvas-Hintergrund */
 canvas#waves{
   position:fixed;
@@ -122,7 +142,7 @@ canvas#waves{
   left:0;
   width:100%;
   height:100%;
-  z-index:-1; /* nach hinten! */
+  z-index:-1;
 }
 </style>
 </head>
@@ -156,16 +176,30 @@ canvas#waves{
     <a href="ravecamp2024.html" class="btn">→ Rave Camp 2024 ansehen</a>
   </section>
 
+  <a href="index.html" class="back-btn">← Zurück zur Startseite</a>
+
 </main>
 
 <script>
-// Waves Background Animation
+// Waves Background Animation (tiefschwarz)
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+
+class P{
+  constructor(){this.x=Math.random()*w;this.y=Math.random()*h;
+  this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;
+  this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
+  u(){this.x+=this.vx;this.y+=this.vy;
+  if(this.x<0)this.x=w;if(this.x>w)this.x=0;
+  if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
+  d(){ctx.beginPath();ctx.globalAlpha=this.a;
+  ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+  ctx.fill();ctx.globalAlpha=1;}
+}
 for(let i=0;i<80;i++)parts.push(new P());
+
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
   for(let x=0;x<w;x++){
@@ -174,17 +208,17 @@ function wave(c,y,a,f,s,o){
   }
   ctx.strokeStyle=c;
   ctx.lineWidth=2;
-  ctx.shadowBlur=20;
+  ctx.shadowBlur=25;
   ctx.shadowColor=c;
   ctx.stroke();
 }
+
 function anim(){
-  // leicht transparentes Schwarz, damit Inhalt sichtbar bleibt
-  ctx.fillStyle='rgba(0,0,0,0.5)';
+  ctx.fillStyle='rgba(0,0,0,1)';
   ctx.fillRect(0,0,w,h);
-  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
-  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
-  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
+  wave('rgba(90,120,255,0.55)',h*0.3,35,0.008,0.018,0);
+  wave('rgba(155,92,255,0.85)',h*0.55,25,0.01,0.022,2.5);
+  wave('rgba(0,255,255,0.6)',h*0.75,18,0.013,0.026,5.0);
   parts.forEach(p=>{p.u();p.d();});
   t+=0.02;
   requestAnimationFrame(anim);
