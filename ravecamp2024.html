@@ -44,6 +44,7 @@ header .logo span{
   animation:gradientFlow 6s linear infinite;
 }
 @keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
 main{
   margin-top:120px;
   text-align:center;
@@ -67,16 +68,15 @@ h1{
   margin:50px auto;
   display:flex;
   flex-direction:column;
-  gap:40px;
+  gap:35px;
   align-items:center;
 }
 .gallery img{
-  max-width:100%;
-  width:95%;
+  width:80%;
   height:auto;
   border-radius:18px;
   object-fit:contain;
-  box-shadow:0 0 45px rgba(155,92,255,0.5),0 0 90px rgba(0,210,255,0.3);
+  box-shadow:0 0 30px rgba(155,92,255,0.4),0 0 60px rgba(0,210,255,0.3);
   opacity:0;
   transform:translateY(50px) scale(1.05);
   transition:1s ease;
@@ -84,6 +84,10 @@ h1{
 .gallery img.visible{
   opacity:1;
   transform:translateY(0) scale(1);
+}
+.gallery img:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 45px rgba(155,92,255,0.8),0 0 80px rgba(0,210,255,0.6);
 }
 a.back{
   display:inline-block;
