@@ -57,33 +57,39 @@ header .logo span{
   text-shadow:0 0 8px var(--neon2);
   letter-spacing:1px;
 }
-header nav{
+
+/* ---------- Menü über dem Player ---------- */
+.top-nav{
+  position:relative;
+  margin-top:100px;
   display:flex;
-  gap:25px;
+  justify-content:center;
+  gap:40px;
+  z-index:2;
 }
-header nav a{
+.top-nav a{
   color:white;
   text-decoration:none;
   font-weight:600;
-  font-size:1rem;
+  font-size:1.1rem;
   transition:color .3s,text-shadow .3s;
 }
-header nav a:hover{
+.top-nav a:hover{
   color:var(--neon1);
   text-shadow:0 0 8px var(--neon1);
 }
 
-/* ---------- Layout ---------- */
+/* ---------- Hauptinhalt ---------- */
 .container{
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-start;
   height:100vh;
   gap:50px;
   position:relative;
   z-index:1;
   padding:20px;
-  margin-top:80px;
+  margin-top:40px;
 }
 
 /* ---------- Twitch Box ---------- */
@@ -130,31 +136,12 @@ header nav a:hover{
   flex-direction:column;
   align-items:center;
   gap:35px;
+  margin-top:140px;
 }
-nav.side{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
-}
-nav.side a{
-  color:white;
-  text-decoration:none;
-  font-size:1.1rem;
-  font-weight:600;
-  transition:color .3s,text-shadow .3s;
-}
-nav.side a:hover{
-  color:var(--neon1);
-  text-shadow:0 0 8px var(--neon1);
-}
-
-/* ---------- Social Links ---------- */
 .socials{
   display:flex;
   flex-direction:column;
   gap:12px;
-  margin-top:20px;
 }
 .socials a{
   color:var(--neon2);
@@ -186,12 +173,14 @@ canvas#particles{
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="#events">Events</a>
-  </nav>
 </header>
+
+<!-- Menü über Player -->
+<div class="top-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Me</a>
+  <a href="#events">Events</a>
+</div>
 
 <div class="container">
   <div class="player-box">
@@ -204,12 +193,6 @@ canvas#particles{
   </div>
 
   <div class="sidebar">
-    <nav class="side">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="#events">Events</a>
-    </nav>
-
     <div class="socials">
       <a href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
       <a href="https://www.tiktok.com/@rave3en" target="_blank">TikTok</a>
@@ -220,10 +203,10 @@ canvas#particles{
 </div>
 
 <script>
-// ---------- Partikel Hintergrund ----------
+// ---------- Sanfter Partikel Hintergrund ----------
 const canvas=document.getElementById('particles');
 const ctx=canvas.getContext('2d');
-let particlesArray=[],hue=0;
+let particlesArray=[],hue=180;
 
 function resizeCanvas(){
   canvas.width=window.innerWidth;
@@ -234,13 +217,17 @@ resizeCanvas();
 
 class Particle{
   constructor(x,y,size,speedX,speedY,color){
-    this.x=x;this.y=y;this.size=size;
-    this.speedX=speedX;this.speedY=speedY;this.color=color;
+    this.x=x;
+    this.y=y;
+    this.size=size;
+    this.speedX=speedX;
+    this.speedY=speedY;
+    this.color=color;
   }
   update(){
-    this.x+=this.speedX;
-    this.y+=this.speedY;
-    if(this.size>0.15)this.size-=0.015;
+    this.x+=this.speedX*0.2; // langsamer
+    this.y+=this.speedY*0.2; // langsamer
+    if(this.size>0.15)this.size-=0.005; // sanfteres Ausblenden
   }
   draw(){
     ctx.fillStyle=this.color;
@@ -252,20 +239,24 @@ class Particle{
 function handleParticles(){
   for(let i=0;i<particlesArray.length;i++){
     const p=particlesArray[i];
-    p.update();p.draw();
-    if(p.size<=0.15){particlesArray.splice(i,1);i--;}
+    p.update();
+    p.draw();
+    if(p.size<=0.15){
+      particlesArray.splice(i,1);
+      i--;
+    }
   }
 }
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  hue+=0.6;
-  for(let i=0;i<3;i++){
+  hue+=0.2; // sanfter Farbverlauf
+  for(let i=0;i<1.5;i++){ // weniger Partikel pro Frame
     particlesArray.push(new Particle(
       Math.random()*canvas.width,
       Math.random()*canvas.height,
-      Math.random()*1.5+0.5,
-      (Math.random()-0.5)*0.5,
-      (Math.random()-0.5)*0.5,
+      Math.random()*2+0.5,
+      (Math.random()-0.5),
+      (Math.random()-0.5),
       'hsl('+hue+',100%,60%)'
     ));
   }
