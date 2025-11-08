@@ -241,7 +241,7 @@ footer{
 
   <section class="aktuelles">
     <h2>Aktuelles</h2>
-    <p>Daniel ist aktuell krank, aber er kommt stärker zurück 💜</p>
+    <p id="statusText">Lade aktuellen Status ...</p>
   </section>
 
   <section class="spotify-box">
@@ -281,6 +281,20 @@ function anim(){
   requestAnimationFrame(anim);
 }
 anim();
+
+/* STATUS LADEN */
+async function loadStatus(){
+  try{
+    const res = await fetch('status.txt?cache=' + Date.now());
+    if(!res.ok) throw new Error("Kein Status gefunden");
+    const text = await res.text();
+    document.getElementById('statusText').textContent = text.trim();
+  }catch(e){
+    document.getElementById('statusText').textContent = "Status konnte nicht geladen werden.";
+  }
+}
+loadStatus();
+setInterval(loadStatus, 30000); // alle 30 Sekunden neu laden
 </script>
 </body>
 </html>
