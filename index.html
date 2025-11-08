@@ -180,6 +180,7 @@ iframe{
 }
 .aktuelles p{
   color:#dbe4f5;
+  transition:opacity 0.6s ease;
 }
 
 /* SPOTIFY */
@@ -207,6 +208,13 @@ footer{
   padding:25px 0 40px;
   text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.4);
   animation:footerPulse 4s ease-in-out infinite alternate;
+}
+#visitorCount{
+  display:block;
+  margin-top:8px;
+  font-size:0.85rem;
+  color:#9b5cff;
+  text-shadow:0 0 10px rgba(155,92,255,0.8);
 }
 </style>
 </head>
@@ -252,25 +260,10 @@ footer{
 
 <footer>
   Rave3eN © 2025 — Music. Emotion. Energy.
-  <br>
-  <span id="visitorCount" style="font-size:0.85rem; color:#9b5cff; text-shadow:0 0 10px rgba(155,92,255,0.7);">
-    Besucher: ...
-  </span>
+  <span id="visitorCount">Besucher: ...</span>
 </footer>
 
 <script>
-/* Besucherzähler (countapi.xyz) */
-async function updateVisitorCount(){
-  try{
-    const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
-    const data = await res.json();
-    document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
-  }catch(e){
-    document.getElementById('visitorCount').textContent = "Besucher: —";
-  }
-}
-updateVisitorCount();
-</script>
 /* Waves Hintergrund */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
@@ -304,14 +297,30 @@ async function loadStatus(){
     const res = await fetch('status.txt?cache=' + Date.now());
     if(!res.ok) throw new Error("Kein Status gefunden");
     const text = await res.text();
-    document.getElementById('statusText').textContent = text.trim();
+    const el = document.getElementById('statusText');
+    el.style.opacity = 0;
+    setTimeout(()=>{
+      el.textContent = text.trim();
+      el.style.opacity = 1;
+    },300);
   }catch(e){
     document.getElementById('statusText').textContent = "Status konnte nicht geladen werden.";
   }
 }
 loadStatus();
 setInterval(loadStatus, 30000); // alle 30 Sekunden neu laden
+
+/* Besucherzähler */
+async function updateVisitorCount(){
+  try{
+    const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
+    const data = await res.json();
+    document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
+  }catch(e){
+    document.getElementById('visitorCount').textContent = "Besucher: —";
+  }
+}
+updateVisitorCount();
 </script>
 </body>
 </html>
-
