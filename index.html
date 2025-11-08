@@ -314,9 +314,11 @@ setInterval(loadStatus,30000);
 /* BESUCHERZÄHLER */
 async function updateVisitorCount(){
   try{
+    const startwert = 231; // hier Startwert anpassen
     const res = await fetch('https://api.countapi.xyz/hit/rave3en.de/visits');
     const data = await res.json();
-    document.getElementById('visitorCount').textContent = "Besucher: " + data.value.toLocaleString('de-DE');
+    document.getElementById('visitorCount').textContent =
+      "Besucher: " + (data.value + startwert).toLocaleString('de-DE');
   }catch(e){
     document.getElementById('visitorCount').textContent = "Besucher: —";
   }
@@ -325,3 +327,4 @@ updateVisitorCount();
 </script>
 </body>
 </html>
+
