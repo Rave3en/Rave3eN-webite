@@ -67,30 +67,56 @@ h1{
   margin-bottom:50px;
 }
 
-/* Bildgalerie */
-.gallery{
+/* Galerie oben */
+.gallery-row{
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
   gap:30px;
+  flex-wrap:wrap;
+  margin-bottom:60px;
 }
-.gallery img{
-  width:480px;
+.gallery-row img{
+  width:400px;
   max-width:90vw;
-  height:auto;
   border-radius:12px;
   box-shadow:0 0 30px rgba(155,92,255,0.3);
   transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
   opacity:0;
   transform:translateY(30px);
 }
-.gallery img.visible{
+.gallery-row img.visible{
   opacity:1;
   transform:translateY(0);
   box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,210,255,0.4);
 }
-.gallery img:hover{
+.gallery-row img:hover{
   transform:scale(1.03);
+  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,210,255,0.6);
+}
+
+/* Galerie unten (einzelne große Bilder) */
+.gallery-column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:40px;
+}
+.gallery-column img{
+  width:700px;
+  max-width:95vw;
+  border-radius:12px;
+  box-shadow:0 0 30px rgba(155,92,255,0.3);
+  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
+  opacity:0;
+  transform:translateY(30px);
+}
+.gallery-column img.visible{
+  opacity:1;
+  transform:translateY(0);
+  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,210,255,0.4);
+}
+.gallery-column img:hover{
+  transform:scale(1.02);
   box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,210,255,0.6);
 }
 
@@ -142,10 +168,15 @@ canvas#waves{
 <main>
   <h1>Rave Camp 2024</h1>
 
-  <div class="gallery">
+  <!-- Erste Reihe: 3 nebeneinander -->
+  <div class="gallery-row">
     <img src="camp1.jpg" alt="Rave Camp Bild 1">
     <img src="camp2.jpg" alt="Rave Camp Bild 2">
     <img src="camp3.jpg" alt="Rave Camp Bild 3">
+  </div>
+
+  <!-- Untere Reihe: größere, einzeln angeordnete Bilder -->
+  <div class="gallery-column">
     <img src="camp4.jpg" alt="Rave Camp Bild 4">
     <img src="camp5.jpg" alt="Rave Camp Bild 5">
     <img src="camp6.jpg" alt="Rave Camp Bild 6">
@@ -157,7 +188,7 @@ canvas#waves{
 
 <script>
 // Smooth Fade-In der Bilder beim Scrollen
-const imgs=document.querySelectorAll('.gallery img');
+const imgs=document.querySelectorAll('img');
 function reveal(){imgs.forEach(img=>{const rect=img.getBoundingClientRect();if(rect.top<window.innerHeight-80){img.classList.add('visible');}});}
 window.addEventListener('scroll',reveal);
 window.addEventListener('load',reveal);
