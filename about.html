@@ -4,120 +4,227 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Me — Rave3eN</title>
-<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Gaming, Leidenschaft und die Geschichte dahinter." />
-
-<!-- HTTPS-Redirect -->
-<script>
-  if (location.protocol !== 'https:') {
-    location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
-  }
-</script>
+<meta name="description" content="Über Rave3eN — EDM x Gaming | Twitch Creator" />
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  font-family:Rajdhani,system-ui,Segoe UI,Roboto,Arial;
-  background:#060607;
-  color:#e9eef8;
+:root {
+  --bg:#060607;
+  --neon1:#9b5cff;
+  --neon2:#00d2ff;
+  --glass:rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html,body{
   margin:0;
-  padding:0;
-}
-.container{
-  max-width:900px;
-  margin:40px auto;
-  padding:24px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  font-family:'Rajdhani',system-ui;
+  background:radial-gradient(circle at top, #0a0a0f 0%, #050507 80%);
+  color:white;
+  height:100%;
+  overflow-x:hidden;
 }
 
-/* Überschrift mit Neon-Glow */
-h1{
-  text-align:center;
-  font-family:Orbitron;
-  font-size:2.5rem;
-  color:#b784ff;
-  text-shadow:0 0 15px rgba(155,92,255,0.6),0 0 30px rgba(0,210,255,0.3);
-  margin-bottom:24px;
-  animation:glowPulse 3s ease-in-out infinite alternate;
-}
-@keyframes glowPulse{
-  from{text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 20px rgba(0,210,255,0.2);}
-  to{text-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.5);}
-}
-
-.profile{
+/* Header */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
   display:flex;
-  flex-direction:column;
   align-items:center;
+  justify-content:center;
+  padding:15px 30px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+.logo-box{
+  position:absolute;
+  left:30px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo-box img{
+  height:40px;
+  width:auto;
+  filter:drop-shadow(0 0 8px var(--neon2));
+}
+.logo-box h1{
+  font-family:'Orbitron';
+  font-size:1.4rem;
+  color:var(--neon2);
+  text-shadow:0 0 8px var(--neon2);
+  margin:0;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:color 0.3s, text-shadow 0.3s;
+}
+nav a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 6px var(--neon1);
+}
+
+/* Inhalt */
+main{
+  padding-top:120px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding-bottom:100px;
+}
+
+.about-box{
+  width:90%;
+  max-width:800px;
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:40px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,210,255,0.2),
+             0 0 40px rgba(155,92,255,0.15);
+}
+
+.about-box h2{
+  font-family:'Orbitron';
+  color:var(--neon2);
+  text-shadow:0 0 8px var(--neon2);
   margin-bottom:20px;
 }
-.profile img{
-  width:180px;
-  height:180px;
-  object-fit:cover;
-  border-radius:50%;
-  border:3px solid rgba(155,92,255,0.6);
-  box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
-}
-p{
+
+.about-box p{
+  font-size:1.1rem;
   line-height:1.6;
-  color:#cbd8e6;
-  white-space:pre-line;
+  color:#ccc;
 }
-p.intro{
-  font-size:1.25rem;
-  color:#fff;
-  text-align:center;
-  font-weight:600;
-  margin-bottom:18px;
-  text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.2);
+
+.socials{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
 }
-a.back{
-  display:inline-block;
-  margin-top:20px;
-  color:#00d2ff;
+.socials a{
+  color:var(--neon1);
   text-decoration:none;
   font-weight:600;
+  transition:text-shadow 0.3s;
 }
-a.back:hover{
-  text-decoration:underline;
+.socials a:hover{
+  text-shadow:0 0 8px var(--neon2);
+}
+
+/* Partikel Hintergrund */
+#particles{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
 }
 </style>
 </head>
-
 <body>
-<div class="container">
-  <h1>About Me</h1>
-  <div class="profile">
-    <img src="./me.jpg" alt="Daniel Hein aka Rave3eN">
+
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="logo-box">
+    <img src="logo.png" alt="Rave3eN Logo">
+    <h1>Rave3eN</h1>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="#events">Events</a>
+  </nav>
+</header>
 
-  <p class="intro">
-    Hey und herzlich willkommen auf meiner eigenen Website.
-  </p>
+<main>
+  <div class="about-box">
+    <h2>Hey, ich bin Rave3eN 👋</h2>
+    <p>
+      Ich bin Daniel aus Potsdam und streame leidenschaftlich EDM & Gaming auf Twitch.
+      Mein Content verbindet elektronische Musik, Emotionen und intensives Gameplay —
+      alles mit dem Ziel, gute Vibes und echte Energie zu verbreiten 💜
+    </p>
+    <p>
+      Nach über 6000 Stunden in Escape from Tarkov hat mich aktuell Arena Breakout
+      komplett gepackt — PvP, Spannung und das perfekte Adrenalin-Level.
+    </p>
+    <div class="socials">
+      <a href="https://www.twitch.tv/Rave3eN" target="_blank">Twitch</a>
+      <a href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
+      <a href="https://www.tiktok.com/@rave3en" target="_blank">TikTok</a>
+      <a href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
+    </div>
+  </div>
+</main>
 
-  <p>
-Ich bin Daniel – geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.
-Das Leben hat vor meiner Geschichte keinen Halt gemacht.
+<script>
+// Partikel Hintergrund
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particlesArray=[],hue=0;
 
-In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt. Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
+function resizeCanvas(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
 
-Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Somit ging es auch bergab, was die schulische Leistung anging. Ich habe nur die 6. Klasse bestanden, ab der 7. Klasse hatte ich meinen Tiefpunkt. Mit der 8. Klasse hatte ich meine 10 Schuljahre rum und ich stand da mit nichts. Zweimal durch die 7. Klasse gefallen und automatisch aufgerückt in die 8. Klasse und auch nicht bestanden. Ich bin zum Glück wach geworden und habe alles nach und nach aufgearbeitet, was in meiner Vergangenheit schief gelaufen ist. Nun stehe ich an diesem Punkt, ich habe die 10. Klasse nachgeholt und mit dem Abitur angefangen, 11. Klasse bestanden, ab in die 12. und ich dachte mir so: Für was mache ich das jetzt? Habe dann im Halbjahr der 12. Klasse das Abitur abgebrochen, weil ich gemerkt habe, dass ich der praktische Typ bin und nicht der Theorie-Typ. Ich wollte Musik studieren oder Psychologie. Das war mein Ziel. Nur das Leben hatte mir gezeigt, dass es auch wichtig ist, ehrlich zu sich selbst zu sein.
+class Particle{
+  constructor(x,y,size,speedX,speedY,color){
+    this.x=x;this.y=y;this.size=size;this.speedX=speedX;this.speedY=speedY;this.color=color;
+  }
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY;
+    if(this.size>0.15)this.size-=0.015;
+  }
+  draw(){
+    ctx.fillStyle=this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+function handleParticles(){
+  for(let i=0;i<particlesArray.length;i++){
+    const p=particlesArray[i];
+    p.update();
+    p.draw();
+    if(p.size<=0.15){
+      particlesArray.splice(i,1);
+      i--;
+    }
+  }
+}
 
-Tischtennis wurde mein Rettungsanker. Hätte ich diesen Sport nicht gehabt, wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe. Doch irgendetwas – oder irgendwer – wollte, dass ich weitermache.
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hue+=0.6;
+  for(let i=0;i<3;i++){
+    particlesArray.push(new Particle(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*1.5+0.5,(Math.random()-0.5)*0.5,(Math.random()-0.5)*0.5,'hsl('+hue+',100%,60%)'));
+  }
+  handleParticles();
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 
-Durch harte Arbeit und unzählige Überstunden habe ich mir meinen Traum erfüllt: überregional Tischtennis zu spielen, in der Verbandsoberliga. Es ist ein seltsames Gefühl, besser als der Durchschnitt zu sein – aber zu wissen, dass es für ganz oben nicht reicht.
-
-Diese Erfahrung zieht sich durch mein Leben – ob im Tischtennis, in Counter-Strike 1.5 oder im Gesang. Doch genau das hat mich zu dem gemacht, der ich heute bin: jemand, der trotz Rückschlägen nicht aufgibt, sondern seinen eigenen Weg geht. Auch durch Counterstrike konnte ich mich zu den besten in Deutschland zählen. Evtl kennt ja wer noch e2sports. Ich war im Nachwuchsteam und durfte mit Blizzard, Johnny R., Roman und Co. spielen. Dennoch sollte es nicht so sein und es hatte in dieser Zeit nur für die erste Division der EAS gereicht. Dennoch kann ich darauf stolz sein.
-
-Jetzt bin ich bei Twitch, älter, reifer und habe die Vergangenheit so gut es geht aufgearbeitet. Ich weiß nun, was für mich wichtig ist: Die Welt, in der wir leben, braucht Hilfe – und vor allem auch Tiere, die nicht mit uns kommunizieren können. Das Rave steht für Liebe, Unsinn und vor allem Hilfsbereitschaft. Wo Leidenschaft auf EDM trifft, Gefühle das sind, was uns menschlich macht, und wir füreinander einstehen sollten, um den Schwächeren zu helfen – das sind die Tiere, die wir lieben und brauchen.
-  </p>
-
-  <a href="index.html" class="back">← Zurück zur Startseite</a>
-</div>
 </body>
 </html>
-
-
