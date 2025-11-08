@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8" />
@@ -58,12 +58,20 @@ h1{
   margin-bottom:40px;
   text-shadow:0 0 15px rgba(155,92,255,0.6);
 }
+
+/* Event Container nebeneinander */
+.events-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:40px;
+}
 .event-card{
-  max-width:900px;
-  margin:0 auto 80px;
+  flex:1 1 400px;
+  max-width:420px;
   background:rgba(255,255,255,0.03);
   border-radius:16px;
-  padding:30px;
+  padding:25px;
   box-shadow:0 0 30px rgba(155,92,255,0.3),0 0 60px rgba(0,210,255,0.2);
   transition:0.3s ease;
 }
@@ -74,27 +82,28 @@ h1{
 .event-card img{
   width:100%;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-bottom:15px;
   box-shadow:0 0 30px rgba(155,92,255,0.3);
 }
 .event-card h2{
   font-family:'Orbitron';
   color:var(--neon2);
-  font-size:1.8rem;
-  margin-bottom:12px;
+  font-size:1.5rem;
+  margin-bottom:8px;
 }
 .event-card p{
   color:#cfd8f6;
   line-height:1.6;
-  margin-bottom:25px;
+  margin-bottom:20px;
+  font-size:1rem;
 }
 
-/* Animierter Button */
+/* Buttons */
 .event-card a.btn{
   display:inline-block;
-  padding:12px 30px;
+  padding:10px 26px;
   font-weight:700;
-  font-size:1.1rem;
+  font-size:1rem;
   text-decoration:none;
   border-radius:8px;
   background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
@@ -118,7 +127,7 @@ h1{
 /* Zurück-Button */
 a.back-btn{
   display:inline-block;
-  margin-top:30px;
+  margin-top:50px;
   padding:10px 26px;
   font-weight:700;
   font-size:1.1rem;
@@ -165,65 +174,45 @@ canvas#waves{
 <main>
   <h1>Events</h1>
 
-  <section class="event-card">
-    <img src="event1.jpg" alt="Rave Camp 2024">
-    <h2>Rave Camp 2024</h2>
-    <p>
-      Ein Wochenende voller Beats, Licht und Emotionen.  
-      Wo Musik das Herz berührt und Menschen zu einer Familie werden.  
-      Erlebe die Highlights und magischen Momente des Rave Camp 2024. 💜
-    </p>
-    <a href="ravecamp2024.html" class="btn">→ Rave Camp 2024 ansehen</a>
-  </section>
+  <div class="events-grid">
+    <!-- Rave Camp 2024 -->
+    <section class="event-card">
+      <img src="event1.jpg" alt="Rave Camp 2024">
+      <h2>Rave Camp 2024</h2>
+      <p>
+        Drei Tage voller Beats, Licht und Emotionen.  
+        Wo Musik das Herz berührt und Menschen zu einer Familie werden.  
+        Erlebe die Highlights und magischen Momente des Rave Camp 2024. 💜
+      </p>
+      <a href="ravecamp2024.html" class="btn">→ Details ansehen</a>
+    </section>
+
+    <!-- Rave Drive 2025 -->
+    <section class="event-card">
+      <img src="event2.jpg" alt="Rave Drive 2025">
+      <h2>Rave Drive 2025</h2>
+      <p>
+        Das nächste Kapitel beginnt — schneller, lauter, emotionaler.  
+        Rave Drive 2025 bringt den Sound der Zukunft auf die Straße.  
+        Sei dabei, wenn die Energie wieder entfacht wird. ⚡
+      </p>
+      <a href="#" class="btn">→ Coming Soon</a>
+    </section>
+  </div>
 
   <a href="index.html" class="back-btn">← Zurück zur Startseite</a>
-
 </main>
 
 <script>
-// Waves Background Animation (tiefschwarz)
+// Waves Background Animation
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-
-class P{
-  constructor(){this.x=Math.random()*w;this.y=Math.random()*h;
-  this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;
-  this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-  u(){this.x+=this.vx;this.y+=this.vy;
-  if(this.x<0)this.x=w;if(this.x>w)this.x=0;
-  if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-  d(){ctx.beginPath();ctx.globalAlpha=this.a;
-  ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
-  ctx.fill();ctx.globalAlpha=1;}
-}
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
 for(let i=0;i<80;i++)parts.push(new P());
-
-function wave(c,y,a,f,s,o){
-  ctx.beginPath();
-  for(let x=0;x<w;x++){
-    const yy=y+Math.sin(x*f+t*s+o)*a;
-    ctx.lineTo(x,yy);
-  }
-  ctx.strokeStyle=c;
-  ctx.lineWidth=2;
-  ctx.shadowBlur=25;
-  ctx.shadowColor=c;
-  ctx.stroke();
-}
-
-function anim(){
-  ctx.fillStyle='rgba(0,0,0,1)';
-  ctx.fillRect(0,0,w,h);
-  wave('rgba(90,120,255,0.55)',h*0.3,35,0.008,0.018,0);
-  wave('rgba(155,92,255,0.85)',h*0.55,25,0.01,0.022,2.5);
-  wave('rgba(0,255,255,0.6)',h*0.75,18,0.013,0.026,5.0);
-  parts.forEach(p=>{p.u();p.d();});
-  t+=0.02;
-  requestAnimationFrame(anim);
-}
-anim();
+function wave(c,y,a,f,s,o){ctx.beginPath();for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=25;ctx.shadowColor=c;ctx.stroke();}
+function anim(){ctx.fillStyle='rgba(0,0,0,1)';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255,0.55)',h*0.3,35,0.008,0.018,0);wave('rgba(155,92,255,0.85)',h*0.55,25,0.01,0.022,2.5);wave('rgba(0,255,255,0.6)',h*0.75,18,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
 </script>
 </body>
 </html>
