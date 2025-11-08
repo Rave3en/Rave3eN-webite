@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Me — Rave3eN</title>
-<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Gaming × Leidenschaft × Emotion.">
+<meta name="description" content="Erfahre mehr über Rave3eN aka Daniel Hein. EDM × Emotion × Gaming – die Geschichte dahinter." />
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -39,19 +39,8 @@ header{
 header .logo{display:flex;align-items:center;gap:10px;}
 header .logo img{height:45px;filter:drop-shadow(0 0 10px var(--neon2));}
 header .logo span{font-family:'Orbitron';font-size:1.6rem;color:var(--neon2);text-shadow:0 0 8px var(--neon2);}
-header .live-title{
-  font-family:'Orbitron';
-  font-size:1.4rem;
-  color:var(--neon2);
-  text-shadow:0 0 14px var(--neon2),0 0 26px var(--neon1);
-  animation:liveGlow 3s ease-in-out infinite alternate;
-}
-@keyframes liveGlow{
-  from{text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1);}
-  to{text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1);}
-}
-.social-header{display:flex;gap:18px;}
-.social-header a{
+header .social-header{display:flex;gap:18px;}
+header .social-header a{
   width:42px;height:42px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.05);
@@ -59,77 +48,95 @@ header .live-title{
   box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);
   transition:.3s;
 }
-.social-header a:hover{
+header .social-header a:hover{
   color:var(--neon1);
   transform:scale(1.15);
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
 /* MAIN */
-.container{
+main{
   max-width:900px;
-  margin:140px auto 60px;
+  margin:140px auto 80px;
+  padding:30px;
   background:rgba(255,255,255,0.05);
   border-radius:20px;
-  padding:40px;
-  text-align:left;
   box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
-  backdrop-filter:blur(18px);
-  z-index:1;
+  backdrop-filter:blur(15px);
   position:relative;
-}
-h1{
-  text-align:center;
-  font-family:'Orbitron';
-  color:var(--neon2);
-  font-size:2.2rem;
-  text-shadow:0 0 20px var(--neon1),0 0 30px var(--neon3);
-  animation:glowPulse 3s ease-in-out infinite alternate;
-}
-@keyframes glowPulse {
-  from{text-shadow:0 0 10px var(--neon2),0 0 20px var(--neon1);}
-  to{text-shadow:0 0 25px var(--neon1),0 0 45px var(--neon3);}
+  z-index:1;
 }
 
+h1{
+  font-family:'Orbitron';
+  text-align:center;
+  font-size:2.3rem;
+  color:var(--neon1);
+  margin-bottom:25px;
+  text-shadow:0 0 15px rgba(155,92,255,0.6),0 0 30px rgba(0,210,255,0.4);
+  animation:glowPulse 3s ease-in-out infinite alternate;
+}
+@keyframes glowPulse{
+  from{text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 20px rgba(0,210,255,0.2);}
+  to{text-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.5);}
+}
+
+/* PROFILE */
 .profile{
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin:30px 0;
+  margin-bottom:25px;
 }
 .profile img{
-  width:220px;
-  height:220px;
-  object-fit:cover;
+  width:200px;
+  height:200px;
   border-radius:50%;
   border:3px solid rgba(155,92,255,0.6);
-  box-shadow:0 0 30px rgba(155,92,255,0.7),0 0 50px rgba(0,210,255,0.5);
-  margin-bottom:20px;
+  box-shadow:0 0 20px rgba(155,92,255,0.6),0 0 40px rgba(0,210,255,0.4);
+  object-fit:cover;
+  animation:float 5s ease-in-out infinite alternate;
+}
+@keyframes float {
+  from { transform:translateY(0px); }
+  to { transform:translateY(-10px); }
 }
 
 p{
   line-height:1.7;
-  color:#cbd8e6;
+  color:#dbe4f5;
   margin-bottom:16px;
+  font-size:1.05rem;
 }
 p.intro{
-  text-align:center;
-  font-size:1.2rem;
+  font-size:1.25rem;
   color:#fff;
-  text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.2);
-  margin-bottom:25px;
+  text-align:center;
+  font-weight:600;
+  margin-bottom:20px;
+  text-shadow:0 0 10px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.3);
 }
 
+/* Link */
 a.back{
   display:inline-block;
   margin-top:25px;
   color:var(--neon2);
   text-decoration:none;
   font-weight:600;
+  text-align:center;
+  width:100%;
 }
-a.back:hover{text-decoration:underline;}
+a.back:hover{
+  color:var(--neon1);
+  text-decoration:underline;
+}
 
-canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+/* WAVES CANVAS */
+canvas#waves{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;
+}
 </style>
 </head>
 
@@ -141,7 +148,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     <img src="logo druck.png" alt="Rave3eN Logo">
     <span>Rave3eN</span>
   </div>
-  <div class="live-title">🎧 Live on Twitch</div>
+
   <div class="social-header">
     <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -150,50 +157,73 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   </div>
 </header>
 
-<div class="container">
+<main>
   <h1>About Me</h1>
 
   <div class="profile">
-    <img src="me.jpg" alt="Daniel Hein aka Rave3eN">
+    <img src="me.jpg" alt="Daniel aka Rave3eN">
   </div>
 
-<p class="intro">
-  Hey, ich bin Daniel – aka Rave3eN. Willkommen in meiner Welt aus EDM, Emotion und Gaming 🎧
-</p>
+  <p class="intro">
+    Hey, ich bin Daniel – aka Rave3eN. Willkommen in meiner Welt aus EDM, Emotion und Gaming 🎧
+  </p>
 
-<p>
-Geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.  
-Das Leben hat vor meiner Geschichte keinen Halt gemacht. In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt.  
-Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
-</p>
+  <p>
+    Geboren in Geltow, aufgewachsen zwischen Licht und Schatten – heute zuhause in Potsdam.  
+    Das Leben hat früh gezeigt, dass Glück nicht selbstverständlich ist.  
+    Nach außen schien alles perfekt, doch hinter der Fassade herrschten Lärm, Schmerz und Stille.  
+    Alkohol, Gewalt, Angst – Dinge, die man als Kind nicht verstehen sollte.  
+    Und doch prägen sie dich für immer.
+  </p>
 
-<p>
-Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht helfen konnten. Dadurch ging es auch schulisch bergab.  
-Ich bin zweimal durch die 7. Klasse gefallen und hatte zunächst keinen Abschluss.  
-Doch irgendwann bin ich wach geworden und habe alles aufgearbeitet, was in meiner Vergangenheit schieflief.
-</p>
+  <p>
+    Ich suchte nach Aufmerksamkeit, nach etwas, das sich nach „gesehen werden“ anfühlt.  
+    Doch ich suchte sie am falschen Ort – bei Menschen, die mir nicht guttaten.  
+    Drogen, Diebstahl, falsche Freunde.  
+    Ich wollte Nähe, bekam aber nur Chaos.  
+    Zweimal durch die 7. Klasse gefallen, kein Abschluss, kein Plan – nur Leere.  
+    Doch irgendwann kam dieser Moment.  
+    Dieser Punkt, an dem man begreift, dass es nur einen Weg gibt: weiter.
+  </p>
 
-<p>
-Ich habe die 10. Klasse nachgeholt, mit dem Abitur begonnen und dann gemerkt, dass ich eher der praktische Typ bin.  
-Musik und Psychologie waren immer meine Leidenschaft, aber das Leben hat mir gezeigt: Ehrlich zu sich selbst zu sein, ist der wahre Erfolg.
-</p>
+  <p>
+    Ich holte die 10. Klasse nach, begann das Abitur – und merkte, dass ich kein Theoretiker bin.  
+    Ich bin ein Macher, ein Fühler.  
+    Musik war immer meine Sprache.  
+    Psychologie mein Kompass, um Menschen und ihre Seelen besser zu verstehen.  
+    Das Leben hat mir gezeigt: Ehrlich zu sich selbst zu sein, ist kein Ziel – es ist eine Entscheidung, jeden Tag.
+  </p>
 
-<p>
-Tischtennis wurde mein Rettungsanker – ohne diesen Sport wäre ich vielleicht denselben dunklen Weg gegangen wie ein Freund, den ich verloren habe.  
-Durch harte Arbeit habe ich es geschafft, überregional in der Verbandsoberliga zu spielen.  
-Auch in Counter-Strike 1.5 gehörte ich zu den besten Nachwuchsspielern Deutschlands – bei e2sports mit Blizzard und Co.  
-Diese Erfahrungen haben mich geprägt.
-</p>
+  <p>
+    Tischtennis wurde mein Rettungsanker.  
+    Hätte ich diesen Sport nicht gefunden, wäre mein Weg vielleicht dunkel geendet – so wie der meines besten Freundes, der an Drogen und Verzweiflung zerbrach.  
+    Ich trainierte, kämpfte, biss mich durch – bis in die Verbandsoberliga.  
+    Ich war nie der Beste, aber ich war da.  
+    Und das hat mir das Leben gerettet.
+  </p>
 
-<p>
-Heute bin ich älter, reifer und habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern trotz allem weiterzugehen.  
-Twitch ist für mich der Ort, an dem ich Musik, Gaming und Emotion vereine.  
-„Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.  
-Wo Leidenschaft auf EDM trifft und Gefühle uns menschlich machen – da bin ich zuhause. 💜
-</p>
+  <p>
+    Auch im Gaming fand ich Zuflucht.  
+    In Counter-Strike 1.5 gehörte ich zu den besten Nachwuchsspielern Deutschlands.  
+    Bei e2sports durfte ich mit Legenden wie Blizzard, Johnny R. und Roman trainieren.  
+    Doch mein Weg stoppte abrupt – kein PC, kein Kontakt, kein Team mehr.  
+    Ich schaffte es trotzdem noch in die 1. Division der EAS.  
+    Manchmal frage ich mich, wie weit ich gekommen wäre, wenn das Leben nicht Pause gedrückt hätte.  
+    Aber vielleicht musste es so sein – damit ich heute verstehe, was wirklich zählt.
+  </p>
+
+  <p>
+    Heute bin ich älter, ruhiger, klarer.  
+    Ich habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern sie zu tragen, daraus zu wachsen und weiterzugehen.  
+    Twitch ist mein Zuhause geworden – ein Ort, an dem Musik, Gaming und Emotion zusammenfließen.  
+    „Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.  
+    Denn wo Leidenschaft auf EDM trifft und Gefühle das sind, was uns menschlich macht –  
+    da beginnt das, was ich lebe.  
+    Da beginnt Rave3eN. 💜
+  </p>
 
   <a href="index.html" class="back">← Zurück zur Startseite</a>
-</div>
+</main>
 
 <script>
 /* Waves Hintergrund */
@@ -208,4 +238,3 @@ function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255
 </script>
 </body>
 </html>
-
