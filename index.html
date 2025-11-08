@@ -46,8 +46,8 @@ header .live-title{
   animation:liveGlow 3s ease-in-out infinite alternate;
 }
 @keyframes liveGlow{
-  from{ text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1); }
-  to  { text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1); }
+  from{text-shadow:0 0 10px var(--neon2),0 0 18px var(--neon1);}
+  to{text-shadow:0 0 22px var(--neon2),0 0 36px var(--neon1);}
 }
 .social-header{display:flex;gap:18px;}
 .social-header a{
@@ -64,120 +64,53 @@ header .live-title{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* CONTAINER */
-.container{
-  display:flex;
-  justify-content:center;
-  margin-top:120px;
-  position:relative;
-  z-index:1;
-}
+/* CONTENT */
+.container{display:flex;justify-content:center;margin-top:120px;position:relative;z-index:1;}
 .player-box{
-  width:750px;
-  max-width:90vw;
+  width:750px;max-width:90vw;
   background:rgba(255,255,255,0.06);
   border-radius:20px;
   backdrop-filter:blur(18px);
   padding:20px;
   text-align:center;
-  box-shadow:0 0 60px rgba(0,180,255,.45),
-             0 0 90px rgba(155,92,255,.35);
+  box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
 }
-.top-nav{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  margin-bottom:22px;
-}
+.top-nav{display:flex;justify-content:center;gap:25px;margin-bottom:22px;}
 .top-nav a{
-  min-width:90px;height:46px;
-  padding:0 16px;
+  min-width:90px;height:46px;padding:0 16px;
   border-radius:999px;
   display:flex;align-items:center;justify-content:center;
   background:#000;
   color:var(--neon2);
   border:2px solid rgba(0,180,255,0.4);
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:
-    0 0 18px rgba(155,92,255,0.65),
-    inset 0 0 10px rgba(0,180,255,0.3);
+  text-decoration:none;font-weight:600;
+  box-shadow:0 0 18px rgba(155,92,255,0.65),inset 0 0 10px rgba(0,180,255,0.3);
   transition:.3s;
 }
 .top-nav a:hover{
   color:var(--neon1);
   transform:translateY(-1px) scale(1.06);
   border-color:var(--neon1);
-  box-shadow:
-    0 0 26px rgba(155,92,255,0.9),
-    inset 0 0 12px rgba(0,180,255,0.7);
+  box-shadow:0 0 26px rgba(155,92,255,0.9),inset 0 0 12px rgba(0,180,255,0.7);
 }
 .player-box iframe{
-  border:0;
-  width:100%;
-  height:420px;
-  border-radius:15px;
+  border:0;width:100%;height:420px;border-radius:15px;
   box-shadow:0 0 24px rgba(0,0,0,0.9);
 }
 
-/* PLAYLIST BOX – Glow + Refraktion */
+/* SPOTIFY CLEAN */
 .playlist-box{
-  position:relative;
-  border-radius:12px;
+  border-radius:14px;
   margin-top:18px;
-  animation:fadeIn 2s ease-out forwards;
-}
-.playlist-box::before{
-  content:'';
-  position:absolute;
-  top:-4px;left:-4px;right:-4px;bottom:-4px;
-  border-radius:16px;
-  background:linear-gradient(90deg,#00b4ff,#9b5cff,#00ffff,#00b4ff);
-  background-size:400% 400%;
-  animation:glowMove 14s ease infinite;
-  filter:blur(14px);
-  opacity:0.6;
-  z-index:0;
-}
-.playlist-box::after{
-  content:'';
-  position:absolute;
-  inset:-15%;
-  border-radius:22px;
-  background:
-    radial-gradient(circle at 15% 0%, rgba(255,255,255,0.25), transparent 55%),
-    radial-gradient(circle at 85% 120%, rgba(0,255,255,0.28), transparent 60%);
-  mix-blend-mode:screen;
-  opacity:0.45;
-  animation:refract 18s ease-in-out infinite alternate;
-  pointer-events:none;
-  z-index:0;
-}
-.playlist-box.playing::before,
-.playlist-box.playing::after{
-  opacity:0.85;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(10px);}
-  to  {opacity:1;transform:translateY(0);}
-}
-@keyframes glowMove{
-  0%  {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-@keyframes refract{
-  0%  {transform:translate3d(-6px,0,0) scale(1);}
-  50% {transform:translate3d(4px,-4px,0) scale(1.03);}
-  100%{transform:translate3d(-3px,2px,0) scale(1.01);}
+  overflow:hidden;
+  box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 .playlist-box iframe{
-  position:relative;
-  border-radius:12px;
-  z-index:1;
+  border:0;width:100%;height:152px;
+  border-radius:14px;
 }
 
-/* ADMIN BUTTON (nur für dich) */
+/* ADMIN BUTTON */
 #relogin{
   position:fixed;bottom:20px;right:20px;
   background:linear-gradient(90deg,var(--neon1),var(--neon2));
@@ -191,14 +124,7 @@ header .live-title{
   transition:all .3s;
 }
 #relogin:hover{opacity:1;transform:scale(1.05);}
-
-/* CANVAS */
-canvas#waves{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:0;
-}
+canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 </style>
 </head>
 
@@ -229,13 +155,10 @@ canvas#waves{
 
     <iframe src="https://player.twitch.tv/?channel=Rave3eN&parent=rave3en.github.io&muted=true" allowfullscreen></iframe>
 
-    <!-- EINZIGE sichtbare Spotify-Fläche: Playlist mit Glow + Refraktion -->
+    <!-- Spotify Playlist clean eingebettet -->
     <div class="playlist-box">
       <iframe 
         src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator" 
-        width="100%" 
-        height="152" 
-        frameborder="0" 
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     </div>
@@ -245,47 +168,7 @@ canvas#waves{
 <button id="relogin" onclick="logoutSpotify()">Spotify neu verbinden</button>
 
 <script>
-const CLIENT_ID='3734a32da72c4be1a7e9ea4ea3b00a00';
-let accessToken='';let player;
-
-/* TOKEN HANDLING */
-function getTokenFromHash(){
-  if(location.hash){
-    const h=location.hash.substring(1).split('&').reduce((r,i)=>{
-      let p=i.split('=');r[p[0]]=decodeURIComponent(p[1]);return r;
-    },{});
-    accessToken=h.access_token||'';
-    if(accessToken){
-      localStorage.setItem('spotify_token',accessToken);
-      localStorage.setItem('spotify_token_time',Date.now());
-    }
-    location.hash='';
-  }
-}
-function loadToken(){
-  const t=localStorage.getItem('spotify_token'),
-        tm=localStorage.getItem('spotify_token_time');
-  if(t&&tm&&Date.now()-tm<3500000){accessToken=t;}
-}
-function logoutSpotify(){
-  localStorage.removeItem('spotify_token');
-  localStorage.removeItem('spotify_token_time');
-  location.href='spotify-auth.html';
-}
-getTokenFromHash();
-if(!accessToken)loadToken();
-
-/* ADMIN-BUTTON: nur du siehst ihn, z.B. mit ?admin=1 oder lokal */
-const isAdmin =
-  location.hostname==='localhost' ||
-  location.hostname==='127.0.0.1' ||
-  location.search.includes('admin=1');
-
-if(!accessToken && isAdmin){
-  document.getElementById('relogin').style.display='block';
-}
-
-/* BACKGROUND: Waves + Partikel */
+/* BACKGROUND: Waves */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
@@ -314,7 +197,6 @@ class P{
   }
 }
 for(let i=0;i<90;i++)parts.push(new P());
-
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
   const ang=-Math.PI/6;
@@ -333,54 +215,17 @@ function wave(c,y,a,f,s,o){
   ctx.stroke();
   ctx.restore();
 }
-
 function anim(){
   ctx.fillStyle='#000';
   ctx.fillRect(0,0,w,h);
-
-  /* Reihenfolge: Blau -> Lila -> Cyan */
-  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);   // Blau
-  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);  // Lila
-  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);  // Cyan
-
+  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
+  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
+  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
   parts.forEach(p=>{p.u();p.d();});
   t+=0.02;
   requestAnimationFrame(anim);
 }
 anim();
-
-/* SPOTIFY WEB PLAYER (nur für Beat / Glow, kein zweites UI) */
-window.onSpotifyWebPlaybackSDKReady=()=>{
-  if(!accessToken){console.warn('Kein Spotify-Token');return;}
-  player=new Spotify.Player({
-    name:'Rave3eN Web Player',
-    getOAuthToken:cb=>cb(accessToken),
-    volume:0.5
-  });
-
-  const playlistBox=document.querySelector('.playlist-box');
-
-  player.addListener('player_state_changed',s=>{
-    if(!s)return;
-    const tr=s.track_window.current_track;
-    if(tr){
-      const prog=s.position/s.duration||0;
-      const base=s.paused?0.85:1;
-      ampScale=base+0.35*Math.abs(Math.sin(prog*Math.PI*4));
-
-      if(!s.paused){
-        playlistBox && playlistBox.classList.add('playing');
-      }else{
-        playlistBox && playlistBox.classList.remove('playing');
-      }
-    }else{
-      ampScale=0.9;
-      playlistBox && playlistBox.classList.remove('playing');
-    }
-  });
-
-  player.connect();
-};
 </script>
 </body>
 </html>
