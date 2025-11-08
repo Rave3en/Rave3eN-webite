@@ -95,14 +95,32 @@ h1{
   transform:scale(1.04);
   box-shadow:0 0 35px rgba(155,92,255,0.7),0 0 70px rgba(0,210,255,0.5);
 }
+
+/* ZURÜCK BUTTON */
 a.back{
   display:inline-block;
-  margin:50px auto 40px;
-  color:var(--neon2);
-  text-decoration:none;
+  margin:50px auto 60px;
   font-weight:600;
+  font-size:1.2rem;
+  text-decoration:none;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientFlow 5s linear infinite, pulseText 2s ease-in-out infinite;
+  text-shadow:0 0 20px rgba(155,92,255,0.7), 0 0 30px rgba(0,210,255,0.6);
+  transition:0.3s ease;
 }
-a.back:hover{text-decoration:underline;color:var(--neon1);}
+a.back:hover{
+  filter:brightness(1.4);
+  transform:scale(1.05);
+}
+@keyframes pulseText {
+  0% { text-shadow:0 0 15px rgba(155,92,255,0.5), 0 0 25px rgba(0,210,255,0.4); }
+  50% { text-shadow:0 0 30px rgba(155,92,255,0.9), 0 0 60px rgba(0,210,255,0.8); }
+  100% { text-shadow:0 0 15px rgba(155,92,255,0.5), 0 0 25px rgba(0,210,255,0.4); }
+}
+
 canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 
 /* LIGHTBOX */
@@ -118,9 +136,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   flex-direction:column;
   animation:fadeIn 0.5s ease;
 }
-@keyframes fadeIn{
-  from{opacity:0;}to{opacity:1;}
-}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 .lightbox img{
   max-width:90%;
   max-height:80%;
@@ -147,17 +163,25 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 .lightbox .close{top:5%;right:5%;font-size:2.5rem;}
 .lightbox .prev{left:5%;}
 .lightbox .next{right:5%;}
+
+/* RETURN BUTTON IN LIGHTBOX */
 .lightbox .return{
   position:absolute;
   bottom:6%;
   font-size:1.1rem;
-  color:var(--neon2);
-  text-decoration:none;
   font-weight:600;
+  padding:10px 20px;
+  border-radius:8px;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-decoration:none;
+  animation:gradientFlow 5s linear infinite, pulseText 2s ease-in-out infinite;
+  text-shadow:0 0 20px rgba(155,92,255,0.7), 0 0 30px rgba(0,210,255,0.6);
 }
 .lightbox .return:hover{
-  text-decoration:underline;
-  color:var(--neon1);
+  filter:brightness(1.4);
 }
 </style>
 </head>
