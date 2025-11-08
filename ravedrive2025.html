@@ -1,1 +1,209 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rave Drive 2025 — Rave3eN</title>
+<meta name="description" content="Rave Drive 2025 – Nähe, Reisen und echte Verbindung mit der Community.">
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000;
+  --neon1:#00bfff;
+  --neon2:#a85cff;
+  --neon3:#00eaff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:#000;
+  color:#e9eef8;
+  overflow-x:hidden;
+}
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  padding:15px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,0,0,0.8);
+  z-index:10;
+}
+header .logo{
+  display:flex;align-items:center;gap:28px;
+}
+header .logo img{
+  height:45px;
+  filter:drop-shadow(0 0 12px var(--neon1)) drop-shadow(0 0 20px var(--neon3));
+}
+header .logo span{
+  font-family:'Orbitron';
+  font-size:1.9rem;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
+  background-size:400%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientFlow 6s linear infinite;
+}
+@keyframes gradientFlow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+main{
+  margin-top:120px;
+  padding:40px 20px;
+  text-align:center;
+}
+h1{
+  font-family:'Orbitron';
+  font-size:2.3rem;
+  color:var(--neon1);
+  text-shadow:0 0 15px rgba(0,255,255,0.6);
+  margin-bottom:50px;
+}
+
+/* Galerie oben */
+.gallery-row{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-bottom:60px;
+}
+.gallery-row img{
+  width:400px;
+  max-width:90vw;
+  border-radius:12px;
+  box-shadow:0 0 30px rgba(0,255,255,0.3);
+  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
+  opacity:0;
+  transform:translateY(30px);
+}
+.gallery-row img.visible{
+  opacity:1;
+  transform:translateY(0);
+  box-shadow:0 0 40px rgba(0,255,255,0.6),0 0 60px rgba(168,92,255,0.4);
+}
+.gallery-row img:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 50px rgba(0,255,255,0.8),0 0 100px rgba(168,92,255,0.6);
+}
+
+/* Galerie unten */
+.gallery-column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:40px;
+}
+.gallery-column img{
+  width:700px;
+  max-width:95vw;
+  border-radius:12px;
+  box-shadow:0 0 30px rgba(0,255,255,0.3);
+  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
+  opacity:0;
+  transform:translateY(30px);
+}
+.gallery-column img.visible{
+  opacity:1;
+  transform:translateY(0);
+  box-shadow:0 0 40px rgba(0,255,255,0.6),0 0 60px rgba(168,92,255,0.4);
+}
+.gallery-column img:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 50px rgba(0,255,255,0.8),0 0 100px rgba(168,92,255,0.6);
+}
+
+/* Zurück-Button */
+a.back-btn{
+  display:inline-block;
+  margin-top:60px;
+  padding:10px 26px;
+  font-weight:700;
+  font-size:1.1rem;
+  color:#fff;
+  text-decoration:none;
+  border:2px solid rgba(0,255,255,0.6);
+  border-radius:10px;
+  transition:0.3s ease;
+  box-shadow:0 0 10px rgba(0,255,255,0.4);
+}
+a.back-btn:hover{
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
+  color:#fff;
+  box-shadow:0 0 25px rgba(0,255,255,0.9),0 0 50px rgba(168,92,255,0.6);
+}
+
+/* Hintergrundwellen */
+canvas#waves{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
+}
+</style>
+</head>
+<body>
+<canvas id="waves"></canvas>
+
+<header>
+  <div class="logo">
+    <img src="logo druck.png" alt="Rave3eN Logo">
+    <span>Rave3eN</span>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="events.html">Events</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Rave Drive 2025</h1>
+
+  <!-- Obere Galerie-Reihe -->
+  <div class="gallery-row">
+    <img src="drive1.jpg" alt="Rave Drive Bild 1">
+    <img src="drive2.jpg" alt="Rave Drive Bild 2">
+    <img src="drive3.jpg" alt="Rave Drive Bild 3">
+  </div>
+
+  <!-- Untere Galerie (größere Einzelbilder) -->
+  <div class="gallery-column">
+    <img src="drive4.jpg" alt="Rave Drive Bild 4">
+    <img src="drive5.jpg" alt="Rave Drive Bild 5">
+    <img src="drive6.jpg" alt="Rave Drive Bild 6">
+    <img src="drive7.jpg" alt="Rave Drive Bild 7">
+    <img src="drive8.jpg" alt="Rave Drive Bild 8">
+    <img src="drive9.jpg" alt="Rave Drive Bild 9">
+  </div>
+
+  <a href="events.html" class="back-btn">← Zurück zu Events</a>
+</main>
+
+<script>
+// Smooth Fade-In
+const imgs=document.querySelectorAll('img');
+function reveal(){imgs.forEach(img=>{const rect=img.getBoundingClientRect();if(rect.top<window.innerHeight-80){img.classList.add('visible');}});}
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+
+// Hintergrund-Waves
+const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
+let w,h,t=0;const parts=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<80;i++)parts.push(new P());
+function wave(c,y,a,f,s,o){ctx.beginPath();for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=25;ctx.shadowColor=c;ctx.stroke();}
+function anim(){ctx.fillStyle='rgba(0,0,0,1)';ctx.fillRect(0,0,w,h);wave('rgba(0,255,255,0.55)',h*0.3,35,0.008,0.018,0);wave('rgba(155,92,255,0.85)',h*0.55,25,0.01,0.022,2.5);wave('rgba(0,150,255,0.6)',h*0.75,18,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
+</script>
+</body>
+</html>
