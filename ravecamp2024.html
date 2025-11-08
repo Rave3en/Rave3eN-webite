@@ -116,6 +116,10 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   justify-content:center;
   z-index:50;
   flex-direction:column;
+  animation:fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;}to{opacity:1;}
 }
 .lightbox img{
   max-width:90%;
@@ -123,6 +127,12 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   border-radius:12px;
   box-shadow:0 0 50px rgba(155,92,255,0.6),0 0 90px rgba(0,210,255,0.5);
   object-fit:contain;
+  animation:pulseGlow 2s infinite ease-in-out;
+}
+@keyframes pulseGlow {
+  0% { box-shadow:0 0 40px rgba(155,92,255,0.4), 0 0 70px rgba(0,210,255,0.3); }
+  50% { box-shadow:0 0 70px rgba(155,92,255,0.8), 0 0 120px rgba(0,210,255,0.6); }
+  100% { box-shadow:0 0 40px rgba(155,92,255,0.4), 0 0 70px rgba(0,210,255,0.3); }
 }
 .lightbox .close, .lightbox .prev, .lightbox .next{
   position:absolute;
@@ -137,6 +147,18 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
 .lightbox .close{top:5%;right:5%;font-size:2.5rem;}
 .lightbox .prev{left:5%;}
 .lightbox .next{right:5%;}
+.lightbox .return{
+  position:absolute;
+  bottom:6%;
+  font-size:1.1rem;
+  color:var(--neon2);
+  text-decoration:none;
+  font-weight:600;
+}
+.lightbox .return:hover{
+  text-decoration:underline;
+  color:var(--neon1);
+}
 </style>
 </head>
 <body>
@@ -182,6 +204,7 @@ canvas#waves{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
   <span class="prev" id="prev">&#10094;</span>
   <img id="lightbox-img" src="" alt="Rave Camp Image">
   <span class="next" id="next">&#10095;</span>
+  <a href="events.html" class="return">← Zurück zur Eventseite</a>
 </div>
 
 <script>
