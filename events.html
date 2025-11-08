@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Events — Rave3eN</title>
-<meta name="description" content="Erlebe die Highlights und kommenden Events von Rave3eN. EDM, Emotionen und Community vereint.">
+<meta name="description" content="Erlebe die Highlights und kommenden Events von Rave3eN. Gemeinschaft, Reisen und echte Verbindungen.">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -79,11 +79,17 @@ h1{
   transform:scale(1.02);
   box-shadow:0 0 50px rgba(155,92,255,0.6),0 0 100px rgba(0,210,255,0.5);
 }
-.event-card img{
+.event-card a img{
   width:100%;
   border-radius:12px;
   margin-bottom:15px;
   box-shadow:0 0 30px rgba(155,92,255,0.3);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card a img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,210,255,0.6);
+  cursor:pointer;
 }
 .event-card h2{
   font-family:'Orbitron';
@@ -94,34 +100,8 @@ h1{
 .event-card p{
   color:#cfd8f6;
   line-height:1.6;
-  margin-bottom:20px;
+  margin-bottom:10px;
   font-size:1rem;
-}
-
-/* Buttons */
-.event-card a.btn{
-  display:inline-block;
-  padding:10px 26px;
-  font-weight:700;
-  font-size:1rem;
-  text-decoration:none;
-  border-radius:8px;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
-  background-size:300%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 25px rgba(155,92,255,0.8),0 0 40px rgba(0,210,255,0.6);
-  animation:gradientFlow 5s linear infinite, pulseText 2s ease-in-out infinite;
-  transition:0.3s ease;
-}
-.event-card a.btn:hover{
-  transform:scale(1.08);
-  filter:brightness(1.4);
-}
-@keyframes pulseText {
-  0% { text-shadow:0 0 15px rgba(155,92,255,0.5), 0 0 25px rgba(0,210,255,0.4); }
-  50% { text-shadow:0 0 30px rgba(155,92,255,0.9), 0 0 60px rgba(0,210,255,0.8); }
-  100% { text-shadow:0 0 15px rgba(155,92,255,0.5), 0 0 25px rgba(0,210,255,0.4); }
 }
 
 /* Zurück-Button */
@@ -177,7 +157,9 @@ canvas#waves{
   <div class="events-grid">
     <!-- Rave Camp 2024 -->
     <section class="event-card">
-      <img src="event1.jpg" alt="Rave Camp 2024">
+      <a href="ravecamp2024.html">
+        <img src="event1.jpg" alt="Rave Camp 2024">
+      </a>
       <h2>Rave Camp 2024</h2>
       <p>
         Das Rave Camp 2024 war mehr als nur ein Event –  
@@ -187,12 +169,13 @@ canvas#waves{
         Es ging nicht um das Außen, sondern darum, wer wir wirklich sind –  
         fernab vom Alltag, im Moment, im Hier und Jetzt. 🌌💜
       </p>
-      <a href="ravecamp2024.html" class="btn">→ Details ansehen</a>
     </section>
 
     <!-- Rave Drive 2025 -->
     <section class="event-card">
-      <img src="event2.jpg" alt="Rave Drive 2025">
+      <a href="#">
+        <img src="event2.jpg" alt="Rave Drive 2025">
+      </a>
       <h2>Rave Drive 2025</h2>
       <p>
         Der Rave3eN war sich keiner Strecke zu fein, um Menschen hautnah zu begegnen.  
@@ -201,7 +184,6 @@ canvas#waves{
         Denn Rave ist nicht nur Action.  
         Rave ist Verbindung – zu den Menschen, die dabei sind, zuhören, zuschauen und fühlen. 💜
       </p>
-      <a href="#" class="btn">→ Coming Soon</a>
     </section>
   </div>
 
