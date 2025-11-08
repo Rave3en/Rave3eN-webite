@@ -6,7 +6,7 @@
 <title>Rave3eN — Official</title>
 <meta name="description" content="Rave3eN — EDM x Gaming | Live on Twitch" />
 
-<!-- Google Font -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -27,58 +27,47 @@ html,body{
   overflow-x:hidden;
 }
 
+/* Header */
 header{
   position:fixed;
   top:0;left:0;width:100%;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  justify-content:center;
   padding:15px 30px;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   z-index:10;
 }
-
-/* Logo links */
-.logo-box{
-  position:absolute;
-  left:30px;
+header .logo{
   display:flex;
   align-items:center;
   gap:10px;
 }
-.logo-box img{
+header .logo img{
   height:40px;
   width:auto;
   filter:drop-shadow(0 0 8px var(--neon2));
 }
-.logo-box h1{
+header .logo span{
   font-family:'Orbitron';
   font-size:1.4rem;
   color:var(--neon2);
   text-shadow:0 0 8px var(--neon2);
-  margin:0;
-}
-
-/* Menü mittig */
-nav{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:40px;
 }
 nav a{
   color:white;
   text-decoration:none;
+  margin-left:25px;
   font-weight:500;
-  font-size:1rem;
-  transition:color 0.3s, text-shadow 0.3s;
+  transition:color 0.3s,text-shadow 0.3s;
 }
 nav a:hover{
   color:var(--neon1);
   text-shadow:0 0 6px var(--neon1);
 }
 
+/* Main Layout */
 main{
   padding-top:100px;
   display:flex;
@@ -87,20 +76,17 @@ main{
   gap:30px;
 }
 
-/* Twitch Player Styling */
+/* Twitch Player */
 .player-box{
   width:90%;
   max-width:1000px;
-  position:relative;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 0 25px rgba(0,210,255,0.2),
-             0 0 40px rgba(155,92,255,0.15);
+  box-shadow:0 0 25px rgba(0,210,255,0.2),0 0 40px rgba(155,92,255,0.15);
   transition:box-shadow 0.4s ease;
 }
 .player-box:hover{
-  box-shadow:0 0 30px rgba(0,210,255,0.4),
-             0 0 50px rgba(155,92,255,0.25);
+  box-shadow:0 0 30px rgba(0,210,255,0.4),0 0 50px rgba(155,92,255,0.25);
 }
 iframe{
   border:0;
@@ -118,7 +104,6 @@ iframe{
   text-shadow:0 0 10px var(--neon2);
   letter-spacing:1px;
 }
-
 #aktuelles{
   width:90%;
   max-width:1000px;
@@ -129,7 +114,6 @@ iframe{
   backdrop-filter:blur(10px);
   box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
-
 .aktuelles-item{
   background:rgba(255,255,255,0.03);
   border-left:3px solid var(--neon1);
@@ -138,20 +122,18 @@ iframe{
   margin-bottom:15px;
   box-shadow:0 0 10px rgba(155,92,255,0.2);
 }
-
 .aktuelles-item h3{
   margin:0;
   font-size:1.1rem;
   color:var(--neon1);
 }
-
 .aktuelles-item p{
   margin:8px 0 0;
   font-size:1rem;
   color:#ccc;
 }
 
-/* Partikel Hintergrund */
+/* Partikel */
 #particles{
   position:fixed;
   top:0;left:0;
@@ -165,9 +147,9 @@ iframe{
 <canvas id="particles"></canvas>
 
 <header>
-  <div class="logo-box">
+  <div class="logo">
     <img src="logo.png" alt="Rave3eN Logo">
-    <h1>Rave3eN</h1>
+    <span>Rave3eN</span>
   </div>
   <nav>
     <a href="index.html">Home</a>
@@ -230,7 +212,6 @@ function handleParticles(){
     }
   }
 }
-
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   hue+=0.6;
