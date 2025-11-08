@@ -9,6 +9,9 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
+<!-- Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 :root{
   --bg:#060607;
@@ -150,7 +153,7 @@ header .logo span{
   border:0;
 }
 
-/* ---------- Sidebar rechts ---------- */
+/* ---------- Sidebar Social Buttons ---------- */
 .sidebar{
   display:flex;
   flex-direction:column;
@@ -158,21 +161,47 @@ header .logo span{
   gap:35px;
   margin-top:140px;
 }
-.socials{
+
+.social-icons{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  align-items:center;
+  gap:18px;
 }
-.socials a{
+
+.social-icons a{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 15px rgba(155,92,255,0.4),inset 0 0 10px rgba(0,210,255,0.3);
   color:var(--neon2);
+  font-size:1.5rem;
   text-decoration:none;
-  font-weight:600;
-  letter-spacing:.5px;
-  transition:color .3s,text-shadow .3s;
+  transition:all .4s ease;
+  position:relative;
 }
-.socials a:hover{
+
+.social-icons a::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  box-shadow:0 0 20px rgba(155,92,255,0.7),0 0 40px rgba(0,210,255,0.4);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.social-icons a:hover{
   color:var(--neon1);
-  text-shadow:0 0 8px var(--neon1);
+  transform:scale(1.1);
+}
+.social-icons a:hover::after{
+  opacity:1;
 }
 
 /* ---------- Partikel ---------- */
@@ -212,26 +241,25 @@ canvas#particles{
     </div>
 
     <div class="spotify">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </div>
 
   <div class="sidebar">
-    <div class="socials">
-      <a href="https://www.youtube.com/@rave3en30" target="_blank">YouTube</a>
-      <a href="https://www.tiktok.com/@rave3en" target="_blank">TikTok</a>
-      <a href="https://www.instagram.com" target="_blank">Instagram</a>
-      <a href="https://discord.gg/3TbArexH5H" target="_blank">Discord</a>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@rave3en30" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@rave3en" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.gg/3TbArexH5H" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
     </div>
   </div>
 </div>
 
 <script>
-// ---------- Variante A: Soft Laser Light Partikel ----------
+// ---------- Soft Laser Light Partikel ----------
 const canvas=document.getElementById('particles');
 const ctx=canvas.getContext('2d');
 let particlesArray=[];
-let hue=0;
 const colors=['#9b5cff','#00d2ff','#ff66ff','#66ffff'];
 
 function resizeCanvas(){
@@ -266,16 +294,9 @@ class LaserParticle{
     ctx.beginPath();
     ctx.shadowBlur=20;
     ctx.shadowColor=this.color;
-    ctx.fillStyle=`rgba(${this.hexToRgb(this.color)},${this.alpha})`;
+    ctx.fillStyle=`${this.color}${Math.floor(this.alpha*255).toString(16)}`;
     ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
     ctx.fill();
-  }
-  hexToRgb(hex){
-    const bigint=parseInt(hex.replace('#',''),16);
-    const r=(bigint>>16)&255;
-    const g=(bigint>>8)&255;
-    const b=bigint&255;
-    return `${r},${g},${b}`;
   }
 }
 
