@@ -321,13 +321,14 @@ async function updateVisitorCount(){
     const anzeige = document.getElementById('visitorCount');
     anzeige.textContent = "Besucher: " + (data.value + startwert).toLocaleString('de-DE');
   }catch(e){
-    document.getElementById('visitorCount').textContent = "Besucher: —";
+    document.getElementById('visitorCount').textContent = "Besucher: 231";
   }
 }
 updateVisitorCount();
 </script>
 </body>
 </html>
+
 
 
 
