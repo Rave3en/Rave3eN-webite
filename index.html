@@ -26,7 +26,7 @@ html,body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* Waves fix */
 canvas#waves{
   position:fixed;
   top:0;left:0;width:100%;height:100%;
@@ -110,16 +110,15 @@ header .spruch{
   box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
 }
 
-/* NAVIGATION */
+/* NAVIGATION UNTER DEM HEADER */
 .nav-top{
-  position:fixed;
-  top:90px;
-  width:100%;
+  margin:160px auto 0;
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:20px;
   z-index:99;
+  position:relative;
 }
 .nav-top a{
   display:flex;align-items:center;justify-content:center;
@@ -143,13 +142,13 @@ header .spruch{
 main{
   position:relative;
   z-index:5;
-  margin-top:180px;
+  margin-top:30px;
 }
 
 /* TWITCH */
 .twitch-box{
   max-width:900px;
-  margin:40px auto;
+  margin:30px auto;
   background:rgba(255,255,255,0.05);
   border-radius:20px;
   box-shadow:0 0 60px rgba(0,180,255,.45),0 0 90px rgba(155,92,255,.35);
