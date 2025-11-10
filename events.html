@@ -11,9 +11,9 @@
 
 <style>
 :root{
-  --bg:#000000;
-  --neon1:#9b5cff;  /* Neon-Lila */
-  --neon2:#007bff;  /* Neon-Blau */
+  --bg:#000;
+  --neon1:#9b5cff; /* Neon-Lila */
+  --neon2:#007bff; /* Neon-Blau */
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{
@@ -22,17 +22,13 @@ html,body{
   background:var(--bg);
   color:#e9eef8;
   overflow-x:hidden;
-  position:relative;
 }
 
-/* Hintergrund Canvas */
+/* --- Wellen-Hintergrund --- */
 #canvas-bg{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0; /* Hinter dem Content, über dem Body */
+  top:0;left:0;width:100%;height:100%;
+  z-index:1;
   pointer-events:none;
 }
 
@@ -100,7 +96,7 @@ header .logo span{
 main{
   margin-top:150px;
   position:relative;
-  z-index:5;
+  z-index:10;
   text-align:center;
   padding:0 20px;
 }
@@ -200,6 +196,8 @@ footer{
   border-top:1px solid var(--neon1);
   box-shadow:0 -2px 25px var(--neon1);
   text-shadow:0 0 12px var(--neon1),0 0 25px var(--neon2);
+  position:relative;
+  z-index:10;
 }
 
 /* RESPONSIVE */
@@ -262,71 +260,61 @@ footer{
 </footer>
 
 <script>
-/* Hintergrund-Waves – hinter dem Inhalt sichtbar */
+/* Waves endgültig hinter dem Content */
 const canvas = document.getElementById('canvas-bg'),
       ctx = canvas.getContext('2d');
-let w, h, t = 0, ampScale = 0.9;
-const parts = [];
+let w,h,t=0,ampScale=0.9;
+const parts=[];
 
-function resize() {
-  w = canvas.width = innerWidth;
-  h = canvas.height = innerHeight;
-}
-addEventListener('resize', resize);
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);
 resize();
 
-class P {
-  constructor() {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.vx = (Math.random() - .5) * .2;
-    this.vy = (Math.random() - .5) * .2;
-    this.s = 1 + Math.random() * 2;
-    this.a = .3 + Math.random() * .3;
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
   }
-  u() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0) this.x = w;
-    if (this.x > w) this.x = 0;
-    if (this.y < 0) this.y = h;
-    if (this.y > h) this.y = 0;
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;if(this.y>h)this.y=0;
   }
-  d() {
+  d(){
     ctx.beginPath();
-    ctx.globalAlpha = this.a;
-    ctx.fillStyle = 'rgba(155,92,255,0.8)';
-    ctx.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(155,92,255,0.7)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
     ctx.fill();
-    ctx.globalAlpha = 1;
+    ctx.globalAlpha=1;
   }
 }
-for (let i = 0; i < (innerWidth < 600 ? 30 : 60); i++) parts.push(new P());
+for(let i=0;i<60;i++)parts.push(new P());
 
-function wave(c, y, a, f, s, o) {
+function wave(c,y,a,f,s,o){
   ctx.beginPath();
-  for (let x = 0; x < w; x++) {
-    const yy = y + Math.sin(x * f + t * s + o) * a * ampScale;
-    ctx.lineTo(x, yy);
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
   }
-  ctx.strokeStyle = c;
-  ctx.lineWidth = 2;
-  ctx.shadowBlur = 20;
-  ctx.shadowColor = c;
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
   ctx.stroke();
 }
 
-function anim() {
-  // schwarzer Hintergrund sichtbar lassen
-  ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-  ctx.fillRect(0, 0, w, h);
-
-  // Wellenfarben im Neon-Look
-  wave('rgba(155,92,255,0.7)', h * 0.4, 30, 0.008, 0.018, 0);
-  wave('rgba(0,123,255,0.6)', h * 0.6, 22, 0.01, 0.022, 2.5);
-
-  parts.forEach(p => { p.u(); p.d(); });
-  t += 0.02;
+function anim(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.7)',h*0.4,35,0.008,0.018,0);
+  wave('rgba(0,123,255,0.7)',h*0.6,25,0.01,0.022,2.5);
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;
   requestAnimationFrame(anim);
 }
 anim();
