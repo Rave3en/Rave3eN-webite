@@ -246,7 +246,7 @@ footer{
     <div class="event-card">
       <img src="event2.jpg" alt="Rave Drive 2025">
       <h3>Rave Drive 2025</h3>
-      <p>Rave3eN unterwegs: Von Potsdam bis Köln – um die Menschen zu treffen, die Teil dieser Community sind.</p>
+      <p>Rave3eN unterwegs: Von Potsdam bis Bayern – um die Menschen zu treffen, die Teil dieser Community sind.</p>
       <a href="ravedrive2025.html">Details ansehen →</a>
     </div>
   </div>
@@ -257,11 +257,11 @@ footer{
 </main>
 
 <footer>
-  Rave3eN © 2025 — Music. Emotion. Energy.
+  Rave3eN © 2025 — Music. Emotion. Gaming.
 </footer>
 
 <script>
-/* Diagonale Waves wie auf Index/About */
+/* 2 diagonale Waves (Lila + Blau) exakt wie Index/About */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
@@ -276,7 +276,7 @@ for(let i=0;i<60;i++)parts.push(new P());
 function wave(c,y,a,f,s,o){
   ctx.save();
   ctx.translate(w/2,h/2);
-  ctx.rotate(-Math.PI/6); // ↙️ Rotation für diagonale Waves
+  ctx.rotate(-Math.PI/6);
   ctx.translate(-w/2,-h/2);
   ctx.beginPath();
   for(let x=0;x<w;x++){
@@ -294,9 +294,8 @@ function wave(c,y,a,f,s,o){
 function anim(){
   ctx.fillStyle='#000';
   ctx.fillRect(0,0,w,h);
-  wave('rgba(155,92,255,0.7)',h*0.3,40,0.008,0.018,0);
-  wave('rgba(0,123,255,0.7)',h*0.55,30,0.01,0.022,2.5);
-  wave('rgba(155,92,255,0.6)',h*0.75,20,0.013,0.026,5.0);
+  wave('rgba(155,92,255,0.8)',h*0.45,40,0.008,0.018,0); // Lila
+  wave('rgba(0,123,255,0.8)',h*0.55,35,0.01,0.022,2.5); // Blau
   parts.forEach(p=>{p.u();p.d();});
   t+=0.02;
   requestAnimationFrame(anim);
