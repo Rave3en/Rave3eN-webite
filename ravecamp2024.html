@@ -11,14 +11,13 @@
 <style>
 :root{
   --bg:#000;
-  --neon1:#a85cff;
-  --neon2:#00bfff;
-  --neon3:#00eaff;
+  --neon1:#9b5cff; /* Lila */
+  --neon2:#007bff; /* Blau */
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
   font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
-  background:#000;
+  background:var(--bg);
   color:#e9eef8;
   overflow-x:hidden;
 }
@@ -43,8 +42,8 @@ header .logo span{
   font-family:'Orbitron';
   font-size:1.6rem;
   font-weight:700;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
-  background-size:400%;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  background-size:300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite;
@@ -98,14 +97,14 @@ h1{
 .gallery-row img.visible{
   opacity:1;
   transform:translateY(0);
-  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,210,255,0.4);
+  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,123,255,0.4);
 }
 .gallery-row img:hover{
   transform:scale(1.03);
-  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,210,255,0.6);
+  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,123,255,0.6);
 }
 
-/* Galerie unten (einzelne große Bilder) */
+/* Galerie unten */
 .gallery-column{
   display:flex;
   flex-direction:column;
@@ -124,11 +123,11 @@ h1{
 .gallery-column img.visible{
   opacity:1;
   transform:translateY(0);
-  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,210,255,0.4);
+  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,123,255,0.4);
 }
 .gallery-column img:hover{
   transform:scale(1.02);
-  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,210,255,0.6);
+  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,123,255,0.6);
 }
 
 /* Zurück-Button */
@@ -146,9 +145,9 @@ a.back-btn{
   box-shadow:0 0 10px rgba(155,92,255,0.4);
 }
 a.back-btn:hover{
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
   color:#fff;
-  box-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,210,255,0.6);
+  box-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,123,255,0.6);
 }
 
 /* Hintergrundwellen */
@@ -227,16 +226,46 @@ function reveal(){imgs.forEach(img=>{const rect=img.getBoundingClientRect();if(r
 window.addEventListener('scroll',reveal);
 window.addEventListener('load',reveal);
 
-// Hintergrund-Waves
+// Hintergrund-Waves (2 diagonale, wie auf Index/About)
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
-let w,h,t=0;const parts=[];
+let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
-for(let i=0;i<80;i++)parts.push(new P());
-function wave(c,y,a,f,s,o){ctx.beginPath();for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=25;ctx.shadowColor=c;ctx.stroke();}
-function anim(){ctx.fillStyle='rgba(0,0,0,1)';ctx.fillRect(0,0,w,h);wave('rgba(90,120,255,0.55)',h*0.3,35,0.008,0.018,0);wave('rgba(155,92,255,0.85)',h*0.55,25,0.01,0.022,2.5);wave('rgba(0,255,255,0.6)',h*0.75,18,0.013,0.026,5.0);parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}anim();
+
+class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
+u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
+d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(155,92,255,0.7)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+
+for(let i=0;i<60;i++)parts.push(new P());
+
+function wave(c,y,a,f,s,o){
+  ctx.save();
+  ctx.translate(w/2,h/2);
+  ctx.rotate(-Math.PI/6); // Diagonal
+  ctx.translate(-w/2,-h/2);
+  ctx.beginPath();
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function anim(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.8)',h*0.45,40,0.008,0.018,0); // Lila
+  wave('rgba(0,123,255,0.8)',h*0.55,35,0.01,0.022,2.5); // Blau
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;
+  requestAnimationFrame(anim);
+}
+anim();
 </script>
 </body>
 </html>
-
