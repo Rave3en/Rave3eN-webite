@@ -11,9 +11,9 @@
 
 <style>
 :root{
-  --bg:#000000;
-  --neon1:#9b5cff;  /* Neon-Lila */
-  --neon2:#007bff;  /* Neon-Blau */
+  --bg:#000;
+  --neon1:#9b5cff; /* Neon-Lila */
+  --neon2:#007bff; /* Neon-Blau */
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{
@@ -28,7 +28,7 @@ html,body{
 canvas#waves{
   position:fixed;
   top:0;left:0;width:100%;height:100%;
-  z-index:0;
+  z-index:-1; /* jetzt wirklich hinter allem */
   pointer-events:none;
 }
 
@@ -263,17 +263,45 @@ const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(120,160,255,0.6)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+
+class P{
+  constructor(){
+    this.x=Math.random()*w;this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(155,92,255,0.8)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 for(let i=0;i<60;i++)parts.push(new P());
+
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
-  for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}
-  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=25;
+  ctx.shadowColor=c;
+  ctx.stroke();
 }
+
 function anim(){
-  ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
   wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
   wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
   parts.forEach(p=>{p.u();p.d();});
