@@ -11,10 +11,9 @@
 
 <style>
 :root{
-  --bg:#000000;
-  --neon1:#9b5cff;
-  --neon2:#00d2ff;
-  --neon3:#00eaff;
+  --bg:#000;
+  --neon1:#9b5cff; /* Neon-Lila */
+  --neon2:#007bff; /* Neon-Blau */
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{
@@ -59,12 +58,12 @@ header .logo span{
   font-family:'Orbitron';
   font-size:1.8rem;
   font-weight:700;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3),var(--neon1));
-  background-size:400%;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon1));
+  background-size:300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite;
-  text-shadow:0 0 15px rgba(0,191,255,0.5),0 0 30px rgba(168,92,255,0.3);
+  text-shadow:0 0 15px var(--neon1),0 0 30px var(--neon2);
 }
 @keyframes gradientFlow{
   0%{background-position:0% 50%;}
@@ -82,13 +81,13 @@ header .logo span{
   background:rgba(255,255,255,.05);
   color:var(--neon2);
   font-size:1rem;
-  box-shadow:0 0 12px rgba(155,92,255,.5),inset 0 0 8px rgba(0,180,255,.4);
+  box-shadow:0 0 12px var(--neon1),inset 0 0 8px var(--neon2);
   transition:.3s;
 }
 .social-header a:hover{
   color:var(--neon1);
   transform:scale(1.1);
-  box-shadow:0 0 22px rgba(0,180,255,.9),inset 0 0 10px rgba(155,92,255,.7);
+  box-shadow:0 0 22px var(--neon2),inset 0 0 10px var(--neon1);
 }
 
 /* CONTENT */
@@ -105,9 +104,9 @@ h1{
   font-family:'Orbitron';
   font-size:2.3rem;
   color:var(--neon2);
-  text-shadow:0 0 18px rgba(0,210,255,0.6),0 0 40px rgba(168,92,255,0.4);
+  text-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
   margin-bottom:40px;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3));
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite;
@@ -123,14 +122,14 @@ h1{
 .event-card{
   background:rgba(255,255,255,0.05);
   border-radius:18px;
-  box-shadow:0 0 40px rgba(0,210,255,0.3),0 0 70px rgba(155,92,255,0.2);
+  box-shadow:0 0 40px var(--neon2),0 0 70px var(--neon1);
   overflow:hidden;
   width:350px;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
 .event-card:hover{
   transform:scale(1.05);
-  box-shadow:0 0 60px rgba(155,92,255,0.6),0 0 90px rgba(0,210,255,0.5);
+  box-shadow:0 0 60px var(--neon1),0 0 90px var(--neon2);
 }
 .event-card img{
   width:100%;
@@ -140,8 +139,9 @@ h1{
 .event-card h3{
   font-family:'Orbitron';
   font-size:1.3rem;
-  color:var(--neon3);
+  color:var(--neon2);
   margin:15px 0 8px;
+  text-shadow:0 0 15px var(--neon1),0 0 25px var(--neon2);
 }
 .event-card p{
   color:#d0e0f7;
@@ -155,12 +155,12 @@ h1{
   text-decoration:none;
   color:var(--neon2);
   font-weight:600;
-  text-shadow:0 0 12px rgba(0,210,255,0.5);
+  text-shadow:0 0 12px var(--neon1);
   transition:all 0.3s ease;
 }
 .event-card a:hover{
   color:var(--neon1);
-  text-shadow:0 0 20px rgba(155,92,255,0.7);
+  text-shadow:0 0 22px var(--neon2);
 }
 
 /* BACK HOME */
@@ -172,17 +172,17 @@ h1{
   font-family:'Orbitron';
   font-size:1.1rem;
   text-decoration:none;
-  color:var(--neon3);
-  padding:10px 20px;
+  color:var(--neon2);
+  padding:12px 28px;
   border-radius:25px;
   background:rgba(255,255,255,0.05);
-  box-shadow:0 0 15px rgba(155,92,255,0.4),inset 0 0 10px rgba(0,210,255,0.4);
+  box-shadow:0 0 15px var(--neon1),inset 0 0 10px var(--neon2);
   transition:all .3s ease;
 }
 .back-home a:hover{
   color:var(--neon1);
   transform:scale(1.07);
-  box-shadow:0 0 25px rgba(155,92,255,0.8),inset 0 0 12px rgba(0,210,255,0.6);
+  box-shadow:0 0 25px var(--neon2),inset 0 0 12px var(--neon1);
 }
 
 /* FOOTER */
@@ -190,9 +190,13 @@ footer{
   text-align:center;
   font-family:'Orbitron';
   font-size:0.9rem;
-  color:var(--neon2);
+  color:#fff;
   padding:25px 0 40px;
-  text-shadow:0 0 12px rgba(155,92,255,0.4),0 0 25px rgba(0,210,255,0.4);
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  border-top:1px solid var(--neon1);
+  box-shadow:0 -2px 25px var(--neon1);
+  text-shadow:0 0 12px var(--neon1),0 0 25px var(--neon2);
   position:relative;
   z-index:10;
 }
@@ -253,29 +257,41 @@ footer{
 </main>
 
 <footer>
-  Rave3eN © 2025 — Music. Emotion. Energy.
+  Rave3eN © 2025 — Music. Emotion. Gaming.
 </footer>
 
 <script>
-/* Hintergrund-Waves exakt wie index/about */
+/* Lila-Blau Waves + Partikel */
 const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
+
 class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
 u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='#b5e4ff';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(155,92,255,0.7)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+
 for(let i=0;i<60;i++)parts.push(new P());
+
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
-  for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}
-  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();
 }
+
 function anim(){
-  ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-  wave('rgba(90,120,255,0.65)',h*0.3,40,0.008,0.018,0);
-  wave('rgba(155,92,255,0.9)',h*0.55,30,0.01,0.022,2.5);
-  wave('rgba(0,255,255,0.8)',h*0.75,20,0.013,0.026,5.0);
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.7)',h*0.3,40,0.008,0.018,0);
+  wave('rgba(0,123,255,0.7)',h*0.55,30,0.01,0.022,2.5);
+  wave('rgba(155,92,255,0.6)',h*0.75,20,0.013,0.026,5.0);
   parts.forEach(p=>{p.u();p.d();});
   t+=0.02;
   requestAnimationFrame(anim);
