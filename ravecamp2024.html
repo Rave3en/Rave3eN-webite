@@ -3,8 +3,43 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rave Camp 2024 — Rave3eN</title>
-<meta name="description" content="Rave Camp 2024 – Ein Treffen voller Gemeinschaft, Natur und echter Emotionen.">
+
+<title>Rave Camp 2024 — Rave3eN Community Camp in Deutschland</title>
+<meta name="description" content="Rave Camp 2024 mit Rave3eN: Ein Community-Treffen in der Natur, ohne Luxus, aber mit Herz, EDM-Vibes, Lagerfeuer-Momenten und echter Verbindung. Erlebe, wie Streaming-Community im echten Leben zusammenkommt." />
+<meta name="keywords" content="Rave3eN, Rave Camp 2024, Community Camp, Streamer Treffen, Rave3eN Community, EDM Camp, Rave Event Deutschland, Twitch Community Treffen, Rave3eN Fans, Rave3eN Lagerfeuer" />
+<meta name="author" content="Rave3eN" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="Rave Camp 2024 — Rave3eN Community Camp in Deutschland" />
+<meta property="og:description" content="Natur, Lagerfeuer, EDM-Vibes und echte Community. Das Rave Camp 2024 mit Rave3eN – ein Wochenende voller Nähe, Gespräche und Erinnerungen." />
+<meta property="og:type" content="event" />
+<meta property="og:url" content="https://www.rave3en.de/ravecamp2024.html" />
+<meta property="og:image" content="https://www.rave3en.de/camp1.jpg" />
+
+<!-- JSON-LD Event Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Rave Camp 2024",
+  "eventStatus": "https://schema.org/EventCompleted",
+  "description": "Rave Camp 2024 mit Rave3eN: Ein Community-Treffen in der Natur, ohne Luxus, aber mit Herz, EDM-Vibes und tiefen Gesprächen. Die Streaming-Community trifft sich im echten Leben.",
+  "url": "https://www.rave3en.de/ravecamp2024.html",
+  "organizer": {
+    "@type": "Person",
+    "name": "Rave3eN",
+    "url": "https://www.rave3en.de/"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "Rave3eN Rave Camp 2024",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "DE"
+    }
+  }
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -66,7 +101,7 @@ nav a:hover{color:var(--neon2);}
 
 main{
   margin-top:100px;
-  padding:40px 15px;
+  padding:40px 15px 60px;
   text-align:center;
 }
 h1{
@@ -74,7 +109,14 @@ h1{
   font-size:2.2rem;
   color:var(--neon1);
   text-shadow:0 0 15px rgba(155,92,255,0.6);
-  margin-bottom:40px;
+  margin-bottom:20px;
+}
+.camp-text{
+  max-width:900px;
+  margin:0 auto 40px;
+  font-size:1rem;
+  line-height:1.7;
+  color:#d5e0ff;
 }
 
 /* Galerie oben */
@@ -130,10 +172,13 @@ h1{
   box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,123,255,0.6);
 }
 
-/* Zurück-Button */
+/* Zurück-Buttons */
+.nav-bottom{
+  margin-top:50px;
+}
 a.back-btn{
   display:inline-block;
-  margin-top:50px;
+  margin:4px 8px;
   padding:10px 24px;
   font-weight:700;
   font-size:1.05rem;
@@ -163,6 +208,7 @@ canvas#waves{
   header .logo span{font-size:1.3rem;}
   nav a{font-size:0.95rem;margin-left:12px;}
   h1{font-size:1.9rem;}
+  .camp-text{font-size:0.96rem;}
   .gallery-row{gap:15px;}
   .gallery-row img{width:300px;}
   .gallery-column img{width:95vw;}
@@ -170,7 +216,8 @@ canvas#waves{
 @media (max-width:600px){
   header{flex-direction:column;gap:10px;}
   nav{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;}
-  h1{font-size:1.7rem;margin-bottom:30px;}
+  h1{font-size:1.7rem;margin-bottom:20px;}
+  .camp-text{margin-bottom:30px;}
   .gallery-row img{width:90vw;}
   a.back-btn{font-size:0.95rem;padding:8px 20px;}
 }
@@ -179,6 +226,13 @@ canvas#waves{
   header .logo span{font-size:1.1rem;}
   h1{font-size:1.5rem;}
 }
+
+/* Extra Style: Rave3eN Neon Pulse für den Twitch-Overlay */
+@keyframes raveGlow {
+  0%   { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
+  50%  { box-shadow: 0 0 20px #9b5cff, 0 0 35px #007bff; }
+  100% { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
+}
 </style>
 </head>
 <body>
@@ -186,7 +240,7 @@ canvas#waves{
 
 <header>
   <div class="logo">
-    <img src="logo druck.png" alt="Rave3eN Logo">
+    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
     <span>Rave3eN</span>
   </div>
 
@@ -200,29 +254,79 @@ canvas#waves{
 <main>
   <h1>Rave Camp 2024</h1>
 
+  <div class="camp-text">
+    Das Rave Camp 2024 war mehr als nur ein Treffen.  
+    Es war Natur, Ruhe, EDM-Vibes, Lagerfeuer, ehrliche Gespräche und eine Community, die sich nicht nur im Chat, sondern im echten Leben in die Augen schauen kann.  
+    Ohne Luxus, ohne Filter – nur Menschen, die sich Zeit füreinander nehmen, lachen, nachdenken und Momente schaffen, die bleiben.
+  </div>
+
   <!-- Erste Reihe -->
   <div class="gallery-row">
-    <img src="camp1.jpg" alt="Rave Camp Bild 1">
-    <img src="camp2.jpg" alt="Rave Camp Bild 2">
-    <img src="camp3.jpg" alt="Rave Camp Bild 3">
+    <img src="camp1.jpg" alt="Rave Camp 2024 Community Moment 1 mit Rave3eN">
+    <img src="camp2.jpg" alt="Rave Camp 2024 Community Moment 2 mit Lagerfeuer Stimmung">
+    <img src="camp3.jpg" alt="Rave Camp 2024 Community Moment 3 in der Natur">
   </div>
 
   <!-- Untere Reihe -->
   <div class="gallery-column">
-    <img src="camp4.jpg" alt="Rave Camp Bild 4">
-    <img src="camp5.jpg" alt="Rave Camp Bild 5">
-    <img src="camp6.jpg" alt="Rave Camp Bild 6">
-    <img src="camp7.jpg" alt="Rave Camp Bild 7">
-    <img src="camp8.jpg" alt="Rave Camp Bild 8">
+    <img src="camp4.jpg" alt="Rave Camp 2024 Gruppenmoment mit der Rave3eN Community">
+    <img src="camp5.jpg" alt="Rave Camp 2024 Atmosphäre bei Tag">
+    <img src="camp6.jpg" alt="Rave Camp 2024 Atmosphäre bei Nacht">
+    <img src="camp7.jpg" alt="Rave Camp 2024 Rave3eN und Community im Gespräch">
+    <img src="camp8.jpg" alt="Rave Camp 2024 Erinnerungsfoto mit Rave3eN">
   </div>
 
-  <a href="events.html" class="back-btn">← Zurück zu Events</a>
+  <div class="nav-bottom">
+    <a href="events.html" class="back-btn">← Zurück zu den Events</a>
+    <a href="index.html" class="back-btn">Zur Startseite</a>
+  </div>
 </main>
+
+<!-- Rave3eN Neon Twitch Player – EDM Pulse Version -->
+<div style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 4px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  animation: raveGlow 2.4s infinite alternate;
+">
+  <iframe 
+    src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true"
+    height="245"
+    width="395"
+    allowfullscreen="true"
+    style="border-radius: 10px; border: 2px solid #9b5cffaa;"
+    title="Rave3eN Twitch Overlay">
+  </iframe>
+
+  <div style="
+    text-align: center;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #9b5cff;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px #007bff;
+  ">
+    💜 Rave3eN • EDM × Gaming 🔵
+  </div>
+</div>
 
 <script>
 // Smooth Fade-In der Bilder beim Scrollen
-const imgs=document.querySelectorAll('img');
-function reveal(){imgs.forEach(img=>{const rect=img.getBoundingClientRect();if(rect.top<window.innerHeight-80){img.classList.add('visible');}});}
+const imgs=document.querySelectorAll('.gallery-row img, .gallery-column img');
+function reveal(){
+  imgs.forEach(img=>{
+    const rect=img.getBoundingClientRect();
+    if(rect.top<window.innerHeight-80){
+      img.classList.add('visible');
+    }
+  });
+}
 window.addEventListener('scroll',reveal);
 window.addEventListener('load',reveal);
 
@@ -232,9 +336,31 @@ let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
 
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(155,92,255,0.7)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(155,92,255,0.7)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 
 for(let i=0;i<60;i++)parts.push(new P());
 
