@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland</title>
-<meta name="description" content="Willkommen bei Rave3eN! EDM-Vibes, Gaming und Emotion in ihrer reinsten Form. Arena Breakout Highlights, Livestreams, Events und Community. Erlebe Musik, Gaming und Herz vereint." />
-<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, deutscher Arena Breakout Creator, EDM Streamer, EDM Gaming, Rave Gaming Livestream, deutsche Twitch Community" />
+<meta name="description" content="Willkommen bei Rave3eN! EDM-Vibes, Gaming und Emotion in ihrer reinsten Form. Taktisches Arena Breakout Gameplay, Highlights, Livestreams, Events und eine einzigartige Community aus Deutschland. Erlebe Musik, Gaming und Herz vereint." />
+<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, deutscher Arena Breakout Creator, EDM Streamer, EDM Gaming, Rave Gaming Livestream, deutsche Twitch Community, Arena Breakout deutsch live" />
 <meta name="author" content="Rave3eN" />
 
 <!-- Open Graph / Social Preview -->
@@ -206,6 +206,19 @@ iframe{
   color:#dbe4f5;
   transition:opacity 0.6s ease;
 }
+.aktuelles .links{
+  margin-top:14px;
+  font-size:0.95rem;
+}
+.aktuelles .links a{
+  color:var(--neon2);
+  text-decoration:none;
+  font-weight:600;
+}
+.aktuelles .links a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 10px var(--neon1);
+}
 
 /* SPOTIFY */
 .spotify-box{
@@ -279,17 +292,22 @@ footer{
 
 <main>
   <section class="twitch-box">
-    <iframe src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true" allowfullscreen></iframe>
+    <iframe src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true" allowfullscreen title="Rave3eN Arena Breakout Twitch Livestream"></iframe>
   </section>
 
   <section class="aktuelles">
     <h2>Aktuelles</h2>
     <p id="statusText">Lade aktuellen Status ...</p>
+    <p class="links">
+      Mehr über mich erfährst du auf der <a href="about.html">About-Me Seite</a>  
+      und alle Community-Highlights findest du bei den <a href="events.html">Rave3eN Events</a>.
+    </p>
   </section>
 
   <section class="spotify-box">
     <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+      title="Rave3eN EDM Playlist auf Spotify"></iframe>
   </section>
 </main>
 
@@ -304,16 +322,59 @@ const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(100,150,255,0.6)';ctx.arc(this.x,this.y	this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(100,150,255,0.6)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 for(let i=0;i<60;i++)parts.push(new P());
-function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
-for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
-function anim(){ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
-wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
-parts.forEach(p=>{p.u();p.d();});t+=0.02;requestAnimationFrame(anim);}
+function wave(c,y,a,f,s,o){
+  ctx.beginPath();
+  const ang=-Math.PI/6;
+  ctx.save();
+  ctx.translate(w/2,h/2);
+  ctx.rotate(ang);
+  ctx.translate(-w/2,-h/2);
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();
+  ctx.restore();
+}
+function anim(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
+  wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;
+  requestAnimationFrame(anim);
+}
 anim();
 
 /* STATUS LADEN */
