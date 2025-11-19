@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Über Rave3eN — Daniel Hein | EDM, Gaming & echte Emotionen</title>
-<meta name="description" content="Erfahre die Geschichte von Daniel „Rave3eN“ Hein: Von einer schwierigen Kindheit über Tischtennis und eSports bis hin zu EDM × Gaming auf Twitch. Eine Reise voller Herz, Schmerz und echter Motivation." />
-<meta name="keywords" content="Rave3eN, Daniel Hein, Rave3eN Story, deutscher Streamer Biografie, EDM Gamer, Arena Breakout Spieler, Twitch Streamer Deutschland, Rave3eN About Me" />
+<meta name="description" content="Erfahre die Geschichte von Daniel „Rave3eN“ Hein: Von einer schwierigen Kindheit über Tischtennis und eSports bis hin zu EDM × Gaming und Arena Breakout auf Twitch. Eine Reise voller Herz, Schmerz, Motivation und Community." />
+<meta name="keywords" content="Rave3eN, Daniel Hein, Rave3eN Story, deutscher Streamer Biografie, EDM Gamer, Arena Breakout Spieler, Twitch Streamer Deutschland, Rave3eN About Me, Rave3eN Arena Breakout" />
 <meta name="author" content="Rave3eN" />
 
 <!-- Open Graph / Social Preview -->
 <meta property="og:title" content="Über Rave3eN — Daniel Hein | EDM, Gaming & echte Emotionen" />
-<meta property="og:description" content="Die persönliche Geschichte von Rave3eN: Musik, Gaming, schwere Zeiten und eine Community, die alles verändert. Erfahre, wer hinter dem Namen steht." />
+<meta property="og:description" content="Die persönliche Geschichte von Rave3eN: Musik, Gaming, schwere Zeiten, Arena Breakout und eine Community, die alles verändert. Erfahre, wer hinter dem Namen steht." />
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://www.rave3en.de/about.html" />
 <meta property="og:image" content="https://www.rave3en.de/me.jpg" />
@@ -211,16 +211,17 @@ p.intro{
 }
 
 /* BACK LINK */
-a.back{
-  display:inline-block;
+.links-bottom{
   margin-top:25px;
+  font-family:'Orbitron';
+  font-size:0.95rem;
+}
+.links-bottom a{
   color:var(--neon2);
   text-decoration:none;
-  font-weight:600;
-  font-family:'Orbitron';
-  transition:.3s;
+  margin-right:14px;
 }
-a.back:hover{
+.links-bottom a:hover{
   color:var(--neon1);
   text-shadow:0 0 15px var(--neon1);
 }
@@ -314,10 +315,13 @@ Später schaffte ich es immerhin noch in die 1. Division der EAS. Ich hätte ger
 Nun bin ich älter, reifer und habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern trotz allem weiterzugehen. Das Leben schreibt seine eigene Geschichte.  
 Twitch ist für mich der Ort, an dem ich Musik, Gaming und Emotion vereine.  
 „Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.  
-Wo Leidenschaft auf EDM trifft und Gefühle uns menschlich machen – da bin ich zuhause. 💜
+Wo Leidenschaft auf EDM trifft, Arena Breakout Adrenalin bringt und Gefühle uns menschlich machen – da bin ich zuhause. 💜
   </p>
 
-  <a href="index.html" class="back">← Zurück zur Startseite</a>
+  <div class="links-bottom">
+    <a href="index.html">← Zurück zur Startseite</a>
+    <a href="events.html">Zu den Rave3eN Events →</a>
+  </div>
 </main>
 
 <!-- Rave3eN Neon Twitch Player – EDM Pulse Version -->
@@ -339,7 +343,8 @@ Wo Leidenschaft auf EDM trifft und Gefühle uns menschlich machen – da bin ich
     width="395"
     allowfullscreen="true"
     style="border-radius: 10px; border: 2px solid #9b5cffaa;"
-  ></iframe>
+    title="Rave3eN Twitch Overlay">
+  </iframe>
 
   <div style="
     text-align: center;
@@ -359,16 +364,45 @@ const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
 let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(120,160,255,0.6)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(120,160,255,0.6)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 for(let i=0;i<60;i++)parts.push(new P());
 function wave(c,y,a,f,s,o){
   ctx.beginPath();
   const ang=-Math.PI/6;
   ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
-  for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}
-  ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();ctx.restore();
 }
 function anim(){
   ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
