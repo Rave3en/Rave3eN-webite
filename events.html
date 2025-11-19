@@ -8,6 +8,7 @@
 <meta name="description" content="Alle Rave3eN Events im Überblick: Rave Camp 2024, Rave Drive 2025 und kommende Community Treffen. Erlebe Reisen, EDM-Vibes, Arena Breakout Community und echte Verbindung mit Rave3eN." />
 <meta name="keywords" content="Rave3eN Events, Rave Camp, Rave Drive, Streamer Community Treffen, Arena Breakout Community, deutscher Streamer Event, Rave3eN Camp, Rave3eN Roadtrip, Rave3eN Deutschlandtour" />
 <meta name="author" content="Rave3eN" />
+<link rel="canonical" href="https://www.rave3en.de/events.html" />
 
 <!-- Open Graph / Social Preview -->
 <meta property="og:title" content="Rave3eN Events — Rave Camp 2024 & Rave Drive 2025" />
@@ -15,6 +16,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.rave3en.de/events.html" />
 <meta property="og:image" content="https://www.rave3en.de/event1.jpg" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Rave3eN Events — Rave Camp 2024 & Rave Drive 2025" />
+<meta name="twitter:description" content="Rave Camp 2024, Rave Drive 2025 und besondere Community-Momente mit Rave3eN." />
+<meta name="twitter:image" content="https://www.rave3en.de/event1.jpg" />
 
 <!-- JSON-LD: Event Collection -->
 <script type="application/ld+json">
@@ -140,11 +147,20 @@ h1{
   font-size:2.3rem;
   color:var(--neon2);
   text-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
-  margin-bottom:40px;
+  margin-bottom:20px;
   background:linear-gradient(90deg,var(--neon1),var(--neon2));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientFlow 6s linear infinite;
+}
+
+/* Intro-Text */
+.intro{
+  max-width:800px;
+  margin:0 auto 35px;
+  font-size:0.98rem;
+  color:#d0e0f7;
+  line-height:1.7;
 }
 
 /* EVENT-KARTEN */
@@ -271,26 +287,32 @@ footer{
     <span>Rave3eN</span>
   </div>
   <div class="social-header">
-    <a href="https://www.youtube.com/@rave3en30" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@rave3en" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/rave3en_/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/3TbArexH5H" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
   </div>
 </header>
 
 <main>
   <h1>Events</h1>
 
+  <p class="intro">
+    Rave Camp, Rave Drive, Deutschlandtour und spontane Treffen:  
+    Hier findest du alle Events, bei denen aus Twitch-Chat echte Begegnungen werden –
+    mit EDM-Vibes, Arena Breakout Talk, langen Gesprächen und Momenten, die man nicht mehr vergisst.
+  </p>
+
   <div class="event-container">
     <div class="event-card">
-      <img src="event1.jpg" alt="Rave3eN Rave Camp 2024 Event">
+      <img src="event1.jpg" alt="Rave3eN Rave Camp 2024 Event" loading="lazy" decoding="async">
       <h3>Rave Camp 2024</h3>
       <p>Ein Treffen von Menschen, die gemeinsam Natur und Freiheit erleben – ohne Luxus, aber mit Herz, EDM-Vibes und echter Rave3eN Community.</p>
       <a href="ravecamp2024.html">Details ansehen →</a>
     </div>
 
     <div class="event-card">
-      <img src="event2.jpg" alt="Rave3eN Rave Drive 2025 Roadtrip">
+      <img src="event2.jpg" alt="Rave3eN Rave Drive 2025 Roadtrip" loading="lazy" decoding="async">
       <h3>Rave Drive 2025</h3>
       <p>Rave3eN unterwegs: Von Potsdam nach Leipzig, Köln und Bayern – um die Menschen zu treffen, die Teil dieser Community sind.</p>
       <a href="ravedrive2025.html">Details ansehen →</a>
