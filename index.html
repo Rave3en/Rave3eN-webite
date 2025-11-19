@@ -3,8 +3,38 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rave3eN — Official</title>
-<meta name="description" content="Rave3eN — EDM x Gaming | Wo Musik das Herz berührt 💜" />
+
+<title>Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland</title>
+<meta name="description" content="Willkommen bei Rave3eN! EDM-Vibes, Gaming und Emotion in ihrer reinsten Form. Arena Breakout Highlights, Livestreams, Events und Community. Erlebe Musik, Gaming und Herz vereint." />
+<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, deutscher Arena Breakout Creator, EDM Streamer, EDM Gaming, Rave Gaming Livestream, deutsche Twitch Community" />
+<meta name="author" content="Rave3eN" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland" />
+<meta property="og:description" content="EDM-Vibes, Arena Breakout Gameplay, Livestreams, Events und eine einzigartige Community. Erlebe Musik, Emotion und Gaming mit Rave3eN." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.rave3en.de/" />
+<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
+
+<!-- JSON-LD Creator Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rave3eN",
+  "alternateName": "Daniel Hein",
+  "url": "https://www.rave3en.de/",
+  "sameAs": [
+    "https://twitch.tv/rave3en",
+    "https://www.youtube.com/@rave3en30",
+    "https://www.tiktok.com/@rave3en",
+    "https://www.instagram.com/rave3en_/",
+    "https://discord.gg/3TbArexH5H"
+  ],
+  "jobTitle": "EDM × Gaming Creator",
+  "description": "EDM Vibes, Gaming, Emotionen & Arena Breakout Creator aus Deutschland."
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -229,7 +259,7 @@ footer{
 
 <header>
   <div class="logo">
-    <img src="logo druck.png" alt="Rave3eN Logo">
+    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
     <span>Rave3eN</span>
   </div>
   <div class="spruch">Wo Musik das Herz berührt 💜</div>
@@ -276,7 +306,7 @@ function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
 class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
 u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(100,150,255,0.6)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(100,150,255,0.6)';ctx.arc(this.x,this.y	this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
 for(let i=0;i<60;i++)parts.push(new P());
 function wave(c,y,a,f,s,o){ctx.beginPath();const ang=-Math.PI/6;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
 for(let x=0;x<w;x++){const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;ctx.lineTo(x,yy);}ctx.strokeStyle=c;ctx.lineWidth=2;ctx.shadowBlur=20;ctx.shadowColor=c;ctx.stroke();ctx.restore();}
