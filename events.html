@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Rave3eN Events — Rave Camp, Rave Drive & Community Treffen</title>
-<meta name="description" content="Alle Rave3eN Events im Überblick: Rave Camp 2024, Rave Drive 2025 und kommende Community Treffen. Erlebe Reisen, EDM-Vibes, Gaming und echte Verbindung mit der Community." />
-<meta name="keywords" content="Rave3eN Events, Rave Camp, Rave Drive, Streamer Community Treffen, Arena Breakout Community, deutscher Streamer Event, Rave3eN Camp, Rave3eN Roadtrip" />
+<title>Rave3eN Events — Rave Camp 2024 & Rave Drive 2025</title>
+<meta name="description" content="Alle Rave3eN Events im Überblick: Rave Camp 2024, Rave Drive 2025 und kommende Community Treffen. Erlebe Reisen, EDM-Vibes, Arena Breakout Community und echte Verbindung mit Rave3eN." />
+<meta name="keywords" content="Rave3eN Events, Rave Camp, Rave Drive, Streamer Community Treffen, Arena Breakout Community, deutscher Streamer Event, Rave3eN Camp, Rave3eN Roadtrip, Rave3eN Deutschlandtour" />
 <meta name="author" content="Rave3eN" />
 
 <!-- Open Graph / Social Preview -->
-<meta property="og:title" content="Rave3eN Events — Rave Camp, Rave Drive & Community Treffen" />
-<meta property="og:description" content="Rave Camp 2024, Rave Drive 2025 und weitere Community-Events von Rave3eN. Erfahre mehr über Treffen, Reisen und besondere Momente mit der Community." />
+<meta property="og:title" content="Rave3eN Events — Rave Camp 2024 & Rave Drive 2025" />
+<meta property="og:description" content="Rave Camp 2024, Rave Drive 2025 und weitere Community-Events von Rave3eN. Erfahre mehr über Treffen, Reisen und besondere Momente mit der Rave3eN Community." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.rave3en.de/events.html" />
 <meta property="og:image" content="https://www.rave3en.de/event1.jpg" />
@@ -28,13 +28,13 @@
     {
       "@type": "Event",
       "name": "Rave Camp 2024",
-      "description": "Ein Treffen von Menschen, die gemeinsam Natur und Freiheit erleben – ohne Luxus, aber mit Herz.",
+      "description": "Ein Treffen von Menschen, die gemeinsam Natur, Freiheit, EDM und Community erleben – ohne Luxus, aber mit Herz.",
       "url": "https://www.rave3en.de/ravecamp2024.html"
     },
     {
       "@type": "Event",
       "name": "Rave Drive 2025",
-      "description": "Rave3eN unterwegs durch Deutschland, um Community-Mitglieder persönlich zu treffen.",
+      "description": "Rave3eN unterwegs durch Deutschland, um Community-Mitglieder persönlich zu treffen – von Potsdam bis Bayern.",
       "url": "https://www.rave3en.de/ravedrive2025.html"
     }
   ]
@@ -201,18 +201,19 @@ h1{
 /* BACK HOME */
 .back-home{
   text-align:center;
-  margin:60px 0;
+  margin:60px 0 20px;
 }
 .back-home a{
   font-family:'Orbitron';
-  font-size:1.1rem;
+  font-size:1.05rem;
   text-decoration:none;
   color:var(--neon2);
-  padding:12px 28px;
+  padding:10px 22px;
   border-radius:25px;
   background:rgba(255,255,255,0.05);
   box-shadow:0 0 15px var(--neon1),inset 0 0 10px var(--neon2);
   transition:all .3s ease;
+  margin:0 8px;
 }
 .back-home a:hover{
   color:var(--neon1);
@@ -284,20 +285,21 @@ footer{
     <div class="event-card">
       <img src="event1.jpg" alt="Rave3eN Rave Camp 2024 Event">
       <h3>Rave Camp 2024</h3>
-      <p>Ein Treffen von Menschen, die gemeinsam Natur und Freiheit erleben – ohne Luxus, aber mit Herz.</p>
+      <p>Ein Treffen von Menschen, die gemeinsam Natur und Freiheit erleben – ohne Luxus, aber mit Herz, EDM-Vibes und echter Rave3eN Community.</p>
       <a href="ravecamp2024.html">Details ansehen →</a>
     </div>
 
     <div class="event-card">
       <img src="event2.jpg" alt="Rave3eN Rave Drive 2025 Roadtrip">
       <h3>Rave Drive 2025</h3>
-      <p>Rave3eN unterwegs: Von Potsdam bis Bayern – um die Menschen zu treffen, die Teil dieser Community sind.</p>
+      <p>Rave3eN unterwegs: Von Potsdam nach Leipzig, Köln und Bayern – um die Menschen zu treffen, die Teil dieser Community sind.</p>
       <a href="ravedrive2025.html">Details ansehen →</a>
     </div>
   </div>
 
   <div class="back-home">
     <a href="index.html">← Zurück zur Startseite</a>
+    <a href="about.html">Mehr über Rave3eN erfahren →</a>
   </div>
 </main>
 
@@ -324,7 +326,8 @@ footer{
     width="395"
     allowfullscreen="true"
     style="border-radius: 10px; border: 2px solid #9b5cffaa;"
-  ></iframe>
+    title="Rave3eN Twitch Overlay">
+  </iframe>
 
   <div style="
     text-align: center;
@@ -345,9 +348,31 @@ let w,h,t=0,ampScale=0.9;const parts=[];
 function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
 addEventListener('resize',resize);resize();
 
-class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;this.s=1+Math.random()*2;this.a=.3+Math.random()*.3;}
-u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;}
-d(){ctx.beginPath();ctx.globalAlpha=this.a;ctx.fillStyle='rgba(155,92,255,0.7)';ctx.arc(this.x,this.y,this.s,0,2*Math.PI);ctx.fill();ctx.globalAlpha=1;}}
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(155,92,255,0.7)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 
 for(let i=0;i<60;i++)parts.push(new P());
 
