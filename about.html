@@ -202,6 +202,16 @@ a.back:hover{
   p.intro{font-size:1.05rem;}
 }
 </style>
+
+<!-- Extra Style: Rave3eN Neon Pulse für den Twitch-Overlay -->
+<style>
+@keyframes raveGlow {
+  0%   { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
+  50%  { box-shadow: 0 0 20px #9b5cff, 0 0 35px #007bff; }
+  100% { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
+}
+</style>
+
 </head>
 
 <body>
@@ -279,6 +289,39 @@ Wo Leidenschaft auf EDM trifft und Gefühle uns menschlich machen – da bin ich
 
   <a href="index.html" class="back">← Zurück zur Startseite</a>
 </main>
+
+<!-- Rave3eN Neon Twitch Player – EDM Pulse Version -->
+<div style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 4px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  animation: raveGlow 2.4s infinite alternate;
+">
+  <iframe 
+    src="https://player.twitch.tv/?channel=rave3en&parent=rave3en.de&muted=true"
+    height="245"
+    width="395"
+    allowfullscreen="true"
+    style="border-radius: 10px; border: 2px solid #9b5cffaa;"
+  ></iframe>
+
+  <div style="
+    text-align: center;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #9b5cff;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px #007bff;
+  ">
+    💜 Rave3eN • EDM × Gaming 🔵
+  </div>
+</div>
 
 <script>
 /* Waves */
