@@ -116,7 +116,6 @@ header{
 h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px); line-height:1.06; margin-bottom:10px}
 .sub{color:var(--muted); max-width:720px; margin:0 auto 18px}
 
-/* Micro WOW: dezenter Shine, selten */
 .hero::after{
   content:""; position:absolute; inset:-200% -200% auto auto; width:180%; height:180%;
   background:linear-gradient(120deg, transparent 45%, rgba(255,255,255,.06) 50%, transparent 55%);
@@ -131,13 +130,13 @@ h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px); line-height:1.06; mar
 .secondary{background:var(--glass2); color:#fff; border-color:rgba(155,92,255,.28)}
 .btn:hover{transform:translateY(-1px)}
 
-/* Ticker (langsamer, dezenter) */
+/* Ticker (dezent) */
 .ticker{margin-top:16px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); background:rgba(255,255,255,.03)}
 .track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; animation:marq 38s linear infinite}
 .track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#d6e6ff; font-size:12px}
 @keyframes marq{to{transform:translateX(-50%)}}
 
-/* Sections & reveal (sehr soft) */
+/* Sections & reveal (soft) */
 .section{margin-top:28px}
 .reveal{opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease}
 .reveal.visible{opacity:1; transform:none}
@@ -249,9 +248,8 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.3); padding:16px 0
 
     <div id="panelVod" class="panel" role="region" aria-labelledby="tabVod">
       <div class="playerWrap">
-        <!-- Deine VOD-ID einsetzen, z. B. v2054321987 -->
         <iframe
-          src="https://player.twitch.tv/?video=VIDEO_ID_HERE&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&autoplay=false&time=0h0m0s"
+          src="https://player.twitch.tv/?video=2633733485&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&autoplay=false&time=0h0m0s"
           allowfullscreen loading="lazy" title="Rave3eN Twitch VOD"></iframe>
       </div>
       <p class="meta" style="margin-top:8px">Timeline frei beweglich.</p>
