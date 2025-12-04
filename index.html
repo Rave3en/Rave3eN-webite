@@ -1,355 +1,431 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Rave3eN — EDM × Gaming × Community</title>
-<meta name="description" content="Minimal, modern, clean: Rave3eN mit Neon-Akzenten, Live-Player, Events, Playlist & Community."/>
-<link rel="canonical" href="https://www.rave3en.de/"/>
+<title>Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland</title>
+<meta name="description" content="Willkommen bei Rave3eN! EDM-Vibes, Gaming und Emotion in ihrer reinsten Form. Taktisches Arena Breakout Gameplay, Highlights, Livestreams, Events und eine einzigartige Community aus Deutschland. Erlebe Musik, Gaming und Herz vereint." />
+<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, deutscher Arena Breakout Creator, EDM Streamer, EDM Gaming, Rave Gaming Livestream, deutsche Twitch Community, Arena Breakout deutsch live" />
+<meta name="author" content="Rave3eN" />
+<link rel="canonical" href="https://www.rave3en.de/" />
 
-<meta property="og:title" content="Rave3eN — EDM × Gaming × Community"/>
-<meta property="og:description" content="Minimalistisch, clean und trotzdem WOW. Neon-Blue × Neon-Purple × Black."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://www.rave3en.de/"/>
-<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland" />
+<meta property="og:description" content="EDM-Vibes, Arena Breakout Gameplay, Livestreams, Events und eine einzigartige Community. Erlebe Musik, Emotion und Gaming mit Rave3eN." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.rave3en.de/" />
+<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland" />
+<meta name="twitter:description" content="EDM-Vibes, Arena Breakout Gameplay, Livestreams, Events und eine einzigartige Community. Erlebe Musik, Emotion und Gaming mit Rave3eN." />
+<meta name="twitter:image" content="https://www.rave3en.de/logo%20druck.png" />
+
+<!-- JSON-LD Creator Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rave3eN",
+  "alternateName": "Daniel Hein",
+  "url": "https://www.rave3en.de/",
+  "sameAs": [
+    "https://twitch.tv/rave3en",
+    "https://www.youtube.com/@rave3en30",
+    "https://www.tiktok.com/@rave3en",
+    "https://www.instagram.com/rave3en_/",
+    "https://discord.gg/3TbArexH5H"
+  ],
+  "jobTitle": "EDM × Gaming Creator",
+  "description": "EDM Vibes, Gaming, Emotionen & Arena Breakout Creator aus Deutschland."
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
-  --bg:#000; --ink:#f4f7ff; --muted:#c6d6ff;
-  --purple:#9b5cff; --blue:#00d2ff;
-  --glass:rgba(255,255,255,.06); --glass2:rgba(10,12,20,.42);
-  --border:rgba(155,92,255,.22);
-  --max:1180px; --r:18px; --rx:26px;
-
-  /* Motion density (Calm default) */
-  --beam-opacity:.10;
-  --beam-speed:60s; /* super slow */
-  --shine-interval:22s;
-  --tilt-max:6deg;
+  --bg:#000000;
+  --neon1:#9b5cff;  /* Neon-Lila */
+  --neon2:#007bff;  /* Neon-Blau */
 }
-
-/* Reset */
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:
-    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
-    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
-    #000;
-  color:var(--ink);
-  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+html,body{
+  min-height:100%;
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:#e9eef8;
+  overflow-x:hidden;
 }
 
-/* Subtle noise for depth */
-body::after{
-  content:""; pointer-events:none; position:fixed; inset:0; z-index:-1;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 .035 .05 .035 0 0 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity:.25;
+/* Canvas */
+canvas#waves{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
 }
 
-/* Focus */
-:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
-
-/* Header */
+/* HEADER */
 header{
-  position:fixed; inset:0 0 auto 0; z-index:40;
-  background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.55));
-  border-bottom:1px solid rgba(155,92,255,.18); backdrop-filter:blur(8px);
+  position:fixed;
+  top:0;left:0;width:100%;
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,0,0,0.8);
+  z-index:100;
+  flex-wrap:wrap;
+  gap:10px;
 }
-.head{max-width:var(--max); margin:0 auto; padding:12px 16px;
-  display:flex; align-items:center; justify-content:space-between; gap:12px}
-.brand{display:flex; align-items:center; gap:12px}
-.badge{
-  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;
-  background:radial-gradient(circle at 30% 20%, var(--purple), transparent 60%),
-             radial-gradient(circle at 70% 80%, var(--blue), transparent 65%), #0a0f26;
-  box-shadow:0 0 16px rgba(155,92,255,.5), 0 0 22px rgba(0,210,255,.35);
-  font-family:"Orbitron";font-weight:800;letter-spacing:.06em}
-.name{
-  font-family:"Orbitron";font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;
-  background:linear-gradient(90deg,var(--purple),var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-size:200%; animation:flow 9s linear infinite}
-@keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
 
-.nav{display:flex; gap:10px; align-items:center}
-.nav a{
-  padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; text-transform:uppercase; font-size:11px;
-  color:#d9e8ff; background:var(--glass); border:1px solid rgba(155,92,255,.18); transition:.2s}
-.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.28)}
-.switcher{display:flex; gap:6px}
-.switcher button{padding:6px 10px; border-radius:999px; border:1px solid rgba(155,92,255,.25); background:rgba(255,255,255,.06); color:#d9e8ff; font-size:11px; cursor:pointer}
-.switcher button.active{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800; box-shadow:0 0 12px rgba(0,210,255,.28)}
-
-.page{position:relative; max-width:var(--max); margin:0 auto; padding:96px 16px 84px}
-
-/* HERO (calm) */
-.hero{
-  position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
-  border:1px solid var(--border);
-  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
-             #06070f;
-  box-shadow:
-    0 18px 60px rgba(0,0,0,.55),
-    0 0 32px rgba(155,92,255,.16),
-    0 0 60px rgba(0,210,255,.16);
-  min-height:56vh; display:grid; place-items:center; text-align:center;
+/* LOGO */
+header .logo{
+  display:flex;align-items:center;gap:12px;
 }
-.hero .beams{
-  position:absolute; inset:-20% -20% -20% -20%;
-  background:
-    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 42%),
-    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 42%);
-  mix-blend-mode:screen; filter:blur(1px);
-  animation:spin var(--beam-speed) linear infinite;
+header .logo img{
+  height:42px;
+  filter:drop-shadow(0 0 14px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
 }
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.hero .copy{position:relative; z-index:2; padding:28px}
-.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:12px}
-h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px); line-height:1.06; margin-bottom:10px}
-.sub{color:var(--muted); max-width:720px; margin:0 auto 18px}
-
-.hero::after{
-  content:""; position:absolute; inset:-200% -200% auto auto; width:180%; height:180%;
-  background:linear-gradient(120deg, transparent 45%, rgba(255,255,255,.06) 50%, transparent 55%);
-  transform:rotate(8deg);
-  animation:shine var(--shine-interval) linear infinite;
+header .logo span{
+  font-family:'Orbitron';
+  font-size:1.7rem;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon1));
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientFlow 5s linear infinite;
+  letter-spacing:1px;
 }
-@keyframes shine{0%{transform:translateX(0) rotate(8deg)} 100%{transform:translateX(-50%) rotate(8deg)}}
-
-.cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:6px}
-.btn{display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:999px; border:1px solid transparent; font-family:"Orbitron"; letter-spacing:.16em; text-transform:uppercase; font-size:12px; cursor:pointer; transition:.16s}
-.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800; box-shadow:0 0 16px rgba(0,210,255,.24)}
-.secondary{background:var(--glass2); color:#fff; border-color:rgba(155,92,255,.28)}
-.btn:hover{transform:translateY(-1px)}
-
-/* Ticker (dezent) */
-.ticker{margin-top:16px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); background:rgba(255,255,255,.03)}
-.track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; animation:marq 38s linear infinite}
-.track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#d6e6ff; font-size:12px}
-@keyframes marq{to{transform:translateX(-50%)}}
-
-/* Sections & reveal (soft) */
-.section{margin-top:28px}
-.reveal{opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease}
-.reveal.visible{opacity:1; transform:none}
-h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
-.meta{color:var(--muted)}
-
-/* Cards (minimal, leichter Tilt) */
-.tiles{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
-.card{
-  background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:16px; padding:16px;
-  box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.12), 0 0 42px rgba(155,92,255,.12);
-  transform-style:preserve-3d; transition:transform .15s ease, box-shadow .2s ease; position:relative; overflow:hidden;
+@keyframes gradientFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
-.card strong{display:block; margin-bottom:6px}
-.card a{color:#93dbff; font-weight:700}
-.card a:hover{color:#d3acff}
-.card:hover{box-shadow:0 20px 56px rgba(0,0,0,.55), 0 0 30px rgba(0,210,255,.16), 0 0 48px rgba(155,92,255,.16)}
 
-/* Player */
-.playerWrap{margin-top:12px; background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:18px; overflow:hidden;
-  box-shadow:0 0 30px rgba(0,210,255,.16), 0 0 50px rgba(155,92,255,.16)}
-.playerWrap iframe{width:100%; height:520px; border:0}
+/* SPRUCH */
+header .spruch{
+  font-family:'Orbitron';
+  font-size:1.2rem;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 15px var(--neon1),0 0 30px var(--neon2);
+  animation:heartBeat 3s ease-in-out infinite;
+  text-align:center;
+  flex:1 1 100%;
+}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
 
-/* Tabs */
-.tabRow{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
-.tabBtn{padding:10px 14px; border-radius:999px; border:1px solid rgba(155,92,255,.22); background:rgba(255,255,255,.06); color:#e9f2ff; cursor:pointer; font-family:"Orbitron"; letter-spacing:.12em; text-transform:uppercase; font-size:11px; transition:.2s}
-.tabBtn[aria-selected="true"]{box-shadow:0 0 14px rgba(0,210,255,.22); background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800}
-.panel{display:none}
-.panel.active{display:block}
+/* SOCIALS */
+.social-header{
+  display:flex;
+  gap:12px;
+}
+.social-header a{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:var(--neon2);
+  font-size:1rem;
+  box-shadow:0 0 12px var(--neon1),inset 0 0 8px var(--neon2);
+  transition:.3s;
+}
+.social-header a:hover{
+  color:var(--neon1);
+  transform:scale(1.1);
+  box-shadow:0 0 25px var(--neon2),inset 0 0 10px var(--neon1);
+}
 
-/* Music */
-.music{margin-top:10px; background:rgba(255,255,255,.04); border-radius:16px; overflow:hidden; box-shadow:0 0 30px rgba(0,210,255,.14), 0 0 50px rgba(155,92,255,.14)}
-.music iframe{width:100%; height:320px; border:0}
+/* NAVIGATION */
+.nav-top{
+  margin:160px auto 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+  z-index:99;
+  position:relative;
+}
+.nav-top a{
+  display:flex;align-items:center;justify-content:center;
+  padding:9px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  color:var(--neon2);
+  font-family:'Orbitron';
+  font-size:1rem;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 12px var(--neon1),inset 0 0 6px var(--neon2);
+  transition:all 0.3s ease;
+}
+.nav-top a:hover{
+  color:var(--neon1);
+  transform:scale(1.08);
+  box-shadow:0 0 25px var(--neon2),inset 0 0 10px var(--neon1);
+}
 
-/* Footer */
-footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.3); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
+/* MAIN */
+main{position:relative;z-index:5;margin-top:30px;}
 
-/* Responsive */
-@media (max-width:980px){ .tiles{grid-template-columns:1fr 1fr} }
-@media (max-width:640px){ .tiles{grid-template-columns:1fr} .music iframe{height:280px} .nav .switcher{display:none} }
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .track,.hero::after,.hero .beams{animation:none}
+/* TWITCH */
+.twitch-box{
+  max-width:900px;
+  margin:30px auto;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  box-shadow:0 0 50px var(--neon2),0 0 80px var(--neon1);
+  padding:25px;
+  backdrop-filter:blur(15px);
+}
+iframe{
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:14px;
+}
+
+/* AKTUELLES */
+.aktuelles{
+  margin:45px auto;
+  max-width:900px;
+  background:rgba(0,0,0,0.75);
+  border:1px solid var(--neon1);
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
+}
+.aktuelles h2{
+  font-family:'Orbitron';
+  color:var(--neon2);
+  font-size:1.25rem;
+  margin-bottom:8px;
+}
+.aktuelles p{
+  color:#dbe4f5;
+  transition:opacity 0.6s ease;
+}
+.aktuelles .links{
+  margin-top:14px;
+  font-size:0.95rem;
+}
+.aktuelles .links a{
+  color:var(--neon2);
+  text-decoration:none;
+  font-weight:600;
+}
+.aktuelles .links a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 10px var(--neon1);
+}
+
+/* SPOTIFY */
+.spotify-box{
+  margin:40px auto 80px;
+  max-width:900px;
+  border-radius:16px;
+  box-shadow:0 0 40px var(--neon2),0 0 70px var(--neon1);
+  overflow:hidden;
+  background:rgba(255,255,255,0.04);
+}
+.spotify-box iframe{
+  width:100%;
+  height:380px;
+  border:none;
+  border-radius:16px;
+}
+
+/* FOOTER */
+footer{
+  position:relative;
+  z-index:50;
+  text-align:center;
+  font-family:'Orbitron';
+  font-size:0.9rem;
+  color:#fff;
+  padding:25px 0 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  border-top:1px solid var(--neon1);
+  box-shadow:0 -2px 25px var(--neon1);
+  text-shadow:0 0 12px var(--neon1),0 0 25px var(--neon2);
+}
+#visitorCount{
+  display:block;
+  margin-top:8px;
+  font-size:0.9rem;
+  font-weight:600;
+  color:var(--neon1);
+  text-shadow:0 0 8px var(--neon1),0 0 16px var(--neon2);
+  animation:glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow{
+  0%{text-shadow:0 0 10px var(--neon1);}
+  100%{text-shadow:0 0 22px var(--neon2);}
 }
 </style>
 </head>
 
 <body>
+<canvas id="waves"></canvas>
+
 <header>
-  <div class="head">
-    <div class="brand">
-      <div class="badge">R3</div>
-      <div class="name">RAVE3EN</div>
-    </div>
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a href="#live">Live</a>
-      <a href="#events">Events</a>
-      <a href="#music">Playlist</a>
-      <a href="#community">Community</a>
-      <div class="switcher" aria-label="Vibe">
-        <button data-mode="calm" class="active">Calm</button>
-        <button data-mode="glow">Glow</button>
-      </div>
-    </nav>
+  <div class="logo">
+    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
+    <span>Rave3eN</span>
+  </div>
+  <div class="spruch">Wo Musik das Herz berührt 💜</div>
+  <div class="social-header">
+    <a href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
   </div>
 </header>
 
-<main class="page">
+<div class="nav-top">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Me</a>
+  <a href="events.html">Events</a>
+</div>
 
-  <!-- HERO -->
-  <section class="hero reveal" aria-label="EDM Poster">
-    <div class="beams" aria-hidden="true"></div>
-    <div class="copy">
-      <div class="kicker">EDM ENERGY</div>
-      <h1>Gaming. Musik. Community.</h1>
-      <p class="sub">Minimalistisch. Modern. Clean. Mit Neon-Akzenten, die knallen – ohne abzulenken.</p>
-      <div class="cta">
-        <a href="#live" class="btn primary">🔴 Live ansehen</a>
-        <a href="#events" class="btn secondary">Events</a>
-        <a href="#music" class="btn secondary">Playlist</a>
-      </div>
-    </div>
+<main>
+  <section class="twitch-box">
+    <iframe 
+      src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true"
+      allowfullscreen
+      loading="lazy"
+      title="Rave3eN Arena Breakout Twitch Livestream"></iframe>
   </section>
 
-  <!-- TICKER (dezent) -->
-  <section class="ticker reveal" aria-hidden="true">
-    <div class="track">
-      <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-    </div>
+  <section class="aktuelles">
+    <h2>Aktuelles</h2>
+    <p id="statusText">Lade aktuellen Status ...</p>
+    <p class="links">
+      Mehr über mich erfährst du auf der <a href="about.html">About-Me Seite</a>,  
+      alle Community-Highlights findest du bei den <a href="events.html">Rave3eN Events</a> –  
+      inklusive <a href="ravecamp2024.html">Rave Camp 2024</a> und <a href="ravedrive2025.html">Rave Drive 2025</a>.
+    </p>
   </section>
 
-  <!-- LIVE / VOD -->
-  <section id="live" class="section reveal">
-    <h2>Live auf Twitch</h2>
-    <p class="meta">Der Stream läuft automatisch — Lautstärke 10%. VOD hat eine Timeline.</p>
-
-    <div class="tabRow">
-      <button id="tabLive" class="tabBtn" aria-selected="true">🔴 Live</button>
-      <button id="tabVod"  class="tabBtn" aria-selected="false">📼 Letzte Sendung</button>
-    </div>
-
-    <div id="panelLive" class="panel active" role="region" aria-labelledby="tabLive">
-      <div class="playerWrap">
-        <iframe
-          src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&autoplay=true&muted=false&volume=0.1"
-          allowfullscreen loading="eager" title="Rave3eN Twitch Livestream"></iframe>
-      </div>
-    </div>
-
-    <div id="panelVod" class="panel" role="region" aria-labelledby="tabVod">
-      <div class="playerWrap">
-        <iframe
-          src="https://player.twitch.tv/?video=2633733485&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&autoplay=false&time=0h0m0s"
-          allowfullscreen loading="lazy" title="Rave3eN Twitch VOD"></iframe>
-      </div>
-      <p class="meta" style="margin-top:8px">Timeline frei beweglich.</p>
-    </div>
+  <section class="spotify-box">
+    <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+      title="Rave3eN EDM Playlist auf Spotify"></iframe>
   </section>
-
-  <!-- EVENTS -->
-  <section id="events" class="section reveal">
-    <h2>Nächste Raves</h2>
-    <p class="meta">Community-Events, Spendenaktionen und legendäre Momente.</p>
-    <div class="tiles" style="margin-top:10px">
-      <div class="card">
-        <strong>25–28.12 · Tierheim-Spendenstream</strong>
-        <div class="meta">24/7 Dauerstream · Challenges & Action</div>
-        <a href="events.html">Details →</a>
-      </div>
-      <div class="card">
-        <strong>Rave Camp 2026</strong>
-        <div class="meta">Community-Wochenende · EDM · Lagerfeuer</div>
-        <a href="events.html">Mehr →</a>
-      </div>
-      <div class="card">
-        <strong>Rave Drive 2025 Recap</strong>
-        <div class="meta">2.500 km · 4 Städte · pure Community</div>
-        <a href="ravedrive2025.html">Zum Recap →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MUSIC -->
-  <section id="music" class="section reveal">
-    <h2>EDM Playlist</h2>
-    <p class="meta">Der Soundtrack für Wins, Tilt & Focus.</p>
-    <div class="music" style="margin-top:10px">
-      <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy" title="Rave3eN EDM Playlist"></iframe>
-    </div>
-  </section>
-
-  <!-- COMMUNITY -->
-  <section id="community" class="section reveal">
-    <h2>Community Moments</h2>
-    <div class="tiles" style="margin-top:10px">
-      <div class="card">📸 Rave Camp Shots</div>
-      <div class="card">🎬 Highlights</div>
-      <div class="card">💬 Zitate & Memes</div>
-    </div>
-  </section>
-
 </main>
 
-<footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
+<footer>
+  Rave3eN © 2025 — Music. Emotion. Gaming.
+  <span id="visitorCount">Besucher: ...</span>
+</footer>
 
 <script>
-/* Tabs */
-const tabLive = document.getElementById('tabLive');
-const tabVod  = document.getElementById('tabVod');
-const panelLive = document.getElementById('panelLive');
-const panelVod  = document.getElementById('panelVod');
-tabLive.addEventListener('click', ()=>{ tabLive.setAttribute('aria-selected','true'); tabVod.setAttribute('aria-selected','false'); panelLive.classList.add('active'); panelVod.classList.remove('active'); });
-tabVod.addEventListener('click',  ()=>{ tabLive.setAttribute('aria-selected','false'); tabVod.setAttribute('aria-selected','true'); panelLive.classList.remove('active'); panelVod.classList.add('active'); });
-
-/* Scroll reveal (soft) */
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries)=>entries.forEach(e=>{
-  if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-}),{threshold:.2});
-reveals.forEach(el=>io.observe(el));
-
-/* Vibe Switcher: Calm / Glow */
-const switcher = document.querySelectorAll('.switcher button');
-const rs = document.documentElement.style;
-switcher.forEach(b=>b.addEventListener('click', ()=>{
-  switcher.forEach(x=>x.classList.remove('active')); b.classList.add('active');
-  const m = b.dataset.mode;
-  if(m==='calm'){
-    rs.setProperty('--beam-opacity','.10');
-    rs.setProperty('--beam-speed','60s');
-    rs.setProperty('--shine-interval','22s');
-    rs.setProperty('--tilt-max','6deg');
-  }else{ /* glow */
-    rs.setProperty('--beam-opacity','.20');
-    rs.setProperty('--beam-speed','30s');
-    rs.setProperty('--shine-interval','12s');
-    rs.setProperty('--tilt-max','8deg');
+/* Waves Hintergrund */
+const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
+let w,h,t=0,ampScale=0.9;const parts=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
   }
-}));
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(100,150,255,0.6)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
+for(let i=0;i<60;i++)parts.push(new P());
+function wave(c,y,a,f,s,o){
+  ctx.beginPath();
+  const ang=-Math.PI/6;
+  ctx.save();
+  ctx.translate(w/2,h/2);
+  ctx.rotate(ang);
+  ctx.translate(-w/2,-h/2);
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();
+  ctx.restore();
+}
+function anim(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
+  wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;
+  requestAnimationFrame(anim);
+}
+anim();
 
-/* Optional: leichter Tilt nur bei Mausbewegung */
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    const max=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tilt-max'))||6;
-    card.style.transform=`rotateX(${(-y*max)}deg) rotateY(${(x*max)}deg)`;
-  });
-  card.addEventListener('mouseleave', ()=>card.style.transform='');
-});
+/* STATUS LADEN */
+async function loadStatus(){
+  try{
+    const res = await fetch('status.txt?cache=' + Date.now());
+    if(!res.ok) throw new Error("Kein Status gefunden");
+    const text = await res.text();
+    const el = document.getElementById('statusText');
+    el.style.opacity = 0;
+    setTimeout(()=>{
+      el.textContent = text.trim();
+      el.style.opacity = 1;
+    },300);
+  }catch(e){
+    document.getElementById('statusText').textContent = "Status konnte nicht geladen werden.";
+  }
+}
+loadStatus();
+setInterval(loadStatus,30000);
+
+/* BESUCHERZÄHLER */
+function updateVisitorCount(){
+  const startwert = 231;
+  const key = "rave3en_visitor_count";
+  let count = parseInt(localStorage.getItem(key) || "0");
+
+  if(count === 0){
+    count = startwert;
+  } else {
+    count += 1;
+  }
+
+  localStorage.setItem(key, count);
+  document.getElementById("visitorCount").textContent =
+    "Besucher: " + count.toLocaleString('de-DE');
+}
+updateVisitorCount();
 </script>
 </body>
 </html>
