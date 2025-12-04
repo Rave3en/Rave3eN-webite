@@ -4,12 +4,12 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Rave3eN — FUTURE RAVE | EDM × Gaming</title>
-<meta name="description" content="Future Rave von Rave3eN: Poster-Hero, Laser-Beams, Twitch, Events, Playlist & Community – purer EDM-Vibe."/>
+<title>Rave3eN — EDM × Gaming</title>
+<meta name="description" content="Rave3eN: Poster-Hero, Laser-Beams, Twitch, Events, Playlist & Community – purer EDM-Vibe."/>
 <link rel="canonical" href="https://www.rave3en.de/"/>
 
 <!-- Social -->
-<meta property="og:title" content="Rave3eN — FUTURE RAVE"/>
+<meta property="og:title" content="Rave3eN — EDM × Gaming"/>
 <meta property="og:description" content="EDM × Gaming × Community im Holo-Poster Design."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.rave3en.de/"/>
@@ -99,21 +99,21 @@ header{
 .hero{
   position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
   border:1px solid var(--border);
-  background:radial-gradient(1200px 700px at 50% -10%, rgba(0,123,255,.18), transparent 60%), #090d22;
-  box-shadow:0 26px 80px rgba(0,0,0,.55), 0 0 40px rgba(155,92,255,.22), 0 0 70px rgba(0,210,255,.16);
+  background:radial-gradient(1200px 700px at 50% -10%, rgba(0,123,255,.2), transparent 60%), #090d22;
+  box-shadow:0 26px 80px rgba(0,0,0,.55), 0 0 40px rgba(155,92,255,.24), 0 0 90px rgba(0,210,255,.2);
   min-height:64vh; display:grid; place-items:center; text-align:center;
 }
 .hero .beams, .hero .stars{position:absolute; inset:-10% -10% -10% -10%; pointer-events:none}
 .hero .stars{
   background-image:radial-gradient(rgba(255,255,255,.45) 1px, transparent 1px);
-  background-size:3px 3px; opacity:.45; animation:stars 22s linear infinite;
+  background-size:3px 3px; opacity:.5; animation:stars 22s linear infinite;
 }
 @keyframes stars{to{transform:translate(-30px,-20px)}}
 .hero .beams{
   background:
-    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,.32), transparent 40%),
-    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,.28), transparent 40%);
-  mix-blend-mode:screen; filter:blur(1.5px); animation:spin 18s linear infinite;
+    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,.38), transparent 40%),
+    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,.34), transparent 40%);
+  mix-blend-mode:screen; filter:blur(1.2px); animation:spin 18s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -121,6 +121,19 @@ header{
 .kicker{font-family:"Orbitron"; color:var(--cyan); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:10px}
 h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,64px); line-height:1.05; margin-bottom:10px}
 .sub{color:var(--muted); max-width:760px; margin:0 auto 16px}
+
+/* NEW: subtle equalizer under headline */
+.eq{
+  height:10px; max-width:480px; margin:10px auto 16px; border-radius:999px; overflow:hidden;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0,210,255,.0) 0 4px, rgba(0,210,255,.35) 4px 6px,
+      rgba(155,92,255,.0) 6px 16px, rgba(155,92,255,.35) 16px 18px);
+  filter:drop-shadow(0 0 16px rgba(0,210,255,.35)) drop-shadow(0 0 16px rgba(155,92,255,.35));
+  animation:eqmove 3.5s linear infinite;
+}
+@keyframes eqmove{to{background-position:-200px 0}}
+
 .cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
 .btn{
   display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:999px; border:1px solid transparent;
@@ -168,9 +181,9 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
 @media (max-width:980px){ .tiles{grid-template-columns:1fr 1fr} .modal-box iframe{height:420px} }
 @media (max-width:640px){ .tiles{grid-template-columns:1fr} .music iframe{height:300px} .nav{display:none} }
 
-/* Reduced motion: stop heavy animations for users who prefer it */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .track, .hero .stars, .hero .beams{animation:none}
+  .track, .hero .stars, .hero .beams, .eq{animation:none}
 }
 </style>
 </head>
@@ -180,7 +193,7 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
   <div class="head">
     <div class="brand">
       <div class="badge" aria-hidden="true">R3</div>
-      <div class="name" aria-label="Rave3eN – Future Rave">RAVE3eN — FUTURE RAVE</div>
+      <div class="name" aria-label="Rave3eN – EDM × Gaming">RAVE3eN — EDM × GAMING</div>
     </div>
     <nav class="nav" aria-label="Hauptnavigation">
       <a href="#events">Events</a>
@@ -194,12 +207,13 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
 <main class="page" id="main">
 
   <!-- HERO -->
-  <section class="hero" aria-label="Future Rave Poster">
+  <section class="hero" aria-label="EDM Poster">
     <div class="beams" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
     <div class="copy">
       <div class="kicker">Live Energy</div>
       <h1>EDM × Emotion × Gaming</h1>
+      <div class="eq" aria-hidden="true"></div>
       <p class="sub">Rave3eN ist kein Stream – es ist ein Gefühl. Neon-Vibes, Bass & Community, die bleibt.</p>
       <div class="cta">
         <button class="btn primary" id="openLive" aria-haspopup="dialog" aria-controls="liveModal">▶ Live öffnen</button>
@@ -265,14 +279,14 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
   <section id="about" class="section" aria-labelledby="about-title">
     <h2 id="about-title">Wer ist Rave3eN?</h2>
     <div class="card" style="margin-top:10px">
-      <div class="meta">Ich bin Daniel – Streamer, EDM-Liebhaber und Profi im Gefühle zeigen. Hier verschmelzen Musik, Gaming & Community zu einem Rave, der bleibt.</div>
+      <div class="meta">Ich bin Daniel – Streamer & EDM-Liebhaber aus Deutschland. Hier verschmelzen Musik, Gaming und Community zu Momenten, die bleiben.</div>
     </div>
   </section>
 
 </main>
 
 <footer role="contentinfo">
-  Rave3eN © 2025 — FUTURE RAVE. EDM × Gaming × Community.
+  Rave3eN © 2025 — EDM × Gaming × Community.
 </footer>
 
 <!-- TWITCH MODAL -->
@@ -296,9 +310,7 @@ const closeLive=document.getElementById('closeLive');
 
 function openModal(){
   modal.classList.add('open');
-  // Fokus auf Close-Button setzen
   closeLive?.focus();
-  // Focus-Trap
   document.addEventListener('keydown', trapFocus);
 }
 function closeModal(){
