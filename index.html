@@ -4,381 +4,428 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Rave3eN — FUTURE RAVE | EDM × Gaming</title>
-<meta name="description" content="Rave3eN: Future Rave Homepage. Neon, Emotion, Bass. Livestream, Events, Playlist & Community – alles in einem energiegeladenen Design." />
-<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, EDM Streamer, EDM Gaming, Rave, Twitch, deutsche Community" />
+<title>Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland</title>
+<meta name="description" content="Willkommen bei Rave3eN! EDM-Vibes, Gaming und Emotion in ihrer reinsten Form. Taktisches Arena Breakout Gameplay, Highlights, Livestreams, Events und eine einzigartige Community aus Deutschland. Erlebe Musik, Gaming und Herz vereint." />
+<meta name="keywords" content="Rave3eN, Arena Breakout Streamer, deutscher Arena Breakout Creator, EDM Streamer, EDM Gaming, Rave Gaming Livestream, deutsche Twitch Community, Arena Breakout deutsch live" />
 <meta name="author" content="Rave3eN" />
 <link rel="canonical" href="https://www.rave3en.de/" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Rave3eN — FUTURE RAVE | EDM × Gaming" />
-<meta property="og:description" content="Neon, Emotion, Bass. Livestream, Events, Playlist & Community in einem energiegeladenen Future Rave Design." />
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland" />
+<meta property="og:description" content="EDM-Vibes, Arena Breakout Gameplay, Livestreams, Events und eine einzigartige Community. Erlebe Musik, Emotion und Gaming mit Rave3eN." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.rave3en.de/" />
 <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
 
-<!-- Twitter -->
+<!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Rave3eN — FUTURE RAVE | EDM × Gaming" />
-<meta name="twitter:description" content="EDM × Gaming × Community – neon, modern, emotional." />
+<meta name="twitter:title" content="Rave3eN — EDM × Gaming | Arena Breakout Creator aus Deutschland" />
+<meta name="twitter:description" content="EDM-Vibes, Arena Breakout Gameplay, Livestreams, Events und eine einzigartige Community. Erlebe Musik, Emotion und Gaming mit Rave3eN." />
 <meta name="twitter:image" content="https://www.rave3en.de/logo%20druck.png" />
 
-<!-- JSON-LD -->
+<!-- JSON-LD Creator Schema -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"Rave3eN",
-  "alternateName":"Daniel Hein",
-  "url":"https://www.rave3en.de/",
-  "sameAs":[
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rave3eN",
+  "alternateName": "Daniel Hein",
+  "url": "https://www.rave3en.de/",
+  "sameAs": [
     "https://twitch.tv/rave3en",
     "https://www.youtube.com/@rave3en30",
     "https://www.tiktok.com/@rave3en",
     "https://www.instagram.com/rave3en_/",
     "https://discord.gg/3TbArexH5H"
   ],
-  "jobTitle":"EDM × Gaming Creator",
-  "description":"EDM Vibes, Gaming, Emotionen & Arena Breakout Creator aus Deutschland."
+  "jobTitle": "EDM × Gaming Creator",
+  "description": "EDM Vibes, Gaming, Emotionen & Arena Breakout Creator aus Deutschland."
 }
 </script>
 
-<!-- Fonts & Icons -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
-  --bg:#05060e; --ink:#f3f6ff; --muted:#a8b2ff;
-  --purple:#9b5cff; --blue:#007bff; --cyan:#00d2ff; --pink:#ff00cc;
-  --rail:92px; --max:1200px; --r:22px; --rx:28px;
+  --bg:#000000;
+  --neon1:#9b5cff;  /* Neon-Lila */
+  --neon2:#007bff;  /* Neon-Blau */
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:
-    radial-gradient(1400px 900px at 80% -10%, rgba(0,162,255,.12), transparent 60%),
-    radial-gradient(1200px 800px at 0% 120%, rgba(155,92,255,.16), transparent 60%),
-    #03040a;
-  color:var(--ink);
-  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+html,body{
+  min-height:100%;
+  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:#e9eef8;
   overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
 }
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
 
-/* LEFT RAIL (neu) */
-.aside{
-  position:fixed; inset:0 auto 0 0; width:var(--rail); z-index:50;
-  background:linear-gradient(180deg, rgba(10,12,26,.78), rgba(10,12,26,.38));
-  backdrop-filter:saturate(130%) blur(10px);
-  border-right:1px solid rgba(155,92,255,.18);
-  display:flex; flex-direction:column; align-items:center; gap:18px; padding:16px 10px;
+/* Canvas */
+canvas#waves{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
 }
-.logo{
-  width:58px;height:58px;border-radius:14px;overflow:hidden;display:grid;place-items:center;
-  background:radial-gradient(circle at 30% 20%, var(--pink), transparent 60%),
-             radial-gradient(circle at 70% 80%, var(--cyan), transparent 65%),
-             #0a0f26;
-  box-shadow:0 0 30px rgba(155,92,255,.6), 0 0 50px rgba(0,210,255,.6);
-  font-family:"Orbitron",sans-serif;font-weight:800;letter-spacing:.06em;
-}
-.brand{writing-mode:vertical-rl;text-orientation:mixed;font-family:"Orbitron";font-weight:800;letter-spacing:.28em;
-  background:linear-gradient(180deg,var(--purple),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-.nav{
-  margin-top:auto; display:flex; flex-direction:column; gap:12px; align-items:center;
-}
-.nav a{
-  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-  color:#8fb9ff;background:rgba(255,255,255,.06);border:1px solid rgba(170,181,255,.18);
-  transition:.2s; font-size:1.05rem;
-}
-.nav a:hover{transform:translateY(-2px); color:#fff; box-shadow:0 0 18px rgba(0,210,255,.45)}
-.socials{display:flex; flex-direction:column; gap:10px; margin-bottom:6px}
-.foot{font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:.18em;text-transform:uppercase}
 
-/* MAIN WRAP */
-main{margin-left:var(--rail)}
-.wrap{max-width:var(--max); margin:0 auto; padding:24px 18px 80px}
+/* HEADER */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,0,0,0.8);
+  z-index:100;
+  flex-wrap:wrap;
+  gap:10px;
+}
 
-/* HERO POSTER (neu) */
-.hero{
-  margin-top:22px; display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:stretch;
+/* LOGO */
+header .logo{
+  display:flex;align-items:center;gap:12px;
 }
-.poster{
-  position:relative; border-radius:var(--rx); overflow:hidden;
-  background:#0b0f24; min-height:520px; display:grid; place-items:center; text-align:center; isolation:isolate;
+header .logo img{
+  height:42px;
+  filter:drop-shadow(0 0 14px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
 }
-.poster::before{
-  content:""; position:absolute; inset:-2px;
-  background:conic-gradient(from 0deg, var(--purple), var(--blue), var(--cyan), var(--purple));
-  filter:blur(14px); opacity:.45; z-index:-1; animation:spin 12s linear infinite;
+header .logo span{
+  font-family:'Orbitron';
+  font-size:1.7rem;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon1));
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientFlow 5s linear infinite;
+  letter-spacing:1px;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
-.poster-inner{padding:26px}
-.kicker{font-family:"Orbitron";color:var(--cyan);letter-spacing:.26em;text-transform:uppercase;font-size:12px;margin-bottom:8px}
-h1{font-family:"Orbitron";font-size:clamp(30px,5vw,52px);line-height:1.06;margin-bottom:10px}
-.sub{color:var(--muted);max-width:680px;margin:0 auto 16px}
-.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.btn{
-  display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1px solid transparent;
-  font-family:"Orbitron";letter-spacing:.16em;text-transform:uppercase;font-size:12px;cursor:pointer;transition:.15s;
+@keyframes gradientFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
-.primary{background:linear-gradient(90deg,var(--cyan),var(--purple)); color:#051018; font-weight:800; box-shadow:0 0 26px rgba(0,210,255,.45)}
-.ghost{background:transparent;color:var(--muted);border-color:rgba(170,181,255,.35)}
-.btn:hover{transform:translateY(-1px) scale(1.02)}
 
-/* RIGHT STACK */
-.stack{display:grid; gap:16px}
-.card{
-  background:rgba(11,15,36,.78); border:1px solid rgba(155,92,255,.26);
-  border-radius:var(--r); padding:18px; box-shadow:0 18px 50px rgba(0,0,0,.45);
+/* SPRUCH */
+header .spruch{
+  font-family:'Orbitron';
+  font-size:1.2rem;
+  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 15px var(--neon1),0 0 30px var(--neon2);
+  animation:heartBeat 3s ease-in-out infinite;
+  text-align:center;
+  flex:1 1 100%;
 }
-.card h3{font-family:"Orbitron";font-size:16px;margin-bottom:6px}
-.meta{color:var(--muted);font-size:14px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tag{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(170,181,255,.18);text-align:center}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
 
-/* KINETIC TICKER */
-.lane{
-  margin-top:24px;border-radius:var(--r);overflow:hidden;position:relative;background:rgba(255,255,255,.04);
-  border:1px solid rgba(155,92,255,.2)
+/* SOCIALS */
+.social-header{
+  display:flex;
+  gap:12px;
 }
-.track{
-  display:flex;gap:24px;white-space:nowrap; padding:12px 18px; animation:marq 22s linear infinite;
+.social-header a{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);
+  color:var(--neon2);
+  font-size:1rem;
+  box-shadow:0 0 12px var(--neon1),inset 0 0 8px var(--neon2);
+  transition:.3s;
 }
-.track span{font-family:"Orbitron";letter-spacing:.28em;text-transform:uppercase;color:#cfe4ff;font-size:12px}
-@keyframes marq{to{transform:translateX(-50%)}}
+.social-header a:hover{
+  color:var(--neon1);
+  transform:scale(1.1);
+  box-shadow:0 0 25px var(--neon2),inset 0 0 10px var(--neon1);
+}
 
-/* SECTIONS */
-.section{margin-top:28px}
-.section h2{font-family:"Orbitron";font-size:22px;margin-bottom:8px}
-.tiles{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-.tile{
-  background:rgba(255,255,255,.06);border:1px solid rgba(155,92,255,.22);border-radius:16px;padding:16px;min-height:120px;
-  display:flex;flex-direction:column;justify-content:space-between;transition:.2s
+/* NAVIGATION */
+.nav-top{
+  margin:160px auto 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+  z-index:99;
+  position:relative;
 }
-.tile:hover{transform:translateY(-2px); box-shadow:0 0 20px rgba(0,210,255,.35)}
-.tile a{color:#86c7ff;font-weight:700}
-.tile a:hover{color:#d3acff}
+.nav-top a{
+  display:flex;align-items:center;justify-content:center;
+  padding:9px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  color:var(--neon2);
+  font-family:'Orbitron';
+  font-size:1rem;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 12px var(--neon1),inset 0 0 6px var(--neon2);
+  transition:all 0.3s ease;
+}
+.nav-top a:hover{
+  color:var(--neon1);
+  transform:scale(1.08);
+  box-shadow:0 0 25px var(--neon2),inset 0 0 10px var(--neon1);
+}
 
-/* MUSIC */
-.music{
-  margin-top:10px;background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;
-  box-shadow:0 0 40px rgba(0,164,255,.35),0 0 70px rgba(155,92,255,.35)
+/* MAIN */
+main{position:relative;z-index:5;margin-top:30px;}
+
+/* TWITCH */
+.twitch-box{
+  max-width:900px;
+  margin:30px auto;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  box-shadow:0 0 50px var(--neon2),0 0 80px var(--neon1);
+  padding:25px;
+  backdrop-filter:blur(15px);
 }
-.music iframe{width:100%;height:360px;border:0}
+iframe{
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:14px;
+}
+
+/* AKTUELLES */
+.aktuelles{
+  margin:45px auto;
+  max-width:900px;
+  background:rgba(0,0,0,0.75);
+  border:1px solid var(--neon1);
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
+}
+.aktuelles h2{
+  font-family:'Orbitron';
+  color:var(--neon2);
+  font-size:1.25rem;
+  margin-bottom:8px;
+}
+.aktuelles p{
+  color:#dbe4f5;
+  transition:opacity 0.6s ease;
+}
+.aktuelles .links{
+  margin-top:14px;
+  font-size:0.95rem;
+}
+.aktuelles .links a{
+  color:var(--neon2);
+  text-decoration:none;
+  font-weight:600;
+}
+.aktuelles .links a:hover{
+  color:var(--neon1);
+  text-shadow:0 0 10px var(--neon1);
+}
+
+/* SPOTIFY */
+.spotify-box{
+  margin:40px auto 80px;
+  max-width:900px;
+  border-radius:16px;
+  box-shadow:0 0 40px var(--neon2),0 0 70px var(--neon1);
+  overflow:hidden;
+  background:rgba(255,255,255,0.04);
+}
+.spotify-box iframe{
+  width:100%;
+  height:380px;
+  border:none;
+  border-radius:16px;
+}
 
 /* FOOTER */
 footer{
-  margin-top:34px;border-top:1px solid rgba(92,104,180,.5);padding:16px 0 40px;text-align:center;font-size:12px;
-  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);text-shadow:0 0 10px var(--purple),0 0 18px var(--blue)
+  position:relative;
+  z-index:50;
+  text-align:center;
+  font-family:'Orbitron';
+  font-size:0.9rem;
+  color:#fff;
+  padding:25px 0 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  border-top:1px solid var(--neon1);
+  box-shadow:0 -2px 25px var(--neon1);
+  text-shadow:0 0 12px var(--neon1),0 0 25px var(--neon2);
 }
-
-/* MODAL TWITCH */
-.modal{
-  position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); z-index:100;
+#visitorCount{
+  display:block;
+  margin-top:8px;
+  font-size:0.9rem;
+  font-weight:600;
+  color:var(--neon1);
+  text-shadow:0 0 8px var(--neon1),0 0 16px var(--neon2);
+  animation:glow 3s ease-in-out infinite alternate;
 }
-.modal.open{display:grid}
-.modal-box{
-  width:min(960px,90vw); border-radius:20px; overflow:hidden; background:#0a0f24; border:1px solid rgba(155,92,255,.26);
-  box-shadow:0 40px 100px rgba(0,0,0,.6)
-}
-.modal-box iframe{width:100%;height:520px;border:0;border-radius:0}
-.modal-head{
-  display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(170,181,255,.18)
-}
-.modal-head h4{font-family:"Orbitron";letter-spacing:.18em;font-size:13px}
-.close{background:transparent;border:0;color:#cfe4ff;font-size:20px;cursor:pointer}
-
-/* RESPONSIVE */
-@media (max-width:1100px){ .hero{grid-template-columns:1fr} }
-@media (max-width:880px){
-  .aside{width:72px} :root{--rail:72px}
-  .brand{display:none}
-}
-@media (max-width:640px){
-  .tiles{grid-template-columns:1fr}
-  .music iframe{height:300px}
-  .modal-box iframe{height:360px}
+@keyframes glow{
+  0%{text-shadow:0 0 10px var(--neon1);}
+  100%{text-shadow:0 0 22px var(--neon2);}
 }
 </style>
 </head>
+
 <body>
+<canvas id="waves"></canvas>
 
-<!-- LEFT RAIL -->
-<aside class="aside">
-  <div class="logo">R3</div>
-  <div class="brand">RAVE3EN</div>
-  <div class="nav">
-    <a href="#top" title="Top"><i class="fa-solid fa-bolt"></i></a>
-    <a href="#shows" title="Shows"><i class="fa-solid fa-calendar-days"></i></a>
-    <a href="#music" title="Music"><i class="fa-solid fa-headphones"></i></a>
-    <a href="#community" title="Community"><i class="fa-solid fa-heart"></i></a>
-    <a href="#about" title="About"><i class="fa-solid fa-circle-info"></i></a>
+<header>
+  <div class="logo">
+    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
+    <span>Rave3eN</span>
   </div>
-  <div class="socials">
-    <a href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  <div class="spruch">Wo Musik das Herz berührt 💜</div>
+  <div class="social-header">
+    <a href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
   </div>
-  <div class="foot">RAVE ON</div>
-</aside>
+</header>
 
-<main id="top">
-  <div class="wrap">
+<div class="nav-top">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Me</a>
+  <a href="events.html">Events</a>
+</div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <!-- Poster-Hero -->
-      <div class="poster">
-        <div class="poster-inner">
-          <div class="kicker">Future Rave Portal</div>
-          <h1>EDM. EMOTION. ENERGY.</h1>
-          <p class="sub">Ein Festival-Gefühl in einer Seite. Willkommen bei Rave3eN – wo Bass und Community verschmelzen.</p>
-          <div class="cta">
-            <button class="btn primary" id="openLive">▶ Live öffnen</button>
-            <a class="btn ghost" href="#shows">📅 Shows</a>
-            <a class="btn ghost" href="#music">🎧 Playlist</a>
-          </div>
-        </div>
-      </div>
+<main>
+  <section class="twitch-box">
+    <iframe 
+      src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true"
+      allowfullscreen
+      loading="lazy"
+      title="Rave3eN Arena Breakout Twitch Livestream"></iframe>
+  </section>
 
-      <!-- Right Info-Stack -->
-      <div class="stack">
-        <div class="card">
-          <h3>Heute Nacht</h3>
-          <div class="meta">Arena Breakout · EDM BABY · Chat Chaos</div>
-          <div class="grid2" style="margin-top:10px">
-            <div class="tag">Start ~ 21:30</div>
-            <div class="tag">Vibes: 💜💙</div>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Status</h3>
-          <div class="meta" id="statusText">Lade aktuellen Status ...</div>
-        </div>
-        <div class="card">
-          <h3>Quick</h3>
-          <div class="grid2" style="margin-top:8px">
-            <a class="tag" href="https://twitch.tv/Rave3eN" target="_blank" rel="noopener">▶ Twitch</a>
-            <a class="tag" href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener">💜 Discord</a>
-            <a class="tag" href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener">🎥 TikTok</a>
-            <a class="tag" href="https://youtube.com/@rave3en30" target="_blank" rel="noopener">📺 YouTube</a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section class="aktuelles">
+    <h2>Aktuelles</h2>
+    <p id="statusText">Lade aktuellen Status ...</p>
+    <p class="links">
+      Mehr über mich erfährst du auf der <a href="about.html">About-Me Seite</a>,  
+      alle Community-Highlights findest du bei den <a href="events.html">Rave3eN Events</a> –  
+      inklusive <a href="ravecamp2024.html">Rave Camp 2024</a> und <a href="ravedrive2025.html">Rave Drive 2025</a>.
+    </p>
+  </section>
 
-    <!-- Kinetic Ticker -->
-    <section class="lane" aria-hidden="true">
-      <div class="track">
-        <span>EDM · RAVE · COMMUNITY</span>
-        <span>ARENA BREAKOUT</span>
-        <span>RAVE3EN</span>
-        <span>LIVE TONIGHT</span>
-        <span>FEEL THE BASS</span>
-        <span>EDM · RAVE · COMMUNITY</span>
-        <span>ARENA BREAKOUT</span>
-        <span>RAVE3EN</span>
-        <span>LIVE TONIGHT</span>
-        <span>FEEL THE BASS</span>
-      </div>
-    </section>
-
-    <!-- Shows / Events -->
-    <section id="shows" class="section">
-      <h2>Nächste Shows</h2>
-      <div class="tiles" style="margin-top:10px">
-        <div class="tile">
-          <div><strong>25–28.12 · Tierheim-Spendenstream</strong><br><span class="meta">24/7 Dauerstream · Challenges · Leidensprogramm 🐾</span></div>
-          <a href="events.html">Details →</a>
-        </div>
-        <div class="tile">
-          <div><strong>Rave Camp 2026</strong><br><span class="meta">Community-Wochenende · Lagerfeuer · EDM</span></div>
-          <a href="events.html">Mehr →</a>
-        </div>
-        <div class="tile">
-          <div><strong>Rave Drive 2025 Recap</strong><br><span class="meta">2.500 km · 4 Städte · pure Community</span></div>
-          <a href="ravedrive2025.html">Zum Recap →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Music -->
-    <section id="music" class="section">
-      <h2>EDM BABY – die Playlist</h2>
-      <p class="meta">Soundtrack für Wins, Tilt und Comebacks.</p>
-      <div class="music" style="margin-top:10px">
-        <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
-          title="Rave3eN EDM Playlist"></iframe>
-      </div>
-    </section>
-
-    <!-- Community -->
-    <section id="community" class="section">
-      <h2>Community Moments</h2>
-      <div class="tiles" style="margin-top:10px">
-        <div class="tile">📸 Rave Camp Shots</div>
-        <div class="tile">🎬 Highlight Clips</div>
-        <div class="tile">💬 Zitate & Memes</div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <h2>Wer ist Rave3eN?</h2>
-      <div class="card" style="margin-top:10px">
-        <div class="meta">Ich bin Daniel – Streamer, EDM-Liebhaber und Profi im Gefühle zeigen. Wir verbinden Gaming, Musik und Community zu einem Rave, der bleibt.</div>
-      </div>
-    </section>
-
-  </div>
+  <section class="spotify-box">
+    <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+      title="Rave3eN EDM Playlist auf Spotify"></iframe>
+  </section>
 </main>
 
 <footer>
-  Rave3eN © 2025 — NIGHT RAVE. EDM × Gaming × Community.
+  Rave3eN © 2025 — Music. Emotion. Gaming.
+  <span id="visitorCount">Besucher: ...</span>
 </footer>
 
-<!-- Modal Twitch Player -->
-<div class="modal" id="liveModal" role="dialog" aria-modal="true" aria-label="Live Player">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h4>LIVE: Rave3eN</h4>
-      <button class="close" id="closeLive" aria-label="Close">×</button>
-    </div>
-    <iframe
-      src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&muted=false&autoplay=true"
-      allowfullscreen loading="lazy" title="Rave3eN Twitch Livestream"></iframe>
-  </div>
-</div>
-
 <script>
-/* Modal Player */
-const openLive = document.getElementById('openLive');
-const liveModal = document.getElementById('liveModal');
-const closeLive = document.getElementById('closeLive');
-openLive?.addEventListener('click',()=> liveModal.classList.add('open'));
-closeLive?.addEventListener('click',()=> liveModal.classList.remove('open'));
-liveModal?.addEventListener('click',e=>{ if(e.target===liveModal) liveModal.classList.remove('open'); });
+/* Waves Hintergrund */
+const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
+let w,h,t=0,ampScale=0.9;const parts=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
+class P{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*.2;
+    this.vy=(Math.random()-.5)*.2;
+    this.s=1+Math.random()*2;
+    this.a=.3+Math.random()*.3;
+  }
+  u(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0)this.x=w;
+    if(this.x>w)this.x=0;
+    if(this.y<0)this.y=h;
+    if(this.y>h)this.y=0;
+  }
+  d(){
+    ctx.beginPath();
+    ctx.globalAlpha=this.a;
+    ctx.fillStyle='rgba(100,150,255,0.6)';
+    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
+for(let i=0;i<60;i++)parts.push(new P());
+function wave(c,y,a,f,s,o){
+  ctx.beginPath();
+  const ang=-Math.PI/6;
+  ctx.save();
+  ctx.translate(w/2,h/2);
+  ctx.rotate(ang);
+  ctx.translate(-w/2,-h/2);
+  for(let x=0;x<w;x++){
+    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
+    ctx.lineTo(x,yy);
+  }
+  ctx.strokeStyle=c;
+  ctx.lineWidth=2;
+  ctx.shadowBlur=20;
+  ctx.shadowColor=c;
+  ctx.stroke();
+  ctx.restore();
+}
+function anim(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,w,h);
+  wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
+  wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
+  parts.forEach(p=>{p.u();p.d();});
+  t+=0.02;
+  requestAnimationFrame(anim);
+}
+anim();
 
-/* Status aus status.txt (aus deiner alten Seite übernommen) */
+/* STATUS LADEN */
 async function loadStatus(){
   try{
     const res = await fetch('status.txt?cache=' + Date.now());
-    if(!res.ok) return;
+    if(!res.ok) throw new Error("Kein Status gefunden");
     const text = await res.text();
     const el = document.getElementById('statusText');
-    if(el) el.textContent = text.trim();
-  }catch(e){}
+    el.style.opacity = 0;
+    setTimeout(()=>{
+      el.textContent = text.trim();
+      el.style.opacity = 1;
+    },300);
+  }catch(e){
+    document.getElementById('statusText').textContent = "Status konnte nicht geladen werden.";
+  }
 }
 loadStatus();
 setInterval(loadStatus,30000);
+
+/* BESUCHERZÄHLER */
+function updateVisitorCount(){
+  const startwert = 231;
+  const key = "rave3en_visitor_count";
+  let count = parseInt(localStorage.getItem(key) || "0");
+
+  if(count === 0){
+    count = startwert;
+  } else {
+    count += 1;
+  }
+
+  localStorage.setItem(key, count);
+  document.getElementById("visitorCount").textContent =
+    "Besucher: " + count.toLocaleString('de-DE');
+}
+updateVisitorCount();
 </script>
 </body>
 </html>
