@@ -60,10 +60,10 @@ body{
   overflow-x:hidden; -webkit-font-smoothing:antialiased;
 }
 
-/* ===== ACCESSIBLE FOCUS ===== */
+/* Accessible focus */
 :focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:10px}
 
-/* HEADER – glasig, minimal */
+/* Header */
 header{
   position:fixed; inset:0 0 auto 0; z-index:40;
   background:linear-gradient(180deg, rgba(5,6,14,.82), rgba(5,6,14,.38));
@@ -95,7 +95,7 @@ header{
 
 .page{position:relative; max-width:var(--max); margin:0 auto; padding:96px 16px 84px}
 
-/* POSTER HERO – Laser, Partikel, Center Copy */
+/* Hero */
 .hero{
   position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
   border:1px solid var(--border);
@@ -122,7 +122,7 @@ header{
 h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,64px); line-height:1.05; margin-bottom:10px}
 .sub{color:var(--muted); max-width:760px; margin:0 auto 16px}
 
-/* NEW: subtle equalizer under headline */
+/* EQ stripe */
 .eq{
   height:10px; max-width:480px; margin:10px auto 16px; border-radius:999px; overflow:hidden;
   background:
@@ -143,13 +143,13 @@ h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,64px); line-height:1.05; mar
 .secondary{background:var(--glass2); color:#fff; border-color:rgba(170,181,255,.3)}
 .btn:hover{transform:translateY(-1px) scale(1.02)}
 
-/* KINETIC TICKER */
+/* Ticker */
 .ticker{margin-top:18px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); background:rgba(255,255,255,.04)}
 .track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; animation:marq 24s linear infinite}
 .track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#d6e6ff; font-size:12px}
 @keyframes marq{to{transform:translateX(-50%)}}
 
-/* SECTIONS */
+/* Sections */
 .section{margin-top:28px}
 h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .meta{color:var(--muted)}
@@ -159,16 +159,16 @@ h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .card a{color:#86c7ff; font-weight:700}
 .card a:hover{color:#d3acff}
 
-/* MUSIC */
+/* Music */
 .music{margin-top:10px; background:rgba(255,255,255,.05); border-radius:18px; overflow:hidden;
   box-shadow:0 0 36px rgba(0,123,255,.3), 0 0 60px rgba(155,92,255,.28)}
 .music iframe{width:100%; height:360px; border:0}
 
-/* FOOTER */
+/* Footer */
 footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0 40px; text-align:center; font-size:12px;
   background:rgba(0,0,0,.55); backdrop-filter:blur(6px); text-shadow:0 0 10px var(--purple), 0 0 18px var(--blue)}
 
-/* MODAL Twitch */
+/* Modal (Twitch) */
 .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); z-index:60}
 .modal.open{display:grid}
 .modal-box{width:min(960px,90vw); border-radius:20px; overflow:hidden; background:#0a0f24; border:1px solid var(--border); box-shadow:0 40px 100px rgba(0,0,0,.6)}
@@ -180,11 +180,7 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
 /* Responsive */
 @media (max-width:980px){ .tiles{grid-template-columns:1fr 1fr} .modal-box iframe{height:420px} }
 @media (max-width:640px){ .tiles{grid-template-columns:1fr} .music iframe{height:300px} .nav{display:none} }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .track, .hero .stars, .hero .beams, .eq{animation:none}
-}
+@media (prefers-reduced-motion: reduce){ .track, .hero .stars, .hero .beams, .eq{animation:none} }
 </style>
 </head>
 <body>
@@ -196,6 +192,7 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
       <div class="name" aria-label="Rave3eN – EDM × Gaming">RAVE3eN — EDM × GAMING</div>
     </div>
     <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#live">Live</a>
       <a href="#events">Events</a>
       <a href="#music">Playlist</a>
       <a href="#community">Community</a>
@@ -216,8 +213,8 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
       <div class="eq" aria-hidden="true"></div>
       <p class="sub">Rave3eN ist kein Stream – es ist ein Gefühl. Neon-Vibes, Bass & Community, die bleibt.</p>
       <div class="cta">
-        <button class="btn primary" id="openLive" aria-haspopup="dialog" aria-controls="liveModal">▶ Live öffnen</button>
-        <a class="btn secondary" href="#events">📅 Nächste Raves</a>
+        <button class="btn primary" id="openLive" aria-haspopup="dialog" aria-controls="liveModal">▶ Groß ansehen</button>
+        <a class="btn secondary" href="#live">📺 Direkt hier schauen</a>
         <a class="btn secondary" href="#music">🎧 EDM BABY</a>
       </div>
     </div>
@@ -228,6 +225,29 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
     <div class="track">
       <span>RAVE3EN</span><span>ARENA BREAKOUT</span><span>EDM · COMMUNITY</span><span>LIVE TONIGHT</span>
       <span>FEEL THE BASS</span><span>RAVE3EN</span><span>ARENA BREAKOUT</span><span>EDM · COMMUNITY</span>
+    </div>
+  </section>
+
+  <!-- LIVE PLAYER (sichtbar = zählt als Viewer) -->
+  <section id="live" class="section" style="margin-top:34px;">
+    <h2>Live auf Twitch</h2>
+    <p class="meta">Der Stream startet automatisch. Lautstärke: 10%.</p>
+
+    <div style="
+      margin-top:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(155,92,255,.26);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 0 40px rgba(0,123,255,.3), 0 0 70px rgba(155,92,255,.28);
+    ">
+      <iframe
+        src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&autoplay=true&muted=false&volume=0.1"
+        allowfullscreen
+        loading="eager"
+        title="Rave3eN Twitch Livestream"
+        style="width:100%; height:540px; border:0;"
+      ></iframe>
     </div>
   </section>
 
@@ -289,7 +309,7 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
   Rave3eN © 2025 — EDM × Gaming × Community.
 </footer>
 
-<!-- TWITCH MODAL -->
+<!-- TWITCH MODAL (groß ansehen) -->
 <div class="modal" id="liveModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="modal-head">
@@ -303,7 +323,7 @@ footer{margin-top:34px; border-top:1px solid rgba(92,104,180,.5); padding:16px 0
 </div>
 
 <script>
-/* Modal open/close + Accessibility (Esc, Focus-Trap) */
+/* Modal open/close + a11y */
 const openLive=document.getElementById('openLive');
 const modal=document.getElementById('liveModal');
 const closeLive=document.getElementById('closeLive');
@@ -332,6 +352,10 @@ function trapFocus(e){
 openLive?.addEventListener('click', openModal);
 closeLive?.addEventListener('click', closeModal);
 modal?.addEventListener('click', e=>{ if(e.target===modal) closeModal();});
+
+/* Hinweis: Einige Browser blocken Autoplay mit Sound.
+   Falls nötig, könntest du per erstem Klick auf die Seite nachträglich un-muten.
+   Der sichtbare Player bleibt aber geladen, damit Viewer zählen kann. */
 </script>
 </body>
 </html>
