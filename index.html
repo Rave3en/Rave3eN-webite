@@ -48,6 +48,7 @@ body{
   font-family:"Inter",system-ui;
   overflow-x:hidden;
 }
+:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
 
 /* HEADER */
 header{
@@ -72,7 +73,7 @@ header{
   padding:10px 14px; border-radius:999px;
   font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
   color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22);
-  text-transform:uppercase; transition:.2s;
+  text-transform:uppercase; transition:.2s; text-decoration:none;
 }
 .nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
 
@@ -111,18 +112,18 @@ h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px)}
 .btn{
   padding:12px 20px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em;
   text-transform:uppercase; font-size:12px; cursor:pointer; border:1px solid transparent;
-  transition:.16s;
+  transition:.16s; text-decoration:none;
 }
 .btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#000; font-weight:800}
 .btn.secondary{background:var(--glass2); color:#fff; border-color:rgba(155,92,255,.28)}
 .btn:hover{transform:translateY(-1px)}
 
-/* Ticker */
+/* TICKER */
 .ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
 .track{display:flex; gap:26px; padding:12px 18px; white-space:nowrap}
 .track span{font-family:"Orbitron"; letter-spacing:.28em; font-size:12px; text-transform:uppercase; color:#dce8ff}
 
-/* Sections */
+/* SECTIONS */
 .section{margin-top:28px}
 h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .meta{color:var(--muted)}
@@ -130,7 +131,7 @@ h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .tiles{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
 .card{background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16)}
 .card strong{display:block; margin-bottom:6px}
-.card a{color:var(--blue)}
+.card a{color:var(--blue); text-decoration:none}
 .card a:hover{color:var(--purple)}
 
 .playerWrap{margin-top:12px; background:rgba(255,255,255,.04); border-radius:18px; border:1px solid var(--border); overflow:hidden}
@@ -144,7 +145,7 @@ h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .panel.active{display:block}
 
 .music{margin-top:10px; background:rgba(255,255,255,.04); border-radius:16px; overflow:hidden; box-shadow:0 0 30px rgba(0,210,255,.14), 0 0 50px rgba(155,92,255,.14)}
-.music iframe{width:100%; height:392px; border:0}
+.music iframe{width:100%; height:392px; border:0; display:block}
 
 footer{
   margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px;
@@ -168,12 +169,14 @@ footer{
 <header>
   <div class="head">
     <div class="brand">
-      <img src="logo druck.png" alt="Rave3eN Logo"/>
-      <div class="name">RAVE3EN</div>
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="logo druck.png" alt="Rave3eN Logo"/>
+        <div class="name">RAVE3EN</div>
+      </a>
     </div>
     <nav class="nav">
       <a href="#live">Live</a>
-      <a href="#events">Events</a>
+      <a href="events.html">Events</a><!-- ← jetzt eigene Seite -->
       <a href="#music">Playlist</a>
       <a href="#community">Community</a>
     </nav>
@@ -182,9 +185,9 @@ footer{
 
 <main class="page">
 
-<section class="hero">
-  <canvas id="laserShow" class="lasers"></canvas>
-  <div class="beams"></div>
+<section class="hero" aria-label="EDM Poster">
+  <canvas id="laserShow" class="lasers" aria-hidden="true"></canvas>
+  <div class="beams" aria-hidden="true"></div>
 
   <div class="copy">
     <div class="kicker">EDM ENERGY</div>
@@ -192,62 +195,60 @@ footer{
     <p class="sub">Rave3eN steht für Energie, Bass und Momente, die man nicht vergisst.</p>
     <div class="cta">
       <a href="#live" class="btn primary">🔴 Live ansehen</a>
-      <a href="#events" class="btn secondary">Events</a>
+      <a href="events.html" class="btn secondary">Events</a><!-- ← CTA führt auch zu events.html -->
       <a href="#music" class="btn secondary">Playlist</a>
     </div>
   </div>
 </section>
 
-<section class="ticker">
+<section class="ticker" aria-label="Timeline">
   <div class="track" id="marqueeTrack">
     <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
     <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
   </div>
 </section>
 
-<section id="live" class="section">
-  <h2>Live auf Twitch</h2>
+<section id="live" class="section" aria-labelledby="liveTitle">
+  <h2 id="liveTitle">Live auf Twitch</h2>
   <p class="meta">Live. Direkt. Ungefiltert.</p>
 
-  <div class="tabRow">
-    <button id="tabLive" class="tabBtn" aria-selected="true">🔴 Live</button>
-    <button id="tabVod" class="tabBtn" aria-selected="false">📼 VOD</button>
+  <div class="tabRow" role="tablist" aria-label="Player Tabs">
+    <button id="tabLive" class="tabBtn" role="tab" aria-selected="true" aria-controls="panelLive">🔴 Live</button>
+    <button id="tabVod" class="tabBtn" role="tab" aria-selected="false" aria-controls="panelVod">📼 VOD</button>
   </div>
 
-  <div id="panelLive" class="panel active">
+  <div id="panelLive" class="panel active" role="tabpanel" aria-labelledby="tabLive">
     <div class="playerWrap">
       <iframe
         src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&parent=localhost&autoplay=true&volume=0.1&muted=false"
-        allowfullscreen loading="eager"></iframe>
+        allowfullscreen loading="eager" title="Rave3eN Twitch Live"></iframe>
     </div>
   </div>
 
-  <div id="panelVod" class="panel">
+  <div id="panelVod" class="panel" role="tabpanel" aria-labelledby="tabVod">
     <div class="playerWrap">
       <iframe
         src="https://player.twitch.tv/?video=2633733485&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&parent=localhost"
-        allowfullscreen loading="lazy"></iframe>
+        allowfullscreen loading="lazy" title="Rave3eN Twitch VOD"></iframe>
     </div>
   </div>
 </section>
 
-<section id="events" class="section">
-  <h2>Nächste Raves</h2>
+<section id="events" class="section" aria-labelledby="eventsTitle">
+  <h2 id="eventsTitle">Nächste Raves</h2>
   <p class="meta">Community-Events, Spendenaktionen & legendäre Momente.</p>
 
-  <div class="tiles">
+  <div class="tiles" style="margin-top:10px">
     <div class="card">
       <strong>25–28.12 · Tierheim-Spendenstream</strong>
       <div class="meta">24/7 Dauerstream · Challenges & Action</div>
-      <a href="events.html">Details →</a>
+      <a href="events.html">Alle Events →</a>
     </div>
-
     <div class="card">
       <strong>Rave Camp 2024</strong>
       <div class="meta">Community-Wochenende · EDM · Lagerfeuer</div>
       <a href="ravecamp2024.html">Zum Camp →</a>
     </div>
-
     <div class="card">
       <strong>Rave Drive 2025</strong>
       <div class="meta">2.500 km · 4 Städte · pure Community</div>
@@ -256,21 +257,21 @@ footer{
   </div>
 </section>
 
-<section id="music" class="section">
-  <h2>EDM Playlist</h2>
+<section id="music" class="section" aria-labelledby="musicTitle">
+  <h2 id="musicTitle">EDM Playlist</h2>
   <p class="meta">Der Soundtrack für Wins, Tilt & Focus.</p>
 
-  <div class="music">
+  <div class="music" style="margin-top:10px">
     <iframe
       src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
+      loading="lazy" title="Rave3eN EDM Playlist"></iframe>
   </div>
 </section>
 
-<section id="community" class="section">
-  <h2>Community Moments</h2>
-  <div class="tiles">
+<section id="community" class="section" aria-labelledby="communityTitle">
+  <h2 id="communityTitle">Community Moments</h2>
+  <div class="tiles" style="margin-top:10px">
     <div class="card">📸 Rave Camp Shots</div>
     <div class="card">🎬 Highlights</div>
     <div class="card">💬 Zitate & Memes</div>
@@ -282,14 +283,21 @@ footer{
 <footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
 <script>
-/* Tabs switching */
+/* Tabs switching (A11y-friendly) */
 const tabLive=document.getElementById('tabLive');
 const tabVod=document.getElementById('tabVod');
 const panelLive=document.getElementById('panelLive');
 const panelVod=document.getElementById('panelVod');
 
-tabLive.onclick=()=>{tabLive.setAttribute('aria-selected','true');tabVod.setAttribute('aria-selected','false');panelLive.classList.add('active');panelVod.classList.remove('active');}
-tabVod.onclick=()=>{tabLive.setAttribute('aria-selected','false');tabVod.setAttribute('aria-selected','true');panelLive.classList.remove('active');panelVod.classList.add('active');}
+function activate(tab){
+  const isLive = tab===tabLive;
+  tabLive.setAttribute('aria-selected', String(isLive));
+  tabVod.setAttribute('aria-selected', String(!isLive));
+  panelLive.classList.toggle('active', isLive);
+  panelVod.classList.toggle('active', !isLive);
+}
+tabLive.onclick=()=>activate(tabLive);
+tabVod.onclick=()=>activate(tabVod);
 
 /* Movable Marquee */
 (function(){
@@ -348,7 +356,7 @@ tabVod.onclick=()=>{tabLive.setAttribute('aria-selected','false');tabVod.setAttr
     sparks = [];
   }
 
-  function drawBeam(cx,cy,len,ang,wid,colHex){
+  function drawBeam(cx,cy,len,ang,wid,col){
     const cos=Math.cos(ang), sin=Math.sin(ang);
     const x1 = cx - cos*len*0.5, y1 = cy - sin*len*0.5;
     const x2 = cx + cos*len*0.5, y2 = cy + sin*len*0.5;
@@ -356,25 +364,25 @@ tabVod.onclick=()=>{tabLive.setAttribute('aria-selected','false');tabVod.setAttr
     ctx.save();
     ctx.globalCompositeOperation='lighter';
     ctx.shadowBlur = 18;
-    ctx.shadowColor = colHex;
+    ctx.shadowColor = col;
     ctx.lineWidth = wid*2.4;
-    ctx.strokeStyle = colHex;
+    ctx.strokeStyle = col;
     ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
     ctx.restore();
 
     ctx.save();
     const g = ctx.createLinearGradient(x1,y1,x2,y2);
-    g.addColorStop(0,  colHex+"00");
-    g.addColorStop(0.45, colHex+"aa");
-    g.addColorStop(0.55, colHex+"ff");
-    g.addColorStop(1,  colHex+"00");
+    g.addColorStop(0,  col+"00");
+    g.addColorStop(0.45, col+"aa");
+    g.addColorStop(0.55, col+"ff");
+    g.addColorStop(1,  col+"00");
     ctx.lineWidth = wid;
     ctx.strokeStyle = g;
     ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
     ctx.restore();
 
     if(Math.random()<0.06){
-      sparks.push({x:cx + (Math.random()-0.5)*40, y:cy + (Math.random()-0.5)*16, r:1+Math.random()*2.2, a:1, c:colHex});
+      sparks.push({x:cx + (Math.random()-0.5)*40, y:cy + (Math.random()-0.5)*16, r:1+Math.random()*2.2, a:1, c:col});
     }
   }
 
