@@ -1,406 +1,273 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Rave Camp 2024 — Rave3eN Community Camp in Deutschland</title>
-<meta name="description" content="Rave Camp 2024 mit Rave3eN: Ein Community-Treffen in der Natur, ohne Luxus, aber mit Herz, EDM-Vibes, Lagerfeuer-Momenten und echter Verbindung. Erlebe, wie Streaming-Community im echten Leben zusammenkommt." />
-<meta name="keywords" content="Rave3eN, Rave Camp 2024, Community Camp, Streamer Treffen, Rave3eN Community, EDM Camp, Rave Event Deutschland, Twitch Community Treffen, Rave3eN Fans, Rave3eN Lagerfeuer" />
-<meta name="author" content="Rave3eN" />
-<link rel="canonical" href="https://www.rave3en.de/ravecamp2024.html" />
+<title>Rave Camp 2024 — Rave3eN Community Camp</title>
+<meta name="description" content="Rave Camp 2024: Natur, Lagerfeuer, EDM-Vibes & echte Community. Ein Wochenende voller Gespräche, Nähe und Erinnerungen."/>
+<link rel="canonical" href="https://www.rave3en.de/ravecamp2024.html"/>
 
-<!-- Open Graph / Social Preview -->
-<meta property="og:title" content="Rave Camp 2024 — Rave3eN Community Camp in Deutschland" />
-<meta property="og:description" content="Natur, Lagerfeuer, EDM-Vibes und echte Community. Das Rave Camp 2024 mit Rave3eN – ein Wochenende voller Nähe, Gespräche und Erinnerungen." />
-<meta property="og:type" content="event" />
-<meta property="og:url" content="https://www.rave3en.de/ravecamp2024.html" />
-<meta property="og:image" content="https://www.rave3en.de/camp1.jpg" />
+<!-- Open Graph -->
+<meta property="og:title" content="Rave Camp 2024 — Rave3eN Community Camp"/>
+<meta property="og:description" content="Natur, Lagerfeuer, EDM-Vibes & echte Community. Das Rave Camp 2024 – Momente, die bleiben."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://www.rave3en.de/ravecamp2024.html"/>
+<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Rave Camp 2024 — Rave3eN Community Camp in Deutschland" />
-<meta name="twitter:description" content="Rave3eN Community, Lagerfeuer-Vibes und echte Begegnungen – das Rave Camp 2024." />
-<meta name="twitter:image" content="https://www.rave3en.de/camp1.jpg" />
-
-<!-- JSON-LD Event Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Rave Camp 2024",
-  "eventStatus": "https://schema.org/EventCompleted",
-  "description": "Rave Camp 2024 mit Rave3eN: Ein Community-Treffen in der Natur, ohne Luxus, aber mit Herz, EDM-Vibes und tiefen Gesprächen. Die Streaming-Community trifft sich im echten Leben.",
-  "url": "https://www.rave3en.de/ravecamp2024.html",
-  "organizer": {
-    "@type": "Person",
-    "name": "Rave3eN",
-    "url": "https://www.rave3en.de/"
-  },
-  "location": {
-    "@type": "Place",
-    "name": "Rave3eN Rave Camp 2024",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "DE"
-    }
-  }
-}
-</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#000;
-  --neon1:#9b5cff; /* Lila */
-  --neon2:#007bff; /* Blau */
+  --ink:#f4f7ff;
+  --muted:#c9d8ff;
+  --purple:#9b5cff;     /* Neon-Lila */
+  --blue:#00d2ff;       /* Neon-Blau */
+  --glass:rgba(255,255,255,.06);
+  --glass2:rgba(10,12,20,.42);
+  --border:rgba(155,92,255,.24);
+  --max:1180px; --r:18px; --rx:26px;
+  --beam-opacity:.10; --beam-speed:65s;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
+
+/* Reset / Base */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
-  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
-  background:var(--bg);
-  color:#e9eef8;
-  overflow-x:hidden;
+  background:
+    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
+    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
+    var(--bg);
+  color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
 }
+:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
+
+/* Header (match index/events) */
 header{
-  position:fixed;
-  top:0;left:0;width:100%;
-  padding:12px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 25px rgba(0,0,0,0.8);
-  z-index:10;
+  position:fixed; top:0; left:0; width:100%; z-index:40;
+  background:rgba(0,0,0,.75);
+  border-bottom:1px solid rgba(155,92,255,.24);
+  backdrop-filter:blur(8px);
 }
-header .logo{
-  display:flex;align-items:center;gap:14px;
+.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand{display:flex; align-items:center; gap:12px}
+.brand img{height:42px; width:auto; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.name{
+  font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-size:200%; animation:flow 6s linear infinite;
 }
-header .logo img{
-  height:40px;
-  filter:drop-shadow(0 0 12px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
-}
-header .logo span{
-  font-family:'Orbitron';
-  font-size:1.6rem;
-  font-weight:700;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  background-size:300%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:gradientFlow 6s linear infinite;
-}
-nav a{
-  color:#e9eef8;
-  text-decoration:none;
-  margin-left:18px;
-  font-weight:600;
-  font-size:1rem;
-  transition:color 0.3s;
-}
-nav a:hover{color:var(--neon2);}
+@keyframes flow{50%{background-position:100% 50%}}
 
-@keyframes gradientFlow{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+.nav{display:flex; gap:10px}
+.nav a{
+  padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
+  color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none;
 }
+.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
 
-main{
-  margin-top:100px;
-  padding:40px 15px 60px;
-  text-align:center;
+/* Page */
+.page{max-width:var(--max); margin:0 auto; padding:96px 16px 80px}
+
+/* Poster-Hero */
+.hero{
+  position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
+  border:1px solid var(--border);
+  background:#06070f;
+  box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12);
+  min-height:42vh; display:grid; place-items:center; text-align:center;
 }
-h1{
-  font-family:'Orbitron';
-  font-size:2.2rem;
-  color:var(--neon1);
-  text-shadow:0 0 15px rgba(155,92,255,0.6);
-  margin-bottom:20px;
+.hero .beams{
+  position:absolute; inset:-18%; mix-blend-mode:screen; filter:blur(1px);
+  background:
+    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
+    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);
+  animation:spin var(--beam-speed) linear infinite;
 }
-.camp-text{
-  max-width:900px;
-  margin:0 auto 40px;
-  font-size:1rem;
-  line-height:1.7;
-  color:#d5e0ff;
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .copy{position:relative; z-index:2; padding:28px}
+.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:8px}
+h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
+.sub{color:var(--muted); max-width:820px; margin:10px auto 0}
+
+/* Event Facts */
+.facts{
+  display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; justify-content:center
+}
+.fact{
+  padding:8px 12px; border-radius:999px; font-size:12px; color:#e7f0ff;
+  background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.24)
 }
 
-/* Galerie oben */
-.gallery-row{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-bottom:50px;
+/* Ticker (camp-fokussiert) */
+.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
+.track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; will-change:transform}
+.track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#dce8ff; font-size:12px}
+
+/* Gallery */
+.section{margin-top:28px}
+h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
+.meta{color:var(--muted)}
+
+.grid{
+  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:10px
 }
-.gallery-row img{
-  width:380px;
-  max-width:90vw;
-  border-radius:12px;
-  box-shadow:0 0 30px rgba(155,92,255,0.3);
-  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
-  opacity:0;
-  transform:translateY(30px);
+.thumb{
+  position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden;
+  background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
+  border:1px solid var(--border);
+  box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16);
+  transition:transform .25s ease;
 }
-.gallery-row img.visible{
-  opacity:1;
-  transform:translateY(0);
-  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,123,255,0.4);
-}
-.gallery-row img:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,123,255,0.6);
+.thumb:hover{ transform:translateY(-2px) }
+.thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.thumb.noimg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(400px 200px at 40% 40%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(135deg, rgba(0,210,255,.22), rgba(155,92,255,.22));
 }
 
-/* Galerie unten */
-.gallery-column{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:35px;
+/* CTA back */
+.ctaRow{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:18px}
+.btn{
+  padding:10px 14px; border-radius:12px; text-decoration:none; cursor:pointer; transition:.2s;
+  font-weight:800;
 }
-.gallery-column img{
-  width:700px;
-  max-width:95vw;
-  border-radius:12px;
-  box-shadow:0 0 30px rgba(155,92,255,0.3);
-  transition:transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s;
-  opacity:0;
-  transform:translateY(30px);
-}
-.gallery-column img.visible{
-  opacity:1;
-  transform:translateY(0);
-  box-shadow:0 0 40px rgba(155,92,255,0.6),0 0 60px rgba(0,123,255,0.4);
-}
-.gallery-column img:hover{
-  transform:scale(1.02);
-  box-shadow:0 0 50px rgba(155,92,255,0.8),0 0 100px rgba(0,123,255,0.6);
-}
+.btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018}
+.btn.ghost{background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(155,92,255,.24)}
+.btn:hover{transform:translateY(-1px)}
 
-/* Zurück-Buttons */
-.nav-bottom{
-  margin-top:50px;
-}
-a.back-btn{
-  display:inline-block;
-  margin:4px 8px;
-  padding:10px 24px;
-  font-weight:700;
-  font-size:1.05rem;
-  color:#fff;
-  text-decoration:none;
-  border:2px solid rgba(155,92,255,0.6);
-  border-radius:10px;
-  transition:0.3s ease;
-  box-shadow:0 0 10px rgba(155,92,255,0.4);
-}
-a.back-btn:hover{
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  color:#fff;
-  box-shadow:0 0 25px rgba(155,92,255,0.9),0 0 50px rgba(0,123,255,0.6);
-}
+/* Footer */
+footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
 
-/* Hintergrundwellen */
-canvas#waves{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:-1;
+/* Responsive */
+@media (max-width:980px){
+  .grid{grid-template-columns:1fr 1fr}
 }
-
-/* --- Responsive Anpassungen --- */
-@media (max-width:900px){
-  header .logo span{font-size:1.3rem;}
-  nav a{font-size:0.95rem;margin-left:12px;}
-  h1{font-size:1.9rem;}
-  .camp-text{font-size:0.96rem;}
-  .gallery-row{gap:15px;}
-  .gallery-row img{width:300px;}
-  .gallery-column img{width:95vw;}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
 }
-@media (max-width:600px){
-  header{flex-direction:column;gap:10px;}
-  nav{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;}
-  h1{font-size:1.7rem;margin-bottom:20px;}
-  .camp-text{margin-bottom:30px;}
-  .gallery-row img{width:90vw;}
-  a.back-btn{font-size:0.95rem;padding:8px 20px;}
-}
-@media (max-width:400px){
-  header .logo img{height:35px;}
-  header .logo span{font-size:1.1rem;}
-  h1{font-size:1.5rem;}
-}
-
-/* Extra Style: Rave3eN Neon Pulse für den Twitch-Overlay */
-@keyframes raveGlow {
-  0%   { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
-  50%  { box-shadow: 0 0 20px #9b5cff, 0 0 35px #007bff; }
-  100% { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
+@media (prefers-reduced-motion: reduce){
+  .hero .beams{animation:none}
 }
 </style>
 </head>
+
 <body>
-<canvas id="waves"></canvas>
 
 <header>
-  <div class="logo">
-    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
-    <span>Rave3eN</span>
+  <div class="head">
+    <div class="brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="logo druck.png" alt="Rave3eN Logo"/>
+        <div class="name">RAVE3EN</div>
+      </a>
+    </div>
+    <nav class="nav" aria-label="Navigation">
+      <a href="index.html#live">Live</a>
+      <a href="events.html">Events</a>
+      <a href="index.html#music">Playlist</a>
+      <a href="index.html#community">Community</a>
+    </nav>
   </div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="events.html">Events</a>
-  </nav>
 </header>
 
-<main>
-  <h1>Rave Camp 2024</h1>
+<main class="page">
 
-  <div class="camp-text">
-    Das Rave Camp 2024 war mehr als nur ein Treffen.<br>
-    Es war Natur, Ruhe, EDM-Vibes, Lagerfeuer, ehrliche Gespräche und eine Community, 
-    die sich nicht nur im Chat, sondern im echten Leben in die Augen schauen kann.<br><br>
-    Ohne Luxus, ohne Filter – nur Menschen, die sich Zeit füreinander nehmen, lachen, 
-    nachdenken und Momente schaffen, die bleiben.
-  </div>
+  <!-- HERO -->
+  <section class="hero" aria-label="Rave Camp 2024">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="copy">
+      <div class="kicker">RAVE3EN CAMP</div>
+      <h1>Rave Camp 2024</h1>
+      <p class="sub">Natur. Lagerfeuer. EDM. Gespräche bis in die Nacht – Momente, die bleiben.</p>
+      <div class="facts">
+        <span class="fact">Community</span>
+        <span class="fact">EDM-Vibes</span>
+        <span class="fact">Outdoor</span>
+        <span class="fact">Recap</span>
+      </div>
+    </div>
+  </section>
 
-  <!-- Erste Reihe -->
-  <div class="gallery-row">
-    <img src="camp1.jpg" alt="Rave Camp 2024 Community Moment 1 mit Rave3eN" loading="lazy" decoding="async">
-    <img src="camp2.jpg" alt="Rave Camp 2024 Community Moment 2 mit Lagerfeuer Stimmung" loading="lazy" decoding="async">
-    <img src="camp3.jpg" alt="Rave Camp 2024 Community Moment 3 in der Natur" loading="lazy" decoding="async">
-  </div>
+  <!-- TICKER -->
+  <section class="ticker" aria-label="Camp Timeline">
+    <div class="track" id="marqueeTrack">
+      <span>LAGERFEUER</span><span>EDM BEATS</span><span>GESPRÄCHE</span><span>COMMUNITY</span><span>NATUR</span>
+      <span>ERINNERUNGEN</span><span>FOTOS & MOMENTE</span><span>RAVE CAMP 2024</span><span>FEEL THE VIBES</span>
+    </div>
+  </section>
 
-  <!-- Untere Reihe -->
-  <div class="gallery-column">
-    <img src="camp4.jpg" alt="Rave Camp 2024 Gruppenmoment mit der Rave3eN Community" loading="lazy" decoding="async">
-    <img src="camp5.jpg" alt="Rave Camp 2024 Atmosphäre bei Tag" loading="lazy" decoding="async">
-    <img src="camp6.jpg" alt="Rave Camp 2024 Atmosphäre bei Nacht" loading="lazy" decoding="async">
-    <img src="camp7.jpg" alt="Rave Camp 2024 Rave3eN und Community im Gespräch" loading="lazy" decoding="async">
-    <img src="camp8.jpg" alt="Rave Camp 2024 Erinnerungsfoto mit Rave3eN" loading="lazy" decoding="async">
-  </div>
+  <!-- GALLERY -->
+  <section class="section" aria-labelledby="galTitle">
+    <h2 id="galTitle">Galerie</h2>
+    <p class="meta">Ein paar Augenblicke aus dem Wochenende.</p>
 
-  <div class="nav-bottom">
-    <a href="events.html" class="back-btn">← Zurück zu den Events</a>
-    <a href="index.html" class="back-btn">Zur Startseite</a>
-  </div>
+    <div class="grid" style="margin-top:10px">
+      <!-- Lege Bilder optional in images/events/ravecamp2024/ ab -->
+      <a class="thumb" href="images/events/ravecamp2024/camp1.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp1.jpg" alt="Rave Camp 2024 – Moment 1"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+      <a class="thumb" href="images/events/ravecamp2024/camp2.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp2.jpg" alt="Rave Camp 2024 – Moment 2"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+      <a class="thumb" href="images/events/ravecamp2024/camp3.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp3.jpg" alt="Rave Camp 2024 – Moment 3"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+      <a class="thumb" href="images/events/ravecamp2024/camp4.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp4.jpg" alt="Rave Camp 2024 – Moment 4"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+      <a class="thumb" href="images/events/ravecamp2024/camp5.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp5.jpg" alt="Rave Camp 2024 – Moment 5"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+      <a class="thumb" href="images/events/ravecamp2024/camp6.jpg" target="_blank" rel="noopener">
+        <img src="images/events/ravecamp2024/camp6.jpg" alt="Rave Camp 2024 – Moment 6"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+      </a>
+    </div>
+
+    <div class="ctaRow">
+      <a class="btn primary" href="events.html">← Zurück zu den Events</a>
+      <a class="btn ghost" href="index.html">Zur Startseite</a>
+    </div>
+  </section>
+
 </main>
 
-<!-- Rave3eN Neon Twitch Player – EDM Pulse Version -->
-<div style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  border-radius: 14px;
-  overflow: hidden;
-  padding: 4px;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(6px);
-  animation: raveGlow 2.4s infinite alternate;
-">
-  <iframe 
-    src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true"
-    height="245"
-    width="395"
-    allowfullscreen="true"
-    style="border-radius: 10px; border: 2px solid #9b5cffaa;"
-    title="Rave3eN Twitch Overlay">
-  </iframe>
-
-  <div style="
-    text-align: center;
-    margin-top: 4px;
-    font-size: 12px;
-    color: #9b5cff;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 10px #007bff;
-  ">
-    💜 Rave3eN • EDM × Gaming 🔵
-  </div>
-</div>
+<footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
 <script>
-// Smooth Fade-In der Bilder beim Scrollen
-const imgs=document.querySelectorAll('.gallery-row img, .gallery-column img');
-function reveal(){
-  imgs.forEach(img=>{
-    const rect=img.getBoundingClientRect();
-    if(rect.top<window.innerHeight-80){
-      img.classList.add('visible');
-    }
-  });
-}
-window.addEventListener('scroll',reveal);
-window.addEventListener('load',reveal);
-
-// Hintergrund-Waves (2 diagonale, wie auf Index/About)
-const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
-let w,h,t=0,ampScale=0.9;const parts=[];
-function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
-addEventListener('resize',resize);resize();
-
-class P{
-  constructor(){
-    this.x=Math.random()*w;
-    this.y=Math.random()*h;
-    this.vx=(Math.random()-.5)*.2;
-    this.vy=(Math.random()-.5)*.2;
-    this.s=1+Math.random()*2;
-    this.a=.3+Math.random()*.3;
-  }
-  u(){
-    this.x+=this.vx;this.y+=this.vy;
-    if(this.x<0)this.x=w;
-    if(this.x>w)this.x=0;
-    if(this.y<0)this.y=h;
-    if(this.y>h)this.y=0;
-  }
-  d(){
-    ctx.beginPath();
-    ctx.globalAlpha=this.a;
-    ctx.fillStyle='rgba(155,92,255,0.7)';
-    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
-    ctx.fill();
-    ctx.globalAlpha=1;
-  }
-}
-
-for(let i=0;i<60;i++)parts.push(new P());
-
-function wave(c,y,a,f,s,o){
-  ctx.save();
-  ctx.translate(w/2,h/2);
-  ctx.rotate(-Math.PI/6); // Diagonal
-  ctx.translate(-w/2,-h/2);
-  ctx.beginPath();
-  for(let x=0;x<w;x++){
-    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
-    ctx.lineTo(x,yy);
-  }
-  ctx.strokeStyle=c;
-  ctx.lineWidth=2;
-  ctx.shadowBlur=20;
-  ctx.shadowColor=c;
-  ctx.stroke();
-  ctx.restore();
-}
-
-function anim(){
-  ctx.fillStyle='#000';
-  ctx.fillRect(0,0,w,h);
-  wave('rgba(155,92,255,0.8)',h*0.45,40,0.008,0.018,0); // Lila
-  wave('rgba(0,123,255,0.8)',h*0.55,35,0.01,0.022,2.5); // Blau
-  parts.forEach(p=>{p.u();p.d();});
-  t+=0.02;
-  requestAnimationFrame(anim);
-}
-anim();
+/* Movable Ticker */
+(function(){
+  const track=document.getElementById('marqueeTrack'); if(!track) return;
+  track.innerHTML = track.innerHTML + track.innerHTML;
+  let offset=0,speed=0.35,drag=false,startX=0,startOffset=0;
+  const step=()=>{ if(!drag){offset-=speed;} const w=track.scrollWidth/2; if(offset<=-w){offset+=w;} track.style.transform=`translateX(${offset}px)`; requestAnimationFrame(step); };
+  step();
+  track.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);});
+  window.addEventListener('pointermove',e=>{if(drag){offset=startOffset+(e.clientX-startX)}});
+  window.addEventListener('pointerup',()=>{drag=false;});
+})();
 </script>
+
 </body>
 </html>
