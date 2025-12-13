@@ -7,7 +7,6 @@
 <title>Rave3eN — Events | EDM × Gaming × Community</title>
 <meta name="description" content="Rave3eN Events: Rave Camp 2024, Rave Drive 2025, Spendenstream & mehr – alle Raves, Termine & Recaps im Neon-EDM Look."/>
 <link rel="canonical" href="https://www.rave3en.de/events.html"/>
-<meta name="theme-color" content="#000000"/>
 
 <!-- Open Graph -->
 <meta property="og:title" content="Rave3eN — Events"/>
@@ -122,9 +121,7 @@ h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
   position:relative; aspect-ratio:16/9; overflow:hidden;
   background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
 }
-.thumb img{
-  width:100%; height:100%; object-fit:cover; display:block;
-}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block}
 .thumb.noimg::after{
   content:""; position:absolute; inset:0;
   background:
@@ -171,10 +168,10 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
       </a>
     </div>
     <nav class="nav" aria-label="Navigation">
-      <a href="index.html#live">Live</a>
-      <a href="events.html" aria-current="page">Events</a>
-      <a href="index.html#music">Playlist</a>
-      <a href="index.html#community">Community</a>
+      <a data-nav href="index.html#live">Live</a>
+      <a data-nav href="events.html">Events</a>
+      <a data-nav href="index.html#music">Playlist</a>
+      <a data-nav href="index.html#community">Community</a>
     </nav>
   </div>
 </header>
@@ -191,7 +188,7 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
     </div>
   </section>
 
-  <!-- TICKER (events-fokussiert) -->
+  <!-- TICKER -->
   <section class="ticker" aria-label="Timeline">
     <div class="track" id="marqueeTrack">
       <span>RAVE CAMP 2024</span>
@@ -323,6 +320,28 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
     return da-db;
   });
   sorted.forEach(c=>grid.appendChild(c));
+})();
+</script>
+
+<script>
+/* Active-Nav markieren + Same-page Full-Reload vermeiden */
+(function(){
+  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('a[data-nav]').forEach(a=>{
+    const href = a.getAttribute('href');
+    const destPage = (href.includes('.html') ? href.split('#')[0] : 'index.html').toLowerCase();
+
+    // aktiven Link markieren
+    if (destPage === here) a.setAttribute('aria-current','page');
+
+    // Klick auf denselben Page-Link ohne Hash → kein Full-Reload
+    a.addEventListener('click', (e)=>{
+      const hasHash = href.includes('#');
+      if (destPage === here && !hasHash) {
+        e.preventDefault();
+      }
+    });
+  });
 })();
 </script>
 
