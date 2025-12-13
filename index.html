@@ -170,15 +170,17 @@ footer{
   <div class="head">
     <div class="brand">
       <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <img src="logo druck.png" alt="Rave3eN Logo"/>
+        <!-- einheitlich URL-encoded -->
+        <img src="logo%20druck.png" alt="Rave3eN Logo"/>
         <div class="name">RAVE3EN</div>
       </a>
     </div>
-    <nav class="nav">
-      <a href="#live">Live</a>
-      <a href="events.html">Events</a><!-- ← jetzt eigene Seite -->
-      <a href="#music">Playlist</a>
-      <a href="#community">Community</a>
+    <nav class="nav" aria-label="Navigation">
+      <!-- data-nav für aktiven Zustand + robustes Routing -->
+      <a data-nav href="index.html#live">Live</a>
+      <a data-nav href="events.html">Events</a>
+      <a data-nav href="index.html#music">Playlist</a>
+      <a data-nav href="index.html#community">Community</a>
     </nav>
   </div>
 </header>
@@ -195,7 +197,7 @@ footer{
     <p class="sub">Rave3eN steht für Energie, Bass und Momente, die man nicht vergisst.</p>
     <div class="cta">
       <a href="#live" class="btn primary">🔴 Live ansehen</a>
-      <a href="events.html" class="btn secondary">Events</a><!-- ← CTA führt auch zu events.html -->
+      <a href="events.html" class="btn secondary">Events</a>
       <a href="#music" class="btn secondary">Playlist</a>
     </div>
   </div>
@@ -242,7 +244,7 @@ footer{
     <div class="card">
       <strong>25–28.12 · Tierheim-Spendenstream</strong>
       <div class="meta">24/7 Dauerstream · Challenges & Action</div>
-      <a href="events.html">Alle Events →</a>
+      <a data-nav href="events.html">Alle Events →</a>
     </div>
     <div class="card">
       <strong>Rave Camp 2024</strong>
@@ -308,6 +310,26 @@ tabVod.onclick=()=>activate(tabVod);
   track.onpointerdown=e=>{dragging=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);}
   window.onpointermove=e=>{if(dragging){offset=startOffset+(e.clientX-startX)}}
   window.onpointerup=()=>dragging=false;
+})();
+
+/* Active-Nav markieren + Same-page Full-Reload vermeiden */
+(function(){
+  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('a[data-nav]').forEach(a=>{
+    const href = a.getAttribute('href');
+    const destPage = (href.includes('.html') ? href.split('#')[0] : 'index.html').toLowerCase();
+
+    // aktiven Link markieren
+    if (destPage === here) a.setAttribute('aria-current','page');
+
+    // Klick auf denselben Page-Link ohne Hash → kein Full-Reload
+    a.addEventListener('click', (e)=>{
+      const hasHash = href.includes('#');
+      if (destPage === here && !hasHash) {
+        e.preventDefault();
+      }
+    });
+  });
 })();
 </script>
 
