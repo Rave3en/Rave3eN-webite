@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <title>Rave3eN — Events | EDM × Gaming × Community</title>
-<meta name="description" content="Rave3eN Events: Rave Camp 2024, Rave Drive 2025, Spendenstream & mehr – alle Raves, Termine & Recaps im Neon-EDM Look."/>
+<meta name="description" content="Rave3eN Events: Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps im Neon-EDM Look."/>
 <link rel="canonical" href="https://www.rave3en.de/events.html"/>
 
 <!-- Open Graph -->
@@ -23,13 +23,9 @@
 
 <style>
 :root{
-  --bg:#000;
-  --ink:#f4f7ff;
-  --muted:#c9d8ff;
-  --purple:#9b5cff;
-  --blue:#00d2ff;
-  --glass:rgba(255,255,255,.06);
-  --glass2:rgba(10,12,20,.42);
+  --bg:#000; --ink:#f4f7ff; --muted:#c9d8ff;
+  --purple:#9b5cff; --blue:#00d2ff;
+  --glass:rgba(255,255,255,.06); --glass2:rgba(10,12,20,.42);
   --border:rgba(155,92,255,.24);
   --max:1180px; --r:18px; --rx:26px;
   --beam-opacity:.10; --beam-speed:65s;
@@ -122,12 +118,6 @@ h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
   background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
 }
 .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-.thumb.noimg::after{
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(400px 200px at 40% 40%, rgba(255,255,255,.06), transparent 60%),
-    linear-gradient(135deg, rgba(0,210,255,.22), rgba(155,92,255,.22));
-}
 .body{padding:14px}
 .badgeRow{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px}
 .badge{
@@ -144,16 +134,9 @@ h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
 footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
 
 /* Responsive */
-@media(max-width:980px){
-  .grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:640px){
-  .grid{grid-template-columns:1fr}
-  .thumb{aspect-ratio: 16/10}
-}
-@media (prefers-reduced-motion: reduce){
-  .hero .beams{animation:none}
-}
+@media(max-width:980px){ .grid{grid-template-columns:1fr 1fr} }
+@media(max-width:640px){ .grid{grid-template-columns:1fr} .thumb{aspect-ratio:16/10} }
+@media (prefers-reduced-motion: reduce){ .hero .beams{animation:none} }
 </style>
 </head>
 
@@ -198,8 +181,6 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
       <span>HIGHLIGHTS & RECAPS</span>
       <span>SAVE THE DATE</span>
       <span>EDM × ROADTRIPS</span>
-      <span>RAVE CAMP 2024</span>
-      <span>RAVE DRIVE 2025 · 2.5K KM</span>
       <span>FEEL THE BASS</span>
     </div>
   </section>
@@ -214,11 +195,10 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
   <!-- GRID -->
   <section class="grid" id="eventsGrid" aria-live="polite">
 
-    <!-- Kommend: Tierheim-Spendenstream -->
+    <!-- Kommend: Tierheim-Spendenstream (Root: event1.jpg vorhanden) -->
     <article class="card" data-type="upcoming" data-date="2025-12-25">
       <div class="thumb">
-        <img src="images/events/tierheim-stream.jpg" alt="Tierheim-Spendenstream" loading="lazy"
-             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+        <img src="event1.jpg" alt="Tierheim-Spendenstream" loading="lazy">
       </div>
       <div class="body">
         <div class="badgeRow">
@@ -235,11 +215,10 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
       </div>
     </article>
 
-    <!-- Vergangen: Rave Camp 2024 -->
+    <!-- Vergangen: Rave Camp 2024 (Root: campX.jpg vorhanden) -->
     <article class="card" data-type="past" data-date="2024-08-17">
       <div class="thumb">
-        <img src="images/events/ravecamp2024.jpg" alt="Rave Camp 2024" loading="lazy"
-             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+        <img src="camp1.jpg" alt="Rave Camp 2024" loading="lazy">
       </div>
       <div class="body">
         <div class="badgeRow">
@@ -256,11 +235,10 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
       </div>
     </article>
 
-    <!-- Vergangen: Rave Drive 2025 -->
+    <!-- Vergangen: Rave Drive 2025 (Root: driveX.jpg vorhanden) -->
     <article class="card" data-type="past" data-date="2025-09-10">
       <div class="thumb">
-        <img src="images/events/ravedrive2025.jpg" alt="Rave Drive 2025" loading="lazy"
-             onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+        <img src="drive1.jpg" alt="Rave Drive 2025" loading="lazy">
       </div>
       <div class="body">
         <div class="badgeRow">
@@ -295,7 +273,7 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
   window.addEventListener('pointerup',()=>{drag=false;});
 })();
 
-/* Filter: Alle / Kommend / Vergangen */
+/* Filter: Alle / Kommend / Vergangen + Sortierung */
 (function(){
   const btnAll=document.getElementById('btnAll');
   const btnUp=document.getElementById('btnUpcoming');
