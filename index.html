@@ -14,10 +14,12 @@
 <meta property="og:url" content="https://www.rave3en.de/"/>
 <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#000000"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.png" type="image/png"/>
 
 <style>
 :root{
@@ -170,7 +172,7 @@ footer{
   <div class="head">
     <div class="brand">
       <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <img src="logo druck.png" alt="Rave3eN Logo"/>
+        <img src="logo%20druck.png" alt="Rave3eN Logo"/>
         <div class="name">RAVE3EN</div>
       </a>
     </div>
@@ -303,10 +305,10 @@ tabVod.onclick=()=>activate(tabVod);
 (function(){
   const track=document.getElementById('marqueeTrack'); track.innerHTML+=track.innerHTML;
   let offset=0,speed=0.4,dragging=false,startX=0,startOffset=0;
-  const step=()=>{if(!dragging){offset-=speed;}const w=track.scrollWidth/2;if(offset<=-w){offset+=w;}track.style.transform=`translateX(${offset}px)`;requestAnimationFrame(step);}
+  const step=()=>{if(!dragging){offset-=speed;}const w=track.scrollWidth/2;if(offset<=-w){offset+=w;}track.style.transform=`translateX(${offset}px)`;requestAnimationFrame(step);} 
   step();
-  track.onpointerdown=e=>{dragging=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);}
-  window.onpointermove=e=>{if(dragging){offset=startOffset+(e.clientX-startX)}}
+  track.onpointerdown=e=>{dragging=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);} 
+  window.onpointermove=e=>{if(dragging){offset=startOffset+(e.clientX-startX)}} 
   window.onpointerup=()=>dragging=false;
 })();
 </script>
