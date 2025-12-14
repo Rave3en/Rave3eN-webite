@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <title>Rave3eN — Events | EDM × Gaming × Community</title>
-<meta name="description" content="Rave3eN Events: Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps im Neon-EDM Look."/>
+<meta name="description" content="Rave3eN Events: Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps."/>
 <link rel="canonical" href="https://www.rave3en.de/events.html"/>
 
-<!-- Open Graph -->
 <meta property="og:title" content="Rave3eN — Events"/>
-<meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps im Neon-EDM Look."/>
+<meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.rave3en.de/events.html"/>
 <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
@@ -30,8 +28,6 @@
   --max:1180px; --r:18px; --rx:26px;
   --beam-opacity:.10; --beam-speed:65s;
 }
-
-/* Reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
@@ -39,21 +35,20 @@ body{
     radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
     radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
     var(--bg);
-  color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  color:var(--ink); font-family:"Inter",system-ui; overflow-x:hidden;
 }
 :focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
 
-/* Header (match index) */
+/* Header (identisch, aber ohne zweiten Spotify-Frame) */
 header{
-  position:fixed; top:0; left:0; width:100%; z-index:40;
+  position:fixed; top:0; left:0; width:100%; z-index:50;
   background:rgba(0,0,0,.75);
   border-bottom:1px solid rgba(155,92,255,.24);
   backdrop-filter:blur(8px);
 }
 .head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
 .brand{display:flex; align-items:center; gap:12px}
-.brand img{height:42px; width:auto; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
 .name{
   font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px;
   background:linear-gradient(90deg,var(--blue),var(--purple));
@@ -61,11 +56,11 @@ header{
   background-size:200%; animation:flow 6s linear infinite;
 }
 @keyframes flow{50%{background-position:100% 50%}}
-
 .nav{display:flex; gap:10px}
 .nav a{
   padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
-  color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none;
+  color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22);
+  text-transform:uppercase; transition:.2s; text-decoration:none;
 }
 .nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
 
@@ -75,8 +70,7 @@ header{
 /* Hero */
 .hero{
   position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
-  border:1px solid var(--border);
-  background:#06070f;
+  border:1px solid var(--border); background:#06070f;
   box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12);
   min-height:42vh; display:grid; place-items:center; text-align:center;
 }
@@ -113,10 +107,7 @@ h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
   box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16);
   display:flex; flex-direction:column;
 }
-.thumb{
-  position:relative; aspect-ratio:16/9; overflow:hidden;
-  background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
-}
+.thumb{ position:relative; aspect-ratio:16/9; overflow:hidden; background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18)) }
 .thumb img{width:100%; height:100%; object-fit:cover; display:block}
 .body{padding:14px}
 .badgeRow{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px}
@@ -145,21 +136,21 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
 <header>
   <div class="head">
     <div class="brand">
-      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
         <img src="logo%20druck.png" alt="Rave3eN Logo"/>
         <div class="name">RAVE3EN</div>
       </a>
     </div>
     <nav class="nav" aria-label="Navigation">
-      <a data-nav href="index.html#live">Live</a>
-      <a data-nav href="events.html">Events</a>
-      <a data-nav href="index.html#music">Playlist</a>
-      <a data-nav href="index.html#community">Community</a>
+      <a data-pjax href="index.html#live">Live</a>
+      <a data-pjax href="events.html">Events</a>
+      <a data-pjax href="index.html#music">Playlist</a>
+      <a data-pjax href="index.html#community">Community</a>
     </nav>
   </div>
 </header>
 
-<main class="page">
+<main id="app" class="page" data-title="Rave3eN — Events | EDM × Gaming × Community">
 
   <!-- HERO -->
   <section class="hero" aria-label="Events">
@@ -210,8 +201,8 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
         <p class="meta">24/7 Stream, Challenges & Action – alles für die Pfoten. 💜</p>
       </div>
       <div class="ctaRow">
-        <a class="linkBtn" href="events.html">Details</a>
-        <a class="linkGhost" href="index.html#live">Zum Stream</a>
+        <a class="linkBtn" href="events.html" data-pjax>Details</a>
+        <a class="linkGhost" href="index.html#live" data-pjax>Zum Stream</a>
       </div>
     </article>
 
@@ -230,8 +221,8 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
         <p class="meta">Wochenende. Lagerfeuer. EDM. Geschichten, die bleiben.</p>
       </div>
       <div class="ctaRow">
-        <a class="linkBtn" href="ravecamp2024.html">Zum Recap</a>
-        <a class="linkGhost" href="ravecamp2024.html#galTitle">Zur Galerie</a>
+        <a class="linkBtn" href="ravecamp2024.html" data-pjax>Zum Recap</a>
+        <a class="linkGhost" href="ravecamp2024.html#galTitle" data-pjax>Zur Galerie</a>
       </div>
     </article>
 
@@ -250,8 +241,8 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
         <p class="meta">2.500 km — Potsdam → Leipzig → Köln → München. Pure Community-Power.</p>
       </div>
       <div class="ctaRow">
-        <a class="linkBtn" href="ravedrive2025.html">Zum Recap</a>
-        <a class="linkGhost" href="ravedrive2025.html#galTitle">Zur Galerie</a>
+        <a class="linkBtn" href="ravedrive2025.html" data-pjax>Zum Recap</a>
+        <a class="linkGhost" href="ravedrive2025.html#galTitle" data-pjax>Zur Galerie</a>
       </div>
     </article>
 
@@ -262,7 +253,7 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
 
 <script>
 /* Movable Ticker */
-(function(){
+(() => {
   const track=document.getElementById('marqueeTrack'); if(!track) return;
   track.innerHTML = track.innerHTML + track.innerHTML;
   let offset=0,speed=0.35,drag=false,startX=0,startOffset=0;
@@ -272,9 +263,11 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
   window.addEventListener('pointermove',e=>{if(drag){offset=startOffset+(e.clientX-startX)}});
   window.addEventListener('pointerup',()=>{drag=false;});
 })();
+</script>
 
-/* Filter: Alle / Kommend / Vergangen + Sortierung */
-(function(){
+<script>
+/* Filter + Sortierung */
+(() => {
   const btnAll=document.getElementById('btnAll');
   const btnUp=document.getElementById('btnUpcoming');
   const btnPast=document.getElementById('btnPast');
@@ -290,37 +283,23 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
   btnUp.addEventListener('click',  ()=>{ setPressed(btnUp); showType('upcoming'); });
   btnPast.addEventListener('click',()=>{ setPressed(btnPast); showType('past'); });
 
-  // Sort by date ascending
   const grid=document.getElementById('eventsGrid');
-  const sorted = cards.sort((a,b)=>{
-    const da=new Date(a.dataset.date||'2100-01-01').getTime();
-    const db=new Date(b.dataset.date||'2100-01-01').getTime();
-    return da-db;
-  });
+  const sorted = cards.sort((a,b)=> new Date(a.dataset.date||'2100-01-01') - new Date(b.dataset.date||'2100-01-01'));
   sorted.forEach(c=>grid.appendChild(c));
 })();
 </script>
 
+<!-- PJAX bootstrap: Nur Link-Handler, Router liegt in index.html und bleibt persistent -->
 <script>
-/* Active-Nav markieren + Same-page Full-Reload vermeiden */
-(function(){
-  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  document.querySelectorAll('a[data-nav]').forEach(a=>{
-    const href = a.getAttribute('href');
-    const destPage = (href.includes('.html') ? href.split('#')[0] : 'index.html').toLowerCase();
-
-    // aktiven Link markieren
-    if (destPage === here) a.setAttribute('aria-current','page');
-
-    // Klick auf denselben Page-Link ohne Hash → kein Full-Reload
-    a.addEventListener('click', (e)=>{
-      const hasHash = href.includes('#');
-      if (destPage === here && !hasHash) {
-        e.preventDefault();
-      }
-    });
+/* In Events-page müssen wir nur sicherstellen, dass data-pjax Links klickbar sind.
+   Der eigentliche Router sitzt in index.html und bleibt erhalten, da Header/Body persistent sind. */
+document.querySelectorAll('a[data-pjax]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    const href = a.getAttribute('href')||'';
+    // Router in index.html fängt den Klick ab, wenn vorhanden
+    // Falls die Seite direkt aufgerufen wurde ohne index-Router, normal navigieren
   });
-})();
+});
 </script>
 
 </body>
