@@ -3,288 +3,159 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-<title>Rave Drive 2025 — 2.500 km · 4 Städte · Community</title>
-<meta name="description" content="Rave Drive 2025: 2.500 km, 4 Städte, pure Community-Power. Potsdam → Leipzig → Köln → München – Roadtrip, EDM & Erinnerungen."/>
+<title>Rave Drive 2025 — Roadtrip & Community</title>
+<meta name="description" content="Rave Drive 2025: 2.500 km, 4 Städte, pure Community-Power. Highlights & Galerie im Neon-Style."/>
 <link rel="canonical" href="https://www.rave3en.de/ravedrive2025.html"/>
 
-<!-- Open Graph -->
-<meta property="og:title" content="Rave Drive 2025 — 2.500 km · 4 Städte · Community"/>
-<meta property="og:description" content="Roadtrip, EDM & Community: Potsdam → Leipzig → Köln → München. Highlights & Galerie."/>
+<meta property="og:title" content="Rave Drive 2025 — Roadtrip & Community"/>
+<meta property="og:description" content="2.500 km, 4 Städte, pure Community-Power. Highlights & Galerie im Neon-Style."/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="https://www.rave3en.de/ravedrive2025.html"/>
 <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#000;
-  --ink:#f4f7ff;
-  --muted:#c9d8ff;
-  --purple:#9b5cff;
-  --blue:#00d2ff;
-  --glass:rgba(255,255,255,.06);
-  --glass2:rgba(10,12,20,.42);
-  --border:rgba(155,92,255,.24);
-  --max:1180px; --r:18px; --rx:26px;
-  --beam-opacity:.10; --beam-speed:65s;
-}
-
-/* Reset / Base */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:
-    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
-    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
-    var(--bg);
-  color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
-}
-:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
-
-/* Header */
-header{
-  position:fixed; top:0; left:0; width:100%; z-index:40;
-  background:rgba(0,0,0,.75);
-  border-bottom:1px solid rgba(155,92,255,.24);
-  backdrop-filter:blur(8px);
-}
-.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
-.brand{display:flex; align-items:center; gap:12px}
-.brand img{height:42px; width:auto; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
-.name{
-  font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px;
-  background:linear-gradient(90deg,var(--blue),var(--purple));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-size:200%; animation:flow 6s linear infinite;
-}
+:root{--bg:#000;--ink:#f4f7ff;--muted:#c9d8ff;--purple:#9b5cff;--blue:#00d2ff;--glass:rgba(255,255,255,.06);--border:rgba(155,92,255,.24);--max:1180px;--r:18px;--rx:26px;--beam-opacity:.10;--beam-speed:65s}
+*{box-sizing:border-box;margin:0;padding:0} html,body{height:100%}
+body{background:radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),var(--bg);color:var(--ink);font-family:"Inter",system-ui;overflow-x:hidden}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:10px}
+header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(0,0,0,.75);border-bottom:1px solid rgba(155,92,255,.24);backdrop-filter:blur(8px)}
+.head{max-width:var(--max);margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:42px;filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.name{font-family:"Orbitron";text-transform:uppercase;font-weight:800;font-size:14px;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flow 6s linear infinite}
 @keyframes flow{50%{background-position:100% 50%}}
+.nav{display:flex;gap:10px;align-items:center}
+.nav a{padding:10px 14px;border-radius:999px;font-family:"Orbitron";letter-spacing:.16em;font-size:11px;color:#e7efff;background:var(--glass);border:1px solid rgba(155,92,255,.22);text-transform:uppercase;transition:.2s;text-decoration:none}
+.nav a:hover{transform:translateY(-1px);color:#fff;box-shadow:0 0 14px rgba(0,210,255,.3)}
+.playerDock{display:flex;align-items:center;gap:10px;margin-left:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;padding:6px 10px}
+.playerDock .toggle{padding:8px 10px;border-radius:999px;border:1px solid rgba(155,92,255,.26);background:rgba(0,0,0,.35);color:#e9f2ff;cursor:pointer;font-family:"Orbitron";letter-spacing:.14em;font-size:11px;text-transform:uppercase}
+.playerDock .toggle[aria-pressed="true"]{background:linear-gradient(90deg,var(--blue),var(--purple));color:#061018;font-weight:800}
+.playerDock .frameWrap{display:none;width:320px;height:80px;overflow:hidden;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.6)}
+.playerDock .frameWrap.active{display:block}
 
-.nav{display:flex; gap:10px}
-.nav a{
-  padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
-  color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none;
-}
-.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
-
-/* Page */
-.page{max-width:var(--max); margin:0 auto; padding:96px 16px 80px}
-
-/* Hero */
-.hero{
-  position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
-  border:1px solid var(--border);
-  background:#06070f;
-  box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12);
-  min-height:42vh; display:grid; place-items:center; text-align:center;
-}
-.hero .beams{
-  position:absolute; inset:-18%; mix-blend-mode:screen; filter:blur(1px);
-  background:
-    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
-    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);
-  animation:spin var(--beam-speed) linear infinite;
-}
+.page{max-width:var(--max);margin:0 auto;padding:96px 16px 80px}
+.hero{position:relative;border-radius:var(--rx);overflow:hidden;isolation:isolate;border:1px solid var(--border);background:#06070f;box-shadow:0 0 40px rgba(0,210,255,.12),0 0 40px rgba(155,92,255,.12);min-height:42vh;display:grid;place-items:center;text-align:center}
+.hero .beams{position:absolute;inset:-18%;mix-blend-mode:screen;filter:blur(1px);background:conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);animation:spin var(--beam-speed) linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero .copy{position:relative; z-index:2; padding:28px}
-.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:8px}
-h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
-.sub{color:var(--muted); max-width:820px; margin:10px auto 0}
+.hero .copy{position:relative;z-index:2;padding:28px}
+.kicker{font-family:"Orbitron";color:var(--blue);letter-spacing:.28em;text-transform:uppercase;font-size:12px;margin-bottom:8px}
+h1{font-family:"Orbitron";font-size:clamp(32px,6vw,56px)}
+.sub{color:var(--muted);max-width:820px;margin:10px auto 0}
 
-/* Facts */
-.facts{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; justify-content:center}
-.fact{
-  padding:8px 12px; border-radius:999px; font-size:12px; color:#e7f0ff;
-  background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.24)
-}
-
-/* Ticker */
-.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
-.track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; will-change:transform}
-.track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#dce8ff; font-size:12px}
-
-/* Sections */
 .section{margin-top:28px}
-h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
+h2{font-family:"Orbitron";font-size:22px;margin-bottom:8px}
 .meta{color:var(--muted)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);margin-top:10px}
+.thumb{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));border:1px solid var(--border);box-shadow:0 18px 42px rgba(0,0,0,.5),0 0 26px rgba(0,210,255,.16),0 0 42px rgba(155,92,255,.16);cursor:pointer}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Gallery */
-.grid{
-  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:10px
-}
-.thumb{
-  position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden;
-  background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
-  border:1px solid var(--border);
-  box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16);
-  transition:transform .25s ease;
-}
-.thumb:hover{ transform:translateY(-2px) }
-.thumb img{width:100%; height:100%; object-fit:cover; display:block}
+footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 36px;text-align:center;font-size:12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);text-shadow:0 0 8px var(--purple),0 0 14px var(--blue)}
 
-/* Route Box */
-.route{
-  margin-top:14px; padding:14px; border-radius:16px;
-  background:rgba(255,255,255,.04); border:1px solid var(--border)
-}
-.route strong{display:block; margin-bottom:6px; font-weight:800}
-
-/* CTA */
-.ctaRow{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:18px}
-.btn{
-  padding:10px 14px; border-radius:12px; text-decoration:none; cursor:pointer; transition:.2s;
-  font-weight:800;
-}
-.btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018}
-.btn.ghost{background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(155,92,255,.24)}
-.btn:hover{transform:translateY(-1px)}
-
-/* Footer */
-footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
-
-/* Responsive */
-@media (max-width:980px){ .grid{grid-template-columns:1fr 1fr} }
-@media (max-width:640px){ .grid{grid-template-columns:1fr} }
-@media (prefers-reduced-motion: reduce){ .hero .beams{animation:none} }
+ /* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:60}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:12px;border:1px solid rgba(155,92,255,.35);box-shadow:0 0 40px rgba(0,210,255,.18),0 0 60px rgba(155,92,255,.18)}
+.lightbox .nav{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%)}
+.lightbox button{background:rgba(255,255,255,.07);border:1px solid rgba(155,92,255,.35);color:#fff;padding:12px 16px;border-radius:12px;cursor:pointer;font-weight:700}
+.lightbox .close{position:absolute;top:20px;right:20px}
+@media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
-
 <header>
   <div class="head">
     <div class="brand">
-      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
         <img src="logo%20druck.png" alt="Rave3eN Logo"/>
         <div class="name">RAVE3EN</div>
       </a>
     </div>
     <nav class="nav" aria-label="Navigation">
-      <a data-nav href="index.html#live">Live</a>
-      <a data-nav href="events.html">Events</a>
-      <a data-nav href="index.html#music">Playlist</a>
-      <a data-nav href="index.html#community">Community</a>
+      <a data-pjax href="index.html#live">Live</a>
+      <a data-pjax href="events.html">Events</a>
+      <a data-pjax href="index.html#music">Playlist</a>
+      <a data-pjax href="index.html#community">Community</a>
+      <div class="playerDock" aria-label="Spotify Player">
+        <button class="toggle" id="togglePlayer" aria-pressed="false">Spotify</button>
+        <div class="frameWrap" id="playerWrap" aria-hidden="true">
+          <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy" width="100%" height="80" frameborder="0"></iframe>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
 
-<main class="page">
+<main id="app" class="page" data-title="Rave Drive 2025 — Roadtrip & Community">
 
-  <!-- HERO -->
   <section class="hero" aria-label="Rave Drive 2025">
     <div class="beams" aria-hidden="true"></div>
     <div class="copy">
       <div class="kicker">RAVE3EN ROADTRIP</div>
       <h1>Rave Drive 2025</h1>
-      <p class="sub">2.500 km · 4 Städte · pure Community – Stories auf der Straße, EDM im Herzen.</p>
-      <div class="facts">
-        <span class="fact">Potsdam → Leipzig → Köln → München</span>
-        <span class="fact">2.5K KM</span>
-        <span class="fact">Meetups & Highlights</span>
-        <span class="fact">Recap</span>
-      </div>
+      <p class="sub">2.500 km — Potsdam → Leipzig → Köln → München. Pure Community-Power.</p>
     </div>
   </section>
 
-  <!-- TICKER -->
-  <section class="ticker" aria-label="Drive Timeline">
-    <div class="track" id="marqueeTrack">
-      <span>POTSDAM</span><span>LEIPZIG</span><span>KÖLN</span><span>MÜNCHEN</span>
-      <span>2.500 KM</span><span>COMMUNITY</span><span>HIGHLIGHTS</span><span>RAVE DRIVE 2025</span>
-    </div>
-  </section>
-
-  <!-- ROUTE BOX -->
-  <section class="route">
-    <strong>Route & Eckdaten</strong>
-    <p class="meta">Start in Potsdam → Leipzig (Meetup) → Köln (Meetup) → München (Finale).  
-      Kilometer fressen, Geschichten sammeln, Community treffen. 💜💙⚡</p>
-  </section>
-
-  <!-- GALLERY -->
   <section class="section" aria-labelledby="galTitle">
     <h2 id="galTitle">Galerie</h2>
-    <p class="meta">Ein paar Momente vom Drive.</p>
+    <p class="meta">Ein paar Highlights der Tour.</p>
 
-    <div class="grid" style="margin-top:10px">
-      <!-- Bilder liegen im Root: drive1.jpg ... drive9.jpg (Option A) -->
-      <a class="thumb" href="drive1.jpg" target="_blank" rel="noopener">
-        <img src="drive1.jpg" alt="Rave Drive 2025 — Moment 1" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive2.jpg" target="_blank" rel="noopener">
-        <img src="drive2.jpg" alt="Rave Drive 2025 — Moment 2" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive3.jpg" target="_blank" rel="noopener">
-        <img src="drive3.jpg" alt="Rave Drive 2025 — Moment 3" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive4.jpg" target="_blank" rel="noopener">
-        <img src="drive4.jpg" alt="Rave Drive 2025 — Moment 4" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive5.jpg" target="_blank" rel="noopener">
-        <img src="drive5.jpg" alt="Rave Drive 2025 — Moment 5" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive6.jpg" target="_blank" rel="noopener">
-        <img src="drive6.jpg" alt="Rave Drive 2025 — Moment 6" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive7.jpg" target="_blank" rel="noopener">
-        <img src="drive7.jpg" alt="Rave Drive 2025 — Moment 7" loading="lazy" decoding="async">
-      </a>
-      <a class="thumb" href="drive8.jpg" target="_blank" rel="noopener">
-        <img src="drive8.jpg" alt="Rave Drive 2025 — Moment 8" loading="lazy" decoding="async">
-      </a>
-      <!-- Optional weiteres Bild
-      <a class="thumb" href="drive9.jpg" target="_blank" rel="noopener">
-        <img src="drive9.jpg" alt="Rave Drive 2025 — Moment 9" loading="lazy" decoding="async">
-      </a>
-      -->
-    </div>
-
-    <div class="ctaRow">
-      <a class="btn primary" href="events.html">← Zurück zu den Events</a>
-      <a class="btn ghost" href="index.html">Zur Startseite</a>
+    <div class="grid" id="driveGrid" style="margin-top:10px">
+      <!-- Stelle sicher: images/events/ravedrive2025/drive1.jpg ... drive8.jpg existieren -->
+      <div class="thumb"><img src="images/events/ravedrive2025/drive1.jpg" alt="Drive 1" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive2.jpg" alt="Drive 2" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive3.jpg" alt="Drive 3" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive4.jpg" alt="Drive 4" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive5.jpg" alt="Drive 5" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive6.jpg" alt="Drive 6" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive7.jpg" alt="Drive 7" loading="lazy"></div>
+      <div class="thumb"><img src="images/events/ravedrive2025/drive8.jpg" alt="Drive 8" loading="lazy"></div>
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Bildanzeige">
+    <button class="close" id="lbClose" aria-label="Schließen">✕</button>
+    <div class="nav">
+      <button id="lbPrev" aria-label="Vorheriges Bild">⟨</button>
+      <button id="lbNext" aria-label="Nächstes Bild">⟩</button>
+    </div>
+    <img id="lbImage" alt="Galeriebild">
+  </div>
 
 </main>
 
 <footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
 <script>
-/* Movable Ticker */
-(function(){
-  const track=document.getElementById('marqueeTrack'); if(!track) return;
-  track.innerHTML = track.innerHTML + track.innerHTML;
-  let offset=0,speed=0.35,drag=false,startX=0,startOffset=0;
-  const step=()=>{ if(!drag){offset-=speed;} const w=track.scrollWidth/2; if(offset<=-w){offset+=w;} track.style.transform=`translateX(${offset}px)`; requestAnimationFrame(step); };
-  step();
-  track.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);});
-  window.addEventListener('pointermove',e=>{if(drag){offset=startOffset+(e.clientX-startX)}});
-  window.addEventListener('pointerup',()=>{drag=false;});
+/* Spotify Toggle */
+(()=>{const b=document.getElementById('togglePlayer'),w=document.getElementById('playerWrap');if(!b||!w)return;b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',String(!on));w.classList.toggle('active',!on);w.setAttribute('aria-hidden',String(on));});})();
+/* Lightbox */
+(()=>{const thumbs=[...document.querySelectorAll('#driveGrid .thumb img')];const box=document.getElementById('lightbox');const img=document.getElementById('lbImage');const prev=document.getElementById('lbPrev');const next=document.getElementById('lbNext');const close=document.getElementById('lbClose');let idx=0;
+function open(i){idx=i;img.src=thumbs[idx].src;box.classList.add('active');document.body.style.overflow='hidden'}
+function shut(){box.classList.remove('active');document.body.style.overflow=''}
+function go(n){idx=(idx+n+thumbs.length)%thumbs.length;img.src=thumbs[idx].src}
+thumbs.forEach((t,i)=>{t.parentElement.addEventListener('click',()=>open(i))});
+prev.addEventListener('click',()=>go(-1));next.addEventListener('click',()=>go(1));close.addEventListener('click',shut);
+box.addEventListener('click',e=>{if(e.target===box)shut()});
+window.addEventListener('keydown',e=>{if(!box.classList.contains('active'))return;if(e.key==='Escape')shut();if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
 })();
 </script>
 
+<!-- PJAX Router (Direct Load support) -->
 <script>
-/* Active-Nav markieren + Same-page Full-Reload vermeiden */
-(function(){
-  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  document.querySelectorAll('a[data-nav]').forEach(a=>{
-    const href = a.getAttribute('href');
-    const destPage = (href.includes('.html') ? href.split('#')[0] : 'index.html').toLowerCase();
-
-    if (destPage === here) a.setAttribute('aria-current','page');
-
-    a.addEventListener('click', (e)=>{
-      const hasHash = href.includes('#');
-      if (destPage === here && !hasHash) e.preventDefault();
-    });
-  });
-})();
+(()=>{const app=document.getElementById('app');function isInternal(h){try{const u=new URL(h,location.href);return u.origin===location.origin}catch{return false}}function attach(root=document){root.querySelectorAll('a[data-pjax]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href')||'';if(!isInternal(href))return;if(href.startsWith('#'))return;e.preventDefault();navigate(href);});});}
+async function navigate(url){const r=await fetch(url,{credentials:'same-origin'});const html=await r.text();const doc=new DOMParser().parseFromString(html,'text/html');const main=doc.querySelector('main#app');if(!main){location.href=url;return}app.innerHTML=main.innerHTML;const title=main.getAttribute('data-title')||doc.title||document.title;document.title=title;history.pushState({url},title,url);attach(app);main.querySelectorAll('script').forEach(sO=>{const s=document.createElement('script');if(sO.src){s.src=sO.src}else{s.textContent=sO.textContent}document.body.appendChild(s);if(!s.src)setTimeout(()=>s.remove(),0)});const u=new URL(url,location.href);if(u.hash){const el=document.querySelector(u.hash);el&&el.scrollIntoView({behavior:'smooth'})}else{window.scrollTo({top:0,behavior:'smooth'})}}
+window.addEventListener('popstate',()=>navigate(location.href));attach(document);})();
 </script>
 
 </body>
