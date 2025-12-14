@@ -39,12 +39,12 @@ body{
     radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
     radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
     var(--bg);
-  color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  color:var(--ink); font-family:"Inter",system-ui;
+  overflow-x:hidden;
 }
 :focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
 
-/* Header (match index/events) */
+/* Header */
 header{
   position:fixed; top:0; left:0; width:100%; z-index:40;
   background:rgba(0,0,0,.75);
@@ -53,131 +53,119 @@ header{
 }
 .head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
 .brand{display:flex; align-items:center; gap:12px}
-.brand img{height:42px; width:auto; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
 .name{
-  font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px;
+  font-family:"Orbitron"; text-transform:uppercase; font-weight:800;
   background:linear-gradient(90deg,var(--blue),var(--purple));
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-size:200%; animation:flow 6s linear infinite;
+  font-size:14px; background-size:200%; animation:flow 6s linear infinite;
 }
 @keyframes flow{50%{background-position:100% 50%}}
-
 .nav{display:flex; gap:10px}
 .nav a{
-  padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
-  color:#e7efff; background:var(--glass); border:1px solid var(--border); text-transform:uppercase; transition:.2s; text-decoration:none;
+  padding:10px 14px; border-radius:999px; background:var(--glass);
+  border:1px solid var(--border); font-family:"Orbitron"; font-size:11px;
+  text-decoration:none; text-transform:uppercase; color:#dce8ff; letter-spacing:.16em;
 }
-.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
+.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px var(--blue)}
 
 /* Page */
 .page{max-width:var(--max); margin:0 auto; padding:96px 16px 80px}
 
-/* Poster-Hero */
+/* HERO */
 .hero{
-  position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate;
-  border:1px solid var(--border);
-  background:#06070f;
+  position:relative; border-radius:var(--rx); border:1px solid var(--border);
+  background:#06070f; min-height:42vh; display:grid; place-items:center;
   box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12);
-  min-height:42vh; display:grid; place-items:center; text-align:center;
+  overflow:hidden;
 }
 .hero .beams{
-  position:absolute; inset:-18%; mix-blend-mode:screen; filter:blur(1px);
-  background:
-    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
-    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);
-  animation:spin var(--beam-speed) linear infinite;
+  position:absolute; inset:-18%; background:
+    conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,.10), transparent 40%),
+    conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,.10), transparent 40%);
+  animation:spin var(--beam-speed) linear infinite; filter:blur(1px); mix-blend-mode:screen;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero .copy{position:relative; z-index:2; padding:28px}
-.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:8px}
+.copy{position:relative; z-index:2; padding:28px;text-align:center}
+.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; font-size:12px}
 h1{font-family:"Orbitron"; font-size:clamp(32px,6vw,56px)}
-.sub{color:var(--muted); max-width:820px; margin:10px auto 0}
+.sub{color:var(--muted); max-width:820px; margin:10px auto}
 
-/* Event Facts */
-.facts{
-  display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; justify-content:center
-}
-.fact{
-  padding:8px 12px; border-radius:999px; font-size:12px; color:#e7f0ff;
-  background:rgba(255,255,255,.06); border:1px solid var(--border)
-}
+/* Facts */
+.facts{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px}
+.fact{padding:8px 12px; border-radius:999px; background:var(--glass); border:1px solid var(--border)}
 
-/* Ticker (camp-fokussiert) */
-.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
-.track{display:flex; gap:26px; white-space:nowrap; padding:12px 18px; will-change:transform}
-.track span{font-family:"Orbitron"; letter-spacing:.28em; text-transform:uppercase; color:#dce8ff; font-size:12px}
+/* Ticker */
+.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; cursor:grab}
+.track{display:flex; gap:26px; padding:12px 18px; white-space:nowrap; color:#dce8ff; font-family:"Orbitron"; letter-spacing:.28em}
 
 /* Gallery */
 .section{margin-top:28px}
-h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
+h2{font-family:"Orbitron"; font-size:22px}
 .meta{color:var(--muted)}
 
 .grid{
-  display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin-top:10px
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:14px; margin-top:10px;
 }
 .thumb{
   position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden;
-  background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18));
-  border:1px solid var(--border);
-  box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16);
-  transition:transform .25s ease; cursor:pointer;
+  border:1px solid var(--border); background:rgba(255,255,255,.1);
+  cursor:pointer; transition:.25s;
+  box-shadow:0 18px 42px rgba(0,0,0,.5), 0 0 26px rgba(0,210,255,.16);
 }
-.thumb:hover{ transform:translateY(-2px) }
-.thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.thumb:hover{transform:translateY(-2px)}
+.thumb img{width:100%; height:100%; object-fit:cover}
 
-/* CTA back */
-.ctaRow{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:18px}
-.btn{
-  padding:10px 14px; border-radius:12px; text-decoration:none; cursor:pointer; transition:.2s;
-  font-weight:800;
-}
-.btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018}
-.btn.ghost{background:rgba(255,255,255,.06); color:#fff; border:1px solid var(--border)}
-.btn:hover{transform:translateY(-1px)}
+/* CTA */
+.ctaRow{display:flex; justify-content:center; gap:10px; margin-top:18px}
+.btn{padding:10px 14px; border-radius:12px; font-weight:800; text-decoration:none}
+.btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#000}
+.btn.ghost{background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff}
 
 /* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+.lightbox{
+  position:fixed; inset:0; backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.75); display:flex;
+  align-items:center; justify-content:center;
+  z-index:2000;
 }
-.lightbox.hidden { display: none; }
-.lightbox-content {
-  position: relative;
-  max-width: 96vw;
-  max-height: 90vh;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 0 40px rgba(0,210,255,.25), 0 0 40px rgba(155,92,255,.25);
+.lightbox.hidden{display:none}
+.lightbox-content{
+  position:relative; max-width:96vw; max-height:90vh;
+  border-radius:18px; overflow:hidden; border:1px solid var(--border);
+  box-shadow:0 0 50px var(--blue), 0 0 40px var(--purple);
 }
-.lightbox-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 28px;
-  color: #fff;
-  cursor: pointer;
-  text-shadow: 0 0 10px var(--blue), 0 0 10px var(--purple);
+.lightbox-content img{width:100%; height:auto}
+
+/* Close Button */
+.close-btn{
+  position:absolute; top:10px; right:10px;
+  width:42px; height:42px; font-size:22px;
+  display:grid; place-items:center; color:#fff;
+  background:rgba(255,255,255,.1);
+  border:1px solid var(--border); border-radius:10px;
+  cursor:pointer; text-shadow:0 0 10px var(--blue);
 }
 
-/* Footer */
-footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
+/* Navigation Buttons */
+.nav-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:46px; height:46px; border-radius:50%;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.1);
+  color:#fff; font-size:30px;
+  display:grid; place-items:center;
+  cursor:pointer; user-select:none;
+}
+.nav-btn.prev{left:10px}
+.nav-btn.next{right:10px}
+.nav-btn:hover{background:rgba(255,255,255,.2)}
 
-/* Responsive */
-@media (max-width:980px){ .grid{grid-template-columns:1fr 1fr} }
-@media (max-width:640px){ .grid{grid-template-columns:1fr} }
-@media (prefers-reduced-motion: reduce){ .hero .beams{animation:none} }
+footer{
+  margin-top:34px; border-top:1px solid var(--border); padding:16px 0 36px;
+  text-align:center; background:rgba(0,0,0,.6);
+}
 </style>
 </head>
 
@@ -186,12 +174,10 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
 <header>
   <div class="head">
     <div class="brand">
-      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <img src="logo druck.png" alt="Rave3eN Logo"/>
-        <div class="name">RAVE3EN</div>
-      </a>
+      <a href="index.html"><img src="logo druck.png" alt="Rave3eN Logo"/></a>
+      <div class="name">RAVE3EN</div>
     </div>
-    <nav class="nav" aria-label="Navigation">
+    <nav class="nav">
       <a href="index.html#live">Live</a>
       <a href="events.html">Events</a>
       <a href="index.html#music">Playlist</a>
@@ -202,97 +188,122 @@ footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 
 
 <main class="page">
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Rave Camp 2024">
-    <div class="beams" aria-hidden="true"></div>
-    <div class="copy">
-      <div class="kicker">RAVE3EN CAMP</div>
-      <h1>Rave Camp 2024</h1>
-      <p class="sub">Natur. Lagerfeuer. EDM. Gespräche bis in die Nacht – Momente, die bleiben.</p>
-      <div class="facts">
-        <span class="fact">Community</span>
-        <span class="fact">EDM-Vibes</span>
-        <span class="fact">Outdoor</span>
-        <span class="fact">Recap</span>
-      </div>
+<section class="hero">
+  <div class="beams"></div>
+  <div class="copy">
+    <div class="kicker">RAVE3EN CAMP</div>
+    <h1>Rave Camp 2024</h1>
+    <p class="sub">Natur. Lagerfeuer. EDM. Gespräche bis in die Nacht – Momente, die bleiben.</p>
+    <div class="facts">
+      <span class="fact">Community</span>
+      <span class="fact">EDM</span>
+      <span class="fact">Outdoor</span>
+      <span class="fact">Recap</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TICKER -->
-  <section class="ticker" aria-label="Camp Timeline">
-    <div class="track" id="marqueeTrack">
-      <span>LAGERFEUER</span><span>EDM BEATS</span><span>GESPRÄCHE</span><span>COMMUNITY</span><span>NATUR</span>
-      <span>ERINNERUNGEN</span><span>FOTOS & MOMENTE</span><span>RAVE CAMP 2024</span><span>FEEL THE VIBES</span>
-    </div>
-  </section>
+<section class="ticker">
+  <div class="track" id="marqueeTrack">
+    <span>LAGERFEUER</span><span>EDM</span><span>GESPRÄCHE</span><span>COMMUNITY</span>
+    <span>NATUR</span><span>MOMENTE</span><span>RAVE CAMP</span><span>FEEL THE VIBES</span>
+  </div>
+</section>
 
-  <!-- GALLERY -->
-  <section class="section" aria-labelledby="galTitle">
-    <h2 id="galTitle">Galerie</h2>
-    <p class="meta">Ein paar Augenblicke aus dem Wochenende.</p>
+<section class="section">
+  <h2>Galerie</h2>
+  <p class="meta">Ein paar Augenblicke aus dem Wochenende.</p>
 
-    <div class="grid" style="margin-top:10px">
-      <!-- Bilder liegen im Root: camp1.jpg ... camp8.jpg -->
-      <div class="thumb" data-img="camp1.jpg"><img src="camp1.jpg" alt="Rave Camp 2024 – Moment 1"></div>
-      <div class="thumb" data-img="camp2.jpg"><img src="camp2.jpg" alt="Rave Camp 2024 – Moment 2"></div>
-      <div class="thumb" data-img="camp3.jpg"><img src="camp3.jpg" alt="Rave Camp 2024 – Moment 3"></div>
-      <div class="thumb" data-img="camp4.jpg"><img src="camp4.jpg" alt="Rave Camp 2024 – Moment 4"></div>
-      <div class="thumb" data-img="camp5.jpg"><img src="camp5.jpg" alt="Rave Camp 2024 – Moment 5"></div>
-      <div class="thumb" data-img="camp6.jpg"><img src="camp6.jpg" alt="Rave Camp 2024 – Moment 6"></div>
-      <div class="thumb" data-img="camp7.jpg"><img src="camp7.jpg" alt="Rave Camp 2024 – Moment 7"></div>
-      <div class="thumb" data-img="camp8.jpg"><img src="camp8.jpg" alt="Rave Camp 2024 – Moment 8"></div>
-    </div>
+  <div class="grid">
+    <div class="thumb" data-img="camp1.jpg"><img src="camp1.jpg"></div>
+    <div class="thumb" data-img="camp2.jpg"><img src="camp2.jpg"></div>
+    <div class="thumb" data-img="camp3.jpg"><img src="camp3.jpg"></div>
+    <div class="thumb" data-img="camp4.jpg"><img src="camp4.jpg"></div>
+    <div class="thumb" data-img="camp5.jpg"><img src="camp5.jpg"></div>
+    <div class="thumb" data-img="camp6.jpg"><img src="camp6.jpg"></div>
+    <div class="thumb" data-img="camp7.jpg"><img src="camp7.jpg"></div>
+    <div class="thumb" data-img="camp8.jpg"><img src="camp8.jpg"></div>
+  </div>
 
-    <div class="ctaRow">
-      <a class="btn primary" href="events.html">← Zurück zu den Events</a>
-      <a class="btn ghost" href="index.html">Zur Startseite</a>
-    </div>
-  </section>
+  <div class="ctaRow">
+    <a class="btn primary" href="events.html">← Zurück zu Events</a>
+    <a class="btn ghost" href="index.html">Startseite</a>
+  </div>
+</section>
 
 </main>
 
 <footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
-<!-- LIGHTBOX MARKUP -->
-<div id="lightbox" class="lightbox hidden" aria-modal="true" role="dialog">
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox hidden">
   <div class="lightbox-content">
-    <img id="lightbox-img" src="" alt="Rave Camp Bild groß">
-    <span class="close-btn" aria-label="Schließen">✕</span>
+    <img id="lightbox-img" src="">
+    <button class="nav-btn prev">‹</button>
+    <button class="nav-btn next">›</button>
+    <span class="close-btn">✕</span>
   </div>
 </div>
 
 <script>
-/* Movable Ticker */
+/* Scrolling Ticker */
 (function(){
-  const track=document.getElementById('marqueeTrack'); if(!track) return;
-  track.innerHTML = track.innerHTML + track.innerHTML;
-  let offset=0,speed=0.35,drag=false,startX=0,startOffset=0;
-  const step=()=>{ if(!drag){offset-=speed;} const w=track.scrollWidth/2; if(offset<=-w){offset+=w;} track.style.transform=`translateX(${offset}px)`; requestAnimationFrame(step); };
-  step();
-  track.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);});
-  window.addEventListener('pointermove',e=>{if(drag){offset=startOffset+(e.clientX-startX)}});
-  window.addEventListener('pointerup',()=>{drag=false;});
+  const track=document.getElementById('marqueeTrack');
+  track.innerHTML+=track.innerHTML;
+  let x=0;
+  function loop(){
+    x-=0.3;
+    if(x<=-track.scrollWidth/2) x=0;
+    track.style.transform=`translateX(${x}px)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
 })();
 
-/* LIGHTBOX JS */
+/* LIGHTBOX + Navigation */
 (function(){
+  const thumbs = [...document.querySelectorAll('.thumb')];
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
+  const nextBtn = document.querySelector('.nav-btn.next');
+  const prevBtn = document.querySelector('.nav-btn.prev');
   const closeBtn = document.querySelector('.close-btn');
 
-  document.querySelectorAll('.thumb').forEach(thumb=>{
-    thumb.addEventListener('click', ()=>{
-      const src = thumb.getAttribute('data-img');
-      if(!src) return;
-      lbImg.src = src;
-      lb.classList.remove('hidden');
-    });
+  const imgs = thumbs.map(t => t.dataset.img);
+  let index = 0;
+
+  function open(i){
+    index = (i + imgs.length) % imgs.length;
+    lbImg.src = imgs[index];
+    lb.classList.remove('hidden');
+  }
+  function close(){ lb.classList.add('hidden'); }
+  function next(){ open(index+1); }
+  function prev(){ open(index-1); }
+
+  thumbs.forEach((t,i)=>t.addEventListener('click',()=>open(i)));
+  nextBtn.onclick=next;
+  prevBtn.onclick=prev;
+  closeBtn.onclick=close;
+
+  lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+
+  document.addEventListener('keydown', e=>{
+    if(lb.classList.contains('hidden')) return;
+    if(e.key==="Escape") close();
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft") prev();
   });
 
-  const close = ()=> lb.classList.add('hidden');
-  closeBtn.addEventListener('click', close);
-  lb.addEventListener('click', (e)=>{ if(e.target === lb) close(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+  // Touch swipe
+  let startX;
+  lb.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{
+    if(!startX) return;
+    let dx=e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx)>40){ dx<0 ? next() : prev(); }
+    startX=null;
+  });
 })();
 </script>
 
