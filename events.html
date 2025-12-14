@@ -6,6 +6,7 @@
 <title>Rave3eN — Events | EDM × Gaming × Community</title>
 <meta name="description" content="Rave3eN Events: Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Galerien."/>
 <link rel="canonical" href="https://www.rave3en.de/events.html"/>
+<meta name="theme-color" content="#000000"/>
 
 <meta property="og:title" content="Rave3eN — Events"/>
 <meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Galerien."/>
@@ -23,6 +24,7 @@
 *{box-sizing:border-box;margin:0;padding:0} html,body{height:100%}
 body{background:radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),var(--bg);color:var(--ink);font-family:"Inter",system-ui;overflow-x:hidden}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:10px}
+
 header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(0,0,0,.75);border-bottom:1px solid rgba(155,92,255,.24);backdrop-filter:blur(8px)}
 .head{max-width:var(--max);margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:12px}
@@ -32,6 +34,7 @@ header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(0,0,0,.
 .nav{display:flex;gap:10px;align-items:center}
 .nav a{padding:10px 14px;border-radius:999px;font-family:"Orbitron";letter-spacing:.16em;font-size:11px;color:#e7efff;background:var(--glass);border:1px solid rgba(155,92,255,.22);text-transform:uppercase;transition:.2s;text-decoration:none}
 .nav a:hover{transform:translateY(-1px);color:#fff;box-shadow:0 0 14px rgba(0,210,255,.3)}
+
 .playerDock{display:flex;align-items:center;gap:10px;margin-left:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;padding:6px 10px}
 .playerDock .toggle{padding:8px 10px;border-radius:999px;border:1px solid rgba(155,92,255,.26);background:rgba(0,0,0,.35);color:#e9f2ff;cursor:pointer;font-family:"Orbitron";letter-spacing:.14em;font-size:11px;text-transform:uppercase}
 .playerDock .toggle[aria-pressed="true"]{background:linear-gradient(90deg,var(--blue),var(--purple));color:#061018;font-weight:800}
@@ -39,6 +42,8 @@ header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(0,0,0,.
 .playerDock .frameWrap.active{display:block}
 
 .page{max-width:var(--max);margin:0 auto;padding:96px 16px 80px}
+
+/* HERO */
 .hero{position:relative;border-radius:var(--rx);overflow:hidden;isolation:isolate;border:1px solid var(--border);background:#06070f;box-shadow:0 0 40px rgba(0,210,255,.12),0 0 40px rgba(155,92,255,.12);min-height:42vh;display:grid;place-items:center;text-align:center}
 .hero .beams{position:absolute;inset:-18%;mix-blend-mode:screen;filter:blur(1px);background:conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);animation:spin var(--beam-speed) linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -46,12 +51,17 @@ header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(0,0,0,.
 .kicker{font-family:"Orbitron";color:var(--blue);letter-spacing:.28em;text-transform:uppercase;font-size:12px;margin-bottom:8px}
 h1{font-family:"Orbitron";font-size:clamp(32px,6vw,56px)}
 .sub{color:var(--muted);max-width:780px;margin:10px auto 0}
+
+/* TICKER */
 .ticker{margin-top:16px;border-radius:var(--r);border:1px solid var(--border);background:rgba(255,255,255,.03);overflow:hidden;user-select:none;cursor:grab}
 .track{display:flex;gap:26px;white-space:nowrap;padding:12px 18px;will-change:transform}
 .track span{font-family:"Orbitron";letter-spacing:.28em;text-transform:uppercase;color:#dce8ff;font-size:12px}
+
+/* FILTER + GRID */
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(155,92,255,.26);background:rgba(255,255,255,.06);color:#e9f2ff;cursor:pointer;font-family:"Orbitron";letter-spacing:.14em;text-transform:uppercase;font-size:11px;transition:.2s}
 .btn[aria-pressed="true"]{background:linear-gradient(90deg,var(--blue),var(--purple));color:#061018;font-weight:800;box-shadow:0 0 14px rgba(0,210,255,.22)}
+
 .grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);margin-top:16px}
 .card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 18px 42px rgba(0,0,0,.5),0 0 26px rgba(0,210,255,.16),0 0 42px rgba(155,92,255,.16);display:flex;flex-direction:column}
 .thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg, rgba(0,210,255,.18), rgba(155,92,255,.18))}
@@ -64,9 +74,12 @@ h1{font-family:"Orbitron";font-size:clamp(32px,6vw,56px)}
 .ctaRow{display:flex;gap:8px;padding:12px 14px 16px}
 .linkBtn{padding:10px 12px;border-radius:12px;text-decoration:none;color:#061018;font-weight:800;background:linear-gradient(90deg,var(--blue),var(--purple))}
 .linkGhost{padding:10px 12px;border-radius:12px;text-decoration:none;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(155,92,255,.24)}
+
 footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 36px;text-align:center;font-size:12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);text-shadow:0 0 8px var(--purple),0 0 14px var(--blue)}
+
 @media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.grid{grid-template-columns:1fr}.thumb{aspect-ratio:16/10}}
+@media (prefers-reduced-motion: reduce){.hero .beams{animation:none}}
 </style>
 </head>
 
@@ -80,11 +93,11 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
       </a>
     </div>
     <nav class="nav" aria-label="Navigation">
-      <a data-pjax href="index.html#live">Live</a>
-      <a data-pjax href="events.html" aria-current="page">Events</a>
-      <a data-pjax href="index.html#music">Playlist</a>
-      <a data-pjax href="index.html#community">Community</a>
-      <!-- Spotify Dock (für Direktaufruf dieser Seite) -->
+      <a href="index.html#live" data-pjax>Live</a>
+      <a href="events.html" data-pjax aria-current="page">Events</a>
+      <a href="index.html#music" data-pjax>Playlist</a>
+      <a href="index.html#community" data-pjax>Community</a>
+
       <div class="playerDock" aria-label="Spotify Player">
         <button class="toggle" id="togglePlayer" aria-pressed="false">Spotify</button>
         <div class="frameWrap" id="playerWrap" aria-hidden="true">
@@ -100,6 +113,7 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
 
 <main id="app" class="page" data-title="Rave3eN — Events | EDM × Gaming × Community">
 
+  <!-- HERO -->
   <section class="hero" aria-label="Events">
     <div class="beams" aria-hidden="true"></div>
     <div class="copy">
@@ -109,6 +123,7 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
     </div>
   </section>
 
+  <!-- TICKER -->
   <section class="ticker" aria-label="Timeline">
     <div class="track" id="marqueeTrack">
       <span>RAVE CAMP 2024</span>
@@ -122,17 +137,24 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
     </div>
   </section>
 
+  <!-- FILTER -->
   <section class="controls" aria-label="Filter">
     <button class="btn" id="btnAll" aria-pressed="true">Alle</button>
     <button class="btn" id="btnUpcoming" aria-pressed="false">Kommend</button>
     <button class="btn" id="btnPast" aria-pressed="false">Vergangen</button>
   </section>
 
+  <!-- GRID -->
   <section class="grid" id="eventsGrid" aria-live="polite">
+
     <article class="card" data-type="upcoming" data-date="2025-12-25">
-      <div class="thumb"><img src="images/events/tierheim-stream.jpg" alt="Tierheim-Spendenstream" loading="lazy"></div>
+      <div class="thumb">
+        <img src="images/events/tierheim-stream.jpg" alt="Tierheim-Spendenstream" loading="lazy">
+      </div>
       <div class="body">
-        <div class="badgeRow"><span class="badge">25–28.12</span><span class="badge">Dauerstream</span><span class="badge">Charity</span></div>
+        <div class="badgeRow">
+          <span class="badge">25–28.12</span><span class="badge">Dauerstream</span><span class="badge">Charity</span>
+        </div>
         <div class="title">Tierheim-Spendenstream</div>
         <p class="meta">24/7 Stream, Challenges & Action – alles für die Pfoten. 💜</p>
       </div>
@@ -143,9 +165,13 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
     </article>
 
     <article class="card" data-type="past" data-date="2024-08-17">
-      <div class="thumb"><img src="images/events/ravecamp2024.jpg" alt="Rave Camp 2024" loading="lazy"></div>
+      <div class="thumb">
+        <img src="images/events/ravecamp2024.jpg" alt="Rave Camp 2024" loading="lazy">
+      </div>
       <div class="body">
-        <div class="badgeRow"><span class="badge">2024</span><span class="badge">Camp</span><span class="badge">Community</span></div>
+        <div class="badgeRow">
+          <span class="badge">2024</span><span class="badge">Camp</span><span class="badge">Community</span>
+        </div>
         <div class="title">Rave Camp 2024</div>
         <p class="meta">Wochenende. Lagerfeuer. EDM. Geschichten, die bleiben.</p>
       </div>
@@ -155,9 +181,13 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
     </article>
 
     <article class="card" data-type="past" data-date="2025-09-10">
-      <div class="thumb"><img src="images/events/ravedrive2025.jpg" alt="Rave Drive 2025" loading="lazy"></div>
+      <div class="thumb">
+        <img src="images/events/ravedrive2025.jpg" alt="Rave Drive 2025" loading="lazy">
+      </div>
       <div class="body">
-        <div class="badgeRow"><span class="badge">2025</span><span class="badge">Roadtrip</span><span class="badge">4 Städte</span></div>
+        <div class="badgeRow">
+          <span class="badge">2025</span><span class="badge">Roadtrip</span><span class="badge">4 Städte</span>
+        </div>
         <div class="title">Rave Drive 2025</div>
         <p class="meta">2.500 km — Potsdam → Leipzig → Köln → München. Pure Community-Power.</p>
       </div>
@@ -165,26 +195,54 @@ footer{margin-top:34px;border-top:1px solid rgba(155,92,255,.30);padding:16px 0 
         <a class="linkBtn" href="ravedrive2025.html#galTitle" data-pjax>Zur Galerie</a>
       </div>
     </article>
-  </section>
 
+  </section>
 </main>
 
 <footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
 <script>
-/* Spotify Toggle (für Direktaufruf dieser Seite) */
+/* Spotify Toggle (Direktaufruf) */
 (()=>{const b=document.getElementById('togglePlayer'),w=document.getElementById('playerWrap');if(!b||!w)return;b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',String(!on));w.classList.toggle('active',!on);w.setAttribute('aria-hidden',String(on));});})();
+
 /* Ticker */
 (()=>{const track=document.getElementById('marqueeTrack');if(!track)return;track.innerHTML+=track.innerHTML;let o=0,s=.35,d=false,x=0,so=0;const step=()=>{if(!d)o-=s;const w=track.scrollWidth/2;if(o<=-w)o+=w;track.style.transform=`translateX(${o}px)`;requestAnimationFrame(step)};step();track.addEventListener('pointerdown',e=>{d=true;x=e.clientX;so=o;track.setPointerCapture(e.pointerId)});window.addEventListener('pointermove',e=>{if(d)o=so+(e.clientX-x)});window.addEventListener('pointerup',()=>{d=false});})();
+
 /* Filter + Sortierung */
-(()=>{const A=document.getElementById('btnAll'),U=document.getElementById('btnUpcoming'),P=document.getElementById('btnPast'),cards=[...document.querySelectorAll('#eventsGrid .card')];function press(t){[A,U,P].forEach(b=>b.setAttribute('aria-pressed',String(b===t)))}function showAll(){cards.forEach(c=>c.style.display='flex')}function showType(x){cards.forEach(c=>{c.style.display=c.dataset.type===x?'flex':'none'})}A.onclick=()=>{press(A);showAll()};U.onclick=()=>{press(U);showType('upcoming')};P.onclick=()=>{press(P);showType('past')};const grid=document.getElementById('eventsGrid');cards.sort((a,b)=>new Date(a.dataset.date||'2100-01-01')-new Date(b.dataset.date||'2100-01-01')).forEach(c=>grid.appendChild(c));})();
+(()=>{const A=document.getElementById('btnAll'),U=document.getElementById('btnUpcoming'),P=document.getElementById('btnPast'),cards=[...document.querySelectorAll('#eventsGrid .card')];
+function press(t){[A,U,P].forEach(b=>b.setAttribute('aria-pressed',String(b===t)))}
+function showAll(){cards.forEach(c=>c.style.display='flex')}
+function showType(type){cards.forEach(c=>c.style.display=c.dataset.type===type?'flex':'none')}
+A.onclick=()=>{press(A);showAll()}; U.onclick=()=>{press(U);showType('upcoming')}; P.onclick=()=>{press(P);showType('past')};
+const grid=document.getElementById('eventsGrid');
+cards.sort((a,b)=>new Date(a.dataset.date||'2100-01-01')-new Date(b.dataset.date||'2100-01-01')).forEach(c=>grid.appendChild(c));
+})();
 </script>
 
-<!-- PJAX Router (für Direktaufruf dieser Seite) -->
+<!-- PJAX Router (Direktaufruf kompatibel) -->
 <script>
-(()=>{const app=document.getElementById('app');function isInternal(h){try{const u=new URL(h,location.href);return u.origin===location.origin}catch{return false}}function attach(root=document){root.querySelectorAll('a[data-pjax]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href')||'';if(!isInternal(href))return;if(href.startsWith('#'))return;e.preventDefault();navigate(href);});});}
-async function navigate(url){const r=await fetch(url,{credentials:'same-origin'});const html=await r.text();const doc=new DOMParser().parseFromString(html,'text/html');const main=doc.querySelector('main#app');if(!main){location.href=url;return}app.innerHTML=main.innerHTML;const title=main.getAttribute('data-title')||doc.title||document.title;document.title=title;history.pushState({url},title,url);attach(app);main.querySelectorAll('script').forEach(sO=>{const s=document.createElement('script');if(sO.src){s.src=sO.src}else{s.textContent=sO.textContent}document.body.appendChild(s);if(!s.src)setTimeout(()=>s.remove(),0)});const u=new URL(url,location.href);if(u.hash){const el=document.querySelector(u.hash);el&&el.scrollIntoView({behavior:'smooth'})}else{window.scrollTo({top:0,behavior:'smooth'})}}
-window.addEventListener('popstate',()=>navigate(location.href));attach(document);})();
+(()=>{const app=document.getElementById('app');
+function isInternal(h){try{const u=new URL(h,location.href);return u.origin===location.origin}catch{return false}}
+function attach(root=document){root.querySelectorAll('a[data-pjax]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href')||'';if(!isInternal(href))return;if(href.startsWith('#'))return;e.preventDefault();navigate(href);});});}
+function hydrateHead(fromDoc){
+  const sigs=new Set([...document.head.querySelectorAll('link[rel="stylesheet"], style')].map(n=>n.tagName==='LINK'?'L:'+n.href:'S:'+n.textContent.trim().slice(0,2000)));
+  fromDoc.querySelectorAll('link[rel="stylesheet"], style').forEach(n=>{const s=n.tagName==='LINK'?'L:'+n.href:'S:'+n.textContent.trim().slice(0,2000);if(!sigs.has(s)){const c=n.cloneNode(true);c.setAttribute('data-pjax-style','');document.head.appendChild(c);sigs.add(s);}});
+  const t=fromDoc.querySelector('meta[name="theme-color"]'); if(t){let cur=document.head.querySelector('meta[name="theme-color"]'); if(!cur)document.head.appendChild(t.cloneNode(true)); else cur.setAttribute('content',t.getAttribute('content')); }
+}
+async function navigate(url){
+  const r=await fetch(url,{credentials:'same-origin'}); const html=await r.text();
+  const doc=new DOMParser().parseFromString(html,'text/html'); hydrateHead(doc);
+  const main=doc.querySelector('main#app'); if(!main){location.href=url;return}
+  app.innerHTML=main.innerHTML;
+  const title=main.getAttribute('data-title')||doc.title||document.title; document.title=title;
+  history.pushState({url},title,url);
+  attach(app);
+  main.querySelectorAll('script').forEach(sO=>{const s=document.createElement('script'); if(sO.src){s.src=sO.src}else{s.textContent=sO.textContent} document.body.appendChild(s); if(!s.src) setTimeout(()=>s.remove(),0);});
+  const u=new URL(url,location.href); if(u.hash){const el=document.querySelector(u.hash); el&&el.scrollIntoView({behavior:'smooth'})} else {window.scrollTo({top:0,behavior:'smooth'})}
+}
+window.addEventListener('popstate',()=>navigate(location.href));
+attach(document);
+})();
 </script>
 
 </body>
