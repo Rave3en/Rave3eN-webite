@@ -3,11 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
 <title>Rave3eN — EDM × Gaming × Community</title>
 <meta name="description" content="EDM × Gaming × Community. Neon-Blau & Neon-Lila. Live-Stream, VOD, Events & Playlist."/>
 <link rel="canonical" href="https://www.rave3en.de/"/>
-
 <meta property="og:title" content="Rave3eN — EDM × Gaming × Community"/>
 <meta property="og:description" content="Neon-Blau × Neon-Lila × Schwarz. Live-Stream, VOD, Events & Playlist."/>
 <meta property="og:type" content="website"/>
@@ -26,8 +24,8 @@
   --glass:rgba(255,255,255,.06); --glass2:rgba(10,12,20,.42); --border:rgba(155,92,255,.24);
   --max:1180px; --r:18px; --rx:26px; --beam-opacity:.12; --beam-speed:60s;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0} html,body{height:100%}
 body{
   background:
     radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
@@ -37,122 +35,84 @@ body{
 }
 :focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
 
-/* HEADER + Spotify Dock */
-header{
-  position:fixed; top:0; left:0; width:100%; z-index:50;
-  background:rgba(0,0,0,.75); border-bottom:1px solid rgba(155,92,255,.24); backdrop-filter:blur(8px);
-}
-.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+/* Header */
+header{position:fixed; top:0; left:0; width:100%; z-index:60; background:rgba(0,0,0,.75); border-bottom:1px solid rgba(155,92,255,.24); backdrop-filter:blur(8px)}
+.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between}
 .brand{display:flex; align-items:center; gap:12px}
 .brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
-.name{
-  font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px;
-  background:linear-gradient(90deg,var(--blue),var(--purple));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-size:200%; animation:flow 6s linear infinite;
-}
+.name{font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px; background:linear-gradient(90deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-size:200%; animation:flow 6s linear infinite}
 @keyframes flow{50%{background-position:100% 50%}}
-.nav{display:flex; gap:10px; align-items:center}
-.nav a{
-  padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px;
-  color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22);
-  text-transform:uppercase; transition:.2s; text-decoration:none;
-}
+.nav{display:flex; gap:10px}
+.nav a{padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px; color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none}
 .nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
 
-.playerDock{display:flex; align-items:center; gap:10px; margin-left:8px; background:rgba(255,255,255,.06); border:1px solid var(--border); border-radius:999px; padding:6px 10px}
-.playerDock .toggle{padding:8px 10px; border-radius:999px; border:1px solid rgba(155,92,255,.26); background:rgba(0,0,0,.35); color:#e9f2ff; cursor:pointer; font-family:"Orbitron"; letter-spacing:.14em; font-size:11px; text-transform:uppercase}
-.playerDock .toggle[aria-pressed="true"]{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800}
-.playerDock .frameWrap{display:none; width:320px; height:80px; overflow:hidden; border-radius:12px; border:1px solid var(--border); background:rgba(0,0,0,.6)}
-.playerDock .frameWrap.active{display:block}
+/* Page */
+.page{max-width:var(--max); margin:0 auto; padding:96px 16px 120px} /* extra bottom for dock */
 
-/* PAGE */
-.page{max-width:var(--max); margin:0 auto; padding:96px 16px 80px}
-
-/* HERO */
-.hero{
-  position:relative; border-radius:var(--rx); overflow:hidden;
-  background:#06070f; border:1px solid var(--border);
-  box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12);
-  min-height:56vh; display:grid; place-items:center; text-align:center;
-}
-.hero .beams{
-  position:absolute; inset:-20%; mix-blend-mode:screen; filter:blur(1px);
-  background:
+/* HERO etc. (wie zuvor) */
+.hero{position:relative; border-radius:var(--rx); overflow:hidden; background:#06070f; border:1px solid var(--border); box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12); min-height:56vh; display:grid; place-items:center; text-align:center}
+.hero .beams{position:absolute; inset:-20%; mix-blend-mode:screen; filter:blur(1px); background:
     conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
     conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%);
-  animation:spin var(--beam-speed) linear infinite;
-}
+  animation:spin var(--beam-speed) linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .lasers{position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.45; filter:blur(.2px)}
-@media (max-width:640px){ .lasers{opacity:.34}}
-@media (prefers-reduced-motion:reduce){ .lasers{display:none}}
-
 .copy{position:relative; z-index:2; padding:24px}
 .kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; font-size:12px; margin-bottom:10px; text-transform:uppercase}
 h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px)}
 .sub{color:var(--muted); max-width:720px; margin:12px auto 20px}
 .cta{display:flex; justify-content:center; gap:10px; flex-wrap:wrap}
-.btn{
-  padding:12px 20px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em;
-  text-transform:uppercase; font-size:12px; cursor:pointer; border:1px solid transparent;
-  transition:.16s; text-decoration:none;
-}
+.btn{padding:12px 20px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; text-transform:uppercase; font-size:12px; cursor:pointer; border:1px solid transparent; transition:.16s; text-decoration:none}
 .btn.primary{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#000; font-weight:800}
 .btn.secondary{background:var(--glass2); color:#fff; border-color:rgba(155,92,255,.28)}
 .btn:hover{transform:translateY(-1px)}
-
-/* TICKER */
 .ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
 .track{display:flex; gap:26px; padding:12px 18px; white-space:nowrap}
 .track span{font-family:"Orbitron"; letter-spacing:.28em; font-size:12px; text-transform:uppercase; color:#dce8ff}
-
-/* SECTIONS */
 .section{margin-top:28px}
 h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
 .meta{color:var(--muted)}
-
 .tiles{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
 .card{background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16)}
+.card strong{display:block; margin-bottom:6px}
 .card a{color:var(--blue); text-decoration:none}
 .card a:hover{color:var(--purple)}
-
 .playerWrap{margin-top:12px; background:rgba(255,255,255,.04); border-radius:18px; border:1px solid var(--border); overflow:hidden}
 .playerWrap iframe{width:100%; height:520px; border:0}
-
 .tabRow{display:flex; gap:10px; margin-top:10px}
 .tabBtn{padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.26); color:#e9f2ff; cursor:pointer; font-family:"Orbitron"; letter-spacing:.14em; font-size:11px; text-transform:uppercase}
 .tabBtn[aria-selected="true"]{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800}
-
-.panel{display:none}
-.panel.active{display:block}
-
+.panel{display:none}.panel.active{display:block}
 .music{margin-top:10px; background:rgba(255,255,255,.04); border-radius:16px; overflow:hidden; box-shadow:0 0 30px rgba(0,210,255,.14), 0 0 50px rgba(155,92,255,.14)}
 .music iframe{width:100%; height:392px; border:0; display:block}
+footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
 
-footer{
-  margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px;
-  text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px);
-  text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)
+/* Player Dock (persistent) */
+#playerDock{
+  position:fixed; right:16px; bottom:16px; z-index:70;
+  background:rgba(8,10,18,.78); border:1px solid rgba(155,92,255,.3);
+  border-radius:16px; box-shadow:0 10px 30px rgba(0,210,255,.18), 0 0 40px rgba(155,92,255,.18);
+  overflow:hidden; backdrop-filter:blur(8px);
 }
+#playerDock header{position:static; background:transparent; border:0; backdrop-filter:none}
+#playerDock .dockBar{display:flex; align-items:center; gap:10px; padding:8px 10px; font-size:12px; font-family:"Orbitron"; letter-spacing:.12em}
+#dockClose{margin-left:auto; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.3); color:#fff; border-radius:999px; padding:4px 8px; cursor:pointer}
+#dockBody{width:min(360px, 88vw)}
+#dockBody iframe{width:100%; height:152px; border:0; display:block}
 
-@media(max-width:980px){
-  .tiles{grid-template-columns:1fr 1fr}
-  .playerWrap iframe{height:clamp(260px,56vw,60vh)}
-}
 @media(max-width:640px){
-  .tiles{grid-template-columns:1fr}
-  .music iframe{height:352px}
+  #dockBody iframe{height:120px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="head">
     <div class="brand">
       <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <img src="logo druck.png" alt="Rave3eN Logo"/>
+        <img src="logo%20druck.png" alt="Rave3eN Logo"/>
         <div class="name">RAVE3EN</div>
       </a>
     </div>
@@ -161,27 +121,30 @@ footer{
       <a href="events.html" data-pjax>Events</a>
       <a href="index.html#music" data-pjax>Playlist</a>
       <a href="index.html#community" data-pjax>Community</a>
-
-      <!-- Persistent Spotify Dock -->
-      <div class="playerDock" aria-label="Spotify Player">
-        <button class="toggle" id="togglePlayer" aria-pressed="false">Spotify</button>
-        <div class="frameWrap" id="playerWrap" aria-hidden="true">
-          <iframe id="spotifyFrame"
-            src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy" width="100%" height="80" frameborder="0"></iframe>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
 
-<main id="app" class="page" data-title="Rave3eN — EDM × Gaming × Community">
+<!-- PERSISTENTER SPOTIFY-PLAYER -->
+<aside id="playerDock" aria-label="Spotify Player">
+  <div class="dockBar">
+    <span>🎧 Rave3eN EDM Playlist</span>
+    <button id="dockClose" aria-label="Player schließen">✕</button>
+  </div>
+  <div id="dockBody">
+    <iframe
+      src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
+</aside>
 
+<main class="page" id="pjax-root">
+
+  <!-- ======= dein bisheriger INDEX-Content (unverändert) ======= -->
   <section class="hero" aria-label="EDM Poster">
     <canvas id="laserShow" class="lasers" aria-hidden="true"></canvas>
     <div class="beams" aria-hidden="true"></div>
-
     <div class="copy">
       <div class="kicker">EDM ENERGY</div>
       <h1>Gaming. Musik. Community.</h1>
@@ -255,6 +218,7 @@ footer{
     <p class="meta">Der Soundtrack für Wins, Tilt & Focus.</p>
 
     <div class="music" style="margin-top:10px">
+      <!-- Hinweis: Das ist der eingebettete Player innerhalb von Main – optional. Der persistente Dock spielt unabhängig. -->
       <iframe
         src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -276,100 +240,142 @@ footer{
 <footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 
 <script>
-/* Spotify Toggle */
-(()=>{const b=document.getElementById('togglePlayer'),w=document.getElementById('playerWrap');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',String(!on));w.classList.toggle('active',!on);w.setAttribute('aria-hidden',String(on));});})();
-
-/* Tabs */
-(()=>{const L=document.getElementById('tabLive'),V=document.getElementById('tabVod'),pL=document.getElementById('panelLive'),pV=document.getElementById('panelVod');function a(t){const isL=t===L;L?.setAttribute('aria-selected',String(isL));V?.setAttribute('aria-selected',String(!isL));pL?.classList.toggle('active',isL);pV?.classList.toggle('active',!isL)}L&&V&&(L.onclick=()=>a(L),V.onclick=()=>a(V));})();
-
-/* Ticker */
-(()=>{const track=document.getElementById('marqueeTrack');if(!track)return;track.innerHTML+=track.innerHTML;let o=0,s=.4,d=false,x=0,so=0;const step=()=>{if(!d)o-=s;const w=track.scrollWidth/2;if(o<=-w)o+=w;track.style.transform=`translateX(${o}px)`;requestAnimationFrame(step)};step();track.onpointerdown=e=>{d=true;x=e.clientX;so=o;track.setPointerCapture(e.pointerId)};window.onpointermove=e=>{if(d)o=so+(e.clientX-x)};window.onpointerup=()=>d=false;})();
-
-/* Laser */
-(()=>{const c=document.getElementById('laserShow');if(!c)return;const pr=matchMedia('(prefers-reduced-motion: reduce)').matches;const ctx=c.getContext('2d',{alpha:true});let w=0,h=0,dpr=1,t=0,raf=null,beams=[],sparks=[];const blue=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim()||'#00d2ff';const purple=getComputedStyle(document.documentElement).getPropertyValue('--purple').trim()||'#9b5cff';function resize(){const r=c.parentElement.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);w=Math.max(320,Math.floor(r.width));h=Math.max(260,Math.floor(r.height));c.width=Math.floor(w*dpr);c.height=Math.floor(h*dpr);c.style.width=w+'px';c.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);build()}function build(){const m=w<700,count=m?3:5;beams=[];for(let i=0;i<count;i++){const base=(i/count)*Math.PI+(i%2?0.15:-0.15);beams.push({base,amp:m?0.15:0.22,speed:0.12+i*0.04,width:m?2.2:2.8,hue:i%2?blue:purple,phase:Math.random()*Math.PI*2})}sparks=[]}function beam(cx,cy,len,ang,wid,col){const cos=Math.cos(ang),sin=Math.sin(ang);const x1=cx-cos*len*.5,y1=cy-sin*len*.5,x2=cx+cos*len*.5,y2=cy+sin*len*.5;ctx.save();ctx.globalCompositeOperation='lighter';ctx.shadowBlur=18;ctx.shadowColor=col;ctx.lineWidth=wid*2.4;ctx.strokeStyle=col;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.restore();ctx.save();const g=ctx.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,col+'00');g.addColorStop(.45,col+'aa');g.addColorStop(.55,col+'ff');g.addColorStop(1,col+'00');ctx.lineWidth=wid;ctx.strokeStyle=g;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.restore();if(Math.random()<.06)sparks.push({x:cx+(Math.random()-.5)*40,y:cy+(Math.random()-.5)*16,r:1+Math.random()*2.2,a:1,c:col})}function drawS(){if(!sparks.length)return;ctx.save();ctx.globalCompositeOperation='lighter';for(let i=sparks.length-1;i>=0;i--){const s=sparks[i];ctx.beginPath();ctx.fillStyle=s.c;ctx.shadowBlur=22;ctx.shadowColor=s.c;ctx.globalAlpha=s.a;ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();s.r+=.05;s.a-=.02;if(s.a<=0)sparks.splice(i,1)}ctx.restore();ctx.globalAlpha=1}function tick(){ctx.clearRect(0,0,w,h);const cx=w*.5,cy=h*.46,len=Math.hypot(w,h)*1.2;for(const b of beams){const ang=b.base+Math.sin(t*b.speed+b.phase)*b.amp;beam(cx,cy,len,ang,b.width,b.hue)}ctx.save();ctx.globalCompositeOperation='screen';const pulse=(Math.sin(t*.8)+1)/2;const r=Math.min(w,h)*.22+pulse*8;const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);g.addColorStop(0,blue);g.addColorStop(1,'#0000');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fill();ctx.restore();drawS();t+=.0165;raf=requestAnimationFrame(tick)}if(pr){resize();ctx.clearRect(0,0,c.width,c.height);return}const ro=new ResizeObserver(resize);ro.observe(c.parentElement);resize();cancelAnimationFrame(raf);tick();document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=null}else if(!raf){tick()}})})();
-</script>
-
-<!-- PJAX Router (mit Head-Style-Hydration) -->
-<script>
-(()=>{
-  const app=document.getElementById('app');
-
-  function isInternal(href){
-    try{const u=new URL(href,location.href);return u.origin===location.origin}catch{return false}
+/* Tabs switching */
+const tabLive=document.getElementById('tabLive');
+const tabVod=document.getElementById('tabVod');
+if(tabLive && tabVod){
+  const panelLive=document.getElementById('panelLive');
+  const panelVod=document.getElementById('panelVod');
+  function activate(tab){
+    const isLive = tab===tabLive;
+    tabLive.setAttribute('aria-selected', String(isLive));
+    tabVod.setAttribute('aria-selected', String(!isLive));
+    panelLive.classList.toggle('active', isLive);
+    panelVod.classList.toggle('active', !isLive);
   }
+  tabLive.onclick=()=>activate(tabLive);
+  tabVod.onclick=()=>activate(tabVod);
+}
 
-  function attach(root=document){
-    root.querySelectorAll('a[data-pjax]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const href=a.getAttribute('href')||'';
-        if(!isInternal(href)) return;
-        if(href.startsWith('#')) return; // same-page anchor
-        e.preventDefault(); navigate(href);
-      });
-    });
+/* Marquee */
+(function(){
+  const track=document.getElementById('marqueeTrack'); if(!track) return;
+  track.innerHTML+=track.innerHTML;
+  let offset=0,speed=0.4,drag=false,startX=0,startOffset=0;
+  const step=()=>{ if(!drag){offset-=speed;} const w=track.scrollWidth/2; if(offset<=-w){offset+=w;} track.style.transform=`translateX(${offset}px)`; requestAnimationFrame(step); };
+  step();
+  track.onpointerdown=e=>{drag=true;startX=e.clientX;startOffset=offset;track.setPointerCapture(e.pointerId);}
+  window.onpointermove=e=>{if(drag){offset=startOffset+(e.clientX-startX)}}
+  window.onpointerup=()=>drag=false;
+})();
+
+/* Laser Show (wie gehabt) */
+(function(){
+  const canvas = document.getElementById('laserShow'); if(!canvas) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  let w=0,h=0,dpr=1, t=0, rafId=null, beams=[], sparks=[];
+  const brandBlue  = getComputedStyle(document.documentElement).getPropertyValue('--blue').trim()   || '#00d2ff';
+  const brandPurple= getComputedStyle(document.documentElement).getPropertyValue('--purple').trim() || '#9b5cff';
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(320, Math.floor(r.width));
+    h = Math.max(260, Math.floor(r.height));
+    canvas.width = Math.floor(w*dpr); canvas.height= Math.floor(h*dpr);
+    canvas.style.width=w+'px'; canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0); buildBeams();
   }
-
-  function hydrateHead(fromDoc){
-    // bring in <link rel="stylesheet"> and <style> (dedup by href/textContent)
-    const existingSignatures = new Set(
-      [...document.head.querySelectorAll('link[rel="stylesheet"], style')]
-        .map(n=> n.tagName==='LINK' ? ('L:'+n.href) : ('S:'+n.textContent.trim().slice(0,2000)))
-    );
-    fromDoc.querySelectorAll('link[rel="stylesheet"], style').forEach(node=>{
-      const sig = node.tagName==='LINK' ? ('L:'+node.href) : ('S:'+node.textContent.trim().slice(0,2000));
-      if(!existingSignatures.has(sig)){
-        const clone=node.cloneNode(true);
-        clone.setAttribute('data-pjax-style','');
-        document.head.appendChild(clone);
-        existingSignatures.add(sig);
-      }
-    });
-    // theme-color sync
-    const incomingTheme = fromDoc.querySelector('meta[name="theme-color"]');
-    if(incomingTheme){
-      let cur=document.head.querySelector('meta[name="theme-color"]');
-      if(!cur){cur=incomingTheme.cloneNode(true);document.head.appendChild(cur);}
-      else{cur.setAttribute('content', incomingTheme.getAttribute('content'));}
+  function buildBeams(){
+    const mobile = w < 700; const count = mobile ? 3 : 5; beams=[];
+    for(let i=0;i<count;i++){
+      const baseAngle = (i/count)*Math.PI + (i%2?0.15:-0.15);
+      beams.push({base:baseAngle, amp:mobile?0.15:0.22, speed:0.12+i*0.04, width:mobile?2.2:2.8, hue:i%2?brandBlue:brandPurple, phase:Math.random()*Math.PI*2});
     }
+    sparks=[];
   }
+  function drawBeam(cx,cy,len,ang,wid,col){
+    const cos=Math.cos(ang), sin=Math.sin(ang);
+    const x1 = cx - cos*len*0.5, y1 = cy - sin*len*0.5;
+    const x2 = cx + cos*len*0.5, y2 = cy + sin*len*0.5;
+    ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.shadowBlur=18; ctx.shadowColor=col; ctx.lineWidth=wid*2.4; ctx.strokeStyle=col;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.restore();
+    ctx.save(); const g=ctx.createLinearGradient(x1,y1,x2,y2);
+    g.addColorStop(0,col+"00"); g.addColorStop(0.45,col+"aa"); g.addColorStop(0.55,col+"ff"); g.addColorStop(1,col+"00");
+    ctx.lineWidth=wid; ctx.strokeStyle=g; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.restore();
+    if(Math.random()<0.06) sparks.push({x:cx+(Math.random()-0.5)*40, y:cy+(Math.random()-0.5)*16, r:1+Math.random()*2.2, a:1, c:col});
+  }
+  function drawSparks(){
+    if(!sparks.length) return; ctx.save(); ctx.globalCompositeOperation='lighter';
+    for(let i=sparks.length-1;i>=0;i--){ const s=sparks[i]; ctx.beginPath(); ctx.fillStyle=s.c; ctx.shadowBlur=22; ctx.shadowColor=s.c; ctx.globalAlpha=s.a; ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); s.r+=0.05; s.a-=0.02; if(s.a<=0) sparks.splice(i,1); }
+    ctx.restore(); ctx.globalAlpha=1;
+  }
+  function tick(){
+    ctx.clearRect(0,0,w,h); const cx=w*0.5, cy=h*0.46; const len=Math.hypot(w,h)*1.2;
+    for(const b of beams){ const ang=b.base+Math.sin(t*b.speed+b.phase)*b.amp; drawBeam(cx,cy,len,ang,b.width,b.hue); }
+    ctx.save(); ctx.globalCompositeOperation='screen'; const pulse=(Math.sin(t*0.8)+1)/2; const r=Math.min(w,h)*0.22 + pulse*8; const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+    g.addColorStop(0,brandBlue); g.addColorStop(1,'#0000'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill(); ctx.restore();
+    drawSparks(); t+=0.0165; rafId=requestAnimationFrame(tick);
+  }
+  if(prefersReduced){ resize(); ctx.clearRect(0,0,canvas.width,canvas.height); return; }
+  const ro=new ResizeObserver(()=>resize()); ro.observe(canvas.parentElement); resize(); cancelAnimationFrame(rafId); tick();
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden){ cancelAnimationFrame(rafId); rafId=null; } else if(!rafId){ tick(); } });
+})();
 
-  async function navigate(url){
-    const res=await fetch(url,{credentials:'same-origin'});
+/* Player Dock close */
+document.getElementById('dockClose')?.addEventListener('click',()=>document.getElementById('playerDock')?.remove());
+
+/* ===== Mini-PJAX =====
+   - Intercept <a[data-pjax]> (gleiches Origin, kein _blank)
+   - Lädt HTML, ersetzt <main.page id="pjax-root"> Inhalt
+   - Aktualisiert <title>, History & re-exekutiert Scripts aus neuem Main
+*/
+(function(){
+  const ROOT_ID='pjax-root';
+  function sameOrigin(href){ try{const u=new URL(href, location.href); return u.origin===location.origin;}catch{return false}}
+  function shouldPJAX(a){
+    if(!a || a.target==='_blank' || a.hasAttribute('download')) return false;
+    if(a.hasAttribute('data-no-pjax')) return false;
+    if(a.href.includes('#') && new URL(a.href).pathname===location.pathname) return true;
+    return sameOrigin(a.href);
+  }
+  async function load(url, replaceState=false){
+    const res=await fetch(url, {headers:{'X-PJAX':'true'}});
     const html=await res.text();
     const doc=new DOMParser().parseFromString(html,'text/html');
-
-    // Head styles first (fixes broken layouts)
-    hydrateHead(doc);
-
-    // Swap content
-    const newMain=doc.querySelector('main#app');
-    if(!newMain){ location.href=url; return; }
-    app.innerHTML=newMain.innerHTML;
-
-    // Title
-    const title=newMain.getAttribute('data-title')||doc.title||document.title;
-    document.title=title;
-    history.pushState({url},title,url);
-
-    // Re-attach handlers inside swapped content
-    attach(app);
-
-    // Execute inline scripts found inside the new main
-    newMain.querySelectorAll('script').forEach(sOld=>{
-      const s=document.createElement('script');
-      if(sOld.src){s.src=sOld.src}else{s.textContent=sOld.textContent}
-      document.body.appendChild(s);
-      if(!s.src) setTimeout(()=>s.remove(),0);
-    });
-
-    // hash scroll or top
-    const u=new URL(url,location.href);
-    if(u.hash){const el=document.querySelector(u.hash); el&&el.scrollIntoView({behavior:'smooth',block:'start'})}
-    else{window.scrollTo({top:0,behavior:'smooth'})}
+    const newMain=doc.getElementById(ROOT_ID) || doc.querySelector('main.page');
+    const target=document.getElementById(ROOT_ID);
+    if(newMain && target){
+      target.innerHTML=newMain.innerHTML;
+      document.title = doc.title || document.title;
+      if(!replaceState) history.pushState({url},'',url);
+      // re-bind PJAX on newly injected links
+      bind();
+      // run inline scripts found inside new main
+      newMain.querySelectorAll('script').forEach(s=>{
+        const ns=document.createElement('script');
+        if(s.src){ ns.src=s.src; } else { ns.textContent=s.textContent; }
+        document.body.appendChild(ns); ns.remove();
+      });
+      // Scrollen zu internen Anchors
+      const hash=new URL(url, location.href).hash; if(hash){ const el=document.querySelector(hash); if(el){el.scrollIntoView({behavior:'smooth'})}}
+      // kleine Fade-Animation
+      target.animate([{opacity:0.0},{opacity:1}],{duration:180, easing:'ease-out'});
+    } else {
+      // Fallback Full load
+      location.href=url;
+    }
   }
-
-  window.addEventListener('popstate',()=>navigate(location.href));
-  attach(document);
+  function clickHandler(e){
+    const a=e.target.closest('a'); if(!a || !a.hasAttribute('data-pjax')) return;
+    if(!shouldPJAX(a)) return;
+    e.preventDefault(); const href=a.href;
+    load(href);
+  }
+  function popHandler(e){ const url=(e.state&&e.state.url)||location.href; load(url, true); }
+  function bind(){ document.body.removeEventListener('click', clickHandler); document.body.addEventListener('click', clickHandler, true); }
+  window.addEventListener('popstate', popHandler);
+  bind();
 })();
 </script>
 
