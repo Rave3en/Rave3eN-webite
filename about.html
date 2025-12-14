@@ -1,427 +1,138 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About Me — Rave3eN</title>
+<meta name="description" content="Rave3eN: EDM × Gaming × Community. Wer ich bin, wofür wir stehen und wie der Rave lebt. Meine Geschichte, Werte und Vision."/>
+<link rel="canonical" href="https://www.rave3en.de/about.html"/>
+<meta property="og:title" content="About Me — Rave3eN"/>
+<meta property="og:description" content="EDM, Gaming und Community — das ist Rave3eN. Meine Geschichte & Mission."/>
+<meta property="og:type" content="profile"/>
+<meta property="og:url" content="https://www.rave3en.de/about.html"/>
+<meta property="og:image" content="https://www.rave3en.de/me.jpg"/>
+<meta name="theme-color" content="#000000"/>
 
-<title>Über Rave3eN — Daniel Hein | EDM, Gaming & echte Emotionen</title>
-<meta name="description" content="Erfahre die Geschichte von Daniel „Rave3eN“ Hein: Von einer schwierigen Kindheit über Tischtennis und eSports bis hin zu EDM × Gaming und Arena Breakout auf Twitch. Eine Reise voller Herz, Schmerz, Motivation und Community." />
-<meta name="keywords" content="Rave3eN, Daniel Hein, Rave3eN Story, deutscher Streamer Biografie, EDM Gamer, Arena Breakout Spieler, Twitch Streamer Deutschland, Rave3eN About Me, Rave3eN Arena Breakout" />
-<meta name="author" content="Rave3eN" />
-<link rel="canonical" href="https://www.rave3en.de/about.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
-<!-- Open Graph / Social Preview -->
-<meta property="og:title" content="Über Rave3eN — Daniel Hein | EDM, Gaming & echte Emotionen" />
-<meta property="og:description" content="Die persönliche Geschichte von Rave3eN: Musik, Gaming, schwere Zeiten, Arena Breakout und eine Community, die alles verändert. Erfahre, wer hinter dem Namen steht." />
-<meta property="og:type" content="profile" />
-<meta property="og:url" content="https://www.rave3en.de/about.html" />
-<meta property="og:image" content="https://www.rave3en.de/me.jpg" />
+<style data-pjax-id="about">
+:root{--bg:#000;--ink:#f4f7ff;--muted:#c9d8ff;--purple:#9b5cff;--blue:#00d2ff;--border:rgba(155,92,255,.24);--max:1180px;--r:18px;--rx:26px}
+*{box-sizing:border-box;margin:0;padding:0} html,body{height:100%}
+body{
+  background:
+    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
+    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
+    var(--bg);
+  color:var(--ink);font-family:"Inter",system-ui;overflow-x:hidden
+}
+header{position:fixed; inset:0 0 auto 0; z-index:60; background:rgba(0,0,0,.75); border-bottom:1px solid rgba(155,92,255,.24); backdrop-filter:blur(8px)}
+.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.name{font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px; background:linear-gradient(90deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-size:200%; animation:flow 6s linear infinite}
+@keyframes flow{50%{background-position:100% 50%}}
+.nav{display:flex; gap:10px}
+.nav a{padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px; color:#e7efff; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; text-decoration:none}
+.page{max-width:var(--max); margin:0 auto; padding:96px 16px 120px}
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Über Rave3eN — Daniel Hein | EDM, Gaming & echte Emotionen" />
-<meta name="twitter:description" content="Die persönliche Geschichte von Rave3eN: Musik, Gaming, schwere Zeiten, Arena Breakout und eine Community, die alles verändert." />
-<meta name="twitter:image" content="https://www.rave3en.de/me.jpg" />
+.hero{position:relative; border-radius:var(--rx); overflow:hidden; isolation:isolate; border:1px solid var(--border); background:#06070f; box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12); min-height:34vh; display:grid; place-items:center; text-align:center}
+.hero .beams{position:absolute; inset:-18%; mix-blend-mode:screen; filter:blur(1px); background:conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,.10), transparent 40%), conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,.10), transparent 40%); animation:spin 65s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:8px}
+h1{font-family:"Orbitron"; font-size:clamp(30px,5.6vw,48px)}
+.sub{color:var(--muted); max-width:840px; margin:10px auto 0}
 
-<!-- JSON-LD Person Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Rave3eN",
-  "alternateName": "Daniel Hein",
-  "url": "https://www.rave3en.de/about.html",
-  "sameAs": [
-    "https://twitch.tv/rave3en",
-    "https://www.youtube.com/@rave3en30",
-    "https://www.tiktok.com/@rave3en",
-    "https://www.instagram.com/rave3en_/",
-    "https://discord.gg/3TbArexH5H"
-  ],
-  "jobTitle": "EDM × Gaming Creator",
-  "description": "Deutscher EDM × Gaming Streamer, der seine Geschichte, Emotionen und Arena Breakout Gameplay mit seiner Community teilt."
-}
-</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-:root{
-  --bg:#000000;
-  --neon1:#9b5cff;  /* Neon-Lila */
-  --neon2:#007bff;  /* Neon-Blau */
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{
-  min-height:100%;
-  font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
-  background:var(--bg);
-  color:#e9eef8;
-  overflow-x:hidden;
-  position:relative;
-  z-index:1;
-}
-
-/* Waves */
-canvas#waves{
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
-  z-index:-1;
-  pointer-events:none;
-}
-
-/* HEADER */
-header{
-  position:fixed;
-  top:0;left:0;width:100%;
-  padding:12px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 25px rgba(0,0,0,0.8);
-  z-index:10;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-/* LOGO */
-header .logo{
-  display:flex;align-items:center;gap:12px;
-}
-header .logo img{
-  height:40px;
-  filter:drop-shadow(0 0 12px var(--neon2)) drop-shadow(0 0 20px var(--neon1));
-}
-header .logo span{
-  font-family:'Orbitron';
-  font-size:1.7rem;
-  font-weight:700;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon1));
-  background-size:200%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:gradientFlow 6s linear infinite;
-  letter-spacing:1px;
-}
-@keyframes gradientFlow{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-
-/* SPRUCH */
-header .spruch{
-  font-family:'Orbitron';
-  font-size:1.2rem;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 15px var(--neon1),0 0 30px var(--neon2);
-  animation:heartBeat 3s ease-in-out infinite;
-  text-align:center;
-  flex:1 1 100%;
-}
-@keyframes heartBeat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.05);}
-}
-
-/* SOCIALS */
-.social-header{
-  display:flex;
-  gap:12px;
-}
-.social-header a{
-  width:38px;height:38px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.05);
-  color:var(--neon2);
-  font-size:1rem;
-  box-shadow:0 0 12px var(--neon1),inset 0 0 8px var(--neon2);
-  transition:.3s;
-}
-.social-header a:hover{
-  color:var(--neon1);
-  transform:scale(1.1);
-  box-shadow:0 0 22px var(--neon2),inset 0 0 10px var(--neon1);
-}
-
-/* NAVIGATION */
-.nav-top{
-  margin-top:90px;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:18px;
-  position:relative;
-  z-index:5;
-}
-.nav-top a{
-  display:flex;align-items:center;justify-content:center;
-  padding:9px 20px;
-  border-radius:30px;
-  text-decoration:none;
-  color:var(--neon2);
-  font-family:'Orbitron';
-  font-size:1rem;
-  background:rgba(255,255,255,0.05);
-  box-shadow:0 0 12px var(--neon1),inset 0 0 6px var(--neon2);
-  transition:all 0.3s ease;
-}
-.nav-top a:hover, .nav-top a.active{
-  color:var(--neon1);
-  transform:scale(1.08);
-  box-shadow:0 0 25px var(--neon2),inset 0 0 10px var(--neon1);
-}
-
-/* ABOUT CONTAINER */
-main{
-  margin:160px auto 80px;
-  max-width:900px;
-  background:rgba(255,255,255,0.05);
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 0 60px var(--neon2),0 0 90px var(--neon1);
-  backdrop-filter:blur(15px);
-}
-main h1{
-  font-family:'Orbitron';
-  text-align:center;
-  font-size:2.2rem;
-  color:var(--neon2);
-  text-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
-  margin-bottom:25px;
-}
-.profile{
-  text-align:center;
-  margin-bottom:20px;
-}
-.profile img{
-  width:160px;height:160px;border-radius:50%;
-  border:3px solid var(--neon1);
-  box-shadow:0 0 25px var(--neon1),0 0 45px var(--neon2);
-  object-fit:cover;
-}
-p{
-  line-height:1.7;
-  color:#cbd8e6;
-  margin-bottom:18px;
-  white-space:pre-line;
-}
-p.intro{
-  font-size:1.2rem;
-  color:#fff;
-  text-align:center;
-  font-weight:600;
-  text-shadow:0 0 12px var(--neon1),0 0 25px var(--neon2);
-}
-
-/* BACK LINKS */
-.links-bottom{
-  margin-top:25px;
-  font-family:'Orbitron';
-  font-size:0.95rem;
-}
-.links-bottom a{
-  color:var(--neon2);
-  text-decoration:none;
-  margin-right:14px;
-}
-.links-bottom a:hover{
-  color:var(--neon1);
-  text-shadow:0 0 15px var(--neon1);
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  main{margin:130px 20px 60px;padding:25px;}
-  main h1{font-size:1.8rem;}
-  p.intro{font-size:1.05rem;}
-}
+.grid{display:grid; gap:14px; grid-template-columns:2fr 1fr; margin-top:18px}
+.card{background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 0 26px rgba(0,210,255,.16), 0 0 42px rgba(155,92,255,.16)}
+.card h2,.card h3{font-family:"Orbitron"; margin-bottom:8px}
+.card p{color:var(--muted); line-height:1.68; margin:10px 0}
+.me{border-radius:14px; width:100%; display:block; border:1px solid var(--border)}
+.sideLinks a{color:var(--blue); text-decoration:none}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
 </style>
-
-<!-- Extra Style: Rave3eN Neon Pulse für den Twitch-Overlay -->
-<style>
-@keyframes raveGlow {
-  0%   { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
-  50%  { box-shadow: 0 0 20px #9b5cff, 0 0 35px #007bff; }
-  100% { box-shadow: 0 0 10px #9b5cff, 0 0 20px #007bff; }
-}
-</style>
-
 </head>
-
 <body>
-<canvas id="waves"></canvas>
 
 <header>
-  <div class="logo">
-    <img src="logo druck.png" alt="Rave3eN Logo EDM Gaming">
-    <span>Rave3eN</span>
-  </div>
-
-  <div class="spruch">Wo Musik das Herz berührt 💜</div>
-
-  <div class="social-header">
-    <a href="https://www.youtube.com/@rave3en30" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@rave3en" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.instagram.com/rave3en_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/3TbArexH5H" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+  <div class="head">
+    <div class="brand">
+      <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="logo%20druck.png" alt="Rave3eN Logo"/><div class="name">RAVE3EN</div>
+      </a>
+    </div>
+    <nav class="nav" aria-label="Navigation">
+      <a href="events.html" data-pjax>Events</a>
+      <a href="about.html" aria-current="page" data-pjax>About Me</a>
+      <a href="highlight-clips.html" data-pjax>Highlight Clips</a>
+    </nav>
   </div>
 </header>
 
-<div class="nav-top">
-  <a href="index.html">Home</a>
-  <a href="about.html" class="active">About Me</a>
-  <a href="events.html">Events</a>
-</div>
+<main class="page" id="pjax-root">
+  <section class="hero" aria-label="About">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="copy">
+      <div class="kicker">RAVE3EN</div>
+      <h1>About Me</h1>
+      <p class="sub">Ich bin Daniel — Rave3eN. EDM im Herzen, Gaming im Blut, Community im Fokus.</p>
+    </div>
+  </section>
 
-<main>
-  <h1>About Me</h1>
-  <div class="profile">
-    <img src="me.jpg" alt="Daniel Hein aka Rave3eN EDM Gaming Streamer" loading="lazy" decoding="async">
-  </div>
+  <section class="grid" aria-label="About Content">
+    <!-- Linke Hauptspalte -->
+    <article class="card">
+      <h2>Meine Geschichte</h2>
 
-  <p class="intro">
-    Hey, ich bin Daniel – aka Rave3eN. Willkommen in meiner Welt aus EDM, Emotion und Gaming 🎧
-  </p>
+      <p>Geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.<br/>
+      Das Leben hat vor meiner Geschichte keinen Halt gemacht. In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt.<br/>
+      Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.</p>
 
-  <p>
-Geboren und aufgewachsen in Geltow, inzwischen in Potsdam zuhause.  
-Das Leben hat vor meiner Geschichte keinen Halt gemacht. In meiner Kindheit wirkten wir nach außen wie eine heile Familie, doch im Inneren war vieles zerbrochen – geprägt von Alkohol und körperlicher Gewalt.  
-Es ist ein schlimmes Gefühl, als Kind mitanzusehen, wie Elternteile leiden, während man selbst nichts tun kann.
-  </p>
+      <p>Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht gut taten. Durch Drogen und kriminelle Aufmerksamkeit mit Sachbeschädigung, Diebstahl oder körperlicher Verletzung.<br/>
+      Ich erhielt nicht die Aufmerksamkeit, die ich wollte – aber ich erhielt Aufmerksamkeit.<br/>
+      Dadurch ging es auch schulisch bergab. Ich bin zweimal durch die 7. Klasse gefallen und hatte zunächst keinen Abschluss.<br/>
+      Doch irgendwann bin ich wach geworden und habe alles aufgearbeitet, was in meiner Vergangenheit schieflief.</p>
 
-  <p>
-Weil ich nie die Aufmerksamkeit bekam, die ich mir gewünscht hätte, suchte ich sie woanders – bei Menschen, die zwar da waren, mir in meiner Entwicklung aber nicht gut taten. Durch Drogen und kriminelle Aufmerksamkeit mit Sachbeschädigung, Diebstahl oder körperlicher Verletzung.  
-Ich erhielt nicht die Aufmerksamkeit, die ich wollte – aber ich erhielt Aufmerksamkeit.  
-Dadurch ging es auch schulisch bergab. Ich bin zweimal durch die 7. Klasse gefallen und hatte zunächst keinen Abschluss.  
-Doch irgendwann bin ich wach geworden und habe alles aufgearbeitet, was in meiner Vergangenheit schieflief.
-  </p>
+      <p>Ich habe die 10. Klasse nachgeholt, mit dem Abitur begonnen und in der 12ten Klasse gemerkt, dass ich eher der praktische Typ bin.<br/>
+      Musik ist meine Leidenschaft und Psychologie hilft mir, Menschen besser zu verstehen.<br/>
+      Doch das Leben hat mir gezeigt: Ehrlich zu sich selbst zu sein, ist der wahre Erfolg im Leben.</p>
 
-  <p>
-Ich habe die 10. Klasse nachgeholt, mit dem Abitur begonnen und in der 12ten Klasse gemerkt, dass ich eher der praktische Typ bin.  
-Musik ist meine Leidenschaft und Psychologie hilft mir, Menschen besser zu verstehen.  
-Doch das Leben hat mir gezeigt: Ehrlich zu sich selbst zu sein, ist der wahre Erfolg im Leben.
-  </p>
+      <p>Tischtennis wurde mein Rettungsanker – ohne diesen Sport wäre ich vielleicht denselben dunklen Weg gegangen wie mein bester Freund, der sich durch Drogen und Prostitution das Leben genommen hat.<br/>
+      Durch harte Arbeit habe ich es geschafft, überregional in der Verbandsoberliga zu spielen.<br/>
+      Ich möchte nicht wissen, was gewesen wäre, wenn ich den Sport nicht mit 11 Jahren angefangen hätte.</p>
 
-  <p>
-Tischtennis wurde mein Rettungsanker – ohne diesen Sport wäre ich vielleicht denselben dunklen Weg gegangen wie mein bester Freund, der sich durch Drogen und Prostitution das Leben genommen hat.  
-Durch harte Arbeit habe ich es geschafft, überregional in der Verbandsoberliga zu spielen.  
-Ich möchte nicht wissen, was gewesen wäre, wenn ich den Sport nicht mit 11 Jahren angefangen hätte.
-  </p>
+      <p>Auch in Counter-Strike 1.5 gehörte ich zu den besten Nachwuchsspielern Deutschlands – bei e2sports im Nachwuchsteam durfte ich mit Legenden wie Blizzard, Johnny R., Roman und Co. trainieren.<br/>
+      Diese Erfahrungen haben mich geprägt. Doch mein Weg endete, als mein Bruder seinen PC mitnahm – plötzlich war alles weg: kein Kontakt, keine Plattform, kein Team.<br/>
+      Später schaffte ich es immerhin noch in die 1. Division der EAS. Ich hätte gerne gewusst, wo mein Potenzial geendet hätte, wenn diese Unterbrechung nicht gewesen wäre.</p>
 
-  <p>
-Auch in Counter-Strike 1.5 gehörte ich zu den besten Nachwuchsspielern Deutschlands – bei e2sports im Nachwuchsteam durfte ich mit Legenden wie Blizzard, Johnny R., Roman und Co. trainieren.  
-Diese Erfahrungen haben mich geprägt. Doch mein Weg endete, als mein Bruder seinen PC mitnahm – plötzlich war alles weg: kein Kontakt, keine Plattform, kein Team.  
-Später schaffte ich es immerhin noch in die 1. Division der EAS. Ich hätte gerne gewusst, wo mein Potenzial geendet hätte, wenn diese Unterbrechung nicht gewesen wäre.
-  </p>
+      <p>Nun bin ich älter, reifer und habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern trotz allem weiterzugehen. Das Leben schreibt seine eigene Geschichte.<br/>
+      Twitch ist für mich der Ort, an dem ich Musik, Gaming und Emotion vereine.<br/>
+      „Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.<br/>
+      Wo Leidenschaft auf EDM trifft, Arena Breakout Adrenalin bringt und Gefühle uns menschlich machen – da bin ich zuhause. 💜</p>
 
-  <p>
-Nun bin ich älter, reifer und habe gelernt, dass Stärke nicht bedeutet, keine Fehler zu machen – sondern trotz allem weiterzugehen. Das Leben schreibt seine eigene Geschichte.  
-Twitch ist für mich der Ort, an dem ich Musik, Gaming und Emotion vereine.  
-„Rave“ steht für Liebe, Unsinn, Gemeinschaft und Hilfsbereitschaft.  
-Wo Leidenschaft auf EDM trifft, Arena Breakout Adrenalin bringt und Gefühle uns menschlich machen – da bin ich zuhause. 💜
-  </p>
+      <h3 style="margin-top:18px">Was wir hier bauen</h3>
+      <p>EDM × Gaming × Community: Ein Ort für Energie, Respekt und ehrliche Emotionen. Wir feiern Siege, lernen aus Niederlagen und wachsen gemeinsam – on stream, on road und IRL.</p>
 
-  <div class="links-bottom">
-    <a href="index.html">← Zurück zur Startseite</a>
-    <a href="events.html">Zu den Rave3eN Events →</a>
-    <a href="ravecamp2024.html">Rave Camp 2024</a>
-    <a href="ravedrive2025.html">Rave Drive 2025</a>
-  </div>
+      <h3 style="margin-top:14px">Setup & Tools</h3>
+      <p>Dual-PC, SM7B, GoXLR, Alpha-Cam, OBS Multi-RTMP. Ziel: maximale Qualitäts-Experience in 4K/60, wo möglich.</p>
+
+      <h3 style="margin-top:14px">Mission 2026</h3>
+      <p>Reichweite skalieren, Events ausbauen, Community verbinden – und den Rave in Deutschland lauter machen.</p>
+    </article>
+
+    <!-- Rechte Seitenleiste -->
+    <aside class="card">
+      <img src="me.jpg" alt="Rave3eN — Daniel" class="me" loading="lazy"/>
+      <div class="sideLinks" style="margin-top:12px">
+        <h3>Links</h3>
+        <p><a href="index.html#live" data-pjax>🔴 Live ansehen</a></p>
+        <p><a href="events.html" data-pjax>📅 Events</a></p>
+        <p><a href="highlight-clips.html" data-pjax>🎬 Highlight Clips</a></p>
+      </div>
+    </aside>
+  </section>
 </main>
 
-<!-- Rave3eN Neon Twitch Player – EDM Pulse Version -->
-<div style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  border-radius: 14px;
-  overflow: hidden;
-  padding: 4px;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(6px);
-  animation: raveGlow 2.4s infinite alternate;
-">
-  <iframe 
-    src="https://player.twitch.tv/?channel=rave3en&parent=www.rave3en.de&volume=0.1&muted=true"
-    height="245"
-    width="395"
-    allowfullscreen="true"
-    style="border-radius: 10px; border: 2px solid #9b5cffaa;"
-    title="Rave3eN Twitch Overlay">
-  </iframe>
-
-  <div style="
-    text-align: center;
-    margin-top: 4px;
-    font-size: 12px;
-    color: #9b5cff;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 10px #007bff;
-  ">
-    💜 Rave3eN • EDM × Gaming 🔵
-  </div>
-</div>
-
-<script>
-/* Waves */
-const canvas=document.getElementById('waves'),ctx=canvas.getContext('2d');
-let w,h,t=0,ampScale=0.9;const parts=[];
-function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
-addEventListener('resize',resize);resize();
-class P{
-  constructor(){
-    this.x=Math.random()*w;
-    this.y=Math.random()*h;
-    this.vx=(Math.random()-.5)*.2;
-    this.vy=(Math.random()-.5)*.2;
-    this.s=1+Math.random()*2;
-    this.a=.3+Math.random()*.3;
-  }
-  u(){
-    this.x+=this.vx;this.y+=this.vy;
-    if(this.x<0)this.x=w;
-    if(this.x>w)this.x=0;
-    if(this.y<0)this.y=h;
-    if(this.y>h)this.y=0;
-  }
-  d(){
-    ctx.beginPath();
-    ctx.globalAlpha=this.a;
-    ctx.fillStyle='rgba(120,160,255,0.6)';
-    ctx.arc(this.x,this.y,this.s,0,2*Math.PI);
-    ctx.fill();
-    ctx.globalAlpha=1;
-  }
-}
-for(let i=0;i<60;i++)parts.push(new P());
-function wave(c,y,a,f,s,o){
-  ctx.beginPath();
-  const ang=-Math.PI/6;
-  ctx.save();ctx.translate(w/2,h/2);ctx.rotate(ang);ctx.translate(-w/2,-h/2);
-  for(let x=0;x<w;x++){
-    const yy=y+Math.sin(x*f+t*s+o)*a*ampScale;
-    ctx.lineTo(x,yy);
-  }
-  ctx.strokeStyle=c;
-  ctx.lineWidth=2;
-  ctx.shadowBlur=20;
-  ctx.shadowColor=c;
-  ctx.stroke();ctx.restore();
-}
-function anim(){
-  ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-  wave('rgba(155,92,255,0.8)',h*0.4,40,0.008,0.018,0);
-  wave('rgba(0,123,255,0.8)',h*0.6,30,0.01,0.022,2.5);
-  parts.forEach(p=>{p.u();p.d();});
-  t+=0.02;
-  requestAnimationFrame(anim);
-}
-anim();
-</script>
+<footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
 </body>
 </html>
