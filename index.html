@@ -3,108 +3,697 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rave3eN</title>
+  <title>Rave3eN — Gaming • EDM • Emotion</title>
+  <meta name="description" content="Rave3eN — FPS Gameplay, EDM Vibes & echte Emotionen. Live auf Twitch." />
   <style>
-    :root { --bg:#05050a; --panel:#0b0c14; --neon1:#6b2bff; --neon2:#00d5ff; }
-    body{margin:0;background:radial-gradient(1200px 700px at 30% 10%, #140a2a 0%, var(--bg) 55%); color:#eaeaf2;font-family:system-ui,Segoe UI,Inter,Arial;}
-    .wrap{max-width:1200px;margin:0 auto;padding:24px;}
-    .grid{display:grid;gap:18px;grid-template-columns: 1.6fr 1fr;}
-    .panel{background:rgba(11,12,20,.72); border:1px solid rgba(107,43,255,.25); border-radius:16px; box-shadow:0 0 40px rgba(0,213,255,.06); overflow:hidden;}
-    .head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
-    .badge{display:inline-flex;gap:8px;align-items:center;font-weight:600}
-    .dot{width:10px;height:10px;border-radius:50%;background:#ff2d55;box-shadow:0 0 12px #ff2d55;}
-    #twitch-embed{width:100%;aspect-ratio:16/9;min-height:360px;background:#000;}
-    .nav{display:flex;gap:10px;flex-wrap:wrap;padding:12px 16px;}
-    .btn{cursor:pointer;border:1px solid rgba(0,213,255,.22); background:rgba(0,0,0,.2); color:#eaeaf2; padding:10px 12px;border-radius:12px;font-weight:600}
-    .btn:hover{border-color:rgba(107,43,255,.45)}
-    .small{opacity:.85;font-size:13px}
-    @media (max-width: 980px){ .grid{grid-template-columns: 1fr;} }
+    :root{
+      --bg:#05050b;
+      --bg2:#080816;
+      --panel: rgba(10,12,24,.72);
+      --line: rgba(255,255,255,.08);
+      --text:#e9e9f2;
+      --muted: rgba(233,233,242,.75);
+      --neonB:#00d5ff;
+      --neonP:#8a2cff;
+      --hot:#ff2d55;
+      --shadow: 0 10px 40px rgba(0,0,0,.55);
+      --glowP: 0 0 20px rgba(138,44,255,.35);
+      --glowB: 0 0 20px rgba(0,213,255,.25);
+      --r: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(138,44,255,.28) 0%, rgba(5,5,11,0) 55%),
+        radial-gradient(1000px 800px at 80% 15%, rgba(0,213,255,.18) 0%, rgba(5,5,11,0) 60%),
+        radial-gradient(900px 700px at 50% 85%, rgba(138,44,255,.14) 0%, rgba(5,5,11,0) 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      overflow-x:hidden;
+    }
+
+    /* subtle star/noise overlay */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.08) 0 1px, transparent 2px) 0 0/140px 140px,
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.06) 0 1px, transparent 2px) 0 0/180px 180px,
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.05) 0 1px, transparent 2px) 0 0/220px 220px;
+      opacity:.35;
+      mix-blend-mode:screen;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1220px;margin:0 auto;padding:28px 18px 80px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 6px);
+      background: linear-gradient(180deg, rgba(10,12,24,.88), rgba(10,12,24,.55));
+      box-shadow: var(--shadow);
+      position:sticky; top:12px; z-index:50;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 220px;
+      font-weight:900; letter-spacing:.2px; font-size:26px;
+      text-transform:none;
+    }
+    .brand .mark{
+      width:38px;height:38px;border-radius:14px;
+      border:1px solid rgba(0,213,255,.28);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(0,213,255,.35), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(138,44,255,.35), transparent 60%),
+        rgba(0,0,0,.25);
+      box-shadow: var(--glowB), var(--glowP);
+    }
+    .brand span{
+      background: linear-gradient(90deg, var(--neonB), var(--neonP));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 0 18px rgba(138,44,255,.25);
+    }
+
+    .nav{
+      display:flex; gap:14px; flex-wrap:wrap;
+      align-items:center; justify-content:center;
+      padding:0 8px;
+    }
+    .nav button{
+      cursor:pointer;
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--muted);
+      font-weight:700;
+      padding:10px 12px;
+      border-radius: 12px;
+      letter-spacing:.2px;
+    }
+    .nav button.active{
+      color:var(--text);
+      border-color: rgba(0,213,255,.22);
+      background: rgba(0,0,0,.22);
+      box-shadow: var(--glowB);
+    }
+
+    .livebar{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      min-width: 260px;
+      justify-content:space-between;
+    }
+    .liveleft{display:flex; align-items:center; gap:10px; font-weight:800}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--hot);
+      box-shadow: 0 0 18px rgba(255,45,85,.65);
+    }
+    .livetext{display:flex; flex-direction:column; line-height:1.1}
+    .livetext small{font-weight:700; color:var(--muted)}
+    .viewer{
+      font-weight:900;
+      padding:6px 10px;border-radius: 12px;
+      border:1px solid rgba(138,44,255,.22);
+      background: rgba(138,44,255,.10);
+      box-shadow: var(--glowP);
+      white-space:nowrap;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:20px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 10px);
+      background:
+        radial-gradient(900px 380px at 50% 40%, rgba(138,44,255,.18), rgba(0,0,0,0) 65%),
+        radial-gradient(800px 420px at 25% 55%, rgba(0,213,255,.14), rgba(0,0,0,0) 65%),
+        linear-gradient(180deg, rgba(10,12,24,.75), rgba(10,12,24,.48));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(0,213,255,.18), transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(138,44,255,.16), transparent 50%);
+      pointer-events:none;
+    }
+    .heroGrid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.05fr 1.2fr;
+      padding:26px;
+      position:relative;
+      z-index:1;
+    }
+    .heroCopy h1{
+      margin:0 0 8px;
+      font-size:56px;
+      line-height:1.02;
+      letter-spacing:-.8px;
+      text-transform:uppercase;
+    }
+    .heroCopy h1 span{
+      background: linear-gradient(90deg, var(--neonB), var(--neonP));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 0 22px rgba(0,213,255,.12);
+    }
+    .heroCopy p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 520px;
+      font-weight:650;
+    }
+
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .cta{
+      cursor:pointer;
+      border:1px solid rgba(0,213,255,.22);
+      background: linear-gradient(180deg, rgba(0,213,255,.10), rgba(138,44,255,.10));
+      color:var(--text);
+      padding:14px 18px;
+      border-radius: 16px;
+      font-weight:900;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      box-shadow: var(--glowB), var(--glowP);
+      display:inline-flex; gap:10px; align-items:center;
+    }
+    .cta .dot{width:9px;height:9px}
+    .ghost{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color:var(--muted);
+      padding:14px 16px;
+      border-radius: 16px;
+      font-weight:850;
+    }
+
+    /* Twitch embed container */
+    .twitchPanel{
+      border-radius: calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.35);
+      overflow:hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,.45);
+    }
+    #twitch-embed{width:100%; aspect-ratio: 16/9; min-height: 360px; background:#000;}
+    .twitchControls{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.25);
+    }
+    .chip{
+      cursor:pointer;
+      border:1px solid rgba(0,213,255,.18);
+      background: rgba(0,0,0,.22);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:850;
+    }
+    .chip:hover{border-color: rgba(138,44,255,.28); box-shadow: var(--glowP);}
+
+    /* Cards */
+    .cards3{
+      margin-top:18px;
+      display:grid; gap:14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10,12,24,.72), rgba(10,12,24,.50));
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card .hd{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      color:rgba(233,233,242,.88);
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      font-size:12px;
+    }
+    .card .bd{padding:14px}
+    .thumb{
+      height:130px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(500px 200px at 30% 30%, rgba(0,213,255,.18), transparent 60%),
+        radial-gradient(400px 200px at 70% 70%, rgba(138,44,255,.18), transparent 60%),
+        rgba(0,0,0,.35);
+      display:flex; align-items:flex-end; justify-content:space-between;
+      padding:12px;
+      overflow:hidden;
+    }
+    .pill{
+      font-weight:900;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+    }
+    .btnSmall{
+      cursor:pointer;
+      margin-top:12px;
+      width:100%;
+      border:1px solid rgba(138,44,255,.22);
+      background: rgba(138,44,255,.10);
+      color:var(--text);
+      padding:12px 12px;
+      border-radius: 14px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      box-shadow: var(--glowP);
+    }
+    .bigNumber{
+      font-size:40px;
+      font-weight:1000;
+      letter-spacing:-.8px;
+      margin:8px 0 0;
+      background: linear-gradient(90deg, var(--neonB), var(--neonP));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .socialRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .icon{
+      width:38px;height:38px;border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      display:grid; place-items:center;
+      font-weight:950; color:rgba(233,233,242,.85);
+    }
+
+    /* Section title */
+    .sectionTitle{
+      margin:22px 0 10px;
+      display:flex; align-items:center; gap:12px;
+      justify-content:center;
+      color:rgba(233,233,242,.9);
+      font-weight:1000;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+    .sectionTitle:before,.sectionTitle:after{
+      content:"";
+      height:1px; flex:1;
+      background: linear-gradient(90deg, transparent, rgba(0,213,255,.22), rgba(138,44,255,.22), transparent);
+      opacity:.8;
+    }
+
+    /* 2 big event cards */
+    .cards2{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .eventCard{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(10,12,24,.72), rgba(10,12,24,.50));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .eventCard .bd{padding:16px}
+    .eventCard h3{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:1000;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .eventCard p{margin:0 0 12px; color:var(--muted); font-weight:650}
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* About */
+    .about{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 10px);
+      background: linear-gradient(180deg, rgba(10,12,24,.72), rgba(10,12,24,.50));
+      box-shadow: var(--shadow);
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      alignTasks:center;
+    }
+    .about h2{
+      margin:0 0 8px;
+      font-size:28px;
+      font-weight:1000;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
+    .about p{margin:0; color:var(--muted); font-weight:650; line-height:1.55}
+    .spotifyBox{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--r);
+      background: rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    #spotify{width:100%; height: 152px; border:0; display:block}
+
+    /* SPA sections */
+    .view{display:none}
+    .view.active{display:block}
+
+    /* Responsive */
+    @media (max-width: 1020px){
+      .heroGrid{grid-template-columns: 1fr; }
+      .cards3{grid-template-columns: 1fr;}
+      .cards2{grid-template-columns: 1fr;}
+      .about{grid-template-columns: 1fr;}
+      .brand{min-width:auto}
+      .heroCopy h1{font-size:44px}
+      .livebar{min-width:auto}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="grid">
-      <!-- TWITCH -->
-      <section class="panel">
-        <div class="head">
-          <div class="badge"><span class="dot"></span> LIVE auf Twitch <span class="small">| FPS • EDM • Emotion</span></div>
-          <button class="btn" id="unmuteBtn">Ton an</button>
-        </div>
-        <div id="twitch-embed"></div>
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <a class="brand" href="#" data-nav="home">
+        <div class="mark" aria-hidden="true"></div>
+        <span>Rave3eN</span>
+      </a>
 
-        <div class="nav">
-          <button class="btn" data-load="live">Live</button>
-          <button class="btn" data-load="vod:latest">Letztes VOD</button>
-          <button class="btn" data-load="clip:featured">Top Clip</button>
+      <nav class="nav" aria-label="Navigation">
+        <button class="active" data-nav="home">Home</button>
+        <button data-nav="events">Events</button>
+        <button data-nav="clips">Clips</button>
+        <button data-nav="community">Community</button>
+      </nav>
+
+      <div class="livebar" title="Twitch Status">
+        <div class="liveleft">
+          <span class="dot"></span>
+          <div class="livetext">
+            <strong>LIVE AUF TWITCH</strong>
+            <small>FPS • EDM • Emotion</small>
+          </div>
+        </div>
+        <div class="viewer" id="viewerText">— Viewer</div>
+      </div>
+    </header>
+
+    <!-- HOME VIEW -->
+    <main class="view active" id="view-home">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="heroGrid">
+          <div class="heroCopy">
+            <h1>LIVE. <span>BASS.</span><br/>RAVE3EN.</h1>
+            <p>
+              FPS-Action mit EDM-Vibes — aber ohne Show. Echte Reaktionen, echte Emotion.
+              Klick rein, der Stream läuft direkt hier auf der Seite.
+            </p>
+
+            <div class="ctaRow">
+              <button class="cta" id="ctaUnmute">
+                <span class="dot"></span>
+                TON AN
+              </button>
+              <button class="ghost" id="ctaOpenTwitch">Auf Twitch öffnen</button>
+            </div>
+          </div>
+
+          <!-- TWITCH -->
+          <div class="twitchPanel">
+            <div id="twitch-embed"></div>
+            <div class="twitchControls">
+              <button class="chip" data-load="live">Live</button>
+              <button class="chip" data-load="vod">Letztes VOD</button>
+              <button class="chip" data-load="clip">Top Clip</button>
+              <button class="chip" id="muteToggle">Mute/Unmute</button>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SPOTIFY (Basis: Embed; Advanced: SDK später) -->
-      <aside class="panel">
-        <div class="head">
-          <div class="badge">Spotify Vibes <span class="small">| läuft weiter (ohne Reload)</span></div>
+      <!-- 3 SMALL CARDS -->
+      <section class="cards3" aria-label="Highlights">
+        <article class="card">
+          <div class="hd">Top Clip der Woche</div>
+          <div class="bd">
+            <div class="thumb">
+              <span class="pill">45K Views</span>
+              <span class="pill">▶ Play</span>
+            </div>
+            <button class="btnSmall" data-nav="clips">Clips ansehen</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="hd">Nächstes Event</div>
+          <div class="bd">
+            <div class="thumb" style="justify-content:flex-start; gap:10px; flex-direction:column; align-items:flex-start;">
+              <div style="font-weight:1000; font-size:22px; text-transform:uppercase; letter-spacing:.3px;">Rave Camp</div>
+              <div style="color:var(--muted); font-weight:800;">Datum: 24.06.2026</div>
+            </div>
+            <button class="btnSmall" data-nav="events">Events entdecken</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="hd">Unser Stand</div>
+          <div class="bd">
+            <div class="bigNumber" id="followerCount">21.850</div>
+            <div style="font-weight:900; letter-spacing:.6px; text-transform:uppercase; color:rgba(233,233,242,.85)">Twitch Follower</div>
+
+            <div class="socialRow" style="margin-top:12px">
+              <div class="icon" title="Instagram">IG</div>
+              <div class="icon" title="YouTube">YT</div>
+              <div class="icon" title="Discord">DC</div>
+              <div class="icon" title="TikTok">TT</div>
+            </div>
+
+            <button class="btnSmall" data-nav="community">Jetzt dabei sein</button>
+          </div>
+        </article>
+      </section>
+
+      <div class="sectionTitle">Aktuelle Events</div>
+
+      <!-- 2 BIG EVENT CARDS -->
+      <section class="cards2">
+        <article class="eventCard">
+          <div class="bd">
+            <h3>Rave Camp</h3>
+            <p>Community-Event, echtes Zusammensein, echtes “wir”. Keine Show — nur Energie.</p>
+            <div class="row">
+              <button class="btnSmall" data-nav="events" style="width:auto; padding:12px 16px;">Mehr erfahren</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="eventCard">
+          <div class="bd">
+            <h3>Spendenstream</h3>
+            <p>Gemeinsam Gutes tun. Wir ziehen das durch — laut, ehrlich, emotional.</p>
+            <div class="row">
+              <button class="btnSmall" data-nav="events" style="width:auto; padding:12px 16px;">Jetzt dabei sein</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="sectionTitle">Über mich</div>
+
+      <!-- ABOUT + SPOTIFY -->
+      <section class="about">
+        <div>
+          <h2>Über mich</h2>
+          <p>
+            Ich bin Daniel — Rave3eN. FPS ist mein Zuhause, EDM mein Motor,
+            und ich bin nicht der “Streamer-Roboter”.
+            Bei mir siehst du Reaktionen, die echt sind — auch wenn’s mal knallt.
+          </p>
+          <div class="ctaRow" style="margin-top:14px">
+            <button class="ghost" data-nav="community">Discord</button>
+            <button class="ghost" data-nav="clips">Highlights</button>
+          </div>
         </div>
-        <div style="padding:14px 16px;">
-          <!-- Ersetze die URL durch deine Playlist/Album/Track -->
-          <iframe id="spotify"
-            style="border-radius:14px;width:100%;height:352px;border:0;"
+
+        <div class="spotifyBox" title="Spotify — läuft weiter, weil wir keine Reloads machen">
+          <!-- Ersetze mit deiner Playlist/Track -->
+          <iframe
+            id="spotify"
             src="https://open.spotify.com/embed/playlist/37i9dQZF1DX8FwnYE6PRvL?utm_source=generator"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
           </iframe>
-
-          <p class="small" style="margin:12px 0 0;">
-            Hinweis: Embed-Audio kann nicht garantiert über echte Seitenwechsel laufen – deshalb nutzen wir SPA-Navigation (ohne Reload).
-            Wenn du echtes “weiter spielen” mit voller Kontrolle willst: Spotify Web Playback SDK (Premium + Login).
-          </p>
         </div>
-      </aside>
-    </div>
+      </section>
+    </main>
+
+    <!-- EVENTS VIEW -->
+    <section class="view" id="view-events">
+      <div class="sectionTitle">Events</div>
+      <section class="eventCard">
+        <div class="bd">
+          <h3>Rave Camp</h3>
+          <p>Hier kommt später deine Event-Galerie + Storytelling rein.</p>
+        </div>
+      </section>
+      <div style="height:12px"></div>
+      <section class="eventCard">
+        <div class="bd">
+          <h3>Spendenstream</h3>
+          <p>Hier kommen Datum, Ziele, Counter & Donation-Infos rein.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- CLIPS VIEW -->
+    <section class="view" id="view-clips">
+      <div class="sectionTitle">Clips</div>
+      <section class="eventCard">
+        <div class="bd">
+          <h3>Highlight Clips</h3>
+          <p>Wenn du willst, bauen wir hier automatisch die neuesten Clips rein (Twitch API).</p>
+          <button class="btnSmall" data-load="clip" style="width:auto;padding:12px 16px;">Top Clip im Player laden</button>
+        </div>
+      </section>
+    </section>
+
+    <!-- COMMUNITY VIEW -->
+    <section class="view" id="view-community">
+      <div class="sectionTitle">Community</div>
+      <section class="eventCard">
+        <div class="bd">
+          <h3>Join Discord</h3>
+          <p>Hier packen wir Discord, Social Links, Regeln, Rollen, Events — alles rein.</p>
+          <div class="row">
+            <a class="btnSmall" style="width:auto;padding:12px 16px; display:inline-block;"
+               href="https://discord.com/" target="_blank" rel="noreferrer">Discord öffnen</a>
+          </div>
+        </div>
+      </section>
+    </section>
+
   </div>
 
+  <!-- TWITCH EMBED -->
   <script src="https://player.twitch.tv/js/embed/v1.js"></script>
   <script>
-    // --- CONFIG ---
-    const CHANNEL = "rave3en";
-    // WICHTIG: parent muss deine Domain matchen!
+    // ====== CONFIG ======
+    const CHANNEL = "rave3en";                 // <- dein Twitch Channel
+    const TWITCH_URL = "https://www.twitch.tv/" + CHANNEL;
+
+    // WICHTIG: parent muss zu deiner Domain passen, sonst lädt Twitch nicht!
     const PARENT = ["rave3en.de","www.rave3en.de","localhost"];
 
-    // --- Twitch Player ---
-    let player = new Twitch.Player("twitch-embed", {
+    // Optional: Manuell setzen, falls du VOD/Clip fest verdrahten willst
+    // Beispiel: const LAST_VOD_ID = "1234567890";
+    // Beispiel: const TOP_CLIP_SLUG = "SomeClipSlug";
+    const LAST_VOD_ID = null;
+    const TOP_CLIP_SLUG = null;
+
+    // ====== SPA NAV (Spotify bleibt, weil kein Reload) ======
+    const views = {
+      home: document.getElementById("view-home"),
+      events: document.getElementById("view-events"),
+      clips: document.getElementById("view-clips"),
+      community: document.getElementById("view-community"),
+    };
+
+    function setView(name){
+      Object.values(views).forEach(v => v.classList.remove("active"));
+      views[name].classList.add("active");
+      document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("active", b.dataset.nav === name));
+      history.replaceState(null,"", name === "home" ? "#/" : "#/" + name);
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    document.querySelectorAll("[data-nav]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        setView(el.dataset.nav);
+      });
+    });
+
+    // ====== TWITCH PLAYER ======
+    const player = new Twitch.Player("twitch-embed", {
       channel: CHANNEL,
       parent: PARENT,
       autoplay: true,
-      muted: true,
-      // layout: "video", // optional
-      // height/width kommen vom Container
+      muted: true
     });
 
-    // Unmute button (User-Interaktion -> Browser erlaubt Ton sicher)
-    document.getElementById("unmuteBtn").addEventListener("click", () => {
+    // Viewer: echte Viewerzahl bekommst du nur sauber via Twitch API.
+    // Hier: kleiner "fake live vibe" bis API drin ist:
+    const viewerText = document.getElementById("viewerText");
+    let pseudo = 3200;
+    viewerText.textContent = pseudo.toLocaleString("de-DE") + " Viewer";
+    setInterval(() => {
+      pseudo += (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random()*4);
+      pseudo = Math.max(200, pseudo);
+      viewerText.textContent = pseudo.toLocaleString("de-DE") + " Viewer";
+    }, 2500);
+
+    // Controls
+    document.getElementById("ctaOpenTwitch").addEventListener("click", () => window.open(TWITCH_URL, "_blank"));
+    document.getElementById("ctaUnmute").addEventListener("click", () => {
       player.setMuted(false);
       player.setVolume(0.6);
     });
 
-    // VOD/Clip Umschalten (Beispiele)
+    document.getElementById("muteToggle").addEventListener("click", () => {
+      const isMuted = player.getMuted();
+      player.setMuted(!isMuted);
+      if (!isMuted) player.setVolume(0.6);
+    });
+
     document.querySelectorAll("[data-load]").forEach(btn => {
-      btn.addEventListener("click", async () => {
-        const val = btn.getAttribute("data-load");
+      btn.addEventListener("click", () => {
+        const val = btn.dataset.load;
+
         if (val === "live") {
           player.setChannel(CHANNEL);
           return;
         }
-        if (val === "vod:latest") {
-          // Hier trägst du die VOD-ID ein, die du z.B. per Twitch API holst:
-          // player.setVideo("1234567890");
-          alert("VOD-ID braucht Twitch API oder manuell eintragen. Sag mir, ob du automatisch ziehen willst, dann bauen wir die API rein.");
+        if (val === "vod") {
+          if (!LAST_VOD_ID) {
+            alert("Für 'Letztes VOD' brauchen wir eine VOD-ID oder Twitch API. Wenn du willst, baue ich dir die API automatisch ein.");
+            return;
+          }
+          player.setVideo(LAST_VOD_ID);
           return;
         }
-        if (val === "clip:featured") {
-          // Clip: player.setVideo("ClipSlug"); (je nach Clip/SDK)
-          alert("Clip-Slug braucht API oder manuell. Können wir als 'Featured Clip' fest verdrahten.");
-          return;
+        if (val === "clip") {
+          if (!TOP_CLIP_SLUG) {
+            alert("Für 'Top Clip' brauchen wir einen Clip-Slug oder Twitch API. Kann ich dir automatisieren.");
+            return;
+          }
+          player.setVideo(TOP_CLIP_SLUG);
         }
       });
     });
+
+    // Load view from hash
+    const hash = (location.hash || "#/").replace("#/","");
+    if (hash && views[hash]) setView(hash);
   </script>
 </body>
 </html>
