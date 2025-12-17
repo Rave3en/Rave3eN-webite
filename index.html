@@ -1,248 +1,279 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rave3eN — FPS • EDM • Emotion</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rave3eN — EDM × Gaming × Community</title>
+<meta name="description" content="Rave3eN: EDM × Gaming × Community. Live auf Twitch, Highlights & Events – im Neon RAVE Look."/>
+<link rel="canonical" href="https://www.rave3en.de/"/>
+<meta name="theme-color" content="#000000"/>
 
-<style>
-/* =========================
-   CORE VARIABLES
-========================= */
+<!-- Open Graph -->
+<meta property="og:title" content="Rave3eN — EDM × Gaming × Community"/>
+<meta property="og:description" content="EDM × Gaming × Community. Neon-Blau × Neon-Lila. Live-Stream, Highlights & Events."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.rave3en.de/"/>
+<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Rave3eN","url":"https://www.rave3en.de/","potentialAction":{"@type":"SearchAction","target":"https://www.rave3en.de/?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- BASIS-STYLES (werden von PJAX erkannt/erhalten) -->
+<style data-pjax-id="base">
 :root{
-  --neonB:#00d5ff;
-  --neonP:#8a2cff;
-  --hot:#ff2d55;
-  --ink:#f3f2ff;
-  --muted:rgba(243,242,255,.75);
-  --panel:rgba(10,12,24,.72);
-  --line:rgba(255,255,255,.12);
-  --r:18px;
-  --shadow:0 25px 80px rgba(0,0,0,.65);
+  --bg:#000; --ink:#f4f7ff; --muted:#c9d8ff;
+  --purple:#9b5cff; --blue:#00d2ff;
+  --glass:rgba(255,255,255,.06); --glass2:rgba(10,12,20,.42);
+  --border:rgba(155,92,255,.24);
+  --max:1180px; --r:18px; --rx:26px;
+  --beam-opacity:.12; --beam-speed:60s;
 }
-
-/* =========================
-   GLOBAL RESET
-========================= */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+/* Reset / Base */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
-  color:var(--ink);
-  font-family:Inter,system-ui,Segoe UI,Arial;
-  overflow-x:hidden;
-  position:relative;
-
-  /* === DEEP EDM CINEMATIC BACKGROUND === */
   background:
-    radial-gradient(1400px 900px at 15% -10%, rgba(0,213,255,.14), transparent 60%),
-    radial-gradient(1200px 900px at 90% 110%, rgba(138,44,255,.18), transparent 65%),
-    radial-gradient(1000px 600px at 50% 25%, rgba(138,44,255,.10), transparent 60%),
-    radial-gradient(1000px 600px at 50% 85%, rgba(0,213,255,.08), transparent 60%),
-    linear-gradient(180deg,#02020a 0%, #050516 45%, #02020a 100%);
+    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
+    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
+    var(--bg);
+  color:var(--ink); font-family:"Inter",system-ui; overflow-x:hidden;
 }
-
-/* Aurora / Nebel */
-body::before{
-  content:"";
-  position:fixed;
-  inset:-20%;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    conic-gradient(from 220deg at 20% 20%, rgba(0,213,255,.25), transparent 35%, rgba(138,44,255,.25), transparent 70%),
-    conic-gradient(from 40deg at 80% 25%, rgba(138,44,255,.20), transparent 40%, rgba(0,213,255,.18), transparent 75%),
-    radial-gradient(1200px 600px at 50% 10%, rgba(0,213,255,.12), transparent 65%),
-    radial-gradient(1200px 600px at 50% 110%, rgba(138,44,255,.12), transparent 65%);
-  mix-blend-mode:screen;
-  filter: blur(2px) saturate(1.2);
-  animation: auroraMove 32s ease-in-out infinite;
-  opacity:.9;
-}
-
-@keyframes auroraMove{
-  0%{transform:translate(0,0) scale(1)}
-  50%{transform:translate(-2%,1%) scale(1.04)}
-  100%{transform:translate(0,0) scale(1)}
-}
-
-/* Partikel + Vignette */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,.15) 0 1px, transparent 2px) 0 0/180px 180px,
-    radial-gradient(circle at 75% 35%, rgba(255,255,255,.12) 0 1px, transparent 2px) 0 0/220px 220px,
-    radial-gradient(circle at 45% 80%, rgba(255,255,255,.10) 0 1px, transparent 2px) 0 0/260px 260px,
-    radial-gradient(1200px 900px at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,.6) 100%);
-  opacity:.55;
-}
-
-/* =========================
-   LAYOUT
-========================= */
-.wrap{max-width:1220px;margin:0 auto;padding:22px 18px 80px}
-
-/* TOPBAR */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:14px 16px;
-  background:rgba(0,0,0,.35);
-  border:1px solid var(--line);
-  border-radius:calc(var(--r) + 6px);
-  backdrop-filter:blur(10px);
-  box-shadow:var(--shadow);
-}
-
-.brand{
-  display:flex;align-items:center;gap:12px;
-  font-size:32px;font-weight:1000;
-}
-.brand span{
-  background:linear-gradient(90deg,var(--neonB),var(--neonP));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-
-.nav a{
-  margin:0 6px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.8px;
-  font-size:12px;
-  color:var(--ink);
-  opacity:.85;
-  text-decoration:none;
-}
-
-.livepill{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;
-  background:rgba(0,0,0,.25);
-  border:1px solid var(--line);
-  border-radius:14px;
-}
-.dot{
-  width:10px;height:10px;border-radius:50%;
-  background:var(--hot);
-  box-shadow:0 0 14px rgba(255,45,85,.7);
-}
-
-/* HERO */
-.hero{
-  margin-top:18px;
-  background:rgba(0,0,0,.35);
-  border:1px solid var(--line);
-  border-radius:calc(var(--r) + 10px);
-  box-shadow:var(--shadow);
-}
-.heroInner{
-  display:grid;
-  grid-template-columns:1.05fr 1.2fr;
-  gap:18px;
-  padding:24px;
-}
-.hero h1{
-  margin:0;
-  font-size:52px;
-  letter-spacing:-1px;
-  text-transform:uppercase;
-}
-.hero p{color:var(--muted);max-width:520px}
-
-.ctaRow{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.cta{
-  padding:14px 18px;
-  border-radius:16px;
-  border:1px solid rgba(0,213,255,.25);
-  background:linear-gradient(180deg,rgba(0,213,255,.12),rgba(138,44,255,.12));
-  color:var(--ink);
-  font-weight:1000;
-  text-transform:uppercase;
-  cursor:pointer;
-}
-.ghost{
-  padding:14px 18px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background:rgba(0,0,0,.25);
-  color:var(--ink);
-  font-weight:900;
-  cursor:pointer;
-}
-
-/* Twitch */
-.frame{
-  border-radius:calc(var(--r) + 8px);
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:#000;
-}
-#twitch-embed{
-  width:100%;
-  aspect-ratio:16/9;
-}
-
-/* Cards etc. – bewusst unverändert gelassen */
-
-/* Responsive */
-@media(max-width:1020px){
-  .heroInner{grid-template-columns:1fr}
-  .hero h1{font-size:42px}
-}
+:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
+/* Header */
+header{position:fixed; inset:0 0 auto 0; z-index:60; background:rgba(0,0,0,.75); border-bottom:1px solid rgba(155,92,255,.24); backdrop-filter:blur(8px)}
+.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand{display:flex; align-items:center; gap:12px}
+.brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
+.name{font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px; background:linear-gradient(90deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-size:200%; animation:flow 6s linear infinite}
+@keyframes flow{50%{background-position:100% 50%}}
+.nav{display:flex; gap:10px}
+.nav a{padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px; color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none}
+.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
+/* Page */
+.page{max-width:var(--max); margin:0 auto; padding:96px 16px 120px}
+/* Hero minimal */
+.hero{position:relative; border-radius:var(--rx); overflow:hidden; background:#06070f; border:1px solid var(--border); box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12); min-height:46vh; display:grid; place-items:center; text-align:center}
+.hero .beams{position:absolute; inset:-20%; mix-blend-mode:screen; filter:blur(1px); background:
+  conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
+  conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%); animation:spin var(--beam-speed) linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.copy{position:relative; z-index:2; padding:24px}
+.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; font-size:12px; margin-bottom:10px; text-transform:uppercase}
+h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px)}
+.sub{color:var(--muted); max-width:720px; margin:12px auto 0}
+/* Player */
+.section{margin-top:28px}
+h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
+.meta{color:var(--muted)}
+.playerWrap{margin-top:12px; background:rgba(255,255,255,.04); border-radius:18px; border:1px solid var(--border); overflow:hidden}
+.playerWrap #twitchFrame, .playerWrap iframe{width:100%; height:520px; border:0; display:block}
+.tabRow{display:flex; gap:10px; margin-top:10px}
+.tabBtn{padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.26); color:#e9f2ff; cursor:pointer; font-family:"Orbitron"; letter-spacing:.14em; font-size:11px; text-transform:uppercase}
+.tabBtn[aria-selected="true"]{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800}
+.panel{display:none}.panel.active{display:block}
+/* Ticker */
+.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
+.track{display:flex; gap:26px; padding:12px 18px; white-space:nowrap}
+.track span{font-family:"Orbitron"; letter-spacing:.28em; font-size:12px; text-transform:uppercase; color:#dce8ff}
+/* Spotify Mini Dock (persistiert über PJAX) */
+#playerDock{position:fixed; right:16px; bottom:16px; z-index:70; background:rgba(8,10,18,.78); border:1px solid rgba(155,92,255,.3); border-radius:16px; box-shadow:0 10px 30px rgba(0,210,255,.18), 0 0 40px rgba(155,92,255,.18); overflow:hidden; backdrop-filter:blur(8px)}
+#playerDock .dockBar{display:flex; align-items:center; gap:10px; padding:8px 10px; font-size:12px; font-family:"Orbitron"; letter-spacing:.12em}
+#dockClose{margin-left:auto; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.3); color:#fff; border-radius:999px; padding:4px 8px; cursor:pointer}
+#dockBody{width:min(360px, 88vw)} #dockBody iframe{width:100%; height:120px; border:0; display:block}
+@media(max-width:980px){.playerWrap #twitchFrame{height:clamp(260px,56vw,64vh)}}
+@media(max-width:640px){#dockBody iframe{height:110px}}
+footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<header class="topbar">
-  <div class="brand"><span>Rave3eN</span></div>
-  <nav class="nav">
-    <a href="#">Events</a>
-    <a href="#">About</a>
-    <a href="#">Clips</a>
-    <a href="#">Community</a>
-  </nav>
-  <div class="livepill">
-    <span class="dot"></span>
-    <div>LIVE AUF TWITCH</div>
+<header>
+  <div class="head">
+    <div class="brand">
+      <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="logo%20druck.png" alt="Rave3eN Logo"/><div class="name">RAVE3EN</div>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="events.html" data-pjax>Events</a>
+      <a href="about.html" data-pjax>About Me</a>
+      <a href="highlight-clips.html" data-pjax>Highlight Clips</a>
+    </nav>
   </div>
 </header>
 
-<section class="hero">
-  <div class="heroInner">
-    <div>
-      <h1>LIVE. BASS.<br>RAVE3EN.</h1>
-      <p>FPS Gameplay mit EDM-Vibes. Echte Emotionen, kein Filter.</p>
-      <div class="ctaRow">
-        <button class="cta" id="unmute">Ton an</button>
-        <button class="ghost" onclick="window.open('https://twitch.tv/rave3en')">Auf Twitch</button>
+<!-- Spotify Mini-Dock (persistiert über PJAX) -->
+<aside id="playerDock" aria-label="Spotify Player">
+  <div class="dockBar"><span>🎧 Rave3eN EDM Playlist</span><button id="dockClose" aria-label="Player schließen">✕</button></div>
+  <div id="dockBody">
+    <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </div>
+</aside>
+
+<main class="page" id="pjax-root">
+
+  <!-- HERO (nur der EDM/Gaming/Community Block) -->
+  <section class="hero" aria-label="EDM Poster">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="copy">
+      <div class="kicker">EDM ENERGY</div>
+      <h1>Gaming. Musik. Community.</h1>
+      <p class="sub">Energie, Bass und Momente, die bleiben. Willkommen beim Rave.</p>
+    </div>
+  </section>
+
+  <!-- Twitch Player mit Auto-Fallback -->
+  <section id="live" class="section" aria-labelledby="liveTitle">
+    <h2 id="liveTitle">Live auf Twitch</h2>
+    <p class="meta">Autoplay · Fallback auf VOD, wenn Offline.</p>
+
+    <div class="tabRow" role="tablist" aria-label="Player Tabs">
+      <button id="tabLive" class="tabBtn" role="tab" aria-selected="true" aria-controls="panelLive">🔴 Live</button>
+      <button id="tabVod" class="tabBtn" role="tab" aria-selected="false" aria-controls="panelVod">📼 VOD</button>
+    </div>
+
+    <div id="panelLive" class="panel active" role="tabpanel" aria-labelledby="tabLive">
+      <div class="playerWrap">
+        <!-- Twitch JS SDK Player: wir steuern ONLINE/OFFLINE -->
+        <div id="twitchFrame"></div>
       </div>
     </div>
 
-    <div class="frame">
-      <div id="twitch-embed"></div>
+    <div id="panelVod" class="panel" role="tabpanel" aria-labelledby="tabVod">
+      <div class="playerWrap">
+        <iframe
+          src="https://player.twitch.tv/?video=2633733485&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&parent=localhost"
+          allowfullscreen loading="lazy" title="Rave3eN Twitch VOD"></iframe>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-</div>
+  <!-- Laufender Ticker -->
+  <section class="ticker" aria-label="Timeline">
+    <div class="track" id="marqueeTrack">
+      <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
+      <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+    </div>
+  </section>
 
+</main>
+
+<footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
+
+<!-- Twitch Player SDK -->
 <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-<script>
-const player = new Twitch.Player("twitch-embed",{
-  channel:"rave3en",
-  parent:["rave3en.de","www.rave3en.de"],
-  autoplay:true,
-  muted:true
-});
 
-document.getElementById("unmute").onclick=()=>{
-  player.setMuted(false);
-  player.setVolume(0.6);
-};
+<script>
+/* Tabs (Live/VOD) */
+(()=>{const L=document.getElementById('tabLive'),V=document.getElementById('tabVod'),pL=document.getElementById('panelLive'),pV=document.getElementById('panelVod');
+function activate(isLive){L.setAttribute('aria-selected',isLive);V.setAttribute('aria-selected',!isLive);pL.classList.toggle('active',isLive);pV.classList.toggle('active',!isLive)}
+L.addEventListener('click',()=>activate(true)); V.addEventListener('click',()=>activate(false));})();
+
+/* Ticker */
+(()=>{const t=document.getElementById('marqueeTrack');if(!t)return;t.innerHTML+=t.innerHTML;let o=0,s=.4,drag=false,x=0,so=0;
+const step=()=>{if(!drag)o-=s;const w=t.scrollWidth/2;if(o<=-w)o+=w;t.style.transform=`translateX(${o}px)`;requestAnimationFrame(step)};step();
+t.addEventListener('pointerdown',e=>{drag=true;x=e.clientX;so=o;t.setPointerCapture(e.pointerId)});addEventListener('pointermove',e=>{if(drag)o=so+(e.clientX-x)});addEventListener('pointerup',()=>{drag=false});})();
+
+/* Spotify Dock close */
+document.getElementById('dockClose')?.addEventListener('click',()=>document.getElementById('playerDock')?.remove());
+
+/* Twitch Player mit Auto-Fallback auf VOD wenn offline */
+(function(){
+  const VOD_ID = "2633733485"; // <- hier kannst du das Fallback-VOD tauschen
+  const parentList = ["www.rave3en.de","rave3en.de","rave3en.github.io","localhost"];
+
+  const container = document.getElementById("twitchFrame");
+  if(!container || !window.Twitch) return;
+
+  let player = new Twitch.Player("twitchFrame", {
+    width: "100%",
+    height: "100%",
+    channel: "rave3en",
+    autoplay: true,
+    muted: false,
+    parent: parentList
+  });
+
+  // Wenn der Stream online/offline schaltet, wechseln wir automatisch
+  player.addEventListener(Twitch.Player.ONLINE, ()=> {
+    // zurück auf Channel
+    try{ player.setChannel("rave3en"); }catch{}
+    // UI auf LIVE
+    document.getElementById('tabLive')?.click();
+  });
+  player.addEventListener(Twitch.Player.OFFLINE, ()=> {
+    try{ player.setVideo("v"+VOD_ID); }catch{}
+    // UI auf VOD
+    document.getElementById('tabVod')?.click();
+  });
+
+  // Fallback: kurze Prüfung nach 6s -> wenn kein Live läuft, schalte auf VOD
+  setTimeout(()=>{
+    try{
+      // Der Player liefert bei Offline keine Frames; wir schalten vorsorglich
+      player.setVideo("v"+VOD_ID);
+      document.getElementById('tabVod')?.click();
+    }catch{}
+  }, 6000);
+})();
+
+/* ===== Mini-PJAX mit Head-Style-Merge ===== */
+(function(){
+  const ROOT_ID='pjax-root';
+  function sameOrigin(href){try{const u=new URL(href,location.href);return u.origin===location.origin}catch{return false}}
+  function shouldPJAX(a){if(!a||a.target==='_blank'||a.hasAttribute('download'))return false; if(a.hasAttribute('data-no-pjax'))return false; return sameOrigin(a.href)}
+  function mergeHead(fromDoc){
+    const incoming=[...fromDoc.querySelectorAll('style[data-pjax-id],link[rel="stylesheet"][data-pjax-id]')];
+    incoming.forEach(node=>{
+      const id=node.getAttribute('data-pjax-id'); if(!id) return;
+      const existing=document.head.querySelector(`[data-pjax-id="${id}"]`);
+      if(existing) existing.remove();
+      document.head.appendChild(node.cloneNode(true));
+    });
+  }
+  async function load(url,replaceState=false){
+    const res=await fetch(url,{headers:{'X-PJAX':'true'}});
+    const html=await res.text();
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    mergeHead(doc);
+    const newMain=doc.getElementById(ROOT_ID)||doc.querySelector('main.page');
+    const target=document.getElementById(ROOT_ID);
+    if(newMain&&target){
+      target.innerHTML=newMain.innerHTML;
+      document.title=doc.title||document.title;
+      if(!replaceState) history.pushState({url},'',url);
+      // Skripte im neuen Main ausführen
+      newMain.querySelectorAll('script').forEach(s=>{const ns=document.createElement('script'); if(s.src){ns.src=s.src}else{ns.textContent=s.textContent} document.body.appendChild(ns); ns.remove();});
+      bind();
+      target.animate([{opacity:0},{opacity:1}],{duration:180,easing:'ease-out'});
+      // Spotify-Dock sicherstellen bei Direkteinstieg
+      ensureDock();
+    } else { location.href=url; }
+  }
+  function clickHandler(e){const a=e.target.closest('a'); if(!a||!shouldPJAX(a))return; e.preventDefault(); load(a.href)}
+  function popHandler(e){const url=(e.state&&e.state.url)||location.href; load(url,true)}
+  function bind(){document.body.removeEventListener('click',clickHandler); document.body.addEventListener('click',clickHandler,true)}
+  function ensureDock(){
+    if(!document.getElementById('playerDock')){
+      const dock=document.createElement('aside'); dock.id='playerDock'; dock.setAttribute('aria-label','Spotify Player');
+      dock.innerHTML=`<div class="dockBar"><span>🎧 Rave3eN EDM Playlist</span><button id="dockClose" aria-label="Player schließen">✕</button></div>
+      <div id="dockBody"><iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>`;
+      document.body.appendChild(dock);
+      document.getElementById('dockClose')?.addEventListener('click',()=>document.getElementById('playerDock')?.remove());
+    }
+  }
+  addEventListener('popstate',popHandler); bind();
+})();
 </script>
 </body>
 </html>
+
