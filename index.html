@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rave3eN • Neon Sanctum Festival</title>
+  <title>Rave3eN • Neon Ritual Festival</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +19,13 @@
       --blue:#00d5ff;
       --purple:#b100ff;
 
-      --glass: rgba(255,255,255,.06);
       --stroke: rgba(255,255,255,.12);
-      --shadow: 0 22px 90px rgba(0,0,0,.7);
+      --glass: rgba(255,255,255,.06);
+      --shadow: 0 22px 90px rgba(0,0,0,.72);
       --radius: 28px;
 
       --max: 1240px;
-      --topPad: 86px;
+      --topPad: 84px;
       --playerH: 104px;
     }
 
@@ -37,9 +37,9 @@
       color:var(--ink);
       font-family: Rajdhani, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
-        radial-gradient(1100px 820px at 18% 18%, rgba(177,0,255,.23), transparent 64%),
-        radial-gradient(1100px 820px at 82% 14%, rgba(0,213,255,.20), transparent 64%),
-        radial-gradient(1200px 900px at 55% 85%, rgba(177,0,255,.12), transparent 65%),
+        radial-gradient(1100px 820px at 18% 16%, rgba(177,0,255,.24), transparent 64%),
+        radial-gradient(1100px 820px at 82% 12%, rgba(0,213,255,.20), transparent 64%),
+        radial-gradient(1200px 900px at 55% 86%, rgba(177,0,255,.12), transparent 65%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       overflow-x:hidden;
     }
@@ -47,7 +47,7 @@
     .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
     @media (max-width: 560px){ .wrap{ width:min(var(--max), calc(100% - 26px)); } }
 
-    /* Mystic layers */
+    /* Background layers */
     #particles, #sigils{ position:fixed; inset:0; z-index:0; pointer-events:none; }
     .noise{
       position:fixed; inset:0; z-index:1; pointer-events:none;
@@ -66,12 +66,13 @@
       padding-bottom: calc(var(--playerH) + 28px);
     }
 
-    /* Topbar (Festival Gate HUD) */
+    /* Top HUD (new style) */
     .topbar{
       position:sticky; top:0; z-index:70;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      background: linear-gradient(90deg, rgba(0,213,255,.12), rgba(177,0,255,.12));
+      background:
+        linear-gradient(90deg, rgba(0,213,255,.14), rgba(177,0,255,.14));
       border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .topbar .row{
@@ -79,26 +80,22 @@
       display:flex; align-items:center; justify-content:space-between;
       gap:12px;
     }
-
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 240px;
-    }
-    .mark{
+    .brand{ display:flex; align-items:center; gap:12px; min-width: 240px; }
+    .sigilDot{
       width:42px; height:42px; border-radius:16px;
       border:1px solid rgba(255,255,255,.14);
       background:
-        radial-gradient(22px 22px at 35% 35%, rgba(0,213,255,.48), transparent 70%),
-        radial-gradient(22px 22px at 70% 30%, rgba(177,0,255,.48), transparent 70%),
+        radial-gradient(22px 22px at 35% 35%, rgba(0,213,255,.52), transparent 70%),
+        radial-gradient(22px 22px at 70% 30%, rgba(177,0,255,.52), transparent 70%),
         rgba(0,0,0,.22);
-      box-shadow: 0 0 32px rgba(0,213,255,.14), 0 0 32px rgba(177,0,255,.12);
+      box-shadow: 0 0 34px rgba(0,213,255,.14), 0 0 34px rgba(177,0,255,.12);
       position:relative; overflow:hidden;
     }
-    .mark:after{
+    .sigilDot:after{
       content:"";
       position:absolute; inset:-16px;
       background: conic-gradient(from 120deg, rgba(0,213,255,0), rgba(0,213,255,.35), rgba(177,0,255,.35), rgba(0,213,255,0));
-      opacity:.62;
+      opacity:.64;
       animation: spin 7.8s linear infinite;
     }
     @keyframes spin{ to{ transform: rotate(360deg); } }
@@ -108,8 +105,8 @@
       font-family: Orbitron, sans-serif;
       letter-spacing:.14em;
       font-size: 14px;
-      line-height:1.1;
       text-transform:uppercase;
+      line-height:1.1;
     }
     .brand small{
       display:block;
@@ -120,11 +117,7 @@
       text-transform:uppercase;
     }
 
-    .nav{
-      display:flex; flex-wrap:wrap; gap:10px;
-      justify-content:flex-end;
-      align-items:center;
-    }
+    .nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; align-items:center; }
     .chip{
       padding: 10px 12px;
       border-radius: 999px;
@@ -150,11 +143,7 @@
 
     @media (max-width: 980px){
       :root{ --topPad: 104px; }
-      .topbar .row{
-        align-items:flex-start;
-        padding-top:10px; padding-bottom:12px;
-        height:auto;
-      }
+      .topbar .row{ align-items:flex-start; padding-top:10px; padding-bottom:12px; height:auto; }
       .brand{ min-width: unset; }
     }
     @media (max-width: 560px){
@@ -162,7 +151,15 @@
       .nav{ gap:8px; }
     }
 
-    /* Panels */
+    /* New Layout Blocks (Overlay vibe) */
+    .deck{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 16px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .deck{ grid-template-columns: 1fr; } }
+
     .panel{
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.12);
@@ -175,27 +172,15 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(520px 260px at 18% 10%, rgba(0,213,255,.22), transparent 60%),
-        radial-gradient(520px 260px at 85% 0%, rgba(177,0,255,.22), transparent 60%);
+        radial-gradient(560px 300px at 18% 10%, rgba(0,213,255,.22), transparent 60%),
+        radial-gradient(560px 300px at 85% 0%, rgba(177,0,255,.22), transparent 60%);
       filter: blur(12px);
       opacity: .9;
       z-index:0;
     }
     .panel > *{ position:relative; z-index:1; }
 
-    /* Festival Gate (Hero) */
-    header.hero{
-      padding: 44px 0 18px;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-    }
+    header.hero{ padding: 44px 0 18px; }
     .heroLeft{ padding: 28px; }
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
@@ -256,13 +241,17 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* Hero Art: Portal + Sigil */
-    .heroRight{ min-height: 400px; display:flex; }
-    .heroArt{ width:100%; position:relative; overflow:hidden; border-radius: var(--radius); }
-    .heroArt svg{ width:100%; height:100%; display:block; }
-    .sigilBadge{
+    /* Right side: “Festival Poster / Overlay Card” */
+    .poster{
+      min-height: 420px;
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius);
+    }
+    .poster svg{ width:100%; height:100%; display:block; }
+    .stamp{
       position:absolute;
-      left: 16px; bottom: 16px;
+      right: 16px; bottom: 16px;
       padding: 12px 14px;
       border-radius: 18px;
       border:1px solid rgba(255,255,255,.12);
@@ -271,20 +260,26 @@
       -webkit-backdrop-filter: blur(12px);
       display:flex; flex-direction:column; gap:6px;
       max-width: 520px;
+      text-align:right;
     }
-    .sigilBadge strong{
+    .stamp strong{
       font-family: Orbitron, sans-serif;
       letter-spacing:.12em;
       font-size: 12px;
       text-transform:uppercase;
     }
-    .sigilBadge span{
+    .stamp span{
       color: var(--muted);
       font-size: 13px;
       line-height:1.45;
     }
 
-    /* Sections */
+    .sep{
+      height: 1px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(0,213,255,.0), rgba(0,213,255,.22), rgba(177,0,255,.22), rgba(0,213,255,.0));
+    }
+
     section{ padding: 22px 0; }
     .sectionTitle{
       display:flex; align-items:flex-end; justify-content:space-between;
@@ -298,50 +293,42 @@
       text-transform:uppercase;
       font-size: 16px;
     }
-    .actions{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-      align-items:center;
-    }
 
+    /* “Overlay tiles” cards */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
     }
-    .card{
+    .tile{
       grid-column: span 4;
       padding: 18px;
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       box-shadow: 0 18px 60px rgba(0,0,0,.45);
       position:relative;
       overflow:hidden;
       transition: transform .18s ease, border-color .18s ease;
     }
-    .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
-    .card:after{
+    .tile:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
+    .tile:after{
       content:"";
       position:absolute; inset:-1px;
       background:
-        radial-gradient(240px 140px at 18% 10%, rgba(0,213,255,.16), transparent 58%),
-        radial-gradient(240px 140px at 82% 0%, rgba(177,0,255,.16), transparent 58%);
+        radial-gradient(280px 160px at 18% 10%, rgba(0,213,255,.14), transparent 60%),
+        radial-gradient(280px 160px at 82% 0%, rgba(177,0,255,.14), transparent 60%);
       opacity:.9; pointer-events:none;
     }
-    .card > *{ position:relative; z-index:1; }
-    .card h3{ margin:0 0 8px; font-size: 16px; letter-spacing:.02em; }
-    .card p{ margin:0; color: var(--muted); line-height:1.65; font-size: 14px; }
+    .tile > *{ position:relative; z-index:1; }
+    .tile h3{ margin:0 0 8px; font-size: 16px; letter-spacing:.02em; }
+    .tile p{ margin:0; color: var(--muted); line-height:1.65; font-size: 14px; }
 
-    @media (max-width: 980px){ .card{ grid-column: span 6; } }
-    @media (max-width: 640px){ .card{ grid-column: span 12; } }
+    @media (max-width: 980px){ .tile{ grid-column: span 6; } }
+    @media (max-width: 640px){ .tile{ grid-column: span 12; } }
 
-    .sep{
-      height: 1px;
-      margin: 18px 0;
-      background: linear-gradient(90deg, rgba(0,213,255,.0), rgba(0,213,255,.22), rgba(177,0,255,.22), rgba(0,213,255,.0));
-    }
-
-    /* FESTIVAL STAGE: Twitch */
+    /* Twitch Stage */
     .stage{ padding: 14px; }
     .stageTop{
       display:flex; align-items:center; justify-content:space-between;
@@ -362,7 +349,6 @@
       background: linear-gradient(90deg, var(--blue), var(--purple));
       box-shadow: 0 0 18px rgba(0,213,255,.18), 0 0 18px rgba(177,0,255,.16);
     }
-
     .playerShell{
       position:relative;
       width:100%;
@@ -380,7 +366,7 @@
       border:0;
     }
 
-    .chatDrawer{
+    .drawer{
       margin-top: 12px;
       border-radius: 22px;
       overflow:hidden;
@@ -388,12 +374,12 @@
       background: rgba(0,0,0,.22);
       display:none;
     }
-    .chatDrawer.on{ display:block; }
-    .chatDrawer iframe{ width:100%; height:540px; border:0; }
-    @media (max-width: 980px){ .chatDrawer iframe{ height:470px; } }
-    @media (max-width: 640px){ .chatDrawer iframe{ height:420px; } }
+    .drawer.on{ display:block; }
+    .drawer iframe{ width:100%; height:540px; border:0; }
+    @media (max-width: 980px){ .drawer iframe{ height:470px; } }
+    @media (max-width: 640px){ .drawer iframe{ height:420px; } }
 
-    /* Night Timetable (festival-style) */
+    /* Nights timeline */
     .timeline{ padding: 8px 8px 6px; }
     .slot{
       display:grid;
@@ -430,7 +416,7 @@
       .slot{ grid-template-columns: 1fr; }
     }
 
-    /* Media Vault */
+    /* Media */
     .ratio{
       position:relative;
       width:100%;
@@ -469,7 +455,7 @@
       border-color: rgba(255,255,255,.22);
     }
 
-    /* Bottom Spotify Ritual Player */
+    /* Spotify bottom bar */
     .ritualPlayer{
       position:fixed; left:0; right:0; bottom:0;
       z-index:90;
@@ -541,7 +527,6 @@
       min-width: 240px;
       flex-wrap:wrap;
     }
-
     @media (max-width: 980px){
       :root{ --playerH: 142px; }
       .ritualPlayer .row{ height:auto; padding: 10px 0 12px; align-items:flex-start; }
@@ -554,7 +539,6 @@
     .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.on{ opacity:1; transform: translateY(0); }
 
-    /* Mini footer */
     .foot{
       padding: 22px 0 16px;
       color: rgba(185,185,218,.92);
@@ -571,117 +555,113 @@
 
   <div class="content" id="top">
 
-    <!-- FESTIVAL HUD -->
+    <!-- HUD -->
     <div class="topbar">
       <div class="wrap">
         <div class="row">
           <div class="brand">
-            <div class="mark" aria-hidden="true"></div>
+            <div class="sigilDot" aria-hidden="true"></div>
             <div>
               <h1>RAVE3EN</h1>
-              <small>neon sanctum • festival online</small>
+              <small>neon ritual • festival online</small>
             </div>
           </div>
 
           <div class="nav" aria-label="Navigation">
-            <a class="chip primary" href="#gate">Gate</a>
-            <a class="chip" href="#stage">Main Stage</a>
-            <a class="chip" href="#nights">Nights</a>
-            <a class="chip" href="#vault">Aftermovie</a>
-            <a class="chip" href="#sanctuary">Sanctuary</a>
-            <a class="chip" href="#portals">Portals</a>
+            <a class="chip primary" href="#start">Start</a>
+            <a class="chip" href="#buehne">Bühne</a>
+            <a class="chip" href="#nights">Nächte</a>
+            <a class="chip" href="#vault">Highlights</a>
+            <a class="chip" href="#tiere">Tiere</a>
+            <a class="chip" href="#links">Links</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- GATE -->
-    <header class="hero" id="gate">
+    <!-- HERO -->
+    <header class="hero" id="start">
       <div class="wrap">
-        <div class="heroGrid">
+        <div class="deck">
           <div class="panel heroLeft reveal">
-            <div class="kicker">music • emotion • meaning • animals</div>
+            <div class="kicker">musik • emotion • sinn • tiere</div>
 
             <div class="title">
-              Enter the<br>
-              <span class="glow">Neon Sanctum</span><br>
+              Willkommen im<br>
+              <span class="glow">Neon Ritual</span><br>
               <span class="glow">Rave On</span> 💜💙⚡
             </div>
 
             <p class="subtitle">
-              Rave3eN ist kein “Profil”. Es ist ein Ort.
-              Musik ist das Licht. Emotion ist der Puls. Tiere sind Seele.
-              Und mitten drin: ein Stream, der dich fühlen lässt.
+              Rave3eN ist ein Creator auf Twitch. Musik ist der Kern — EDM ist Energie.
+              Emotionen bleiben hier nicht “privat”, sie werden gezeigt, bewahrt und geben dem Ganzen Sinn.
+              Und Tiere sind ein Teil davon.
             </p>
 
             <div class="ctaRow">
-              <a class="btn primary" href="#stage">Enter</a>
-              <a class="btn" href="#vault">Aftermovie</a>
+              <a class="btn primary" href="#buehne">Zur Bühne</a>
+              <a class="btn" href="#vault">Highlights</a>
               <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
             </div>
           </div>
 
-          <div class="panel heroRight reveal">
-            <div class="heroArt" aria-hidden="true">
-              <svg viewBox="0 0 900 520" preserveAspectRatio="none">
-                <defs>
-                  <radialGradient id="g1" cx="28%" cy="12%" r="85%">
-                    <stop offset="0%" stop-color="rgba(0,213,255,.55)"/>
-                    <stop offset="55%" stop-color="rgba(0,213,255,.10)"/>
-                    <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
-                  </radialGradient>
-                  <radialGradient id="g2" cx="82%" cy="0%" r="90%">
-                    <stop offset="0%" stop-color="rgba(177,0,255,.55)"/>
-                    <stop offset="55%" stop-color="rgba(177,0,255,.10)"/>
-                    <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
-                  </radialGradient>
-                  <linearGradient id="line" x1="0" x2="1">
-                    <stop offset="0" stop-color="rgba(0,213,255,.95)"/>
-                    <stop offset="1" stop-color="rgba(177,0,255,.95)"/>
-                  </linearGradient>
-                  <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
-                </defs>
+          <div class="panel poster reveal" aria-hidden="true">
+            <svg viewBox="0 0 900 520" preserveAspectRatio="none">
+              <defs>
+                <radialGradient id="p1" cx="30%" cy="12%" r="90%">
+                  <stop offset="0%" stop-color="rgba(0,213,255,.55)"/>
+                  <stop offset="55%" stop-color="rgba(0,213,255,.10)"/>
+                  <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                </radialGradient>
+                <radialGradient id="p2" cx="82%" cy="0%" r="90%">
+                  <stop offset="0%" stop-color="rgba(177,0,255,.55)"/>
+                  <stop offset="55%" stop-color="rgba(177,0,255,.10)"/>
+                  <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                </radialGradient>
+                <linearGradient id="ln" x1="0" x2="1">
+                  <stop offset="0" stop-color="rgba(0,213,255,.95)"/>
+                  <stop offset="1" stop-color="rgba(177,0,255,.95)"/>
+                </linearGradient>
+                <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+              </defs>
 
-                <rect width="900" height="520" fill="rgba(255,255,255,.02)"/>
-                <circle cx="220" cy="130" r="260" fill="url(#g1)"/>
-                <circle cx="740" cy="90"  r="300" fill="url(#g2)"/>
+              <rect width="900" height="520" fill="rgba(255,255,255,.02)"/>
+              <circle cx="220" cy="130" r="280" fill="url(#p1)"/>
+              <circle cx="740" cy="90"  r="310" fill="url(#p2)"/>
 
-                <!-- Portal Rings -->
-                <g opacity=".78">
-                  <circle cx="640" cy="270" r="128" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
-                  <circle cx="640" cy="270" r="106" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1.2"/>
-                  <circle cx="640" cy="270" r="82"  fill="none" stroke="url(#line)" stroke-width="2.0"/>
-                  <path d="M640 140 L640 400" stroke="rgba(255,255,255,.12)" stroke-width="1.2"/>
-                  <path d="M510 270 L770 270" stroke="rgba(255,255,255,.12)" stroke-width="1.2"/>
+              <!-- Sigil overlay -->
+              <g opacity=".80">
+                <circle cx="650" cy="270" r="132" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
+                <circle cx="650" cy="270" r="110" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1.2"/>
+                <circle cx="650" cy="270" r="84"  fill="none" stroke="url(#ln)" stroke-width="2.0"/>
+                <path d="M650 138 L650 402" stroke="rgba(255,255,255,.12)" stroke-width="1.2"/>
+                <path d="M518 270 L782 270" stroke="rgba(255,255,255,.12)" stroke-width="1.2"/>
 
-                  <!-- Raven V (abstract wings) -->
-                  <path d="M640 210 L600 292 L640 270 L680 292 Z"
-                        fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-linejoin="round"/>
-                  <circle cx="625" cy="260" r="2.4" fill="rgba(0,213,255,.9)"/>
-                  <circle cx="655" cy="260" r="2.4" fill="rgba(177,0,255,.9)"/>
+                <!-- Raven wings V -->
+                <path d="M650 212 L606 296 L650 272 L694 296 Z"
+                      fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="635" cy="262" r="2.4" fill="rgba(0,213,255,.9)"/>
+                <circle cx="665" cy="262" r="2.4" fill="rgba(177,0,255,.9)"/>
 
-                  <!-- “3” marks -->
-                  <path d="M700 192 L720 184" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M710 214 L734 206" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M720 238 L746 230" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
-                </g>
+                <!-- “3” marks -->
+                <path d="M712 192 L734 184" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M720 214 L748 206" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M728 238 L760 230" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-linecap="round"/>
+              </g>
 
-                <!-- Neon waves -->
-                <path d="M0,320 C160,260 300,365 420,330 C560,295 650,365 780,340 C850,326 872,292 900,306"
-                      fill="none" stroke="url(#line)" stroke-width="3.8" opacity=".96"/>
-                <path d="M0,360 C180,300 320,420 445,382 C580,342 665,440 800,395 C865,374 884,342 900,358"
-                      fill="none" stroke="url(#line)" stroke-width="2.9" opacity=".56"/>
-                <path d="M0,410 C170,380 310,492 455,448 C595,406 690,495 820,455 C875,438 890,412 900,422"
-                      fill="none" stroke="url(#line)" stroke-width="2.2" opacity=".34"/>
+              <!-- Neon waveform -->
+              <path d="M0,330 C170,260 300,370 430,336 C570,300 660,378 800,346 C865,331 885,300 900,314"
+                    fill="none" stroke="url(#ln)" stroke-width="3.8" opacity=".96"/>
+              <path d="M0,372 C190,302 320,430 465,392 C610,352 690,450 825,400 C872,382 890,355 900,368"
+                    fill="none" stroke="url(#ln)" stroke-width="2.9" opacity=".56"/>
 
-                <path d="M0,320 C160,260 300,365 420,330 C560,295 650,365 780,340 C850,326 872,292 900,306"
-                      fill="none" stroke="url(#line)" stroke-width="18" opacity=".14" filter="url(#blur)"/>
-              </svg>
+              <path d="M0,330 C170,260 300,370 430,336 C570,300 660,378 800,346 C865,331 885,300 900,314"
+                    fill="none" stroke="url(#ln)" stroke-width="18" opacity=".14" filter="url(#blur)"/>
+            </svg>
 
-              <div class="sigilBadge">
-                <strong>Rave Sigil</strong>
-                <span>Creator • Music • Emotion • Meaning • Animals</span>
-              </div>
+            <div class="stamp">
+              <strong>RAVE SIGIL</strong>
+              <span>Creator • Musik • Emotion • Sinn • Tiere</span>
             </div>
           </div>
         </div>
@@ -690,23 +670,23 @@
       </div>
     </header>
 
-    <!-- MAIN STAGE -->
-    <section id="stage">
+    <!-- STAGE -->
+    <section id="buehne">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Main Stage</h2>
-          <div class="actions">
-            <button class="chip primary" id="btnChat">Crowd</button>
-            <button class="chip" id="btnMute">Unmute</button>
-            <a class="chip" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Open</a>
+          <h2>Bühne</h2>
+          <div class="pillRow">
+            <button class="pill primary" id="btnChat">Crowd</button>
+            <button class="pill" id="btnMute">Unmute</button>
+            <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Open</a>
           </div>
         </div>
 
         <div class="panel stage reveal">
           <div class="stageTop">
-            <div class="stageTitle"><span class="gem"></span> Neon Sanctum • Live</div>
-            <div class="actions">
-              <button class="chip" id="btnTheatre">Focus</button>
+            <div class="stageTitle"><span class="gem"></span> Main Stage • Live</div>
+            <div class="pillRow">
+              <button class="pill" id="btnFocus">Focus</button>
             </div>
           </div>
 
@@ -714,7 +694,7 @@
             <div id="twitch-embed"></div>
           </div>
 
-          <div class="chatDrawer" id="chatDrawer">
+          <div class="drawer" id="chatDrawer">
             <iframe id="twitchChat" title="Chat"></iframe>
           </div>
         </div>
@@ -723,30 +703,30 @@
       </div>
     </section>
 
-    <!-- FESTIVAL AREAS -->
-    <section id="areas">
+    <!-- EXPERIENCE (new design blocks) -->
+    <section id="experience">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Festival Areas</h2>
-          <div class="actions">
-            <a class="pill primary" href="#vault">Aftermovie Vault</a>
-            <a class="pill" href="#nights">Nights</a>
-            <a class="pill" href="#sanctuary">Sanctuary</a>
+          <h2>Erlebnis</h2>
+          <div class="pillRow">
+            <a class="pill primary" href="#vault">Zum Vault</a>
+            <a class="pill" href="#nights">Nächte</a>
+            <a class="pill" href="#tiere">Tiere</a>
           </div>
         </div>
 
         <div class="grid">
-          <div class="card reveal">
-            <h3>🜂 Main Stage</h3>
-            <p>Der Moment. Der Puls. Der Drop. Du bist dabei — live.</p>
+          <div class="tile reveal">
+            <h3>💙 Musik</h3>
+            <p>EDM ist Energie — aber Musik ist das Fundament. Immer.</p>
           </div>
-          <div class="card reveal">
-            <h3>🜁 Afterglow</h3>
-            <p>Die Szenen, die bleiben. Highlights, Clips, Erinnerungen.</p>
+          <div class="tile reveal">
+            <h3>💜 Emotion</h3>
+            <p>Echte Momente. Echte Reactions. Nichts wird versteckt.</p>
           </div>
-          <div class="card reveal">
-            <h3>🜄 Echo Gate</h3>
-            <p>Socials, Updates, neue Gesichter — der Rave wächst.</p>
+          <div class="tile reveal">
+            <h3>🖤 Sinn</h3>
+            <p>Wenn Musik trägt, bekommt das Ganze Bedeutung — gemeinsam.</p>
           </div>
         </div>
 
@@ -754,13 +734,13 @@
       </div>
     </section>
 
-    <!-- NIGHTS (Upcoming + Past as festival schedule) -->
+    <!-- NIGHTS -->
     <section id="nights">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Nights</h2>
-          <div class="actions">
-            <span class="pill">Upcoming</span>
+          <h2>Nächte</h2>
+          <div class="pillRow">
+            <span class="pill primary">Upcoming</span>
             <span class="pill">Past</span>
           </div>
         </div>
@@ -773,7 +753,7 @@
             </div>
             <div>
               <h4>Community Session</h4>
-              <p>Runs, Chaos, Gänsehaut — der Beat führt.</p>
+              <p>Runs, Chaos, Gänsehaut — bis der Bildschirm glüht.</p>
             </div>
           </div>
 
@@ -784,18 +764,18 @@
             </div>
             <div>
               <h4>Talk + Gameplay</h4>
-              <p>Wenn Musik Sinn gibt — und der Stream ehrlich wird.</p>
+              <p>Wenn Musik Sinn gibt und der Moment hängen bleibt.</p>
             </div>
           </div>
 
           <div class="slot">
             <div>
               <div class="time">Past</div>
-              <div class="tag"><i></i> Clip Hunt</div>
+              <div class="tag"><i></i> Highlight Hunt</div>
             </div>
             <div>
               <h4>Best Moments</h4>
-              <p>Die Szenen, die man nicht vergisst. Vault-ready.</p>
+              <p>Die Szenen, die man nicht vergisst — Vault-ready.</p>
             </div>
           </div>
         </div>
@@ -804,25 +784,24 @@
       </div>
     </section>
 
-    <!-- AFTERMOVIE VAULT -->
+    <!-- VAULT -->
     <section id="vault">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Aftermovie Vault</h2>
-          <div class="actions">
-            <a class="pill primary" href="#stage">Back to Stage</a>
+          <h2>Highlights</h2>
+          <div class="pillRow">
             <a class="pill" href="https://www.twitch.tv/Rave3eN/videos" target="_blank" rel="noreferrer">VODs</a>
             <a class="pill" href="https://www.twitch.tv/Rave3eN/clips" target="_blank" rel="noreferrer">Clips</a>
           </div>
         </div>
 
         <div class="grid">
-          <div class="card reveal" style="grid-column: span 7;">
-            <h3>🎞️ Trailer / Aftermovie</h3>
+          <div class="tile reveal" style="grid-column: span 7;">
+            <h3>🎞️ Trailer / Highlight Reel</h3>
             <div class="ratio" style="margin-top:10px;">
               <iframe
                 src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
-                title="Aftermovie"
+                title="Trailer"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen>
@@ -830,8 +809,8 @@
             </div>
           </div>
 
-          <div class="card reveal" style="grid-column: span 5;">
-            <h3>🔥 Highlight Drops</h3>
+          <div class="tile reveal" style="grid-column: span 5;">
+            <h3>🔥 Clip Drops</h3>
             <p style="margin:0 0 12px; color:var(--muted); line-height:1.6;">
               Drei Slots — setz hier deine stärksten Clips rein.
             </p>
@@ -840,14 +819,6 @@
               <a class="pill" href="#" target="_blank" rel="noreferrer">Clip 02</a>
               <a class="pill" href="#" target="_blank" rel="noreferrer">Clip 03</a>
             </div>
-
-            <div style="margin-top:14px;">
-              <p style="margin:0 0 10px; color:var(--muted);">Vault Specials</p>
-              <div class="pillRow">
-                <a class="pill" href="#sanctuary">Sanctuary</a>
-                <a class="pill" href="#portals">Portals</a>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -855,38 +826,30 @@
       </div>
     </section>
 
-    <!-- SANCTUARY (Animals) -->
-    <section id="sanctuary">
+    <!-- ANIMALS -->
+    <section id="tiere">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Sanctuary</h2>
-          <div class="actions">
-            <span class="pill primary">Animals</span>
-            <span class="pill">Heart</span>
-            <span class="pill">Meaning</span>
+          <h2>Tiere</h2>
+          <div class="pillRow">
+            <span class="pill primary">Herz</span>
+            <span class="pill">Schutz</span>
+            <span class="pill">Respekt</span>
           </div>
         </div>
 
         <div class="grid">
-          <div class="card reveal">
-            <h3>🖤 Für Tiere</h3>
-            <p>Tiere sind kein “Thema”. Sie sind Teil vom Sinn. Im Sanctum wird das nie vergessen.</p>
+          <div class="tile reveal">
+            <h3>🐾 Wichtig</h3>
+            <p>Tiere sind kein Randthema. Sie sind Teil vom Sinn hinter allem.</p>
           </div>
-          <div class="card reveal">
-            <h3>💜 Emotion</h3>
-            <p>Hier ist Platz für echte Gefühle. Musik trägt. Community hält.</p>
+          <div class="tile reveal">
+            <h3>🖤 Haltung</h3>
+            <p>Mitgefühl bleibt. Egal wie laut der Beat ist.</p>
           </div>
-          <div class="card reveal">
-            <h3>💙 Musik</h3>
-            <p>EDM ist Energie — aber Musik ist das Fundament. Immer.</p>
-          </div>
-
-          <div class="card reveal" style="grid-column: span 12;">
-            <h3>✨ Sanctuary Specials</h3>
-            <p style="margin:0; color:var(--muted); line-height:1.65;">
-              Bau hier später ein: Spendenlink, Wunschliste, Tierheim-Partner, Charity-Event.
-              (Wenn du willst, setze ich dir das als “Sanctuary Counter” ein.)
-            </p>
+          <div class="tile reveal">
+            <h3>✨ Platzhalter</h3>
+            <p>Hier kann später Charity / Partner / Spendenziel rein.</p>
           </div>
         </div>
 
@@ -894,29 +857,29 @@
       </div>
     </section>
 
-    <!-- PORTALS (Social + Discord) -->
-    <section id="portals">
+    <!-- LINKS -->
+    <section id="links">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Portals</h2>
-          <div class="actions">
+          <h2>Links</h2>
+          <div class="pillRow">
             <a class="pill primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
             <a class="pill" href="https://open.spotify.com/playlist/1RUL905g3PozmTWp8fAZCs" target="_blank" rel="noreferrer">Spotify</a>
           </div>
         </div>
 
         <div class="grid">
-          <div class="card reveal">
+          <div class="tile reveal">
             <h3>💬 Discord</h3>
-            <p>Backstage. Squad. Talks. Ankündigungen.</p>
+            <p>Backstage, Squad, Ankündigungen.</p>
             <div class="pillRow" style="margin-top:12px;">
               <a class="pill primary" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noreferrer">Join</a>
             </div>
           </div>
 
-          <div class="card reveal">
-            <h3>📱 Social Echoes</h3>
-            <p>Shorts, Reels, Updates — das Echo vom Sanctum.</p>
+          <div class="tile reveal">
+            <h3>📱 Social</h3>
+            <p>Reels, Shorts, Updates — das Echo vom Rave.</p>
             <div class="pillRow" style="margin-top:12px;">
               <a class="pill" href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
               <a class="pill" href="https://tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
@@ -924,25 +887,23 @@
             </div>
           </div>
 
-          <div class="card reveal">
-            <h3>🦅 Signature</h3>
-            <p>Rave3eN • Neon Blau/Lila • Schwarze Nacht • Rave On 💜💙⚡</p>
+          <div class="tile reveal">
+            <h3>🦅 Signatur</h3>
+            <p>Rave3eN • Neon Blau/Lila • Schwarz • Rave On 💜💙⚡</p>
             <div class="pillRow" style="margin-top:12px;">
-              <a class="pill" href="#gate">Gate</a>
-              <a class="pill" href="#stage">Stage</a>
-              <a class="pill" href="#vault">Vault</a>
+              <a class="pill" href="#start">Start</a>
+              <a class="pill" href="#buehne">Bühne</a>
+              <a class="pill" href="#vault">Highlights</a>
             </div>
           </div>
         </div>
 
-        <div class="foot">
-          © Rave3eN • Neon Sanctum Festival
-        </div>
+        <div class="foot">© Rave3eN • Neon Ritual Festival</div>
       </div>
     </section>
   </div>
 
-  <!-- Spotify Ritual Player (always present on page) -->
+  <!-- Spotify: immer sichtbar -->
   <div class="ritualPlayer" role="region" aria-label="Spotify Player">
     <div class="wrap">
       <div class="row">
@@ -967,19 +928,18 @@
         </div>
 
         <div class="playerRight">
-          <a class="pill" href="#stage">Stage</a>
-          <a class="pill" href="#vault">Vault</a>
+          <a class="pill" href="#buehne">Bühne</a>
+          <a class="pill" href="#vault">Highlights</a>
           <a class="pill primary" href="https://open.spotify.com/playlist/1RUL905g3PozmTWp8fAZCs" target="_blank" rel="noreferrer">Spotify</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Twitch Embed -->
+  <!-- Twitch -->
   <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
   <script>
-    // ---- Twitch ----
     const TWITCH_CHANNEL = "Rave3eN";
     const PARENTS = ["www.rave3en.de", "rave3en.de"];
 
@@ -1004,7 +964,6 @@
       const chatSrc = `https://www.twitch.tv/embed/${encodeURIComponent(TWITCH_CHANNEL)}/chat?parent=${encodeURIComponent(PARENTS[0])}`;
       document.getElementById("twitchChat").src = chatSrc;
 
-      // Mobile: chat default off
       if (window.matchMedia("(max-width: 640px)").matches){
         document.getElementById("chatDrawer").classList.remove("on");
       }
@@ -1014,8 +973,8 @@
       document.getElementById("chatDrawer").classList.toggle("on");
     });
 
-    document.getElementById("btnTheatre").addEventListener("click", () => {
-      document.getElementById("stage").scrollIntoView({behavior:"smooth", block:"start"});
+    document.getElementById("btnFocus").addEventListener("click", () => {
+      document.getElementById("buehne").scrollIntoView({behavior:"smooth", block:"start"});
     });
 
     document.getElementById("btnMute").addEventListener("click", () => {
@@ -1025,7 +984,7 @@
       document.getElementById("btnMute").textContent = isMuted ? "Mute" : "Unmute";
     });
 
-    // ---- Mystic Particles + Sigils ----
+    // Mystic Particles + Sigils
     const pCanvas = document.getElementById("particles");
     const sCanvas = document.getElementById("sigils");
     const pCtx = pCanvas.getContext("2d");
@@ -1100,14 +1059,14 @@
       sCtx.setTransform(1,0,0,1,0,0);
       sCtx.clearRect(0,0,sCanvas.width,sCanvas.height);
 
-      // Large rotating rings in the background (top-right)
+      // rotating rings (top-right)
       const cx = sCanvas.width * 0.74;
-      const cy = sCanvas.height * 0.32;
+      const cy = sCanvas.height * 0.30;
       const base = Math.min(sCanvas.width, sCanvas.height) * 0.17;
 
       sCtx.save();
       sCtx.translate(cx, cy);
-      sCtx.rotate(time*0.00008);
+      sCtx.rotate(time*0.000085);
 
       for(let i=0;i<4;i++){
         const r = base + i * base*0.32;
@@ -1132,7 +1091,7 @@
       }
       sCtx.restore();
 
-      // Vignette
+      // vignette
       const g = sCtx.createRadialGradient(
         sCanvas.width*0.5, sCanvas.height*0.5, 0,
         sCanvas.width*0.5, sCanvas.height*0.5, Math.max(sCanvas.width, sCanvas.height)*0.62
@@ -1143,25 +1102,12 @@
       sCtx.fillRect(0,0,sCanvas.width,sCanvas.height);
     }
 
-    // Reveal on scroll
+    // Reveal
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("on"); });
     }, { threshold: 0.12 });
-
     function initReveal(){
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
-    }
-
-    // Soft parallax (background feel)
-    let lastY = 0;
-    function parallax(){
-      const y = window.scrollY || 0;
-      if (Math.abs(y - lastY) > 2){
-        const shift = Math.min(24, y * 0.02);
-        document.body.style.backgroundPosition = `0px 0px, 0px 0px, 0px ${shift}px, 0px 0px`;
-        lastY = y;
-      }
-      requestAnimationFrame(parallax);
     }
 
     let raf = 0;
@@ -1178,7 +1124,6 @@
     initReveal();
     mountTwitch();
     raf = requestAnimationFrame(loop);
-    requestAnimationFrame(parallax);
   </script>
 </body>
 </html>
