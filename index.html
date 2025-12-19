@@ -1,278 +1,588 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Rave3eN — EDM × Gaming × Community</title>
-<meta name="description" content="Rave3eN: EDM × Gaming × Community. Live auf Twitch, Highlights & Events – im Neon RAVE Look."/>
-<link rel="canonical" href="https://www.rave3en.de/"/>
-<meta name="theme-color" content="#000000"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rave3eN • Rave On</title>
 
-<!-- Open Graph -->
-<meta property="og:title" content="Rave3eN — EDM × Gaming × Community"/>
-<meta property="og:description" content="EDM × Gaming × Community. Neon-Blau × Neon-Lila. Live-Stream, Highlights & Events."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://www.rave3en.de/"/>
-<meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
+  <style>
+    :root{
+      --bg:#070711;
+      --bg2:#0b0b1a;
+      --text:#e9e9ff;
+      --muted:#b7b7d6;
 
-<!-- JSON-LD -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Rave3eN","url":"https://www.rave3en.de/","potentialAction":{"@type":"SearchAction","target":"https://www.rave3en.de/?q={search_term_string}","query-input":"required name=search_term_string"}}
-</script>
+      --blue:#00d5ff;   /* neon blue */
+      --purple:#b100ff; /* neon purple */
+      --black:#000000;
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+      --glass: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
 
-<!-- BASIS-STYLES (werden von PJAX erkannt/erhalten) -->
-<style data-pjax-id="base">
-:root{
-  --bg:#000; --ink:#f4f7ff; --muted:#c9d8ff;
-  --purple:#9b5cff; --blue:#00d2ff;
-  --glass:rgba(255,255,255,.06); --glass2:rgba(10,12,20,.42);
-  --border:rgba(155,92,255,.24);
-  --max:1180px; --r:18px; --rx:26px;
-  --beam-opacity:.12; --beam-speed:60s;
-}
-/* Reset / Base */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:
-    radial-gradient(900px 700px at 12% -8%, rgba(0,210,255,.10), transparent 60%),
-    radial-gradient(900px 700px at 88% 110%, rgba(155,92,255,.12), transparent 60%),
-    var(--bg);
-  color:var(--ink); font-family:"Inter",system-ui; overflow-x:hidden;
-}
-:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:10px}
-/* Header */
-header{position:fixed; inset:0 0 auto 0; z-index:60; background:rgba(0,0,0,.75); border-bottom:1px solid rgba(155,92,255,.24); backdrop-filter:blur(8px)}
-.head{max-width:var(--max); margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
-.brand{display:flex; align-items:center; gap:12px}
-.brand img{height:42px; filter:drop-shadow(0 0 10px var(--blue)) drop-shadow(0 0 14px var(--purple))}
-.name{font-family:"Orbitron"; text-transform:uppercase; font-weight:800; font-size:14px; background:linear-gradient(90deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-size:200%; animation:flow 6s linear infinite}
-@keyframes flow{50%{background-position:100% 50%}}
-.nav{display:flex; gap:10px}
-.nav a{padding:10px 14px; border-radius:999px; font-family:"Orbitron"; letter-spacing:.16em; font-size:11px; color:#e7efff; background:var(--glass); border:1px solid rgba(155,92,255,.22); text-transform:uppercase; transition:.2s; text-decoration:none}
-.nav a:hover{transform:translateY(-1px); color:#fff; box-shadow:0 0 14px rgba(0,210,255,.3)}
-/* Page */
-.page{max-width:var(--max); margin:0 auto; padding:96px 16px 120px}
-/* Hero minimal */
-.hero{position:relative; border-radius:var(--rx); overflow:hidden; background:#06070f; border:1px solid var(--border); box-shadow:0 0 40px rgba(0,210,255,.12), 0 0 40px rgba(155,92,255,.12); min-height:46vh; display:grid; place-items:center; text-align:center}
-.hero .beams{position:absolute; inset:-20%; mix-blend-mode:screen; filter:blur(1px); background:
-  conic-gradient(from 0deg at 50% -10%, rgba(155,92,255,var(--beam-opacity)), transparent 40%),
-  conic-gradient(from 180deg at 50% 110%, rgba(0,210,255,var(--beam-opacity)), transparent 40%); animation:spin var(--beam-speed) linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.copy{position:relative; z-index:2; padding:24px}
-.kicker{font-family:"Orbitron"; color:var(--blue); letter-spacing:.28em; font-size:12px; margin-bottom:10px; text-transform:uppercase}
-h1{font-family:"Orbitron"; font-size:clamp(34px,6vw,64px)}
-.sub{color:var(--muted); max-width:720px; margin:12px auto 0}
-/* Player */
-.section{margin-top:28px}
-h2{font-family:"Orbitron"; font-size:22px; margin-bottom:8px}
-.meta{color:var(--muted)}
-.playerWrap{margin-top:12px; background:rgba(255,255,255,.04); border-radius:18px; border:1px solid var(--border); overflow:hidden}
-.playerWrap #twitchFrame, .playerWrap iframe{width:100%; height:520px; border:0; display:block}
-.tabRow{display:flex; gap:10px; margin-top:10px}
-.tabBtn{padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.26); color:#e9f2ff; cursor:pointer; font-family:"Orbitron"; letter-spacing:.14em; font-size:11px; text-transform:uppercase}
-.tabBtn[aria-selected="true"]{background:linear-gradient(90deg,var(--blue),var(--purple)); color:#061018; font-weight:800}
-.panel{display:none}.panel.active{display:block}
-/* Ticker */
-.ticker{margin-top:16px; border-radius:var(--r); border:1px solid var(--border); background:rgba(255,255,255,.03); overflow:hidden; user-select:none; cursor:grab}
-.track{display:flex; gap:26px; padding:12px 18px; white-space:nowrap}
-.track span{font-family:"Orbitron"; letter-spacing:.28em; font-size:12px; text-transform:uppercase; color:#dce8ff}
-/* Spotify Mini Dock (persistiert über PJAX) */
-#playerDock{position:fixed; right:16px; bottom:16px; z-index:70; background:rgba(8,10,18,.78); border:1px solid rgba(155,92,255,.3); border-radius:16px; box-shadow:0 10px 30px rgba(0,210,255,.18), 0 0 40px rgba(155,92,255,.18); overflow:hidden; backdrop-filter:blur(8px)}
-#playerDock .dockBar{display:flex; align-items:center; gap:10px; padding:8px 10px; font-size:12px; font-family:"Orbitron"; letter-spacing:.12em}
-#dockClose{margin-left:auto; background:rgba(255,255,255,.06); border:1px solid rgba(155,92,255,.3); color:#fff; border-radius:999px; padding:4px 8px; cursor:pointer}
-#dockBody{width:min(360px, 88vw)} #dockBody iframe{width:100%; height:120px; border:0; display:block}
-@media(max-width:980px){.playerWrap #twitchFrame{height:clamp(260px,56vw,64vh)}}
-@media(max-width:640px){#dockBody iframe{height:110px}}
-footer{margin-top:34px; border-top:1px solid rgba(155,92,255,.30); padding:16px 0 36px; text-align:center; font-size:12px; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); text-shadow:0 0 8px var(--purple), 0 0 14px var(--blue)}
-</style>
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 20%, rgba(177,0,255,.20), transparent 60%),
+        radial-gradient(800px 500px at 80% 10%, rgba(0,213,255,.18), transparent 55%),
+        radial-gradient(900px 700px at 60% 80%, rgba(177,0,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* Subtle animated noise */
+    .noise{
+      pointer-events:none;
+      position:fixed; inset:0;
+      opacity:.08;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      animation: drift 9s linear infinite;
+    }
+    @keyframes drift{
+      0%{ transform: translate3d(0,0,0); }
+      100%{ transform: translate3d(-40px,30px,0); }
+    }
+
+    /* Container */
+    .wrap{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* Sticky Live Bar */
+    .livebar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(90deg, rgba(0,213,255,.10), rgba(177,0,255,.10));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .livebar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:12px 0;
+    }
+    .badge-live{
+      display:flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: #ff2b5b;
+      box-shadow: 0 0 12px rgba(255,43,91,.9);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform:scale(1); opacity:1; }
+      50%{ transform:scale(1.35); opacity:.7; }
+    }
+    .meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .bar-actions{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      font-weight:600;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.25); }
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(0,213,255,.22), rgba(177,0,255,.22));
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 0 30px rgba(0,213,255,.12), 0 0 30px rgba(177,0,255,.12);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Hero */
+    header.hero{
+      padding: 46px 0 20px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns:1fr; }
+    }
+
+    .hero-card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      padding: 28px;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(550px 200px at 20% 10%, rgba(0,213,255,.26), transparent 55%),
+                  radial-gradient(520px 220px at 80% 0%, rgba(177,0,255,.26), transparent 50%);
+      filter: blur(6px);
+      opacity:.9;
+      z-index:0;
+    }
+    .hero-card > *{ position:relative; z-index:1; }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color: var(--muted);
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .title{
+      margin: 16px 0 10px;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .title .glow{
+      text-shadow:
+        0 0 16px rgba(0,213,255,.22),
+        0 0 24px rgba(177,0,255,.18);
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 60ch;
+    }
+    .cta-row{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 16px;
+    }
+
+    /* Right visual panel */
+    .visual{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height: 310px;
+    }
+    .visual svg{ width:100%; height:100%; display:block; }
+    .visual .label{
+      position:absolute; left:16px; bottom:16px;
+      padding:10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px;
+      margin-bottom: 14px;
+    }
+    h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .hint{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 4;
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.20);
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(240px 120px at 20% 0%, rgba(0,213,255,.16), transparent 55%),
+        radial-gradient(240px 120px at 80% 0%, rgba(177,0,255,.16), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .card > *{ position:relative; z-index:1; }
+    .card h3{ margin: 0 0 8px; font-size:16px; }
+    .card p{ margin: 0 0 12px; color:var(--muted); line-height:1.55; font-size:14px; }
+    .card .mini{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    @media (max-width: 920px){
+      .card{ grid-column: span 6; }
+    }
+    @media (max-width: 620px){
+      .card{ grid-column: span 12; }
+    }
+
+    /* Timeline */
+    .timeline{
+      margin-top: 8px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .t-item{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 14px 6px;
+      position:relative;
+    }
+    .t-item:not(:last-child){
+      border-bottom:1px dashed rgba(255,255,255,.10);
+    }
+    .t-date{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.25;
+    }
+    .t-dot{
+      display:inline-flex; align-items:center; gap:10px;
+      margin-top: 8px;
+      color:var(--text);
+      font-weight:700;
+    }
+    .t-dot span{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      box-shadow: 0 0 16px rgba(0,213,255,.22), 0 0 16px rgba(177,0,255,.18);
+    }
+    .t-body h4{ margin:0 0 6px; font-size:16px; }
+    .t-body p{ margin:0; color:var(--muted); line-height:1.55; font-size:14px; }
+
+    @media (max-width: 700px){
+      .t-item{ grid-template-columns: 1fr; }
+    }
+
+    /* Footer */
+    footer{
+      padding: 30px 0 46px;
+      color:var(--muted);
+      font-size: 13px;
+    }
+    .footer-box{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 16px;
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    }
+
+    /* Small helper icons */
+    .ico{ width:16px; height:16px; display:inline-block; }
+    .ico svg{ width:16px; height:16px; display:block; }
+  </style>
 </head>
 
 <body>
+  <div class="noise"></div>
 
-<header>
-  <div class="head">
-    <div class="brand">
-      <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <img src="logo%20druck.png" alt="Rave3eN Logo"/><div class="name">RAVE3EN</div>
-      </a>
-    </div>
-    <nav class="nav">
-      <a href="events.html" data-pjax>Events</a>
-      <a href="about.html" data-pjax>About Me</a>
-      <a href="highlight-clips.html" data-pjax>Highlight Clips</a>
-    </nav>
-  </div>
-</header>
+  <!-- Sticky Live Bar -->
+  <div class="livebar">
+    <div class="wrap">
+      <div class="row">
+        <div class="badge-live" id="liveBadge" aria-live="polite">
+          <div class="dot" id="liveDot"></div>
+          <strong id="liveState">LIVE</strong>
+          <span style="color:var(--muted); font-weight:600;" id="liveTitle">Bass & Breakout • Rave On 💜💙⚡</span>
+        </div>
 
-<!-- Spotify Mini-Dock (persistiert über PJAX) -->
-<aside id="playerDock" aria-label="Spotify Player">
-  <div class="dockBar"><span>🎧 Rave3eN EDM Playlist</span><button id="dockClose" aria-label="Player schließen">✕</button></div>
-  <div id="dockBody">
-    <iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-  </div>
-</aside>
+        <div class="meta">
+          <span class="pill" id="liveGame">Game: Arena Breakout</span>
+          <span class="pill" id="liveViewers">Viewer: —</span>
+          <span class="pill" id="liveUptime">Uptime: —</span>
+        </div>
 
-<main class="page" id="pjax-root">
-
-  <!-- HERO (nur der EDM/Gaming/Community Block) -->
-  <section class="hero" aria-label="EDM Poster">
-    <div class="beams" aria-hidden="true"></div>
-    <div class="copy">
-      <div class="kicker">EDM ENERGY</div>
-      <h1>Gaming. Musik. Community.</h1>
-      <p class="sub">Energie, Bass und Momente, die bleiben. Willkommen beim Rave.</p>
-    </div>
-  </section>
-
-  <!-- Twitch Player mit Auto-Fallback -->
-  <section id="live" class="section" aria-labelledby="liveTitle">
-    <h2 id="liveTitle">Live auf Twitch</h2>
-    <p class="meta">Autoplay · Fallback auf VOD, wenn Offline.</p>
-
-    <div class="tabRow" role="tablist" aria-label="Player Tabs">
-      <button id="tabLive" class="tabBtn" role="tab" aria-selected="true" aria-controls="panelLive">🔴 Live</button>
-      <button id="tabVod" class="tabBtn" role="tab" aria-selected="false" aria-controls="panelVod">📼 VOD</button>
-    </div>
-
-    <div id="panelLive" class="panel active" role="tabpanel" aria-labelledby="tabLive">
-      <div class="playerWrap">
-        <!-- Twitch JS SDK Player: wir steuern ONLINE/OFFLINE -->
-        <div id="twitchFrame"></div>
+        <div class="bar-actions">
+          <a class="btn btn-primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 3h18v11l-5 5h-5l-3 3H7v-3H4V3z" stroke="currentColor" stroke-width="1.8" />
+                <path d="M11 8v5M16 8v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Twitch öffnen
+          </a>
+          <a class="btn btn-ghost" href="#events">Events</a>
+          <a class="btn btn-ghost" href="#links">Links</a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div id="panelVod" class="panel" role="tabpanel" aria-labelledby="tabVod">
-      <div class="playerWrap">
-        <iframe
-          src="https://player.twitch.tv/?video=2633733485&parent=www.rave3en.de&parent=rave3en.de&parent=rave3en.github.io&parent=localhost"
-          allowfullscreen loading="lazy" title="Rave3eN Twitch VOD"></iframe>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">Rave3eN • EDM • Gameplay • Community</div>
+          <h1 class="title">
+            Loot im Takt.<br />
+            <span class="glow">Kills im Beat.</span><br />
+            <span class="glow">Rave On</span> 💜💙⚡
+          </h1>
+          <p class="lead">
+            Willkommen im Neon-Nest. Hier gibt’s Arena Breakout, Emotionen, EDM-Vibes
+            und eine Community, die zusammen eskaliert – fair, laut und mit Herz.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">
+              Live reinspringen
+            </a>
+            <a class="btn" href="#events">Nächste Events</a>
+            <a class="btn btn-ghost" href="#links">Alle Links</a>
+          </div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <!-- Abstract rave wave (SVG) -->
+          <svg viewBox="0 0 900 520" preserveAspectRatio="none">
+            <defs>
+              <radialGradient id="g1" cx="30%" cy="10%" r="80%">
+                <stop offset="0%" stop-color="rgba(0,213,255,.45)"/>
+                <stop offset="55%" stop-color="rgba(0,213,255,.08)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+              </radialGradient>
+              <radialGradient id="g2" cx="80%" cy="0%" r="85%">
+                <stop offset="0%" stop-color="rgba(177,0,255,.45)"/>
+                <stop offset="55%" stop-color="rgba(177,0,255,.08)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+              </radialGradient>
+              <linearGradient id="line" x1="0" x2="1">
+                <stop offset="0" stop-color="rgba(0,213,255,.9)"/>
+                <stop offset="1" stop-color="rgba(177,0,255,.9)"/>
+              </linearGradient>
+              <filter id="blur">
+                <feGaussianBlur stdDeviation="10"/>
+              </filter>
+            </defs>
+
+            <rect width="900" height="520" fill="rgba(255,255,255,.02)"/>
+            <circle cx="220" cy="120" r="220" fill="url(#g1)"/>
+            <circle cx="740" cy="80"  r="260" fill="url(#g2)"/>
+
+            <!-- neon waves -->
+            <path d="M0,320 C140,280 240,360 360,330 C490,295 570,360 690,340 C790,325 840,290 900,310"
+                  fill="none" stroke="url(#line)" stroke-width="3.2" opacity=".95"/>
+            <path d="M0,360 C160,320 250,410 380,380 C510,345 600,420 720,395 C815,375 850,335 900,360"
+                  fill="none" stroke="url(#line)" stroke-width="2.6" opacity=".55"/>
+            <path d="M0,410 C150,380 280,470 400,440 C530,410 620,470 740,450 C830,435 860,405 900,420"
+                  fill="none" stroke="url(#line)" stroke-width="2.2" opacity=".35"/>
+
+            <!-- glow bloom -->
+            <path d="M0,320 C140,280 240,360 360,330 C490,295 570,360 690,340 C790,325 840,290 900,310"
+                  fill="none" stroke="url(#line)" stroke-width="18" opacity=".14" filter="url(#blur)"/>
+          </svg>
+
+          <div class="label">Neon Visual • clean + schnell • perfekt als Hero</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CARDS -->
+  <section id="links">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Dein Rave Hub</h2>
+        <p class="hint">Cards sind klickbar & passen perfekt für Website/Link-in-Bio.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>🎮 Twitch • Live & VOD</h3>
+          <p>Direkt rein, Chat aufdrehen, passiv mitzählen – Rave On.</p>
+          <div class="mini">
+            <a class="btn btn-primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
+            <a class="btn btn-ghost" href="https://www.twitch.tv/Rave3eN/schedule" target="_blank" rel="noreferrer">Schedule</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>💬 Community • Discord</h3>
+          <p>VIP-Vibes, Talk, Clips, Squad – alles an einem Ort.</p>
+          <div class="mini">
+            <a class="btn" href="#" onclick="alert('Discord-Link hier einfügen 😉'); return false;">Discord Link</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>⚡ Highlights • Socials</h3>
+          <p>Shorts, Reels, Clips – schnelle Dopamin-Drops im Neon-Look.</p>
+          <div class="mini">
+            <a class="btn btn-ghost" href="#" onclick="alert('Instagram/TikTok/YouTube Links hier einfügen 😉'); return false;">Social Links</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Laufender Ticker -->
-  <section class="ticker" aria-label="Timeline">
-    <div class="track" id="marqueeTrack">
-      <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-      <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+  <!-- TIMELINE -->
+  <section id="events">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Events & Specials</h2>
+        <p class="hint">Timeline ist ideal für Rave Drive / Camp / Charity.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div>
+            <div class="t-date">25–28 Dez</div>
+            <div class="t-dot"><span></span> SpendenStream</div>
+          </div>
+          <div class="t-body">
+            <h4>Charity • Gemeinsam eskalieren für den guten Zweck</h4>
+            <p>Neon, Herz, Community – mit Goals, Alerts & fetten Momenten.</p>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div>
+            <div class="t-date">Q1 / 2026</div>
+            <div class="t-dot"><span></span> Rave Drive</div>
+          </div>
+          <div class="t-body">
+            <h4>Roadtrip-Style • Meetups + Content + Vibes</h4>
+            <p>Stops, Fotos, Clips, Community-Momente – alles im Bass-Takt.</p>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div>
+            <div class="t-date">Anytime</div>
+            <div class="t-dot"><span></span> Bass & Breakout Nights</div>
+          </div>
+          <div class="t-body">
+            <h4>EDM-Session • Arena Breakout • Fokus + Chaos</h4>
+            <p>Wenn der Beat droppt, wird gespielt. Wenn’s knallt, wird gelacht.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-</main>
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-box">
+        <div>
+          <strong style="color:var(--text)">Rave3eN</strong>
+          <span style="margin-left:8px;">• Neon blue / neon purple / black • Rave On 💜💙⚡</span>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-ghost" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Nach oben</a>
+          <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<footer>Rave3eN © 2025 — EDM × Gaming × Community</footer>
-
-<!-- Twitch Player SDK -->
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-<script>
-/* Tabs (Live/VOD) */
-(()=>{const L=document.getElementById('tabLive'),V=document.getElementById('tabVod'),pL=document.getElementById('panelLive'),pV=document.getElementById('panelVod');
-function activate(isLive){L.setAttribute('aria-selected',isLive);V.setAttribute('aria-selected',!isLive);pL.classList.toggle('active',isLive);pV.classList.toggle('active',!isLive)}
-L.addEventListener('click',()=>activate(true)); V.addEventListener('click',()=>activate(false));})();
-
-/* Ticker */
-(()=>{const t=document.getElementById('marqueeTrack');if(!t)return;t.innerHTML+=t.innerHTML;let o=0,s=.4,drag=false,x=0,so=0;
-const step=()=>{if(!drag)o-=s;const w=t.scrollWidth/2;if(o<=-w)o+=w;t.style.transform=`translateX(${o}px)`;requestAnimationFrame(step)};step();
-t.addEventListener('pointerdown',e=>{drag=true;x=e.clientX;so=o;t.setPointerCapture(e.pointerId)});addEventListener('pointermove',e=>{if(drag)o=so+(e.clientX-x)});addEventListener('pointerup',()=>{drag=false});})();
-
-/* Spotify Dock close */
-document.getElementById('dockClose')?.addEventListener('click',()=>document.getElementById('playerDock')?.remove());
-
-/* Twitch Player mit Auto-Fallback auf VOD wenn offline */
-(function(){
-  const VOD_ID = "2633733485"; // <- hier kannst du das Fallback-VOD tauschen
-  const parentList = ["www.rave3en.de","rave3en.de","rave3en.github.io","localhost"];
-
-  const container = document.getElementById("twitchFrame");
-  if(!container || !window.Twitch) return;
-
-  let player = new Twitch.Player("twitchFrame", {
-    width: "100%",
-    height: "100%",
-    channel: "rave3en",
-    autoplay: true,
-    muted: false,
-    parent: parentList
-  });
-
-  // Wenn der Stream online/offline schaltet, wechseln wir automatisch
-  player.addEventListener(Twitch.Player.ONLINE, ()=> {
-    // zurück auf Channel
-    try{ player.setChannel("rave3en"); }catch{}
-    // UI auf LIVE
-    document.getElementById('tabLive')?.click();
-  });
-  player.addEventListener(Twitch.Player.OFFLINE, ()=> {
-    try{ player.setVideo("v"+VOD_ID); }catch{}
-    // UI auf VOD
-    document.getElementById('tabVod')?.click();
-  });
-
-  // Fallback: kurze Prüfung nach 6s -> wenn kein Live läuft, schalte auf VOD
-  setTimeout(()=>{
-    try{
-      // Der Player liefert bei Offline keine Frames; wir schalten vorsorglich
-      player.setVideo("v"+VOD_ID);
-      document.getElementById('tabVod')?.click();
-    }catch{}
-  }, 6000);
-})();
-
-/* ===== Mini-PJAX mit Head-Style-Merge ===== */
-(function(){
-  const ROOT_ID='pjax-root';
-  function sameOrigin(href){try{const u=new URL(href,location.href);return u.origin===location.origin}catch{return false}}
-  function shouldPJAX(a){if(!a||a.target==='_blank'||a.hasAttribute('download'))return false; if(a.hasAttribute('data-no-pjax'))return false; return sameOrigin(a.href)}
-  function mergeHead(fromDoc){
-    const incoming=[...fromDoc.querySelectorAll('style[data-pjax-id],link[rel="stylesheet"][data-pjax-id]')];
-    incoming.forEach(node=>{
-      const id=node.getAttribute('data-pjax-id'); if(!id) return;
-      const existing=document.head.querySelector(`[data-pjax-id="${id}"]`);
-      if(existing) existing.remove();
-      document.head.appendChild(node.cloneNode(true));
-    });
-  }
-  async function load(url,replaceState=false){
-    const res=await fetch(url,{headers:{'X-PJAX':'true'}});
-    const html=await res.text();
-    const doc=new DOMParser().parseFromString(html,'text/html');
-    mergeHead(doc);
-    const newMain=doc.getElementById(ROOT_ID)||doc.querySelector('main.page');
-    const target=document.getElementById(ROOT_ID);
-    if(newMain&&target){
-      target.innerHTML=newMain.innerHTML;
-      document.title=doc.title||document.title;
-      if(!replaceState) history.pushState({url},'',url);
-      // Skripte im neuen Main ausführen
-      newMain.querySelectorAll('script').forEach(s=>{const ns=document.createElement('script'); if(s.src){ns.src=s.src}else{ns.textContent=s.textContent} document.body.appendChild(ns); ns.remove();});
-      bind();
-      target.animate([{opacity:0},{opacity:1}],{duration:180,easing:'ease-out'});
-      // Spotify-Dock sicherstellen bei Direkteinstieg
-      ensureDock();
-    } else { location.href=url; }
-  }
-  function clickHandler(e){const a=e.target.closest('a'); if(!a||!shouldPJAX(a))return; e.preventDefault(); load(a.href)}
-  function popHandler(e){const url=(e.state&&e.state.url)||location.href; load(url,true)}
-  function bind(){document.body.removeEventListener('click',clickHandler); document.body.addEventListener('click',clickHandler,true)}
-  function ensureDock(){
-    if(!document.getElementById('playerDock')){
-      const dock=document.createElement('aside'); dock.id='playerDock'; dock.setAttribute('aria-label','Spotify Player');
-      dock.innerHTML=`<div class="dockBar"><span>🎧 Rave3eN EDM Playlist</span><button id="dockClose" aria-label="Player schließen">✕</button></div>
-      <div id="dockBody"><iframe src="https://open.spotify.com/embed/playlist/1RUL905g3PozmTWp8fAZCs?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>`;
-      document.body.appendChild(dock);
-      document.getElementById('dockClose')?.addEventListener('click',()=>document.getElementById('playerDock')?.remove());
+  <script>
+    // OPTIONAL: Live-Status dynamisch befüllen (z.B. über /status.json oder /status.txt)
+    // Erwarte JSON z.B.:
+    // { "live": true, "title": "Bass & Breakout", "game": "Arena Breakout", "viewers": 123, "uptime": "01:12:04" }
+    async function tryLoadStatus(){
+      const endpoints = ["./status.json"]; // du kannst hier auch "./status.txt" ergänzen
+      for (const url of endpoints){
+        try{
+          const res = await fetch(url, { cache: "no-store" });
+          if(!res.ok) continue;
+          const data = await res.json();
+          applyStatus(data);
+          return;
+        }catch(e){ /* ignore */ }
+      }
+      // Fallback: bleibt bei Default-Text
     }
-  }
-  addEventListener('popstate',popHandler); bind();
-})();
-</script>
+
+    function applyStatus(data){
+      const live = !!data.live;
+
+      document.getElementById("liveState").textContent = live ? "LIVE" : "OFFLINE";
+      document.getElementById("liveDot").style.opacity = live ? "1" : ".25";
+      document.getElementById("liveDot").style.animation = live ? "pulse 1.2s ease-in-out infinite" : "none";
+
+      if (data.title) document.getElementById("liveTitle").textContent = data.title;
+      if (data.game) document.getElementById("liveGame").textContent = "Game: " + data.game;
+      if (typeof data.viewers === "number") document.getElementById("liveViewers").textContent = "Viewer: " + data.viewers;
+      if (data.uptime) document.getElementById("liveUptime").textContent = "Uptime: " + data.uptime;
+    }
+
+    tryLoadStatus();
+  </script>
 </body>
 </html>
