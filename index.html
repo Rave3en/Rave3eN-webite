@@ -118,29 +118,12 @@
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 240px;
+      min-width: 120px;
       flex: 0 0 auto;
     }
     .logo{
       height:42px;
       filter: drop-shadow(0 0 10px rgba(0,213,255,.35)) drop-shadow(0 0 14px rgba(177,0,255,.25));
-    }
-    .brandText{
-      line-height:1.08;
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-size: 13px;
-    }
-    .brandText small{
-      display:block;
-      margin-top:4px;
-      font-family: Rajdhani, sans-serif;
-      letter-spacing:.12em;
-      font-weight:700;
-      color: rgba(183,198,255,.88);
-      font-size: 12px;
-      text-transform:uppercase;
     }
 
     .nav{ display:flex; align-items:center; justify-content:flex-end; flex:1 1 auto; min-width:0; }
@@ -187,48 +170,9 @@
     @media (max-width: 560px){
       .chip{ padding:9px 11px; font-size:10px; }
       .navScroll{ justify-content:flex-start; }
-      .brandText{ display:none; }
     }
 
     section{ padding: var(--secY) 0; }
-    .sectionHead{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 12px;
-      margin: 0 0 14px;
-    }
-    h2{
-      margin:0;
-      font-family: Orbitron, sans-serif;
-      font-size: 15px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    .tools{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-
-    .pill{
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-      white-space:nowrap;
-      color: rgba(246,247,255,.96);
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
-    }
-    .pill.primary{
-      border-color: rgba(255,255,255,.22);
-      background: linear-gradient(90deg, rgba(0,213,255,.18), rgba(177,0,255,.18));
-    }
 
     .panel{
       position:relative;
@@ -328,7 +272,7 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* SIGIL ROOM FIX + LOGO ROTATION + ZAPS */
+    /* SIGIL ROOM: SUMMON INTRO */
     .sigilRoom{
       position:relative;
       overflow:hidden;
@@ -359,6 +303,7 @@
       pointer-events:none;
     }
 
+    /* halo appears with summon, then breath */
     .sigilHalo{
       width: min(62%, 320px);
       aspect-ratio: 1/1;
@@ -371,10 +316,68 @@
           rgba(0,213,255,.22),
           rgba(177,0,255,.22),
           rgba(0,213,255,.00));
-      filter: blur(0.2px);
       box-shadow:
         0 0 40px rgba(0,213,255,.14),
         0 0 46px rgba(177,0,255,.12);
+      opacity:0;
+      transform: scale(.72);
+      filter: blur(0.2px);
+    }
+
+    /* logo summon state (before JS toggles .summoned) */
+    .sigilLogo{
+      position:absolute;
+      width: min(42%, 220px);
+      height:auto;
+      transform-origin: 50% 50%;
+      opacity:0;
+      transform: translateY(18px) scale(.68) rotate(-28deg);
+      filter:
+        blur(5px)
+        drop-shadow(0 0 0px rgba(0,213,255,0))
+        drop-shadow(0 0 0px rgba(177,0,255,0));
+    }
+
+    /* Summon sequence */
+    .sigilRoom.summon .sigilHalo{
+      animation: haloSummon 1.6s cubic-bezier(.14,.92,.18,1) both;
+    }
+    @keyframes haloSummon{
+      0%   { opacity:0; transform: scale(.72); }
+      55%  { opacity:.92; transform: scale(1.08); }
+      100% { opacity:.84; transform: scale(1.00); }
+    }
+
+    .sigilRoom.summon .sigilLogo{
+      animation: logoSummon 1.55s cubic-bezier(.16,.98,.16,1) both;
+    }
+    @keyframes logoSummon{
+      0%{
+        opacity:0;
+        transform: translateY(18px) scale(.68) rotate(-28deg);
+        filter: blur(6px);
+      }
+      55%{
+        opacity:.92;
+        transform: translateY(-4px) scale(1.10) rotate(8deg);
+        filter: blur(1px);
+      }
+      78%{
+        opacity:1;
+        transform: translateY(0px) scale(0.98) rotate(-2deg);
+        filter: blur(0px);
+      }
+      100%{
+        opacity:.96;
+        transform: translateY(0px) scale(1.00) rotate(0deg);
+        filter: blur(0px);
+      }
+    }
+
+    /* After summon: breathing halo + slow rotation */
+    .sigilRoom.summoned .sigilHalo{
+      opacity:.84;
+      transform: scale(1);
       animation: haloBreath 5.8s ease-in-out infinite;
     }
     @keyframes haloBreath{
@@ -382,22 +385,19 @@
       50%{ transform: scale(1.03); opacity:.92; }
     }
 
-    .sigilLogo{
-      position:absolute;
-      width: min(42%, 220px);
-      height:auto;
+    .sigilRoom.summoned .sigilLogo{
+      opacity:.96;
+      transform: translateY(0) scale(1) rotate(0deg);
       filter:
         drop-shadow(0 0 12px rgba(0,213,255,.26))
         drop-shadow(0 0 16px rgba(177,0,255,.22));
-      transform-origin: 50% 50%;
       animation: sigilSpin 18s linear infinite;
-      opacity:.96;
     }
     @keyframes sigilSpin{
-      to{ transform: rotate(360deg); }
+      to{ transform: translateY(0) scale(1) rotate(360deg); }
     }
 
-    /* Electric Zaps Layer */
+    /* Electric Zaps */
     .sigilZap{
       position:absolute;
       inset:0;
@@ -415,47 +415,23 @@
       filter: blur(0.5px);
       transform: translate3d(0,0,0);
     }
-    .sigilRoom.zap .sigilZap{
-      animation: zapFlash .26s ease-out 1;
-    }
+    .sigilRoom.zap .sigilZap{ animation: zapFlash .26s ease-out 1; }
+    .sigilRoom.zapStrong .sigilZap{ animation: zapFlashStrong .55s ease-out 1; }
     @keyframes zapFlash{
       0%{ opacity:0; }
-      25%{ opacity:.70; }
+      25%{ opacity:.65; }
       55%{ opacity:.16; }
       100%{ opacity:0; }
     }
-
-    .sigilStamp{
-      position:absolute;
-      right: 14px; bottom: 14px;
-      max-width: 520px;
-      padding: 12px 14px;
-      border-radius: 22px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.26);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      text-align:right;
-      z-index:3;
-    }
-    .sigilStamp strong{
-      display:block;
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size: 11px;
-    }
-    .sigilStamp span{
-      display:block;
-      margin-top:6px;
-      color: rgba(183,198,255,.92);
-      font-size: 13px;
-      line-height:1.5;
-      font-family: Rajdhani, sans-serif;
-      letter-spacing:.04em;
+    @keyframes zapFlashStrong{
+      0%{ opacity:0; }
+      18%{ opacity:.92; }
+      42%{ opacity:.28; }
+      60%{ opacity:.62; }
+      100%{ opacity:0; }
     }
 
-    /* TICKER (moved under portal, slowed) */
+    /* TICKER */
     .ticker{
       margin-top: 14px;
       border-radius: var(--r);
@@ -481,7 +457,46 @@
       color: rgba(220,232,255,.92);
     }
 
-    /* Content grids */
+    /* Sections */
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 12px;
+      margin: 0 0 14px;
+    }
+    h2{
+      margin:0;
+      font-family: Orbitron, sans-serif;
+      font-size: 15px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .tools{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+
+    .pill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      white-space:nowrap;
+      color: rgba(246,247,255,.96);
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
+    }
+    .pill.primary{
+      border-color: rgba(255,255,255,.22);
+      background: linear-gradient(90deg, rgba(0,213,255,.18), rgba(177,0,255,.18));
+    }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -534,7 +549,6 @@
       .card.big{ min-height: 320px; }
     }
 
-    /* Twitch Stage */
     .stageTop{
       display:flex; align-items:center; justify-content:space-between;
       gap:10px;
@@ -710,10 +724,6 @@
           <div class="brand">
             <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;">
               <img class="logo" src="logo%20druck.png" alt="Rave3eN Logo" />
-              <div class="brandText">
-                RAVE3EN
-                <small>Neon Ritual Portal</small>
-              </div>
             </a>
           </div>
 
@@ -734,7 +744,6 @@
     </div>
 
     <main id="pjax-root">
-      <!-- PORTAL -->
       <section class="portal" id="portal">
         <div class="wrap">
           <div class="panel reveal">
@@ -805,16 +814,10 @@
                 </div>
 
                 <div class="sigilZap" aria-hidden="true"></div>
-
-                <div class="sigilStamp">
-                  <strong>Rave Sigil</strong>
-                  <span>Creator • Musik • Emotion • Sinn • Tiere</span>
-                </div>
               </div>
             </div>
           </div>
 
-          <!-- TICKER moved HERE (below portal) -->
           <div class="ticker reveal" id="ticker" aria-label="Ticker">
             <div class="track" id="track">
               <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
@@ -827,7 +830,6 @@
         </div>
       </section>
 
-      <!-- STAGE -->
       <section id="stage">
         <div class="wrap">
           <div class="sectionHead">
@@ -865,7 +867,6 @@
         </div>
       </section>
 
-      <!-- VAULT -->
       <section id="vault">
         <div class="wrap">
           <div class="sectionHead">
@@ -917,7 +918,6 @@
         </div>
       </section>
 
-      <!-- LINKS -->
       <section id="portale">
         <div class="wrap">
           <div class="sectionHead">
@@ -959,13 +959,12 @@
             </div>
           </div>
 
-          <footer>© Rave3eN • Neon Ritual Portal</footer>
+          <footer>© Rave3eN</footer>
         </div>
       </section>
     </main>
   </div>
 
-  <!-- Spotify Dock -->
   <div class="dock" id="playerDock" role="region" aria-label="Spotify Player">
     <div class="wrap">
       <div class="row">
@@ -1054,17 +1053,14 @@
       document.getElementById("playerDock")?.remove();
     });
 
-    // Ticker (moved under portal) - slowed down
+    // Ticker (slow)
     (() => {
       const t = document.getElementById("ticker");
       const track = document.getElementById("track");
       if(!t || !track) return;
 
       let x = 0;
-
-      // was 0.35 -> now much slower
       let vx = 0.16;
-
       let drag = false;
       let last = 0;
       let startX = 0;
@@ -1108,34 +1104,55 @@
       });
     })();
 
-    // Sigil Zaps (random, subtle)
+    // Sigil: Summon + Zaps
     (()=>{
       const room = document.getElementById("sigilRoom");
       if(!room) return;
 
-      function zap(){
-        room.classList.remove("zap");
-        // force reflow to restart animation clean
+      function zap(cls="zap"){
+        room.classList.remove("zap","zapStrong");
         void room.offsetWidth;
-        room.classList.add("zap");
-        setTimeout(()=> room.classList.remove("zap"), 350);
+        room.classList.add(cls);
+        setTimeout(()=> room.classList.remove("zap","zapStrong"), 650);
       }
 
-      function loop(){
-        // random interval: ~2.2s to 7.5s
-        const next = 2200 + Math.random()*5300;
+      // Summon sequence
+      // 1) start summon
+      requestAnimationFrame(()=>{
+        room.classList.add("summon");
+        // 2) strong zap at lock-in moment
+        setTimeout(()=> zap("zapStrong"), 820);
+        // 3) after animation: switch to loop state
         setTimeout(()=>{
-          // 70% chance single zap, 30% double-tap
-          zap();
-          if(Math.random() < 0.30){
-            setTimeout(zap, 160 + Math.random()*180);
+          room.classList.remove("summon");
+          room.classList.add("summoned");
+          // small confirmation zap
+          setTimeout(()=> zap("zap"), 220);
+        }, 1650);
+      });
+
+      // Ambient zaps loop (only after summoned)
+      function loop(){
+        const next = 2600 + Math.random()*6200;
+        setTimeout(()=>{
+          if(room.classList.contains("summoned")){
+            zap(Math.random()<0.18 ? "zapStrong" : "zap");
+            if(Math.random() < 0.24){
+              setTimeout(()=> zap("zap"), 160 + Math.random()*180);
+            }
           }
           loop();
         }, next);
       }
       loop();
+
+      // Extra zap on hover (desktop)
+      room.addEventListener("pointerenter", ()=>{
+        if(room.classList.contains("summoned")) zap("zapStrong");
+      }, {passive:true});
     })();
 
+    // Reveal
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("on"); });
     }, {threshold:0.12});
@@ -1143,6 +1160,7 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
+    // Background FX
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
@@ -1294,93 +1312,14 @@
       requestAnimationFrame(loop);
     }
 
+    initReveal();
+    resize(); seedFog(); seedMotes();
+    mountTwitch();
+    requestAnimationFrame(loop);
+
     window.addEventListener("resize", ()=>{
       resize(); seedFog(); seedMotes();
     }, {passive:true});
-
-    (function(){
-      const ROOT_ID='pjax-root';
-
-      function sameOrigin(href){
-        try{ const u=new URL(href,location.href); return u.origin===location.origin; }
-        catch{ return false; }
-      }
-      function isSamePageAnchor(a){
-        try{
-          const u=new URL(a.href,location.href);
-          const cur=new URL(location.href);
-          return u.origin===cur.origin && u.pathname===cur.pathname && u.search===cur.search && u.hash;
-        }catch{ return false; }
-      }
-      function shouldPJAX(a){
-        if(!a || a.target==='_blank' || a.hasAttribute('download')) return false;
-        if(a.hasAttribute('data-no-pjax')) return false;
-        if(isSamePageAnchor(a)) return false;
-        if(!a.hasAttribute('data-pjax')) return false;
-        return sameOrigin(a.href);
-      }
-      function mergeHead(fromDoc){
-        const incoming=[...fromDoc.querySelectorAll('style[data-pjax-id],link[rel="stylesheet"][data-pjax-id]')];
-        incoming.forEach(node=>{
-          const id=node.getAttribute('data-pjax-id'); if(!id) return;
-          const existing=document.head.querySelector(`[data-pjax-id="${id}"]`);
-          if(existing) existing.remove();
-          document.head.appendChild(node.cloneNode(true));
-        });
-      }
-      async function load(url,replaceState=false){
-        const res=await fetch(url,{headers:{'X-PJAX':'true'}});
-        const html=await res.text();
-        const doc=new DOMParser().parseFromString(html,'text/html');
-        mergeHead(doc);
-
-        const newMain=doc.getElementById(ROOT_ID) || doc.querySelector('main#pjax-root');
-        const target=document.getElementById(ROOT_ID);
-
-        if(newMain && target){
-          target.innerHTML=newMain.innerHTML;
-          document.title=doc.title||document.title;
-          if(!replaceState) history.pushState({url},'',url);
-
-          newMain.querySelectorAll('script').forEach(s=>{
-            const ns=document.createElement('script');
-            if(s.src){ ns.src=s.src; }
-            else { ns.textContent=s.textContent; }
-            document.body.appendChild(ns);
-            ns.remove();
-          });
-
-          bind();
-          initReveal();
-          mountTwitch();
-        } else {
-          location.href=url;
-        }
-      }
-      function clickHandler(e){
-        const a=e.target.closest('a');
-        if(!a || !shouldPJAX(a)) return;
-        e.preventDefault();
-        load(a.href);
-      }
-      function popHandler(e){
-        const url=(e.state && e.state.url) || location.href;
-        load(url,true);
-      }
-      function bind(){
-        document.body.removeEventListener('click',clickHandler,true);
-        document.body.addEventListener('click',clickHandler,true);
-      }
-      addEventListener('popstate',popHandler);
-      bind();
-    })();
-
-    initReveal();
-    resize();
-    seedFog();
-    seedMotes();
-    mountTwitch();
-    requestAnimationFrame(loop);
   </script>
 </body>
 </html>
