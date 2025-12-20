@@ -9,7 +9,6 @@
   <link rel="canonical" href="https://www.rave3en.de/" />
   <meta name="theme-color" content="#030308" />
 
-  <!-- Open Graph (aus alt übernommen) -->
   <meta property="og:title" content="Rave3eN — EDM × Gaming × Community" />
   <meta property="og:description" content="EDM × Gaming × Community. Neon-Blau × Neon-Lila. Live-Stream, Highlights & Events." />
   <meta property="og:type" content="website" />
@@ -17,12 +16,10 @@
   <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- JSON-LD (aus alt übernommen) -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"Rave3eN","url":"https://www.rave3en.de/","potentialAction":{"@type":"SearchAction","target":"https://www.rave3en.de/?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
@@ -38,7 +35,6 @@
       --purple:#b100ff;
 
       --glass: rgba(255,255,255,.05);
-      --glass2: rgba(8,10,18,.62);
       --stroke: rgba(255,255,255,.12);
       --stroke2: rgba(177,0,255,.22);
 
@@ -50,7 +46,12 @@
 
       --max: 1220px;
       --hudH: 78px;
-      --dockH: 116px;
+      --dockH: 112px;
+
+      /* NEW: spacing scale */
+      --padX: 40px;
+      --secY: 44px;
+      --gap: 18px;
     }
 
     *{ box-sizing:border-box; }
@@ -92,14 +93,21 @@
     .content{
       position:relative;
       z-index:2;
-      padding-bottom: calc(var(--dockH) + 22px);
+      padding-bottom: calc(var(--dockH) + 34px);
     }
 
     .wrap{
-      width:min(var(--max), calc(100% - 40px));
+      width:min(var(--max), calc(100% - var(--padX)));
       margin:0 auto;
     }
-    @media (max-width:560px){ .wrap{ width:min(var(--max), calc(100% - 26px)); } }
+
+    /* Responsive spacing */
+    @media (max-width: 720px){
+      :root{ --padX: 26px; --secY: 34px; --gap: 14px; }
+    }
+    @media (max-width: 420px){
+      :root{ --padX: 22px; --secY: 30px; --gap: 12px; }
+    }
 
     /* HUD */
     .hud{
@@ -119,13 +127,14 @@
     .brand{
       display:flex; align-items:center; gap:12px;
       min-width: 240px;
+      flex: 0 0 auto;
     }
     .logo{
       height:42px;
       filter: drop-shadow(0 0 10px rgba(0,213,255,.35)) drop-shadow(0 0 14px rgba(177,0,255,.25));
     }
     .brandText{
-      line-height:1.05;
+      line-height:1.08;
       font-family: Orbitron, sans-serif;
       letter-spacing:.16em;
       text-transform:uppercase;
@@ -133,7 +142,7 @@
     }
     .brandText small{
       display:block;
-      margin-top:3px;
+      margin-top:4px;
       font-family: Rajdhani, sans-serif;
       letter-spacing:.12em;
       font-weight:700;
@@ -142,10 +151,29 @@
       text-transform:uppercase;
     }
 
+    /* NAV: stop wrapping on small screens (no “squish”), allow horizontal scroll */
     .nav{
-      display:flex; flex-wrap:wrap; gap:10px;
-      justify-content:flex-end; align-items:center;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      flex: 1 1 auto;
+      min-width: 0;
     }
+    .navScroll{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      overflow-x:auto;
+      overflow-y:hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      min-width: 0;
+      padding-bottom: 2px;
+    }
+    .navScroll::-webkit-scrollbar{ display:none; }
+
     .chip{
       padding: 10px 12px;
       border-radius: 999px;
@@ -159,6 +187,7 @@
       user-select:none;
       transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
       white-space:nowrap;
+      flex: 0 0 auto;
     }
     .chip:hover{
       transform: translateY(-1px);
@@ -171,21 +200,23 @@
     }
 
     @media (max-width: 980px){
-      :root{ --hudH: 104px; }
-      .hud .row{ height:auto; align-items:flex-start; }
+      :root{ --hudH: 92px; }
+      .hud .row{ height:auto; align-items:center; }
       .brand{ min-width: unset; }
     }
     @media (max-width: 560px){
       .chip{ padding:9px 11px; font-size:10px; }
       .nav{ gap:8px; }
+      .navScroll{ justify-content:flex-start; }
+      .brandText{ display:none; } /* gives more room without “squish” */
     }
 
     /* Sections */
-    section{ padding: 26px 0; }
+    section{ padding: var(--secY) 0; }
     .sectionHead{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap: 12px;
-      margin: 18px 0 12px;
+      margin: 0 0 14px;
     }
     h2{
       margin:0;
@@ -221,7 +252,7 @@
       background: linear-gradient(90deg, rgba(0,213,255,.18), rgba(177,0,255,.18));
     }
 
-    /* Cards / Panels */
+    /* Panels */
     .panel{
       position:relative;
       border-radius: var(--rx);
@@ -242,47 +273,54 @@
     }
     .panel > *{ position:relative; z-index:1; }
 
-    /* PORTAL HERO */
+    /* HERO */
     .portal{ padding-top: 18px; }
     .portalGrid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
+      grid-template-columns: 1.05fr .95fr;
+      gap: var(--gap);
       align-items:stretch;
     }
     @media (max-width: 980px){ .portalGrid{ grid-template-columns: 1fr; } }
 
-    .portalLeft{ padding: 28px; }
+    .portalLeft{ padding: clamp(22px, 3vw, 34px); }
+
     .kicker{
       display:inline-flex;
       width: fit-content;
-      padding: 8px 12px;
+      padding: 9px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.22);
       font-family: Orbitron, sans-serif;
-      letter-spacing:.34em;
+      letter-spacing:.30em;
       text-transform:uppercase;
       font-size: 10px;
       color: rgba(0,213,255,.92);
     }
     .title{
-      margin: 14px 0 10px;
+      margin: 16px 0 12px;
       font-family: Orbitron, sans-serif;
       font-weight: 800;
-      font-size: clamp(40px, 5.2vw, 74px);
-      line-height: 1.02;
+      font-size: clamp(38px, 5.0vw, 74px);
+      line-height: 1.04;
       letter-spacing: -0.02em;
       text-shadow: 0 0 20px rgba(0,213,255,.16), 0 0 30px rgba(177,0,255,.16);
     }
     .subtitle{
-      margin: 0 0 16px;
+      margin: 0 0 18px;
       color: rgba(183,198,255,.92);
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.85;
       max-width: 72ch;
     }
-    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+      margin-bottom: 14px; /* NEW: breathing space before tiles */
+    }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -309,12 +347,87 @@
       border-color: rgba(255,255,255,.24);
     }
 
+    /* Portal Tiles (less squished, better heights) */
+    .portalTiles{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      margin-top: 10px;
+    }
+    .tile{
+      grid-column: span 4;
+      border-radius: var(--rx);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      min-height: 210px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .tile:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 0 26px rgba(0,213,255,.12), 0 0 30px rgba(177,0,255,.10), var(--shadow2);
+    }
+    .tile .bg{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(520px 280px at 20% 10%, rgba(0,213,255,.16), transparent 60%),
+        radial-gradient(520px 280px at 80% 0%, rgba(177,0,255,.16), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.20));
+    }
+    .tile img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:.78;
+      mix-blend-mode: screen;
+      display:block;
+      transform: scale(1.04);
+    }
+    .tile .shade{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 320px at 30% 0%, rgba(0,0,0,.00), rgba(0,0,0,.42)),
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.76));
+    }
+    .tile .txt{
+      position:absolute; left:14px; right:14px; bottom:14px;
+      padding: 14px 14px;
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.30);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .tile .txt strong{
+      display:block;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+    .tile .txt span{
+      display:block;
+      margin-top:7px;
+      color: rgba(183,198,255,.92);
+      font-size: 13px;
+      line-height: 1.55;
+      font-family: Rajdhani, sans-serif;
+      letter-spacing:.04em;
+    }
+    @media (max-width: 980px){ .tile{ grid-column: span 6; min-height: 220px; } }
+    @media (max-width: 640px){ .tile{ grid-column: span 12; min-height: 200px; } }
+
+    /* Sigil room */
     .sigilRoom{
       position:relative;
       overflow:hidden;
-      min-height: 420px;
+      min-height: 440px;
       border-radius: var(--rx);
     }
+    @media (max-width: 980px){ .sigilRoom{ min-height: 360px; } }
     .sigilRoom svg{ width:100%; height:100%; display:block; }
     .sigilStamp{
       position:absolute;
@@ -345,14 +458,15 @@
       letter-spacing:.04em;
     }
 
+    /* Content grids */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      gap: var(--gap);
     }
     .card{
       grid-column: span 4;
-      padding: 16px;
+      padding: 18px;
       border-radius: var(--rx);
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
@@ -360,7 +474,7 @@
       position:relative;
       overflow:hidden;
       transition: transform .18s ease, border-color .18s ease;
-      min-height: 160px;
+      min-height: 170px;
     }
     .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
     .card:after{
@@ -374,100 +488,35 @@
     }
     .card > *{ position:relative; z-index:1; }
     .card h3{
-      margin:0 0 8px;
+      margin:0 0 10px;
       font-family: Orbitron, sans-serif;
       text-transform:uppercase;
       letter-spacing:.12em;
       font-size: 12px;
       opacity:.95;
     }
-    .card p{ margin:0; color: rgba(183,198,255,.92); line-height:1.65; font-size: 14px; }
-    .card.big{ grid-column: span 8; min-height: 360px; padding: 14px; }
+    .card p{ margin:0; color: rgba(183,198,255,.92); line-height:1.75; font-size: 14px; }
+
+    .card.big{
+      grid-column: span 8;
+      min-height: 380px;
+      padding: 14px;
+    }
+
     @media (max-width: 980px){
       .card{ grid-column: span 6; }
-      .card.big{ grid-column: span 12; }
+      .card.big{ grid-column: span 12; min-height: 340px; }
     }
     @media (max-width: 640px){
       .card{ grid-column: span 12; }
+      .card.big{ min-height: 320px; }
     }
 
-    /* Portal-Kacheln zu Unterseiten (Links aus alt übernommen) */
-    .portalTiles{
-      display:grid;
-      grid-template-columns: repeat(12,1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .tile{
-      grid-column: span 4;
-      border-radius: var(--rx);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      position:relative;
-      min-height: 200px;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-    .tile:hover{
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 0 26px rgba(0,213,255,.12), 0 0 30px rgba(177,0,255,.10), var(--shadow2);
-    }
-    .tile .bg{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(520px 280px at 20% 10%, rgba(0,213,255,.16), transparent 60%),
-        radial-gradient(520px 280px at 80% 0%, rgba(177,0,255,.16), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.20));
-    }
-    .tile img{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:.75;
-      mix-blend-mode: screen;
-      display:block;
-    }
-    .tile .shade{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 320px at 30% 0%, rgba(0,0,0,.00), rgba(0,0,0,.40)),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.72));
-    }
-    .tile .txt{
-      position:absolute; left:14px; right:14px; bottom:14px;
-      padding: 12px 12px;
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .tile .txt strong{
-      display:block;
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size: 12px;
-    }
-    .tile .txt span{
-      display:block;
-      margin-top:6px;
-      color: rgba(183,198,255,.92);
-      font-size: 13px;
-      line-height: 1.5;
-      font-family: Rajdhani, sans-serif;
-      letter-spacing:.04em;
-    }
-    @media (max-width: 980px){ .tile{ grid-column: span 6; } }
-    @media (max-width: 640px){ .tile{ grid-column: span 12; } }
-
-    /* Twitch Stage */
+    /* Twitch Stage spacing improvements */
     .stageTop{
       display:flex; align-items:center; justify-content:space-between;
       gap:10px;
-      padding: 10px 12px 0;
+      padding: 14px 16px 8px;
     }
     .stageLabel{
       display:flex; align-items:center; gap:10px;
@@ -483,9 +532,9 @@
       box-shadow: 0 0 14px rgba(0,213,255,.22), 0 0 14px rgba(177,0,255,.18);
     }
     .playerShell{
-      margin: 10px 12px 12px;
+      margin: 10px 16px 16px;
       position:relative;
-      width: calc(100% - 24px);
+      width: calc(100% - 32px);
       aspect-ratio: 16/9;
       border-radius: 22px;
       overflow:hidden;
@@ -493,13 +542,11 @@
       background: rgba(0,0,0,.34);
       box-shadow: 0 22px 90px rgba(0,0,0,.72);
     }
-    #twitchFrame{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-    }
+    #twitchFrame{ position:absolute; inset:0; width:100%; height:100%; }
+
     .drawer{
       display:none;
-      margin: 0 12px 12px;
+      margin: 0 16px 16px;
       border-radius: 22px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
@@ -510,7 +557,6 @@
     @media (max-width: 980px){ .drawer iframe{ height:440px; } }
     @media (max-width: 640px){ .drawer iframe{ height:420px; } }
 
-    /* Media ratio */
     .ratio{
       position:relative;
       width:100%;
@@ -550,7 +596,7 @@
     }
 
     footer{
-      padding: 22px 0 16px;
+      padding: 26px 0 18px;
       color: rgba(183,198,255,.78);
       font-family: Orbitron, sans-serif;
       letter-spacing:.16em;
@@ -572,7 +618,7 @@
       height: var(--dockH);
       display:flex; align-items:center; justify-content:space-between;
       gap: 12px;
-      padding: 10px 0;
+      padding: 12px 0;
     }
     .dockLeft{
       display:flex; align-items:center; gap:12px;
@@ -624,7 +670,7 @@
       min-width: 260px;
     }
     .spotifyFrame{
-      width: min(680px, 100%);
+      width: min(700px, 100%);
       height: 78px;
       border-radius: 18px;
       overflow:hidden;
@@ -641,10 +687,12 @@
     }
 
     @media (max-width: 980px){
-      :root{ --dockH: 148px; }
-      .dock .row{ height:auto; align-items:flex-start; padding: 10px 0 12px; }
+      :root{ --dockH: 150px; }
+      .dock .row{ height:auto; align-items:flex-start; padding: 12px 0 14px; }
       .dockMid{ width:100%; order: 3; justify-content:stretch; }
       .spotifyFrame{ width:100%; height: 92px; }
+      .dockLeft{ order: 1; }
+      .dockRight{ order: 2; min-width: unset; }
       .dockLeft, .dockRight{ min-width: unset; }
     }
 
@@ -660,11 +708,9 @@
   <div class="grain"></div>
 
   <div class="content">
-    <!-- HUD -->
     <div class="hud">
       <div class="wrap">
         <div class="row">
-          <!-- ALT übernommen: logo%20druck.png + Links mit data-pjax -->
           <div class="brand">
             <a href="index.html" data-pjax style="display:flex;align-items:center;gap:12px;">
               <img class="logo" src="logo%20druck.png" alt="Rave3eN Logo" />
@@ -675,22 +721,22 @@
             </a>
           </div>
 
-          <!-- ALT Links übernommen: events/about/highlight-clips (PJAX) -->
           <div class="nav" aria-label="Navigation">
-            <a class="chip primary" href="#portal">Portal</a>
-            <a class="chip" href="#stage">Live</a>
-            <a class="chip" href="#vault">Highlights</a>
-            <a class="chip" href="#portale">Links</a>
+            <div class="navScroll">
+              <a class="chip primary" href="#portal">Portal</a>
+              <a class="chip" href="#stage">Live</a>
+              <a class="chip" href="#vault">Highlights</a>
+              <a class="chip" href="#portale">Links</a>
 
-            <a class="chip" href="events.html" data-pjax>Events</a>
-            <a class="chip" href="about.html" data-pjax>About Me</a>
-            <a class="chip" href="highlight-clips.html" data-pjax>Highlight Clips</a>
+              <a class="chip" href="events.html" data-pjax>Events</a>
+              <a class="chip" href="about.html" data-pjax>About Me</a>
+              <a class="chip" href="highlight-clips.html" data-pjax>Highlight Clips</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PJAX ROOT -->
     <main id="pjax-root">
       <!-- PORTAL -->
       <section class="portal" id="portal">
@@ -712,7 +758,7 @@
                   <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
                 </div>
 
-                <!-- KACHELN -> Unterseiten (Links aus alt; Bilder optional: events.jpg/about.jpg/clips.jpg) -->
+                <!-- Portal-Kacheln -->
                 <div class="portalTiles" aria-label="Portale">
                   <a class="tile reveal" href="events.html" data-pjax>
                     <div class="bg"></div>
@@ -744,7 +790,6 @@
                     </div>
                   </a>
                 </div>
-
               </div>
 
               <div class="sigilRoom" aria-hidden="true">
@@ -799,7 +844,7 @@
             </div>
           </div>
 
-          <div class="sectionHead" style="margin-top:18px;">
+          <div class="sectionHead" style="margin-top: 24px;">
             <h2>Totems</h2>
             <div class="tools">
               <a class="pill primary" href="#stage">Live</a>
@@ -859,33 +904,14 @@
               <h3>Vibe</h3>
               <p>Wenn Live aus ist, fällt die Bühne automatisch ins VOD zurück.</p>
 
-              <!-- Ticker (alt Inhalte übernommen) -->
-              <div class="ticker" id="ticker" aria-label="Ticker">
+              <div class="ticker" id="ticker" aria-label="Ticker" style="margin-top:14px;">
                 <div class="track" id="track">
-                  <span>RAVE3EN</span>
-                  <span>EDM × GAMING</span>
-                  <span>COMMUNITY</span>
-                  <span>ARENA BREAKOUT</span>
-                  <span>FEEL THE BASS</span>
-                  <span>EVENTS</span>
-                  <span>ABOUT ME</span>
-                  <span>HIGHLIGHT CLIPS</span>
-                  <span>NEON</span>
-                  <span>RAVE ON</span>
-
-                  <span>RAVE3EN</span>
-                  <span>EDM × GAMING</span>
-                  <span>COMMUNITY</span>
-                  <span>ARENA BREAKOUT</span>
-                  <span>FEEL THE BASS</span>
-                  <span>EVENTS</span>
-                  <span>ABOUT ME</span>
-                  <span>HIGHLIGHT CLIPS</span>
-                  <span>NEON</span>
-                  <span>RAVE ON</span>
+                  <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
+                  <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+                  <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
+                  <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -905,7 +931,7 @@
           <div class="grid">
             <div class="card big reveal">
               <h3>Trailer</h3>
-              <p style="margin-bottom:12px;">YouTube-Link austauschen → fertig.</p>
+              <p style="margin:0 0 12px; color: rgba(183,198,255,.92); line-height:1.7;">YouTube-Link austauschen → fertig.</p>
               <div class="ratio">
                 <iframe
                   src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
@@ -991,7 +1017,7 @@
     </main>
   </div>
 
-  <!-- Spotify Dock (Playlist aus alt übernommen) -->
+  <!-- Spotify Dock -->
   <div class="dock" id="playerDock" role="region" aria-label="Spotify Player">
     <div class="wrap">
       <div class="row">
@@ -1023,14 +1049,12 @@
     </div>
   </div>
 
-  <!-- Twitch Player SDK -->
   <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 
   <script>
-    /* ALT übernommen: VOD + parentList + Channel-Name */
     const VOD_ID = "2633733485";
     const parentList = ["www.rave3en.de","rave3en.de","rave3en.github.io","localhost"];
-    const TWITCH_CHANNEL = "rave3en"; // im alten Code so verwendet :contentReference[oaicite:2]{index=2}
+    const TWITCH_CHANNEL = "rave3en";
 
     function mountTwitch(){
       const container = document.getElementById("twitchFrame");
@@ -1045,7 +1069,6 @@
         parent: parentList
       });
 
-      // Chat parent (Crowd Drawer)
       const chat = document.getElementById("twitchChat");
       if(chat){
         chat.src = `https://www.twitch.tv/embed/${encodeURIComponent("Rave3eN")}/chat?parent=${encodeURIComponent(parentList[0])}`;
@@ -1059,12 +1082,10 @@
         try { player.setVideo("v" + VOD_ID); } catch(e){}
       });
 
-      // Fallback nach 6s (wie alt) :contentReference[oaicite:3]{index=3}
       setTimeout(() => {
         try { player.setVideo("v" + VOD_ID); } catch(e){}
       }, 6000);
 
-      // Mute toggle
       const btnMute = document.getElementById("btnMute");
       if(btnMute){
         btnMute.addEventListener("click", () => {
@@ -1077,17 +1098,14 @@
       }
     }
 
-    // Crowd drawer
     document.getElementById("btnCrowd")?.addEventListener("click", () => {
       document.getElementById("crowdDrawer")?.classList.toggle("on");
     });
 
-    // Spotify dock close (aus alt übernommen) :contentReference[oaicite:4]{index=4}
     document.getElementById("dockClose")?.addEventListener("click", () => {
       document.getElementById("playerDock")?.remove();
     });
 
-    /* Ticker drag + auto scroll */
     (() => {
       const t = document.getElementById("ticker");
       const track = document.getElementById("track");
@@ -1138,7 +1156,6 @@
       });
     })();
 
-    /* Reveal */
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("on"); });
     }, {threshold:0.12});
@@ -1147,7 +1164,6 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
-    /* FX CANVAS */
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
@@ -1303,7 +1319,6 @@
       resize(); seedFog(); seedMotes();
     }, {passive:true});
 
-    /* ===== Mini-PJAX (alt Verhalten beibehalten: nur data-pjax Links) ===== */
     (function(){
       const ROOT_ID='pjax-root';
 
@@ -1324,7 +1339,7 @@
         if(!a || a.target==='_blank' || a.hasAttribute('download')) return false;
         if(a.hasAttribute('data-no-pjax')) return false;
         if(isSamePageAnchor(a)) return false;
-        if(!a.hasAttribute('data-pjax')) return false; // wichtig: nur alte data-pjax Links
+        if(!a.hasAttribute('data-pjax')) return false;
         return sameOrigin(a.href);
       }
 
@@ -1336,13 +1351,6 @@
           if(existing) existing.remove();
           document.head.appendChild(node.cloneNode(true));
         });
-      }
-
-      function ensureDock(){
-        // Dock ist in diesem Layout fest vorhanden; trotzdem fail-safe:
-        if(!document.getElementById('playerDock')){
-          // nichts zu tun
-        }
       }
 
       async function load(url,replaceState=false){
@@ -1360,7 +1368,6 @@
 
           if(!replaceState) history.pushState({url},'',url);
 
-          // scripts in new content
           newMain.querySelectorAll('script').forEach(s=>{
             const ns=document.createElement('script');
             if(s.src){ ns.src=s.src; }
@@ -1370,9 +1377,6 @@
           });
 
           bind();
-          ensureDock();
-
-          // re-init after PJAX
           initReveal();
           mountTwitch();
         } else {
@@ -1401,7 +1405,6 @@
       bind();
     })();
 
-    /* Init */
     initReveal();
     resize();
     seedFog();
