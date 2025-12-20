@@ -57,6 +57,7 @@
     }
     a{ color:inherit; text-decoration:none; }
     button{ font:inherit; }
+    img{ max-width:100%; display:block; }
 
     :focus-visible{
       outline: 2px solid rgba(0,213,255,.55);
@@ -215,7 +216,7 @@
       color: rgba(183,198,255,.92);
       font-size: 15px;
       line-height: 1.9;
-      max-width: 80ch;
+      max-width: 86ch;
     }
 
     /* Tabs */
@@ -256,6 +257,7 @@
       grid-template-columns: repeat(12, 1fr);
       gap: var(--gap);
     }
+
     .card{
       grid-column: span 4;
       padding: 18px;
@@ -307,13 +309,137 @@
       color: rgba(220,232,255,.92);
     }
 
-    .card.big{ grid-column: span 8; min-height: 240px; }
+    .card.big{ grid-column: span 8; min-height: 250px; }
+    .card.feature{ grid-column: span 12; padding:0; overflow:hidden; min-height: 0; }
     @media (max-width: 980px){
       .card{ grid-column: span 6; }
       .card.big{ grid-column: span 12; }
+      .card.feature{ grid-column: span 12; }
     }
     @media (max-width: 640px){
       .card{ grid-column: span 12; }
+    }
+
+    /* Media header inside cards */
+    .mediaTop{
+      position:relative;
+      height: 176px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .mediaTop img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .mediaTop:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 260px at 14% 0%, rgba(0,213,255,.22), transparent 56%),
+        radial-gradient(700px 260px at 88% 0%, rgba(177,0,255,.22), transparent 56%),
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.65));
+      pointer-events:none;
+    }
+    .mediaBadge{
+      position:absolute;
+      left: 14px;
+      bottom: 12px;
+      z-index:2;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.36);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      box-shadow: 0 0 18px rgba(0,213,255,.10), 0 0 18px rgba(177,0,255,.08);
+      white-space:nowrap;
+    }
+    .cardBody{
+      padding: 18px;
+    }
+
+    /* Featured event layout */
+    .featureGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 0;
+    }
+    .featureMedia{
+      position:relative;
+      min-height: 340px;
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .featureMedia img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: saturate(1.06) contrast(1.08);
+      transform: scale(1.02);
+    }
+    .featureMedia:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 420px at 12% 0%, rgba(0,213,255,.24), transparent 58%),
+        radial-gradient(900px 420px at 88% 0%, rgba(177,0,255,.24), transparent 58%),
+        linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.50)),
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.66));
+      pointer-events:none;
+    }
+    .featureBadge{
+      position:absolute;
+      left: 18px;
+      top: 16px;
+      z-index:2;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.40);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      box-shadow: 0 0 20px rgba(0,213,255,.12), 0 0 20px rgba(177,0,255,.10);
+      white-space:nowrap;
+    }
+    .featureInfo{
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height: 340px;
+    }
+    .featureInfo h3{
+      margin:0 0 10px;
+      font-family: Orbitron, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size: 14px;
+    }
+    .featureInfo p{
+      margin:0 0 14px;
+      color: rgba(183,198,255,.92);
+      line-height:1.85;
+      font-size: 14px;
+      max-width: 72ch;
+    }
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+    }
+    @media (max-width: 980px){
+      .featureGrid{ grid-template-columns: 1fr; }
+      .featureMedia, .featureInfo{ min-height: unset; }
+      .featureMedia{ height: 260px; }
     }
 
     .sectionHead{
@@ -515,11 +641,11 @@
         <div class="wrap">
           <div class="panel reveal">
             <div class="headInner">
-              <div class="kicker">schedule • drops • community • moments</div>
+              <div class="kicker">lineup • community • story</div>
               <div class="title">Events</div>
               <p class="subtitle">
-                Hier ist der Fahrplan: was kommt, was war, und was als Nächstes wieder eskalieren darf.
-                Alles im Rave3eN-Universum — neon, mystisch, aber sauber.
+                Nicht „0815“. Eher: Festival-Feeling im Rave3eN-Universum.
+                Hier findest du, was kommt — und was schon Geschichte geschrieben hat.
               </p>
 
               <div class="tabRow">
@@ -541,44 +667,94 @@
           <div class="sectionHead">
             <h2>Anstehende Events</h2>
             <div class="tools">
-              <a class="pill primary" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noreferrer">Discord</a>
-              <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
+              <a class="pill primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
+              <a class="pill" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noreferrer">Discord</a>
             </div>
           </div>
 
-          <div class="grid">
+          <!-- FEATURED: SPENDENSTREAM -->
+          <article class="card feature reveal">
+            <div class="featureGrid">
+              <div class="featureMedia">
+                <!-- HIER DEIN BILD EINFÜGEN (Dateiname anpassen): -->
+                <img src="images/spendenstream_2025.jpg" alt="Spendenstream 2025 — Banner" />
+                <div class="featureBadge">25.12. – 28.12.</div>
+              </div>
+              <div class="featureInfo">
+                <h3>SpendenStream</h3>
+                <p>
+                  Vier Tage Live — Musik, Gameplay, Emotionen und Community-Power.
+                  Der Stream steht für Zusammenhalt und Hilfe (Tiere sind Herz). 💜💙
+                </p>
+                <div class="meta">
+                  <span class="tag">Datum: 25.12.–28.12.</span>
+                  <span class="tag">Live: Twitch</span>
+                  <span class="tag">Fokus: Charity</span>
+                </div>
+                <div class="actions">
+                  <a class="pill primary" href="index.html#stage">Zur Bühne</a>
+                  <a class="pill" href="highlight-clips.html">Clips</a>
+                  <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MORE UPCOMING SLOTS (bereit für dich) -->
+          <div class="grid" style="margin-top: var(--gap);">
             <div class="card big reveal">
-              <h3>Slot A — Main Event</h3>
-              <p>
-                Trage hier das nächste große Ding ein (Datum, Thema, Special). Ich hab’s so gebaut, dass es wie ein Festival-Lineup wirkt.
-              </p>
-              <div class="meta">
-                <span class="tag">Datum: TBA</span>
-                <span class="tag">Start: TBA</span>
-                <span class="tag">Special: TBA</span>
+              <div class="mediaTop">
+                <img src="images/next_event_teaser.jpg" alt="Nächstes Event — Teaser" />
+                <div class="mediaBadge">Nächster Slot</div>
               </div>
-              <div class="tools" style="margin-top:14px;">
-                <a class="pill primary" href="index.html#stage">Zur Bühne</a>
-                <a class="pill" href="highlight-clips.html">Clips</a>
+              <div class="cardBody">
+                <h3>Next Drop / Special</h3>
+                <p>
+                  Hier kommt dein nächstes geplantes Event rein (Thema, Datum, Besonderheiten).
+                  Optik bleibt fest, Inhalt kannst du jederzeit tauschen.
+                </p>
+                <div class="meta">
+                  <span class="tag">Datum: TBA</span>
+                  <span class="tag">Special: TBA</span>
+                  <span class="tag">Location: Online</span>
+                </div>
+                <div class="actions" style="margin-top:12px;">
+                  <a class="pill primary" href="index.html">Portal</a>
+                  <a class="pill" href="about.html">About</a>
+                </div>
               </div>
             </div>
 
             <div class="card reveal">
-              <h3>Slot B</h3>
-              <p>Mini-Event / Community-Action / Challenge.</p>
-              <div class="meta">
-                <span class="tag">TBA</span><span class="tag">TBA</span>
+              <div class="mediaTop">
+                <img src="images/collab_teaser.jpg" alt="Collab — Teaser" />
+                <div class="mediaBadge">Collab</div>
+              </div>
+              <div class="cardBody">
+                <h3>Collab / Guest</h3>
+                <p>Slot für Kollab, Gast oder Community-Event.</p>
+                <div class="meta">
+                  <span class="tag">TBA</span><span class="tag">TBA</span>
+                </div>
               </div>
             </div>
 
             <div class="card reveal">
-              <h3>Slot C</h3>
-              <p>Collab / Special Guest / Thema.</p>
-              <div class="meta">
-                <span class="tag">TBA</span><span class="tag">TBA</span>
+              <div class="mediaTop">
+                <img src="images/community_teaser.jpg" alt="Community — Teaser" />
+                <div class="mediaBadge">Community</div>
+              </div>
+              <div class="cardBody">
+                <h3>Community Night</h3>
+                <p>Slot für eine Community-Nacht (Challenges / Special Rules / VIP Slots).</p>
+                <div class="meta">
+                  <span class="tag">TBA</span><span class="tag">TBA</span>
+                </div>
               </div>
             </div>
           </div>
+
+          <footer>© Rave3eN</footer>
         </div>
       </section>
 
@@ -594,30 +770,88 @@
           </div>
 
           <div class="grid">
-            <div class="card reveal">
-              <h3>Event 01</h3>
-              <p>Kurze Beschreibung (was war besonders, welcher Moment blieb?).</p>
-              <div class="meta">
-                <span class="tag">Datum</span><span class="tag">Theme</span>
+            <!-- RAVE CAMP 2024 -->
+            <article class="card big reveal">
+              <div class="mediaTop">
+                <!-- Dateiname anpassen, falls du andere Struktur nutzt -->
+                <img src="images/ravecamp_2024.jpg" alt="Rave Camp 2024 — Banner" />
+                <div class="mediaBadge">Rave Camp 2024</div>
               </div>
-            </div>
+              <div class="cardBody">
+                <h3>Rave Camp 2024</h3>
+                <p>
+                  Community-Event, Festival-Vibe und echte Momente. Ein Kapitel, das geblieben ist.
+                </p>
+                <div class="meta">
+                  <span class="tag">Jahr: 2024</span>
+                  <span class="tag">Theme: Community</span>
+                  <span class="tag">Vibe: Festival</span>
+                </div>
+                <div class="actions" style="margin-top:12px;">
+                  <a class="pill primary" href="highlight-clips.html">Clips</a>
+                  <a class="pill" href="index.html#vault">Highlights</a>
+                </div>
+              </div>
+            </article>
 
-            <div class="card reveal">
-              <h3>Event 02</h3>
-              <p>Kurze Beschreibung (Community, Charity, Challenge etc.).</p>
-              <div class="meta">
-                <span class="tag">Datum</span><span class="tag">Theme</span>
+            <!-- RAVE DRIVE 2025 -->
+            <article class="card big reveal">
+              <div class="mediaTop">
+                <img src="images/ravedrive_2025.jpg" alt="Rave Drive 2025 — Banner" />
+                <div class="mediaBadge">Rave Drive 2025</div>
               </div>
-            </div>
+              <div class="cardBody">
+                <h3>Rave Drive 2025</h3>
+                <p>
+                  Roadtrip-Feeling, Community-Treffen, Story-Momente. Unterwegs sein — und trotzdem zuhause.
+                </p>
+                <div class="meta">
+                  <span class="tag">Jahr: 2025</span>
+                  <span class="tag">Type: Roadtrip</span>
+                  <span class="tag">Crew: Community</span>
+                </div>
+                <div class="actions" style="margin-top:12px;">
+                  <a class="pill primary" href="highlight-clips.html">Clips</a>
+                  <a class="pill" href="about.html">About</a>
+                </div>
+              </div>
+            </article>
 
-            <div class="card reveal">
-              <h3>Event 03</h3>
-              <p>Kurze Beschreibung + Link zu Clips/Trailer.</p>
-              <div class="meta">
-                <span class="tag">Datum</span><span class="tag">Highlight</span>
+            <!-- SPENDENSTREAM (Archiv-Slot für die Zeit danach, bleibt hier schon drin) -->
+            <article class="card reveal">
+              <div class="mediaTop">
+                <img src="images/spendenstream_2025.jpg" alt="Spendenstream — Banner" />
+                <div class="mediaBadge">SpendenStream</div>
               </div>
-            </div>
+              <div class="cardBody">
+                <h3>SpendenStream</h3>
+                <p>
+                  Vier Tage Live: Musik, Gaming, Emotionen und Hilfe. (Eintrag bleibt auch nach dem Event als Erinnerung.)
+                </p>
+                <div class="meta">
+                  <span class="tag">25.12.–28.12.</span>
+                  <span class="tag">Charity</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- EXTRA: Platzhalter für weitere Archiv-Events -->
+            <article class="card reveal">
+              <div class="mediaTop">
+                <img src="images/archive_event_01.jpg" alt="Archiv Event — Banner" />
+                <div class="mediaBadge">Archiv Slot</div>
+              </div>
+              <div class="cardBody">
+                <h3>Weitere Events</h3>
+                <p>Wenn du mir die restlichen Titel + Bilder gibst, trage ich alles 1:1 hier ein.</p>
+                <div class="meta">
+                  <span class="tag">TBA</span><span class="tag">TBA</span>
+                </div>
+              </div>
+            </article>
           </div>
+
+          <footer>© Rave3eN</footer>
         </div>
       </section>
 
@@ -635,16 +869,16 @@
           <div class="panel reveal" style="padding: 22px;">
             <div class="timeline">
               <div class="tItem">
-                <div class="tTitle">TBA — Ankündigung</div>
-                <p class="tBody">Hier kommt die nächste Ankündigung rein. Kurz, klar, aber mystisch.</p>
+                <div class="tTitle">Rave Camp 2024</div>
+                <p class="tBody">Festival-Vibe, Community und Story — ein Kapitel, das die Base zusammengeschweißt hat.</p>
               </div>
               <div class="tItem">
-                <div class="tTitle">TBA — Event</div>
-                <p class="tBody">Was ist passiert? Welche Emotion? Welcher Moment? Das ist das Archiv, das sich wie Story anfühlt.</p>
+                <div class="tTitle">Rave Drive 2025</div>
+                <p class="tBody">Unterwegs quer durch Deutschland — Treffen, Momente, Verbindung. Rave3eN auf Tour.</p>
               </div>
               <div class="tItem">
-                <div class="tTitle">TBA — Drop</div>
-                <p class="tBody">Neuer Trailer / neue Highlights / neue Community-Aktion.</p>
+                <div class="tTitle">SpendenStream — 25.12.–28.12.</div>
+                <p class="tBody">Vier Tage Live. Musik + Gaming + Emotion — und Hilfe, die zählt.</p>
               </div>
             </div>
           </div>
