@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rave3eN — Events</title>
 
-  <meta name="description" content="Events von Rave3eN: anstehende Events, vergangene Events und Highlights." />
+  <meta name="description" content="Rave3eN Events: Rave Camp 2024, Rave Drive 2025, Spendenstream & mehr – alle Termine & Recaps im mystischen Neon-EDM Look." />
   <link rel="canonical" href="https://www.rave3en.de/events.html" />
   <meta name="theme-color" content="#030308" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rave3eN — Events" />
+  <meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps im Neon-EDM Look." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.rave3en.de/events.html" />
+  <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +44,6 @@
       --padX: 40px;
       --secY: 44px;
       --gap: 18px;
-
-      --portalMin: 420px;
     }
 
     *{ box-sizing:border-box; }
@@ -86,7 +92,7 @@
       margin:0 auto;
     }
     @media (max-width: 720px){
-      :root{ --padX: 26px; --secY: 34px; --gap: 14px; --portalMin: 0px; }
+      :root{ --padX: 26px; --secY: 34px; --gap: 14px; }
     }
     @media (max-width: 420px){
       :root{ --padX: 22px; --secY: 30px; --gap: 12px; }
@@ -182,12 +188,9 @@
     }
     .panel > *{ position:relative; z-index:1; }
 
-    .head{
-      padding-top: 18px;
-    }
-    .headInner{
-      padding: clamp(24px, 3.1vw, 38px);
-    }
+    .head{ padding-top: 18px; }
+    .headInner{ padding: clamp(24px, 3.1vw, 38px); }
+
     .kicker{
       display:inline-flex;
       width: fit-content;
@@ -219,12 +222,36 @@
       max-width: 86ch;
     }
 
-    /* Tabs */
+    /* Ticker (langsamer, nicht „auf speed“) */
+    .ticker{
+      margin-top: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      overflow:hidden;
+      user-select:none;
+    }
+    .track{
+      display:flex;
+      gap: 26px;
+      white-space:nowrap;
+      padding: 12px 16px;
+      will-change: transform;
+      cursor: grab;
+    }
+    .track span{
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: rgba(220,232,255,.92);
+      font-size: 11px;
+    }
+
     .tabRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top: 10px;
+      margin-top: 14px;
     }
     .pill{
       padding: 10px 12px;
@@ -252,196 +279,6 @@
     }
 
     /* Cards */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-    }
-
-    .card{
-      grid-column: span 4;
-      padding: 18px;
-      border-radius: var(--rx);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-      transition: transform .18s ease, border-color .18s ease;
-      min-height: 170px;
-    }
-    .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
-    .card:after{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(340px 200px at 18% 10%, rgba(0,213,255,.13), transparent 62%),
-        radial-gradient(340px 200px at 82% 0%, rgba(177,0,255,.13), transparent 62%);
-      opacity:.92;
-      pointer-events:none;
-    }
-    .card > *{ position:relative; z-index:1; }
-    .card h3{
-      margin:0 0 10px;
-      font-family: Orbitron, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size: 12px;
-      opacity:.95;
-    }
-    .card p{ margin:0; color: rgba(183,198,255,.92); line-height:1.75; font-size: 14px; }
-
-    .meta{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .tag{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color: rgba(220,232,255,.92);
-    }
-
-    .card.big{ grid-column: span 8; min-height: 250px; }
-    .card.feature{ grid-column: span 12; padding:0; overflow:hidden; min-height: 0; }
-    @media (max-width: 980px){
-      .card{ grid-column: span 6; }
-      .card.big{ grid-column: span 12; }
-      .card.feature{ grid-column: span 12; }
-    }
-    @media (max-width: 640px){
-      .card{ grid-column: span 12; }
-    }
-
-    /* Media header inside cards */
-    .mediaTop{
-      position:relative;
-      height: 176px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-    }
-    .mediaTop img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
-    .mediaTop:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(700px 260px at 14% 0%, rgba(0,213,255,.22), transparent 56%),
-        radial-gradient(700px 260px at 88% 0%, rgba(177,0,255,.22), transparent 56%),
-        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.65));
-      pointer-events:none;
-    }
-    .mediaBadge{
-      position:absolute;
-      left: 14px;
-      bottom: 12px;
-      z-index:2;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.36);
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      box-shadow: 0 0 18px rgba(0,213,255,.10), 0 0 18px rgba(177,0,255,.08);
-      white-space:nowrap;
-    }
-    .cardBody{
-      padding: 18px;
-    }
-
-    /* Featured event layout */
-    .featureGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 0;
-    }
-    .featureMedia{
-      position:relative;
-      min-height: 340px;
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-    }
-    .featureMedia img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      filter: saturate(1.06) contrast(1.08);
-      transform: scale(1.02);
-    }
-    .featureMedia:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 420px at 12% 0%, rgba(0,213,255,.24), transparent 58%),
-        radial-gradient(900px 420px at 88% 0%, rgba(177,0,255,.24), transparent 58%),
-        linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.50)),
-        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.66));
-      pointer-events:none;
-    }
-    .featureBadge{
-      position:absolute;
-      left: 18px;
-      top: 16px;
-      z-index:2;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.40);
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      box-shadow: 0 0 20px rgba(0,213,255,.12), 0 0 20px rgba(177,0,255,.10);
-      white-space:nowrap;
-    }
-    .featureInfo{
-      padding: 22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height: 340px;
-    }
-    .featureInfo h3{
-      margin:0 0 10px;
-      font-family: Orbitron, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size: 14px;
-    }
-    .featureInfo p{
-      margin:0 0 14px;
-      color: rgba(183,198,255,.92);
-      line-height:1.85;
-      font-size: 14px;
-      max-width: 72ch;
-    }
-    .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 6px;
-    }
-    @media (max-width: 980px){
-      .featureGrid{ grid-template-columns: 1fr; }
-      .featureMedia, .featureInfo{ min-height: unset; }
-      .featureMedia{ height: 260px; }
-    }
-
     .sectionHead{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap: 12px;
@@ -456,43 +293,172 @@
     }
     .tools{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
 
-    /* Timeline */
-    .timeline{
-      position:relative;
-      padding-left: 18px;
-      border-left: 1px solid rgba(255,255,255,.12);
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
     }
-    .tItem{
-      position:relative;
-      padding: 14px 14px;
-      margin: 12px 0;
-      border-radius: 22px;
+
+    .card{
+      grid-column: span 4;
+      border-radius: var(--rx);
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease;
+      display:flex;
+      flex-direction:column;
+      min-height: 230px;
     }
-    .tItem:before{
+    .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
+    .card:after{
       content:"";
-      position:absolute;
-      left:-26px;
-      top: 18px;
-      width:12px; height:12px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(0,213,255,.95), rgba(177,0,255,.95));
-      box-shadow: 0 0 16px rgba(0,213,255,.18), 0 0 16px rgba(177,0,255,.14);
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(340px 200px at 18% 10%, rgba(0,213,255,.13), transparent 62%),
+        radial-gradient(340px 200px at 82% 0%, rgba(177,0,255,.13), transparent 62%);
+      opacity:.92;
+      pointer-events:none;
     }
-    .tTitle{
+    .card > *{ position:relative; z-index:1; }
+
+    .thumb{
+      position:relative;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      background: linear-gradient(135deg, rgba(0,213,255,.16), rgba(177,0,255,.16));
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .thumb.noimg:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(400px 200px at 40% 40%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(135deg, rgba(0,213,255,.22), rgba(177,0,255,.22));
+    }
+    .thumb:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 260px at 14% 0%, rgba(0,213,255,.22), transparent 56%),
+        radial-gradient(700px 260px at 88% 0%, rgba(177,0,255,.22), transparent 56%),
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.65));
+      pointer-events:none;
+    }
+    .badgeTop{
+      position:absolute;
+      left: 12px;
+      bottom: 10px;
+      z-index:2;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.36);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      box-shadow: 0 0 18px rgba(0,213,255,.10), 0 0 18px rgba(177,0,255,.08);
+      white-space:nowrap;
+    }
+
+    .body{
+      padding: 16px 16px 0;
+      flex: 1 1 auto;
+    }
+    .badgeRow{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 10px; }
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(220,232,255,.92);
       font-family: Orbitron, sans-serif;
       letter-spacing:.12em;
       text-transform:uppercase;
-      font-size: 12px;
-      margin:0 0 6px;
     }
-    .tBody{
-      margin:0;
+    .eTitle{
+      margin: 0 0 8px;
+      font-weight: 800;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+    .meta{
+      margin:0 0 16px;
       color: rgba(183,198,255,.92);
-      line-height:1.8;
+      line-height:1.75;
       font-size: 14px;
     }
+    .ctaRow{
+      padding: 0 16px 16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .linkBtn{
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration:none;
+      color:#071018;
+      font-weight: 900;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size: 10px;
+      background: linear-gradient(90deg, rgba(0,213,255,.92), rgba(177,0,255,.92));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
+    }
+    .linkGhost{
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration:none;
+      color:#fff;
+      font-weight: 800;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size: 10px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .linkGhost:hover{
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 0 18px rgba(0,213,255,.10), 0 0 18px rgba(177,0,255,.08);
+    }
+
+    .card.big{ grid-column: span 8; }
+    .card.feature{ grid-column: span 12; }
+    @media (max-width: 980px){
+      .card{ grid-column: span 6; }
+      .card.big{ grid-column: span 12; }
+      .card.feature{ grid-column: span 12; }
+    }
+    @media (max-width: 640px){
+      .card{ grid-column: span 12; }
+      .thumb{ aspect-ratio: 16/10; }
+    }
+
+    .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.on{ opacity:1; transform: translateY(0); }
+
+    /* Tabs */
+    .tabPanel{ display:none; }
+    .tabPanel.on{ display:block; }
 
     footer{
       padding: 26px 0 18px;
@@ -593,13 +559,6 @@
       .dockRight{ order: 2; min-width: unset; }
       .dockLeft, .dockRight{ min-width: unset; }
     }
-
-    .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.on{ opacity:1; transform: translateY(0); }
-
-    /* Hide sections via tabs */
-    .tabPanel{ display:none; }
-    .tabPanel.on{ display:block; }
   </style>
 </head>
 
@@ -641,246 +600,120 @@
         <div class="wrap">
           <div class="panel reveal">
             <div class="headInner">
-              <div class="kicker">lineup • community • story</div>
-              <div class="title">Events</div>
+              <div class="kicker">rave3en events</div>
+              <div class="title">Raves. Roadtrips. Community.</div>
               <p class="subtitle">
-                Nicht „0815“. Eher: Festival-Feeling im Rave3eN-Universum.
-                Hier findest du, was kommt — und was schon Geschichte geschrieben hat.
+                Von Camp bis Roadtrip — hier beginnt der echte Rave: Energie, Menschen, Erinnerungen.
               </p>
 
-              <div class="tabRow">
-                <button class="pill primary" id="tabUpcoming" type="button">Anstehend</button>
-                <button class="pill" id="tabPast" type="button">Archiv</button>
-                <button class="pill" id="tabTimeline" type="button">Timeline</button>
+              <!-- TICKER (aus altem Code übernommen, aber langsamer) -->
+              <div class="ticker" aria-label="Timeline">
+                <div class="track" id="marqueeTrack">
+                  <span>RAVE CAMP 2024</span>
+                  <span>RAVE DRIVE 2025 · 2.5K KM</span>
+                  <span>TIERHEIM-SPENDENSTREAM 25–28.12</span>
+                  <span>COMMUNITY MEETUPS</span>
+                  <span>HIGHLIGHTS & RECAPS</span>
+                  <span>SAVE THE DATE</span>
+                  <span>EDM × ROADTRIPS</span>
+                  <span>RAVE CAMP 2024</span>
+                  <span>RAVE DRIVE 2025 · 2.5K KM</span>
+                  <span>FEEL THE BASS</span>
+                </div>
+              </div>
 
+              <div class="tabRow" aria-label="Filter">
+                <button class="pill primary" id="tabAll" type="button" aria-pressed="true">Alle</button>
+                <button class="pill" id="tabUpcoming" type="button" aria-pressed="false">Kommend</button>
+                <button class="pill" id="tabPast" type="button" aria-pressed="false">Vergangen</button>
+
+                <a class="pill" href="index.html#stage">Live</a>
                 <a class="pill" href="index.html#vault">Highlights</a>
-                <a class="pill" href="about.html">About</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- UPCOMING -->
-      <section id="upcomingPanel" class="tabPanel on">
+      <!-- GRID -->
+      <section>
         <div class="wrap">
           <div class="sectionHead">
-            <h2>Anstehende Events</h2>
+            <h2>Lineup</h2>
             <div class="tools">
-              <a class="pill primary" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch</a>
-              <a class="pill" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noreferrer">Discord</a>
+              <a class="pill" href="index.html#stage">Zum Stream</a>
+              <a class="pill" href="index.html#community">Community</a>
             </div>
           </div>
 
-          <!-- FEATURED: SPENDENSTREAM -->
-          <article class="card feature reveal">
-            <div class="featureGrid">
-              <div class="featureMedia">
-                <!-- HIER DEIN BILD EINFÜGEN (Dateiname anpassen): -->
-                <img src="images/spendenstream_2025.jpg" alt="Spendenstream 2025 — Banner" />
-                <div class="featureBadge">25.12. – 28.12.</div>
-              </div>
-              <div class="featureInfo">
-                <h3>SpendenStream</h3>
-                <p>
-                  Vier Tage Live — Musik, Gameplay, Emotionen und Community-Power.
-                  Der Stream steht für Zusammenhalt und Hilfe (Tiere sind Herz). 💜💙
-                </p>
-                <div class="meta">
-                  <span class="tag">Datum: 25.12.–28.12.</span>
-                  <span class="tag">Live: Twitch</span>
-                  <span class="tag">Fokus: Charity</span>
-                </div>
-                <div class="actions">
-                  <a class="pill primary" href="index.html#stage">Zur Bühne</a>
-                  <a class="pill" href="highlight-clips.html">Clips</a>
-                  <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
-                </div>
-              </div>
-            </div>
-          </article>
+          <div class="grid" id="eventsGrid" aria-live="polite">
 
-          <!-- MORE UPCOMING SLOTS (bereit für dich) -->
-          <div class="grid" style="margin-top: var(--gap);">
-            <div class="card big reveal">
-              <div class="mediaTop">
-                <img src="images/next_event_teaser.jpg" alt="Nächstes Event — Teaser" />
-                <div class="mediaBadge">Nächster Slot</div>
+            <!-- Kommend: Tierheim-Spendenstream (aus altem Code übernommen) -->
+            <article class="card feature reveal" data-type="upcoming" data-date="2025-12-25">
+              <div class="thumb">
+                <img src="images/events/tierheim-stream.jpg" alt="Tierheim-Spendenstream" loading="lazy"
+                     onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+                <div class="badgeTop">25–28.12</div>
               </div>
-              <div class="cardBody">
-                <h3>Next Drop / Special</h3>
-                <p>
-                  Hier kommt dein nächstes geplantes Event rein (Thema, Datum, Besonderheiten).
-                  Optik bleibt fest, Inhalt kannst du jederzeit tauschen.
-                </p>
-                <div class="meta">
-                  <span class="tag">Datum: TBA</span>
-                  <span class="tag">Special: TBA</span>
-                  <span class="tag">Location: Online</span>
+              <div class="body">
+                <div class="badgeRow">
+                  <span class="badge">25–28.12</span>
+                  <span class="badge">Dauerstream</span>
+                  <span class="badge">Charity</span>
                 </div>
-                <div class="actions" style="margin-top:12px;">
-                  <a class="pill primary" href="index.html">Portal</a>
-                  <a class="pill" href="about.html">About</a>
-                </div>
+                <h3 class="eTitle">Tierheim-Spendenstream</h3>
+                <p class="meta">24/7 Stream, Challenges & Action – alles für die Pfoten. 💜💙</p>
               </div>
-            </div>
-
-            <div class="card reveal">
-              <div class="mediaTop">
-                <img src="images/collab_teaser.jpg" alt="Collab — Teaser" />
-                <div class="mediaBadge">Collab</div>
-              </div>
-              <div class="cardBody">
-                <h3>Collab / Guest</h3>
-                <p>Slot für Kollab, Gast oder Community-Event.</p>
-                <div class="meta">
-                  <span class="tag">TBA</span><span class="tag">TBA</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card reveal">
-              <div class="mediaTop">
-                <img src="images/community_teaser.jpg" alt="Community — Teaser" />
-                <div class="mediaBadge">Community</div>
-              </div>
-              <div class="cardBody">
-                <h3>Community Night</h3>
-                <p>Slot für eine Community-Nacht (Challenges / Special Rules / VIP Slots).</p>
-                <div class="meta">
-                  <span class="tag">TBA</span><span class="tag">TBA</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <footer>© Rave3eN</footer>
-        </div>
-      </section>
-
-      <!-- PAST -->
-      <section id="pastPanel" class="tabPanel">
-        <div class="wrap">
-          <div class="sectionHead">
-            <h2>Archiv</h2>
-            <div class="tools">
-              <a class="pill primary" href="highlight-clips.html">Highlight Clips</a>
-              <a class="pill" href="index.html#vault">Highlights</a>
-            </div>
-          </div>
-
-          <div class="grid">
-            <!-- RAVE CAMP 2024 -->
-            <article class="card big reveal">
-              <div class="mediaTop">
-                <!-- Dateiname anpassen, falls du andere Struktur nutzt -->
-                <img src="images/ravecamp_2024.jpg" alt="Rave Camp 2024 — Banner" />
-                <div class="mediaBadge">Rave Camp 2024</div>
-              </div>
-              <div class="cardBody">
-                <h3>Rave Camp 2024</h3>
-                <p>
-                  Community-Event, Festival-Vibe und echte Momente. Ein Kapitel, das geblieben ist.
-                </p>
-                <div class="meta">
-                  <span class="tag">Jahr: 2024</span>
-                  <span class="tag">Theme: Community</span>
-                  <span class="tag">Vibe: Festival</span>
-                </div>
-                <div class="actions" style="margin-top:12px;">
-                  <a class="pill primary" href="highlight-clips.html">Clips</a>
-                  <a class="pill" href="index.html#vault">Highlights</a>
-                </div>
+              <div class="ctaRow">
+                <a class="linkBtn" href="events.html">Details</a>
+                <a class="linkGhost" href="index.html#live">Zum Stream</a>
               </div>
             </article>
 
-            <!-- RAVE DRIVE 2025 -->
-            <article class="card big reveal">
-              <div class="mediaTop">
-                <img src="images/ravedrive_2025.jpg" alt="Rave Drive 2025 — Banner" />
-                <div class="mediaBadge">Rave Drive 2025</div>
+            <!-- Vergangen: Rave Camp 2024 (aus altem Code übernommen) -->
+            <article class="card big reveal" data-type="past" data-date="2024-08-17">
+              <div class="thumb">
+                <img src="images/events/ravecamp2024.jpg" alt="Rave Camp 2024" loading="lazy"
+                     onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+                <div class="badgeTop">2024</div>
               </div>
-              <div class="cardBody">
-                <h3>Rave Drive 2025</h3>
-                <p>
-                  Roadtrip-Feeling, Community-Treffen, Story-Momente. Unterwegs sein — und trotzdem zuhause.
-                </p>
-                <div class="meta">
-                  <span class="tag">Jahr: 2025</span>
-                  <span class="tag">Type: Roadtrip</span>
-                  <span class="tag">Crew: Community</span>
+              <div class="body">
+                <div class="badgeRow">
+                  <span class="badge">2024</span>
+                  <span class="badge">Camp</span>
+                  <span class="badge">Community</span>
                 </div>
-                <div class="actions" style="margin-top:12px;">
-                  <a class="pill primary" href="highlight-clips.html">Clips</a>
-                  <a class="pill" href="about.html">About</a>
-                </div>
+                <h3 class="eTitle">Rave Camp 2024</h3>
+                <p class="meta">Wochenende. Lagerfeuer. EDM. Geschichten, die bleiben.</p>
+              </div>
+              <div class="ctaRow">
+                <a class="linkBtn" href="ravecamp2024.html">Zum Recap</a>
+                <a class="linkGhost" href="index.html#community">Fotos</a>
               </div>
             </article>
 
-            <!-- SPENDENSTREAM (Archiv-Slot für die Zeit danach, bleibt hier schon drin) -->
-            <article class="card reveal">
-              <div class="mediaTop">
-                <img src="images/spendenstream_2025.jpg" alt="Spendenstream — Banner" />
-                <div class="mediaBadge">SpendenStream</div>
+            <!-- Vergangen: Rave Drive 2025 (aus altem Code übernommen) -->
+            <article class="card big reveal" data-type="past" data-date="2025-09-10">
+              <div class="thumb">
+                <img src="images/events/ravedrive2025.jpg" alt="Rave Drive 2025" loading="lazy"
+                     onerror="this.closest('.thumb').classList.add('noimg'); this.remove();">
+                <div class="badgeTop">2025</div>
               </div>
-              <div class="cardBody">
-                <h3>SpendenStream</h3>
-                <p>
-                  Vier Tage Live: Musik, Gaming, Emotionen und Hilfe. (Eintrag bleibt auch nach dem Event als Erinnerung.)
-                </p>
-                <div class="meta">
-                  <span class="tag">25.12.–28.12.</span>
-                  <span class="tag">Charity</span>
+              <div class="body">
+                <div class="badgeRow">
+                  <span class="badge">2025</span>
+                  <span class="badge">Roadtrip</span>
+                  <span class="badge">4 Städte</span>
                 </div>
+                <h3 class="eTitle">Rave Drive 2025</h3>
+                <p class="meta">2.500 km — Potsdam → Leipzig → Köln → München. Pure Community-Power.</p>
+              </div>
+              <div class="ctaRow">
+                <a class="linkBtn" href="ravedrive2025.html">Zum Recap</a>
+                <a class="linkGhost" href="index.html#community">Highlights</a>
               </div>
             </article>
 
-            <!-- EXTRA: Platzhalter für weitere Archiv-Events -->
-            <article class="card reveal">
-              <div class="mediaTop">
-                <img src="images/archive_event_01.jpg" alt="Archiv Event — Banner" />
-                <div class="mediaBadge">Archiv Slot</div>
-              </div>
-              <div class="cardBody">
-                <h3>Weitere Events</h3>
-                <p>Wenn du mir die restlichen Titel + Bilder gibst, trage ich alles 1:1 hier ein.</p>
-                <div class="meta">
-                  <span class="tag">TBA</span><span class="tag">TBA</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <footer>© Rave3eN</footer>
-        </div>
-      </section>
-
-      <!-- TIMELINE -->
-      <section id="timelinePanel" class="tabPanel">
-        <div class="wrap">
-          <div class="sectionHead">
-            <h2>Timeline</h2>
-            <div class="tools">
-              <a class="pill" href="about.html">About</a>
-              <a class="pill primary" href="index.html">Portal</a>
-            </div>
-          </div>
-
-          <div class="panel reveal" style="padding: 22px;">
-            <div class="timeline">
-              <div class="tItem">
-                <div class="tTitle">Rave Camp 2024</div>
-                <p class="tBody">Festival-Vibe, Community und Story — ein Kapitel, das die Base zusammengeschweißt hat.</p>
-              </div>
-              <div class="tItem">
-                <div class="tTitle">Rave Drive 2025</div>
-                <p class="tBody">Unterwegs quer durch Deutschland — Treffen, Momente, Verbindung. Rave3eN auf Tour.</p>
-              </div>
-              <div class="tItem">
-                <div class="tTitle">SpendenStream — 25.12.–28.12.</div>
-                <p class="tBody">Vier Tage Live. Musik + Gaming + Emotion — und Hilfe, die zählt.</p>
-              </div>
-            </div>
           </div>
 
           <footer>© Rave3eN</footer>
@@ -922,39 +755,10 @@
   </div>
 
   <script>
+    // Dock close
     document.getElementById("dockClose")?.addEventListener("click", () => {
       document.getElementById("playerDock")?.remove();
     });
-
-    // Tabs
-    const btnUpcoming = document.getElementById("tabUpcoming");
-    const btnPast = document.getElementById("tabPast");
-    const btnTimeline = document.getElementById("tabTimeline");
-
-    const pUpcoming = document.getElementById("upcomingPanel");
-    const pPast = document.getElementById("pastPanel");
-    const pTimeline = document.getElementById("timelinePanel");
-
-    function setTab(which){
-      [btnUpcoming, btnPast, btnTimeline].forEach(b => b?.classList.remove("primary"));
-      [pUpcoming, pPast, pTimeline].forEach(p => p?.classList.remove("on"));
-
-      if(which === "upcoming"){
-        btnUpcoming?.classList.add("primary");
-        pUpcoming?.classList.add("on");
-      } else if(which === "past"){
-        btnPast?.classList.add("primary");
-        pPast?.classList.add("on");
-      } else {
-        btnTimeline?.classList.add("primary");
-        pTimeline?.classList.add("on");
-      }
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    btnUpcoming?.addEventListener("click", ()=> setTab("upcoming"));
-    btnPast?.addEventListener("click", ()=> setTab("past"));
-    btnTimeline?.addEventListener("click", ()=> setTab("timeline"));
 
     // Reveal
     const io = new IntersectionObserver((entries)=>{
@@ -962,7 +766,70 @@
     }, {threshold:0.12});
     document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
 
-    // Background FX
+    // Movable / looping ticker (langsamer als vorher)
+    (function(){
+      const track=document.getElementById('marqueeTrack'); if(!track) return;
+      track.innerHTML = track.innerHTML + track.innerHTML;
+
+      let offset=0;
+      let speed=0.18;          // langsamer
+      let drag=false,startX=0,startOffset=0;
+
+      const step=()=>{
+        if(!drag){ offset -= speed; }
+        const w = track.scrollWidth/2;
+        if(offset <= -w){ offset += w; }
+        track.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(step);
+      };
+      step();
+
+      track.addEventListener('pointerdown',e=>{
+        drag=true; startX=e.clientX; startOffset=offset;
+        track.setPointerCapture(e.pointerId);
+      });
+      window.addEventListener('pointermove',e=>{
+        if(drag){ offset = startOffset + (e.clientX - startX); }
+      }, {passive:true});
+      window.addEventListener('pointerup',()=>{ drag=false; }, {passive:true});
+    })();
+
+    // Filter (Alle / Kommend / Vergangen) + Sortierung nach Datum
+    (function(){
+      const btnAll=document.getElementById('tabAll');
+      const btnUp=document.getElementById('tabUpcoming');
+      const btnPast=document.getElementById('tabPast');
+
+      const grid=document.getElementById('eventsGrid');
+      const cards=[...document.querySelectorAll('#eventsGrid .card')];
+
+      // Sort by date ascending
+      const sorted = cards.sort((a,b)=>{
+        const da=new Date(a.dataset.date||'2100-01-01').getTime();
+        const db=new Date(b.dataset.date||'2100-01-01').getTime();
+        return da-db;
+      });
+      sorted.forEach(c=>grid.appendChild(c));
+
+      function setActive(target){
+        [btnAll,btnUp,btnPast].forEach(b=>{
+          b.classList.toggle('primary', b===target);
+          b.setAttribute('aria-pressed', String(b===target));
+        });
+      }
+      function showAll(){ cards.forEach(c=> c.style.display="flex"); }
+      function showType(type){
+        cards.forEach(c=>{
+          c.style.display = (c.dataset.type===type) ? "flex" : "none";
+        });
+      }
+
+      btnAll?.addEventListener('click', ()=>{ setActive(btnAll); showAll(); });
+      btnUp?.addEventListener('click', ()=>{ setActive(btnUp); showType('upcoming'); });
+      btnPast?.addEventListener('click', ()=>{ setActive(btnPast); showType('past'); });
+    })();
+
+    // Background FX (mystic mist + motes + sigil rings)
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
@@ -991,8 +858,8 @@
           x: Math.random(),
           y: Math.random(),
           r: Math.random()*0.22 + 0.12,
-          vx: (Math.random()*0.00035 + 0.00008) * (Math.random()<0.5?-1:1),
-          vy: (Math.random()*0.00022 + 0.00006),
+          vx: (Math.random()*0.00028 + 0.00006) * (Math.random()<0.5?-1:1),
+          vy: (Math.random()*0.00018 + 0.00005),
           c: Math.random()<0.5 ? "b" : "p"
         });
       }
