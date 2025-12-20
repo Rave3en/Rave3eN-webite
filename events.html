@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   <title>Rave3eN — Events</title>
-  <meta name="description" content="Rave3eN Events: Rave Camp 2024, Rave Drive 2025, Spendenstream & mehr – alle Termine & Recaps im mystischen Neon-EDM Look."/>
+  <meta name="description" content="Rave3eN Events: Rave Camp 2024, Rave Drive 2025, Spendenstream & mehr – Termine & Recaps im mystischen Neon-EDM Look."/>
   <link rel="canonical" href="https://www.rave3en.de/events.html"/>
   <meta name="theme-color" content="#030308"/>
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Rave3eN — Events"/>
-  <meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – alle Raves, Termine & Recaps im Neon-EDM Look."/>
+  <meta property="og:description" content="Spendenstream, Rave Camp 2024, Rave Drive 2025 – Termine & Recaps im Neon-EDM Look."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.rave3en.de/events.html"/>
   <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png"/>
@@ -38,7 +37,6 @@
       --shadow: 0 26px 110px rgba(0,0,0,.80);
       --shadow2: 0 16px 60px rgba(0,0,0,.55);
 
-      --r: 18px;
       --rx: 30px;
 
       --max: 1180px;
@@ -88,15 +86,9 @@
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
     }
 
-    .content{
-      position:relative;
-      z-index:2;
-      padding-bottom: calc(var(--dockH) + 34px);
-    }
-    .wrap{
-      width:min(var(--max), calc(100% - var(--padX)));
-      margin:0 auto;
-    }
+    .content{ position:relative; z-index:2; padding-bottom: calc(var(--dockH) + 34px); }
+    .wrap{ width:min(var(--max), calc(100% - var(--padX))); margin:0 auto; }
+
     @media (max-width: 720px){
       :root{ --padX: 24px; --secY: 28px; --gap: 14px; --pageTop: 110px; }
     }
@@ -119,16 +111,11 @@
       gap: 14px;
       padding: 12px 0;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      flex: 0 0 auto;
-      min-width: 140px;
-    }
+    .brand{ display:flex; align-items:center; gap:12px; flex:0 0 auto; }
     .logo{
       height:42px;
       filter: drop-shadow(0 0 10px rgba(0,213,255,.35)) drop-shadow(0 0 14px rgba(177,0,255,.25));
     }
-
     .nav{ display:flex; align-items:center; justify-content:flex-end; flex:1 1 auto; min-width:0; }
     .navScroll{
       display:flex; gap:10px; align-items:center;
@@ -139,7 +126,6 @@
       padding-bottom:2px;
     }
     .navScroll::-webkit-scrollbar{ display:none; }
-
     .chip{
       padding: 10px 12px;
       border-radius: 999px;
@@ -164,17 +150,14 @@
       background: linear-gradient(90deg, rgba(0,213,255,.18), rgba(177,0,255,.18));
       border-color: rgba(255,255,255,.22);
     }
-
     @media (max-width: 980px){
       :root{ --hudH: 92px; }
       .hud .row{ height:auto; }
-      .brand{ min-width: unset; }
     }
     @media (max-width: 560px){
       .chip{ padding:9px 11px; font-size:10px; }
     }
 
-    /* Page sections */
     main{ padding-top: var(--pageTop); }
     section{ padding: var(--secY) 0; }
 
@@ -199,7 +182,6 @@
     .panel > *{ position:relative; z-index:1; }
 
     .headInner{ padding: clamp(22px, 3.1vw, 36px); }
-
     .kicker{
       display:inline-flex;
       width: fit-content;
@@ -262,6 +244,7 @@
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
+      margin-top: 16px;
     }
     .btnRow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .pill{
@@ -306,7 +289,7 @@
       position:relative;
       display:flex;
       flex-direction:column;
-      min-height: 330px;
+      min-height: 360px;
       transition: transform .18s ease, border-color .18s ease;
     }
     .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
@@ -361,43 +344,7 @@
       white-space:nowrap;
     }
 
-    /* Placeholder (wenn Bild fehlt) */
-    .thumb.placeholder{
-      display:grid;
-      place-items:center;
-      background:
-        radial-gradient(260px 180px at 25% 30%, rgba(0,213,255,.18), transparent 60%),
-        radial-gradient(260px 180px at 78% 22%, rgba(177,0,255,.18), transparent 60%),
-        linear-gradient(135deg, rgba(255,255,255,.05), rgba(0,0,0,.18));
-    }
-    .phInner{
-      text-align:center;
-      padding: 12px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
-    }
-    .phMark{
-      font-family: Orbitron, sans-serif;
-      font-weight: 800;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size: 12px;
-      opacity:.95;
-    }
-    .phPath{
-      margin-top: 6px;
-      font-family: Rajdhani, sans-serif;
-      font-size: 12px;
-      color: rgba(183,198,255,.86);
-      letter-spacing:.03em;
-    }
-
-    .body{
-      padding: 16px 16px 0;
-      flex: 1 1 auto;
-    }
+    .body{ padding: 16px 16px 12px; flex: 1 1 auto; }
     .badgeRow{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 10px; }
     .badge{
       display:inline-flex; align-items:center; gap:6px;
@@ -420,11 +367,36 @@
       font-size: 12px;
     }
     .meta{
-      margin:0 0 16px;
+      margin:0 0 12px;
       color: rgba(183,198,255,.92);
       line-height:1.75;
       font-size: 14px;
     }
+
+    /* Gallery strip (mini thumbs) */
+    .strip{
+      display:flex;
+      gap:10px;
+      overflow:auto;
+      padding: 0 16px 14px;
+      scrollbar-width: none;
+    }
+    .strip::-webkit-scrollbar{ display:none; }
+    .mini{
+      flex: 0 0 auto;
+      width: 86px;
+      height: 56px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      background: rgba(0,0,0,.22);
+      position:relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      cursor:pointer;
+      transition: transform .16s ease, border-color .16s ease;
+    }
+    .mini:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.22); }
+    .mini img{ width:100%; height:100%; object-fit: cover; }
 
     .ctaRow{
       padding: 0 16px 16px;
@@ -465,8 +437,8 @@
       box-shadow: 0 0 18px rgba(0,213,255,.10), 0 0 18px rgba(177,0,255,.08);
     }
 
-    .card.big{ grid-column: span 6; min-height: 350px; }
-    .card.feature{ grid-column: span 12; min-height: 360px; }
+    .card.big{ grid-column: span 6; }
+    .card.feature{ grid-column: span 12; }
 
     @media (max-width: 980px){
       .card{ grid-column: span 6; }
@@ -476,7 +448,69 @@
     @media (max-width: 640px){
       .card{ grid-column: span 12; }
       .thumb{ aspect-ratio: 16/10; }
-      .controls{ gap:12px; }
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0;
+      z-index:999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 26px;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .lightbox.on{ display:flex; }
+    .lbInner{
+      width: min(1100px, 100%);
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 30px 120px rgba(0,0,0,.75);
+      overflow:hidden;
+      position:relative;
+    }
+    .lbInner img{
+      width:100%;
+      height:auto;
+      display:block;
+      background: rgba(0,0,0,.25);
+    }
+    .lbTop{
+      position:absolute;
+      top: 14px; left: 14px; right: 14px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      pointer-events:none;
+    }
+    .lbTag{
+      pointer-events:none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.40);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .lbClose{
+      pointer-events:auto;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.40);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor:pointer;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size: 10px;
+    }
+    .lbClose:hover{
+      border-color: rgba(255,255,255,.26);
+      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
     }
 
     .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
@@ -507,10 +541,7 @@
       gap: 12px;
       padding: 12px 0;
     }
-    .dockLeft{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
+    .dockLeft{ display:flex; align-items:center; gap:12px; min-width: 220px; }
     .orb{
       width:46px; height:46px; border-radius: 18px;
       border:1px solid rgba(255,255,255,.14);
@@ -550,12 +581,7 @@
       font-size: 13px;
       margin-top: 3px;
     }
-    .dockMid{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      min-width: 260px;
-    }
+    .dockMid{ flex:1; display:flex; justify-content:center; min-width: 260px; }
     .spotifyFrame{
       width: min(700px, 100%);
       height: 78px;
@@ -596,8 +622,7 @@
         <div class="row">
           <div class="brand">
             <a href="index.html" style="display:flex;align-items:center;gap:12px;">
-              <!-- wichtig: wir probieren gleich im JS mehrere Logo-Pfade -->
-              <img class="logo" id="siteLogo" src="logo druck.png" alt="Rave3eN Logo">
+              <img class="logo" src="logo druck.png" alt="Rave3eN Logo">
             </a>
           </div>
 
@@ -626,25 +651,23 @@
               <div class="kicker">rave3en events</div>
               <div class="title">Raves. Roadtrips. Community.</div>
               <p class="subtitle">
-                Von Camp bis Roadtrip — hier beginnt der echte Rave: Energie, Menschen, Erinnerungen.
+                Camp, Roadtrip, Charity — alles was bleibt, wird hier konserviert.
               </p>
 
               <div class="ticker" aria-label="Timeline">
                 <div class="track" id="marqueeTrack">
                   <span>RAVE CAMP 2024</span>
                   <span>RAVE DRIVE 2025 · 2.5K KM</span>
-                  <span>TIERHEIM-SPENDENSTREAM 25–28.12</span>
-                  <span>COMMUNITY MEETUPS</span>
-                  <span>HIGHLIGHTS & RECAPS</span>
-                  <span>SAVE THE DATE</span>
-                  <span>EDM × ROADTRIPS</span>
+                  <span>SPENDENSTREAM 25–28.12</span>
+                  <span>COMMUNITY</span>
+                  <span>HIGHLIGHTS</span>
                   <span>RAVE CAMP 2024</span>
                   <span>RAVE DRIVE 2025 · 2.5K KM</span>
-                  <span>FEEL THE BASS</span>
+                  <span>SPENDENSTREAM 25–28.12</span>
                 </div>
               </div>
 
-              <div class="controls" style="margin-top:16px;">
+              <div class="controls">
                 <div class="btnRow" aria-label="Filter">
                   <button class="pill primary" id="btnAll" aria-pressed="true" type="button">Alle</button>
                   <button class="pill" id="btnUpcoming" aria-pressed="false" type="button">Kommend</button>
@@ -661,48 +684,47 @@
         </div>
       </section>
 
-      <!-- GRID -->
+      <!-- EVENTS GRID -->
       <section>
         <div class="wrap">
           <div class="grid" id="eventsGrid" aria-live="polite">
 
-            <!-- Kommend: Tierheim-Spendenstream -->
+            <!-- Kommend: Spendenstream -->
             <article class="card feature reveal" data-type="upcoming" data-date="2025-12-25">
-              <div class="thumb" data-label="Tierheim-Spendenstream">
-                <img
-                  src="images/events/tierheim-stream.jpg"
-                  alt="Tierheim-Spendenstream"
-                  loading="lazy"
-                  data-fallback="images/events/tierheim-stream.jpeg|images/events/tierheim-stream.png|images/events/Tierheim-Spendenstream.jpg|images/events/spendenstream.jpg"
-                >
+              <div class="thumb">
+                <!-- event1.jpg / event2.jpg liegen im Root -->
+                <img id="heroEventImg" src="event1.jpg" alt="Spendenstream" loading="lazy">
                 <div class="badgeTop">25–28.12</div>
               </div>
+
               <div class="body">
                 <div class="badgeRow">
                   <span class="badge">25–28.12</span>
                   <span class="badge">Dauerstream</span>
                   <span class="badge">Charity</span>
                 </div>
-                <h3 class="eTitle">Tierheim-Spendenstream</h3>
-                <p class="meta">24/7 Stream, Challenges & Action – alles für die Pfoten. 💜💙</p>
+                <h3 class="eTitle">Spendenstream</h3>
+                <p class="meta">Vier Tage Live — Community, Emotion, Musik und Hilfe für Tiere. 💜💙</p>
               </div>
+
+              <div class="strip" aria-label="Spendenstream Bilder">
+                <div class="mini" data-full="event1.jpg" data-tag="Spendenstream"><img src="event1.jpg" alt="event1"></div>
+                <div class="mini" data-full="event2.jpg" data-tag="Spendenstream"><img src="event2.jpg" alt="event2"></div>
+              </div>
+
               <div class="ctaRow">
-                <a class="linkBtn" href="events.html">Details</a>
-                <a class="linkGhost" href="index.html#live">Zum Stream</a>
+                <a class="linkBtn" href="index.html#stage">Zum Stream</a>
+                <a class="linkGhost" href="highlight-clips.html">Clips</a>
               </div>
             </article>
 
             <!-- Vergangen: Rave Camp 2024 -->
             <article class="card big reveal" data-type="past" data-date="2024-08-17">
-              <div class="thumb" data-label="Rave Camp 2024">
-                <img
-                  src="images/events/ravecamp2024.jpg"
-                  alt="Rave Camp 2024"
-                  loading="lazy"
-                  data-fallback="images/events/ravecamp2024.jpeg|images/events/ravecamp2024.png|images/events/RaveCamp2024.jpg|images/events/rave-camp-2024.jpg"
-                >
+              <div class="thumb">
+                <img id="heroCampImg" src="camp1.jpg" alt="Rave Camp 2024" loading="lazy">
                 <div class="badgeTop">2024</div>
               </div>
+
               <div class="body">
                 <div class="badgeRow">
                   <span class="badge">2024</span>
@@ -710,37 +732,58 @@
                   <span class="badge">Community</span>
                 </div>
                 <h3 class="eTitle">Rave Camp 2024</h3>
-                <p class="meta">Wochenende. Lagerfeuer. EDM. Geschichten, die bleiben.</p>
+                <p class="meta">Wochenende. Lagerfeuer. EDM. Momente, die bleiben.</p>
               </div>
+
+              <div class="strip" aria-label="Rave Camp 2024 Bilder">
+                <div class="mini" data-full="camp1.jpg" data-tag="Rave Camp 2024"><img src="camp1.jpg" alt="camp1"></div>
+                <div class="mini" data-full="camp2.jpg" data-tag="Rave Camp 2024"><img src="camp2.jpg" alt="camp2"></div>
+                <div class="mini" data-full="camp3.jpg" data-tag="Rave Camp 2024"><img src="camp3.jpg" alt="camp3"></div>
+                <div class="mini" data-full="camp4.jpg" data-tag="Rave Camp 2024"><img src="camp4.jpg" alt="camp4"></div>
+                <div class="mini" data-full="camp5.jpg" data-tag="Rave Camp 2024"><img src="camp5.jpg" alt="camp5"></div>
+                <div class="mini" data-full="camp6.jpg" data-tag="Rave Camp 2024"><img src="camp6.jpg" alt="camp6"></div>
+                <div class="mini" data-full="camp7.jpg" data-tag="Rave Camp 2024"><img src="camp7.jpg" alt="camp7"></div>
+                <div class="mini" data-full="camp8.jpg" data-tag="Rave Camp 2024"><img src="camp8.jpg" alt="camp8"></div>
+              </div>
+
               <div class="ctaRow">
                 <a class="linkBtn" href="ravecamp2024.html">Zum Recap</a>
-                <a class="linkGhost" href="index.html#community">Fotos</a>
+                <a class="linkGhost" href="highlight-clips.html">Clips</a>
               </div>
             </article>
 
             <!-- Vergangen: Rave Drive 2025 -->
             <article class="card big reveal" data-type="past" data-date="2025-09-10">
-              <div class="thumb" data-label="Rave Drive 2025">
-                <img
-                  src="images/events/ravedrive2025.jpg"
-                  alt="Rave Drive 2025"
-                  loading="lazy"
-                  data-fallback="images/events/ravedrive2025.jpeg|images/events/ravedrive2025.png|images/events/RaveDrive2025.jpg|images/events/rave-drive-2025.jpg"
-                >
+              <div class="thumb">
+                <img id="heroDriveImg" src="drive1.jpg" alt="Rave Drive 2025" loading="lazy">
                 <div class="badgeTop">2025</div>
               </div>
+
               <div class="body">
                 <div class="badgeRow">
                   <span class="badge">2025</span>
                   <span class="badge">Roadtrip</span>
-                  <span class="badge">4 Städte</span>
+                  <span class="badge">2.5K KM</span>
                 </div>
                 <h3 class="eTitle">Rave Drive 2025</h3>
-                <p class="meta">2.500 km — Potsdam → Leipzig → Köln → München. Pure Community-Power.</p>
+                <p class="meta">2.500 km — Potsdam → Leipzig → Köln → Bayern. Pure Community-Power.</p>
               </div>
+
+              <div class="strip" aria-label="Rave Drive 2025 Bilder">
+                <div class="mini" data-full="drive1.jpg" data-tag="Rave Drive 2025"><img src="drive1.jpg" alt="drive1"></div>
+                <div class="mini" data-full="drive2.jpg" data-tag="Rave Drive 2025"><img src="drive2.jpg" alt="drive2"></div>
+                <div class="mini" data-full="drive3.jpg" data-tag="Rave Drive 2025"><img src="drive3.jpg" alt="drive3"></div>
+                <div class="mini" data-full="drive4.jpg" data-tag="Rave Drive 2025"><img src="drive4.jpg" alt="drive4"></div>
+                <div class="mini" data-full="drive5.jpg" data-tag="Rave Drive 2025"><img src="drive5.jpg" alt="drive5"></div>
+                <div class="mini" data-full="drive6.jpg" data-tag="Rave Drive 2025"><img src="drive6.jpg" alt="drive6"></div>
+                <div class="mini" data-full="drive7.jpg" data-tag="Rave Drive 2025"><img src="drive7.jpg" alt="drive7"></div>
+                <div class="mini" data-full="drive8.jpg" data-tag="Rave Drive 2025"><img src="drive8.jpg" alt="drive8"></div>
+                <div class="mini" data-full="drive9.jpg" data-tag="Rave Drive 2025"><img src="drive9.jpg" alt="drive9"></div>
+              </div>
+
               <div class="ctaRow">
                 <a class="linkBtn" href="ravedrive2025.html">Zum Recap</a>
-                <a class="linkGhost" href="index.html#community">Highlights</a>
+                <a class="linkGhost" href="highlight-clips.html">Clips</a>
               </div>
             </article>
 
@@ -752,6 +795,17 @@
     </main>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lbInner" role="dialog" aria-modal="true" aria-label="Bildansicht">
+      <div class="lbTop">
+        <div class="lbTag" id="lbTag">Rave</div>
+        <button class="lbClose" id="lbClose" type="button">Schließen</button>
+      </div>
+      <img id="lbImg" src="" alt="Bild groß">
+    </div>
+  </div>
+
   <!-- Spotify Dock -->
   <div class="dock" id="playerDock" role="region" aria-label="Spotify Player">
     <div class="wrap">
@@ -759,7 +813,7 @@
         <div class="dockLeft">
           <div class="orb" aria-hidden="true"></div>
           <div class="dockText">
-            <strong>🎧 Rave3eN EDM Playlist</strong>
+            <strong>🎧 Rave3eN Playlist</strong>
             <span>läuft im Dock weiter</span>
           </div>
         </div>
@@ -796,7 +850,7 @@
     }, {threshold:0.12});
     document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
 
-    // Movable / looping ticker (langsamer)
+    // Ticker (langsamer)
     (function(){
       const track=document.getElementById('marqueeTrack'); if(!track) return;
       track.innerHTML = track.innerHTML + track.innerHTML;
@@ -832,7 +886,6 @@
       const grid=document.getElementById('eventsGrid');
       const cards=[...document.querySelectorAll('#eventsGrid .card')];
 
-      // Sort by date asc
       cards.sort((a,b)=>{
         const da=new Date(a.dataset.date||'2100-01-01').getTime();
         const db=new Date(b.dataset.date||'2100-01-01').getTime();
@@ -857,88 +910,60 @@
       btnPast?.addEventListener('click',()=>{ setPressed(btnPast); showType('past'); });
     })();
 
-    // ===== Robust image fallback + Mystic placeholder =====
-    function makePlaceholder(thumbEl, label, path){
-      if(!thumbEl || thumbEl.classList.contains('placeholder')) return;
-      thumbEl.classList.add('placeholder');
-      const badge = thumbEl.querySelector('.badgeTop');
-      const badgeHTML = badge ? badge.outerHTML : '';
-      thumbEl.innerHTML = `
-        <div class="phInner">
-          <div class="phMark">${(label||'Rave3eN Event').toUpperCase()}</div>
-          <div class="phPath">${path ? path : 'Bild fehlt in Vorschau'}</div>
-        </div>
-        ${badgeHTML}
-      `;
-    }
-
-    function tryFallback(img, list){
-      if(!list.length) return false;
-      const next = list.shift();
-      img.dataset.fallback = list.join('|');
-      img.src = next;
-      return true;
-    }
-
-    function attachFallback(img){
-      const raw = (img.dataset.fallback || '').trim();
-      const fallbackList = raw ? raw.split('|').map(s=>s.trim()).filter(Boolean) : [];
-      const thumb = img.closest('.thumb');
-      const label = thumb?.dataset?.label || img.alt;
-
-      img.addEventListener('error', () => {
-        const still = (img.dataset.fallback || '').trim();
-        const list = still ? still.split('|').map(s=>s.trim()).filter(Boolean) : [];
-        if(tryFallback(img, list)) return;
-
-        // last resort: try to decode/encode spaces once
-        const src = img.getAttribute('src') || '';
-        if(src.includes('%20')){
-          img.src = src.replaceAll('%20',' ');
-          img.dataset.fallback = ''; // stop loops
-          return;
-        }
-        if(src.includes(' ') && !src.includes('%20')){
-          img.src = src.replaceAll(' ','%20');
-          img.dataset.fallback = '';
-          return;
-        }
-
-        // final: placeholder
-        if(thumb) makePlaceholder(thumb, label, src);
-      }, { once:false });
-
-      // For preview environments: if file not present -> error triggers
-      // Also: if image loads but is 0x0 (some servers), fallback to placeholder
-      img.addEventListener('load', () => {
-        if((img.naturalWidth||0) < 5){
-          if(thumb) makePlaceholder(thumb, label, img.getAttribute('src'));
-        }
-      });
-    }
-
-    document.querySelectorAll('.thumb img').forEach(attachFallback);
-
-    // Logo fallback (logo druck.png vs logo%20druck.png)
+    // Lightbox
     (function(){
-      const logo = document.getElementById('siteLogo');
-      if(!logo) return;
-      const tries = [
-        "logo druck.png",
-        "logo%20druck.png",
-        "logo_druck.png",
-        "logo-druck.png",
-        "images/logo druck.png",
-        "images/logo%20druck.png"
-      ];
-      let i=0;
-      logo.addEventListener('error', () => {
-        i++;
-        if(i < tries.length) logo.src = tries[i];
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbTag = document.getElementById('lbTag');
+      const close = document.getElementById('lbClose');
+
+      function openLB(src, tag){
+        lbImg.src = src;
+        lbTag.textContent = tag || 'Rave';
+        lb.classList.add('on');
+        lb.setAttribute('aria-hidden','false');
+      }
+      function closeLB(){
+        lb.classList.remove('on');
+        lb.setAttribute('aria-hidden','true');
+        lbImg.src = '';
+      }
+
+      document.querySelectorAll('.mini').forEach(el=>{
+        el.addEventListener('click', ()=>{
+          openLB(el.dataset.full, el.dataset.tag);
+        });
+      });
+
+      close?.addEventListener('click', closeLB);
+      lb?.addEventListener('click', (e)=>{
+        if(e.target === lb) closeLB();
+      });
+      window.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') closeLB();
       });
     })();
 
-    // ===== Background FX =====
+    // Robust hero image rotate (wenn event1/event2 existieren)
+    (function(){
+      const hero = document.getElementById('heroEventImg');
+      if(!hero) return;
+      const seq = ["event1.jpg","event2.jpg"];
+      let i=0;
+
+      function safeSet(next){
+        const test = new Image();
+        test.onload = ()=> hero.src = next;
+        test.src = next;
+      }
+
+      setInterval(()=>{
+        i=(i+1)%seq.length;
+        safeSet(seq[i]);
+      }, 5200);
+    })();
+
+    // Background FX (mist + motes + sigil rings)
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
