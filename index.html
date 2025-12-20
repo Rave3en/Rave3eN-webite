@@ -328,13 +328,14 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* SIGIL ROOM FIX */
+    /* SIGIL ROOM FIX + LOGO ROTATION + ZAPS */
     .sigilRoom{
       position:relative;
       overflow:hidden;
       min-height: var(--portalMin);
       border-radius: var(--rx);
       isolation:isolate;
+      background: rgba(0,0,0,.08);
     }
     @media (max-width: 980px){
       .sigilRoom{
@@ -345,8 +346,84 @@
     @media (max-width: 520px){
       .sigilRoom{ aspect-ratio: 3 / 4; }
     }
+
     .sigilArt{ position:absolute; inset:0; z-index:0; }
     .sigilArt svg{ width:100%; height:100%; display:block; }
+
+    .sigilLogoWrap{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .sigilHalo{
+      width: min(62%, 320px);
+      aspect-ratio: 1/1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(0,213,255,.16), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(177,0,255,.16), transparent 60%),
+        conic-gradient(from 90deg,
+          rgba(0,213,255,.00),
+          rgba(0,213,255,.22),
+          rgba(177,0,255,.22),
+          rgba(0,213,255,.00));
+      filter: blur(0.2px);
+      box-shadow:
+        0 0 40px rgba(0,213,255,.14),
+        0 0 46px rgba(177,0,255,.12);
+      animation: haloBreath 5.8s ease-in-out infinite;
+    }
+    @keyframes haloBreath{
+      0%,100%{ transform: scale(0.98); opacity:.78; }
+      50%{ transform: scale(1.03); opacity:.92; }
+    }
+
+    .sigilLogo{
+      position:absolute;
+      width: min(42%, 220px);
+      height:auto;
+      filter:
+        drop-shadow(0 0 12px rgba(0,213,255,.26))
+        drop-shadow(0 0 16px rgba(177,0,255,.22));
+      transform-origin: 50% 50%;
+      animation: sigilSpin 18s linear infinite;
+      opacity:.96;
+    }
+    @keyframes sigilSpin{
+      to{ transform: rotate(360deg); }
+    }
+
+    /* Electric Zaps Layer */
+    .sigilZap{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      opacity:0;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(520px 260px at 72% 34%, rgba(0,213,255,.22), transparent 65%),
+        radial-gradient(520px 260px at 72% 34%, rgba(177,0,255,.22), transparent 65%),
+        repeating-linear-gradient(115deg,
+          rgba(255,255,255,.00) 0 18px,
+          rgba(255,255,255,.22) 18px 19px,
+          rgba(255,255,255,.00) 19px 36px);
+      filter: blur(0.5px);
+      transform: translate3d(0,0,0);
+    }
+    .sigilRoom.zap .sigilZap{
+      animation: zapFlash .26s ease-out 1;
+    }
+    @keyframes zapFlash{
+      0%{ opacity:0; }
+      25%{ opacity:.70; }
+      55%{ opacity:.16; }
+      100%{ opacity:0; }
+    }
 
     .sigilStamp{
       position:absolute;
@@ -359,7 +436,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       text-align:right;
-      z-index:1;
+      z-index:3;
     }
     .sigilStamp strong{
       display:block;
@@ -376,6 +453,32 @@
       line-height:1.5;
       font-family: Rajdhani, sans-serif;
       letter-spacing:.04em;
+    }
+
+    /* TICKER (moved under portal, slowed) */
+    .ticker{
+      margin-top: 14px;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      user-select:none;
+      cursor:grab;
+      box-shadow: inset 0 0 30px rgba(0,0,0,.55);
+    }
+    .track{
+      display:flex;
+      gap:26px;
+      padding: 12px 18px;
+      white-space:nowrap;
+      will-change: transform;
+    }
+    .track span{
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.28em;
+      font-size: 11px;
+      text-transform:uppercase;
+      color: rgba(220,232,255,.92);
     }
 
     /* Content grids */
@@ -487,32 +590,6 @@
       box-shadow: 0 16px 60px rgba(0,0,0,.45);
     }
     .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-
-    /* Ticker */
-    .ticker{
-      margin-top: 16px;
-      border-radius: var(--r);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-      user-select:none;
-      cursor:grab;
-      box-shadow: inset 0 0 30px rgba(0,0,0,.55);
-    }
-    .track{
-      display:flex;
-      gap:26px;
-      padding: 12px 18px;
-      white-space:nowrap;
-      will-change: transform;
-    }
-    .track span{
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.28em;
-      font-size: 11px;
-      text-transform:uppercase;
-      color: rgba(220,232,255,.92);
-    }
 
     footer{
       padding: 26px 0 18px;
@@ -664,7 +741,7 @@
             <div class="portalGrid">
               <div class="portalLeft">
                 <div class="kicker">musik • emotion • sinn • tiere</div>
-                <div class="title">Rave3eN<br>Rave On 💜💙⚡</div>
+                <div class="title">Rave3eN<br>Rave On 💜💙</div>
                 <p class="subtitle">
                   Ich bin Creator auf Twitch. Musik ist der Kern — EDM ist Energie.
                   Ich will Emotionen zeigen, bewahren und dem Leben über Musik Sinn geben.
@@ -678,7 +755,7 @@
                 </div>
               </div>
 
-              <div class="sigilRoom" aria-hidden="true">
+              <div class="sigilRoom" id="sigilRoom" aria-hidden="true">
                 <div class="sigilArt">
                   <svg viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
                     <defs>
@@ -703,7 +780,7 @@
                     <circle cx="240" cy="140" r="290" fill="url(#p1)"/>
                     <circle cx="740" cy="90"  r="330" fill="url(#p2)"/>
 
-                    <g opacity=".82">
+                    <g opacity=".72">
                       <circle cx="630" cy="270" r="150" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
                       <circle cx="630" cy="270" r="124" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1.2"/>
                       <circle cx="630" cy="270" r="96"  fill="none" stroke="url(#ln)" stroke-width="2.2"/>
@@ -711,8 +788,6 @@
                       <path d="M480 270 L780 270" stroke="rgba(255,255,255,.12)" stroke-width="1.2"/>
                       <path d="M630 218 L580 320 L630 294 L680 320 Z"
                             fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-linejoin="round"/>
-                      <circle cx="612" cy="272" r="2.5" fill="rgba(0,213,255,.9)"/>
-                      <circle cx="648" cy="272" r="2.5" fill="rgba(177,0,255,.9)"/>
                     </g>
 
                     <path d="M0,338 C190,260 310,380 450,348 C590,316 700,402 835,368 C872,358 888,340 900,350"
@@ -724,6 +799,13 @@
                   </svg>
                 </div>
 
+                <div class="sigilLogoWrap">
+                  <div class="sigilHalo" aria-hidden="true"></div>
+                  <img class="sigilLogo" src="logo%20druck.png" alt="" />
+                </div>
+
+                <div class="sigilZap" aria-hidden="true"></div>
+
                 <div class="sigilStamp">
                   <strong>Rave Sigil</strong>
                   <span>Creator • Musik • Emotion • Sinn • Tiere</span>
@@ -731,6 +813,17 @@
               </div>
             </div>
           </div>
+
+          <!-- TICKER moved HERE (below portal) -->
+          <div class="ticker reveal" id="ticker" aria-label="Ticker">
+            <div class="track" id="track">
+              <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
+              <span>EVENTS</span><span>ABOUT</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+              <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
+              <span>EVENTS</span><span>ABOUT</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -767,15 +860,6 @@
             <div class="card reveal">
               <h3>Vibe</h3>
               <p>Wenn Live aus ist, fällt die Bühne automatisch ins VOD zurück.</p>
-
-              <div class="ticker" id="ticker" aria-label="Ticker" style="margin-top:14px;">
-                <div class="track" id="track">
-                  <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-                  <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
-                  <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-                  <span>EVENTS</span><span>ABOUT ME</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -970,13 +1054,17 @@
       document.getElementById("playerDock")?.remove();
     });
 
+    // Ticker (moved under portal) - slowed down
     (() => {
       const t = document.getElementById("ticker");
       const track = document.getElementById("track");
       if(!t || !track) return;
 
       let x = 0;
-      let vx = 0.35;
+
+      // was 0.35 -> now much slower
+      let vx = 0.16;
+
       let drag = false;
       let last = 0;
       let startX = 0;
@@ -1018,6 +1106,34 @@
         drag = false;
         t.style.cursor = "grab";
       });
+    })();
+
+    // Sigil Zaps (random, subtle)
+    (()=>{
+      const room = document.getElementById("sigilRoom");
+      if(!room) return;
+
+      function zap(){
+        room.classList.remove("zap");
+        // force reflow to restart animation clean
+        void room.offsetWidth;
+        room.classList.add("zap");
+        setTimeout(()=> room.classList.remove("zap"), 350);
+      }
+
+      function loop(){
+        // random interval: ~2.2s to 7.5s
+        const next = 2200 + Math.random()*5300;
+        setTimeout(()=>{
+          // 70% chance single zap, 30% double-tap
+          zap();
+          if(Math.random() < 0.30){
+            setTimeout(zap, 160 + Math.random()*180);
+          }
+          loop();
+        }, next);
+      }
+      loop();
     })();
 
     const io = new IntersectionObserver((entries)=>{
