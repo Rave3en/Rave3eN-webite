@@ -34,10 +34,6 @@
       --blue:#00d5ff;
       --purple:#b100ff;
 
-      --glass: rgba(255,255,255,.05);
-      --stroke: rgba(255,255,255,.12);
-      --stroke2: rgba(177,0,255,.22);
-
       --shadow: 0 26px 110px rgba(0,0,0,.80);
       --shadow2: 0 16px 60px rgba(0,0,0,.55);
 
@@ -48,10 +44,12 @@
       --hudH: 78px;
       --dockH: 112px;
 
-      /* NEW: spacing scale */
       --padX: 40px;
       --secY: 44px;
       --gap: 18px;
+
+      /* NEW: Portal breathing */
+      --portalMin: 560px;
     }
 
     *{ box-sizing:border-box; }
@@ -78,7 +76,6 @@
       border-radius: 12px;
     }
 
-    /* FX Layers */
     #fxMist, #fxMotes, #fxSigil {
       position:fixed; inset:0;
       z-index:0;
@@ -95,15 +92,12 @@
       z-index:2;
       padding-bottom: calc(var(--dockH) + 34px);
     }
-
     .wrap{
       width:min(var(--max), calc(100% - var(--padX)));
       margin:0 auto;
     }
-
-    /* Responsive spacing */
     @media (max-width: 720px){
-      :root{ --padX: 26px; --secY: 34px; --gap: 14px; }
+      :root{ --padX: 26px; --secY: 34px; --gap: 14px; --portalMin: 0px; }
     }
     @media (max-width: 420px){
       :root{ --padX: 22px; --secY: 30px; --gap: 12px; }
@@ -123,7 +117,6 @@
       gap: 14px;
       padding: 12px 0;
     }
-
     .brand{
       display:flex; align-items:center; gap:12px;
       min-width: 240px;
@@ -151,26 +144,14 @@
       text-transform:uppercase;
     }
 
-    /* NAV: stop wrapping on small screens (no “squish”), allow horizontal scroll */
-    .nav{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      flex: 1 1 auto;
-      min-width: 0;
-    }
+    .nav{ display:flex; align-items:center; justify-content:flex-end; flex:1 1 auto; min-width:0; }
     .navScroll{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      overflow-x:auto;
-      overflow-y:hidden;
+      display:flex; gap:10px; align-items:center;
+      overflow-x:auto; overflow-y:hidden;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      min-width: 0;
-      padding-bottom: 2px;
+      min-width:0;
+      padding-bottom:2px;
     }
     .navScroll::-webkit-scrollbar{ display:none; }
 
@@ -187,7 +168,7 @@
       user-select:none;
       transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
       white-space:nowrap;
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
     .chip:hover{
       transform: translateY(-1px);
@@ -201,17 +182,15 @@
 
     @media (max-width: 980px){
       :root{ --hudH: 92px; }
-      .hud .row{ height:auto; align-items:center; }
+      .hud .row{ height:auto; }
       .brand{ min-width: unset; }
     }
     @media (max-width: 560px){
       .chip{ padding:9px 11px; font-size:10px; }
-      .nav{ gap:8px; }
       .navScroll{ justify-content:flex-start; }
-      .brandText{ display:none; } /* gives more room without “squish” */
+      .brandText{ display:none; }
     }
 
-    /* Sections */
     section{ padding: var(--secY) 0; }
     .sectionHead{
       display:flex; align-items:flex-end; justify-content:space-between;
@@ -252,7 +231,6 @@
       background: linear-gradient(90deg, rgba(0,213,255,.18), rgba(177,0,255,.18));
     }
 
-    /* Panels */
     .panel{
       position:relative;
       border-radius: var(--rx);
@@ -273,17 +251,28 @@
     }
     .panel > *{ position:relative; z-index:1; }
 
-    /* HERO */
+    /* ===== PORTAL (FIX GEQUETSCHT) ===== */
     .portal{ padding-top: 18px; }
     .portalGrid{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
+
+      /* BEFORE: 1.05fr .95fr  -> RIGHT was too dominant */
+      grid-template-columns: 1.18fr .82fr;
+
       gap: var(--gap);
       align-items:stretch;
     }
-    @media (max-width: 980px){ .portalGrid{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){
+      .portalGrid{ grid-template-columns: 1fr; }
+    }
 
-    .portalLeft{ padding: clamp(22px, 3vw, 34px); }
+    /* Make left column breathe + pin tiles to bottom */
+    .portalLeft{
+      padding: clamp(24px, 3.1vw, 38px);
+      min-height: var(--portalMin);
+      display:flex;
+      flex-direction:column;
+    }
 
     .kicker{
       display:inline-flex;
@@ -297,29 +286,30 @@
       text-transform:uppercase;
       font-size: 10px;
       color: rgba(0,213,255,.92);
+      margin-bottom: 2px;
     }
     .title{
-      margin: 16px 0 12px;
+      margin: 14px 0 10px;
       font-family: Orbitron, sans-serif;
       font-weight: 800;
-      font-size: clamp(38px, 5.0vw, 74px);
-      line-height: 1.04;
+      font-size: clamp(40px, 5.2vw, 78px);
+      line-height: 1.05;
       letter-spacing: -0.02em;
       text-shadow: 0 0 20px rgba(0,213,255,.16), 0 0 30px rgba(177,0,255,.16);
     }
     .subtitle{
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: rgba(183,198,255,.92);
       font-size: 15px;
-      line-height: 1.85;
-      max-width: 72ch;
+      line-height: 1.9;
+      max-width: 64ch; /* slightly tighter for cleaner block */
     }
+
     .ctaRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top: 6px;
-      margin-bottom: 14px; /* NEW: breathing space before tiles */
+      margin-top: 4px;
     }
 
     .btn{
@@ -347,13 +337,15 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* Portal Tiles (less squished, better heights) */
+    /* Tiles pinned down + more height */
     .portalTiles{
+      margin-top: auto;             /* KEY: pushes tiles to bottom */
+      padding-top: 18px;            /* breath between CTA and tiles */
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--gap);
-      margin-top: 10px;
     }
+
     .tile{
       grid-column: span 4;
       border-radius: var(--rx);
@@ -362,7 +354,7 @@
       box-shadow: var(--shadow2);
       overflow:hidden;
       position:relative;
-      min-height: 210px;
+      min-height: 240px;            /* was 210 -> less squish */
       transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
     .tile:hover{
@@ -384,7 +376,7 @@
       opacity:.78;
       mix-blend-mode: screen;
       display:block;
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
     .tile .shade{
       position:absolute; inset:0;
@@ -417,14 +409,21 @@
       font-family: Rajdhani, sans-serif;
       letter-spacing:.04em;
     }
-    @media (max-width: 980px){ .tile{ grid-column: span 6; min-height: 220px; } }
-    @media (max-width: 640px){ .tile{ grid-column: span 12; min-height: 200px; } }
 
-    /* Sigil room */
+    @media (max-width: 980px){
+      .portalLeft{ min-height: 0; }
+      .tile{ grid-column: span 6; min-height: 240px; }
+      .portalTiles{ margin-top: 18px; }
+    }
+    @media (max-width: 640px){
+      .tile{ grid-column: span 12; min-height: 210px; }
+    }
+
+    /* Right panel: keep mystic, but not absurdly tall */
     .sigilRoom{
       position:relative;
       overflow:hidden;
-      min-height: 440px;
+      min-height: var(--portalMin);
       border-radius: var(--rx);
     }
     @media (max-width: 980px){ .sigilRoom{ min-height: 360px; } }
@@ -496,13 +495,11 @@
       opacity:.95;
     }
     .card p{ margin:0; color: rgba(183,198,255,.92); line-height:1.75; font-size: 14px; }
-
     .card.big{
       grid-column: span 8;
       min-height: 380px;
       padding: 14px;
     }
-
     @media (max-width: 980px){
       .card{ grid-column: span 6; }
       .card.big{ grid-column: span 12; min-height: 340px; }
@@ -512,7 +509,7 @@
       .card.big{ min-height: 320px; }
     }
 
-    /* Twitch Stage spacing improvements */
+    /* Twitch Stage */
     .stageTop{
       display:flex; align-items:center; justify-content:space-between;
       gap:10px;
@@ -738,7 +735,6 @@
     </div>
 
     <main id="pjax-root">
-      <!-- PORTAL -->
       <section class="portal" id="portal">
         <div class="wrap">
           <div class="panel reveal">
@@ -758,7 +754,6 @@
                   <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
                 </div>
 
-                <!-- Portal-Kacheln -->
                 <div class="portalTiles" aria-label="Portale">
                   <a class="tile reveal" href="events.html" data-pjax>
                     <div class="bg"></div>
@@ -870,7 +865,6 @@
         </div>
       </section>
 
-      <!-- STAGE -->
       <section id="stage">
         <div class="wrap">
           <div class="sectionHead">
@@ -917,7 +911,6 @@
         </div>
       </section>
 
-      <!-- VAULT -->
       <section id="vault">
         <div class="wrap">
           <div class="sectionHead">
@@ -969,7 +962,6 @@
         </div>
       </section>
 
-      <!-- LINKS -->
       <section id="portale">
         <div class="wrap">
           <div class="sectionHead">
@@ -1017,7 +1009,6 @@
     </main>
   </div>
 
-  <!-- Spotify Dock -->
   <div class="dock" id="playerDock" role="region" aria-label="Spotify Player">
     <div class="wrap">
       <div class="row">
@@ -1159,7 +1150,6 @@
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("on"); });
     }, {threshold:0.12});
-
     function initReveal(){
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
@@ -1326,7 +1316,6 @@
         try{ const u=new URL(href,location.href); return u.origin===location.origin; }
         catch{ return false; }
       }
-
       function isSamePageAnchor(a){
         try{
           const u=new URL(a.href,location.href);
@@ -1334,7 +1323,6 @@
           return u.origin===cur.origin && u.pathname===cur.pathname && u.search===cur.search && u.hash;
         }catch{ return false; }
       }
-
       function shouldPJAX(a){
         if(!a || a.target==='_blank' || a.hasAttribute('download')) return false;
         if(a.hasAttribute('data-no-pjax')) return false;
@@ -1342,7 +1330,6 @@
         if(!a.hasAttribute('data-pjax')) return false;
         return sameOrigin(a.href);
       }
-
       function mergeHead(fromDoc){
         const incoming=[...fromDoc.querySelectorAll('style[data-pjax-id],link[rel="stylesheet"][data-pjax-id]')];
         incoming.forEach(node=>{
@@ -1352,7 +1339,6 @@
           document.head.appendChild(node.cloneNode(true));
         });
       }
-
       async function load(url,replaceState=false){
         const res=await fetch(url,{headers:{'X-PJAX':'true'}});
         const html=await res.text();
@@ -1365,7 +1351,6 @@
         if(newMain && target){
           target.innerHTML=newMain.innerHTML;
           document.title=doc.title||document.title;
-
           if(!replaceState) history.pushState({url},'',url);
 
           newMain.querySelectorAll('script').forEach(s=>{
@@ -1383,24 +1368,20 @@
           location.href=url;
         }
       }
-
       function clickHandler(e){
         const a=e.target.closest('a');
         if(!a || !shouldPJAX(a)) return;
         e.preventDefault();
         load(a.href);
       }
-
       function popHandler(e){
         const url=(e.state && e.state.url) || location.href;
         load(url,true);
       }
-
       function bind(){
         document.body.removeEventListener('click',clickHandler,true);
         document.body.addEventListener('click',clickHandler,true);
       }
-
       addEventListener('popstate',popHandler);
       bind();
     })();
