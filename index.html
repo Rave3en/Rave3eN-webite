@@ -30,6 +30,7 @@
       --bg2:#060617;
       --ink:#f6f7ff;
       --muted:#b7c6ff;
+
       --blue:#00d5ff;
       --purple:#b100ff;
 
@@ -271,7 +272,7 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* SIGIL ROOM: SUMMON + RUNE SCAN */
+    /* SIGIL ROOM: SUMMON + RADAR RUNE */
     .sigilRoom{
       position:relative;
       overflow:hidden;
@@ -281,7 +282,10 @@
       background: rgba(0,0,0,.08);
     }
     @media (max-width: 980px){
-      .sigilRoom{ min-height: 360px; aspect-ratio: 4 / 5; }
+      .sigilRoom{
+        min-height: 360px;
+        aspect-ratio: 4 / 5;
+      }
     }
     @media (max-width: 520px){
       .sigilRoom{ aspect-ratio: 3 / 4; }
@@ -332,6 +336,7 @@
         drop-shadow(0 0 0px rgba(177,0,255,0));
     }
 
+    /* Summon sequence */
     .sigilRoom.summon .sigilHalo{
       animation: haloSummon 1.6s cubic-bezier(.14,.92,.18,1) both;
     }
@@ -367,6 +372,7 @@
       }
     }
 
+    /* After summon: breathing halo + slow rotation */
     .sigilRoom.summoned .sigilHalo{
       opacity:.84;
       transform: scale(1);
@@ -387,57 +393,6 @@
     }
     @keyframes sigilSpin{
       to{ transform: translateY(0) scale(1) rotate(360deg); }
-    }
-
-    /* Rune Ring Overlay */
-    .runeLayer{
-      position:absolute;
-      inset:0;
-      z-index:3;
-      display:grid;
-      place-items:center;
-      pointer-events:none;
-      opacity:0;
-      mix-blend-mode: screen;
-    }
-    .runeLayer svg{
-      width: min(78%, 430px);
-      aspect-ratio: 1/1;
-      overflow:visible;
-      filter:
-        drop-shadow(0 0 14px rgba(0,213,255,.14))
-        drop-shadow(0 0 18px rgba(177,0,255,.12));
-      transform: scale(.96) rotate(-12deg);
-    }
-
-    /* one-shot scan animation */
-    .sigilRoom.rune .runeLayer{
-      animation: runeFade 1.15s ease-out both;
-    }
-    @keyframes runeFade{
-      0%{ opacity:0; }
-      20%{ opacity:.92; }
-      70%{ opacity:.35; }
-      100%{ opacity:0; }
-    }
-    .sigilRoom.rune .runeRing{
-      animation: ringPulse 1.15s ease-out both;
-    }
-    @keyframes ringPulse{
-      0%{ transform: scale(.94) rotate(-12deg); }
-      40%{ transform: scale(1.02) rotate(0deg); }
-      100%{ transform: scale(1.00) rotate(12deg); }
-    }
-    .sigilRoom.rune .scanStroke{
-      animation: scanDraw 1.15s ease-out both;
-      stroke-dasharray: 940;
-      stroke-dashoffset: 940;
-    }
-    @keyframes scanDraw{
-      0%{ stroke-dashoffset: 940; opacity:0; }
-      18%{ opacity:1; }
-      70%{ stroke-dashoffset: 120; opacity:.85; }
-      100%{ stroke-dashoffset: 0; opacity:0; }
     }
 
     /* Electric Zaps */
@@ -472,6 +427,46 @@
       42%{ opacity:.28; }
       60%{ opacity:.62; }
       100%{ opacity:0; }
+    }
+
+    /* Rune Radar Overlay */
+    .runeLayer{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+      opacity:0;
+      mix-blend-mode: screen;
+    }
+    .runeLayer svg{
+      width: min(78%, 430px);
+      aspect-ratio: 1/1;
+      overflow:visible;
+      transform: scale(.96) rotate(-12deg);
+      filter:
+        drop-shadow(0 0 14px rgba(0,213,255,.14))
+        drop-shadow(0 0 18px rgba(177,0,255,.12));
+    }
+
+    .sigilRoom.radar .runeLayer{ opacity:1; animation: runeFade 1.7s ease-out both; }
+    @keyframes runeFade{
+      0%{ opacity:0; }
+      12%{ opacity:.95; }
+      75%{ opacity:.38; }
+      100%{ opacity:0; }
+    }
+
+    .sigilRoom.radar .radar{
+      transform-origin: 300px 300px;
+      animation: radarSweep 1.6s cubic-bezier(.4,.0,.2,1) both;
+    }
+    @keyframes radarSweep{
+      0%{ transform: rotate(-90deg); opacity:0; }
+      10%{ opacity:1; }
+      90%{ opacity:.85; }
+      100%{ transform: rotate(270deg); opacity:0; }
     }
 
     /* TICKER */
@@ -858,49 +853,51 @@
 
                 <div class="sigilZap" aria-hidden="true"></div>
 
-                <!-- Rune ring overlay -->
+                <!-- Rune Radar Overlay -->
                 <div class="runeLayer" aria-hidden="true">
-                  <svg class="runeRing" viewBox="0 0 600 600">
+                  <svg viewBox="0 0 600 600">
                     <defs>
                       <linearGradient id="rg" x1="0" x2="1">
-                        <stop offset="0" stop-color="rgba(0,213,255,.95)"/>
-                        <stop offset="1" stop-color="rgba(177,0,255,.95)"/>
+                        <stop offset="0" stop-color="rgba(0,213,255,1)"/>
+                        <stop offset="1" stop-color="rgba(177,0,255,1)"/>
                       </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="2.6" result="b"/>
-                        <feColorMatrix in="b" type="matrix"
-                          values="1 0 0 0 0
-                                  0 1 0 0 0
-                                  0 0 1 0 0
-                                  0 0 0 0.85 0" result="c"/>
-                        <feMerge>
-                          <feMergeNode in="c"/>
-                          <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
+
+                      <radialGradient id="scanGlow">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.0)"/>
+                        <stop offset="60%" stop-color="rgba(0,213,255,0.35)"/>
+                        <stop offset="100%" stop-color="rgba(177,0,255,0.0)"/>
+                      </radialGradient>
+
+                      <filter id="scanBlur">
+                        <feGaussianBlur stdDeviation="3"/>
                       </filter>
                     </defs>
 
-                    <!-- outer faint ring -->
-                    <circle cx="300" cy="300" r="236" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2" />
-                    <!-- segmented rune dashes -->
-                    <circle cx="300" cy="300" r="214" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10"
-                      stroke-dasharray="10 18" stroke-linecap="round" opacity=".75" />
-                    <!-- inner ring -->
-                    <circle cx="300" cy="300" r="188" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="2" />
+                    <!-- Static rune rings -->
+                    <circle cx="300" cy="300" r="230"
+                      fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
 
-                    <!-- scan stroke (one-shot draw) -->
-                    <circle class="scanStroke" cx="300" cy="300" r="214"
-                      fill="none" stroke="url(#rg)" stroke-width="6"
-                      stroke-linecap="round" filter="url(#glow)"/>
+                    <circle cx="300" cy="300" r="208"
+                      fill="none" stroke="rgba(255,255,255,.18)"
+                      stroke-width="10"
+                      stroke-dasharray="10 18"
+                      stroke-linecap="round"/>
 
-                    <!-- 6 “glyph ticks” (abstract) -->
-                    <g opacity=".85" filter="url(#glow)">
-                      <path d="M300 72 L300 110" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
-                      <path d="M300 490 L300 528" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
-                      <path d="M72 300 L110 300" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
-                      <path d="M490 300 L528 300" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
-                      <path d="M140 140 L166 166" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
-                      <path d="M460 460 L434 434" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="300" cy="300" r="182"
+                      fill="none" stroke="rgba(255,255,255,.10)" stroke-width="2"/>
+
+                    <!-- RADAR SWEEP -->
+                    <g class="radar">
+                      <path
+                        d="M300 300 L300 40 A260 260 0 0 1 560 300 Z"
+                        fill="url(#scanGlow)"
+                        opacity="0.9"
+                        filter="url(#scanBlur)"/>
+                      <path
+                        d="M300 300 L300 40"
+                        stroke="url(#rg)"
+                        stroke-width="3"
+                        stroke-linecap="round"/>
                     </g>
                   </svg>
                 </div>
@@ -1194,7 +1191,7 @@
       });
     })();
 
-    // Sigil: Summon + Zaps + Rune Scan
+    // Sigil: Summon + Zaps + Radar Rune
     (()=>{
       const room = document.getElementById("sigilRoom");
       if(!room) return;
@@ -1205,21 +1202,25 @@
         room.classList.add(cls);
         setTimeout(()=> room.classList.remove("zap","zapStrong"), 650);
       }
-      function rune(){
-        room.classList.remove("rune");
+
+      function radar(){
+        room.classList.remove("radar");
         void room.offsetWidth;
-        room.classList.add("rune");
-        setTimeout(()=> room.classList.remove("rune"), 1300);
+        room.classList.add("radar");
+        setTimeout(()=> room.classList.remove("radar"), 1700);
       }
 
+      // Summon sequence
       requestAnimationFrame(()=>{
         room.classList.add("summon");
-        // lock-in moment: rune scan + strong zap
+
+        // lock-in moment: radar sweep + strong zap
         setTimeout(()=>{
-          rune();
+          radar();
           zap("zapStrong");
         }, 820);
 
+        // after animation: switch to loop state
         setTimeout(()=>{
           room.classList.remove("summon");
           room.classList.add("summoned");
@@ -1234,7 +1235,7 @@
           if(room.classList.contains("summoned")){
             const strong = Math.random() < 0.16;
             zap(strong ? "zapStrong" : "zap");
-            if(strong && Math.random() < 0.45) rune();
+            if(strong && Math.random() < 0.45) radar();
             if(Math.random() < 0.22){
               setTimeout(()=> zap("zap"), 160 + Math.random()*180);
             }
@@ -1247,7 +1248,7 @@
       // Hover trigger (desktop)
       room.addEventListener("pointerenter", ()=>{
         if(room.classList.contains("summoned")){
-          rune();
+          radar();
           zap("zapStrong");
         }
       }, {passive:true});
@@ -1261,7 +1262,7 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
-    // Background FX (mist/motes/sigils)
+    // Background FX
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
