@@ -30,7 +30,6 @@
       --bg2:#060617;
       --ink:#f6f7ff;
       --muted:#b7c6ff;
-
       --blue:#00d5ff;
       --purple:#b100ff;
 
@@ -272,7 +271,7 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* SIGIL ROOM: SUMMON INTRO */
+    /* SIGIL ROOM: SUMMON + RUNE SCAN */
     .sigilRoom{
       position:relative;
       overflow:hidden;
@@ -282,10 +281,7 @@
       background: rgba(0,0,0,.08);
     }
     @media (max-width: 980px){
-      .sigilRoom{
-        min-height: 360px;
-        aspect-ratio: 4 / 5;
-      }
+      .sigilRoom{ min-height: 360px; aspect-ratio: 4 / 5; }
     }
     @media (max-width: 520px){
       .sigilRoom{ aspect-ratio: 3 / 4; }
@@ -303,7 +299,6 @@
       pointer-events:none;
     }
 
-    /* halo appears with summon, then breath */
     .sigilHalo{
       width: min(62%, 320px);
       aspect-ratio: 1/1;
@@ -324,7 +319,6 @@
       filter: blur(0.2px);
     }
 
-    /* logo summon state (before JS toggles .summoned) */
     .sigilLogo{
       position:absolute;
       width: min(42%, 220px);
@@ -338,7 +332,6 @@
         drop-shadow(0 0 0px rgba(177,0,255,0));
     }
 
-    /* Summon sequence */
     .sigilRoom.summon .sigilHalo{
       animation: haloSummon 1.6s cubic-bezier(.14,.92,.18,1) both;
     }
@@ -374,7 +367,6 @@
       }
     }
 
-    /* After summon: breathing halo + slow rotation */
     .sigilRoom.summoned .sigilHalo{
       opacity:.84;
       transform: scale(1);
@@ -395,6 +387,57 @@
     }
     @keyframes sigilSpin{
       to{ transform: translateY(0) scale(1) rotate(360deg); }
+    }
+
+    /* Rune Ring Overlay */
+    .runeLayer{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+      opacity:0;
+      mix-blend-mode: screen;
+    }
+    .runeLayer svg{
+      width: min(78%, 430px);
+      aspect-ratio: 1/1;
+      overflow:visible;
+      filter:
+        drop-shadow(0 0 14px rgba(0,213,255,.14))
+        drop-shadow(0 0 18px rgba(177,0,255,.12));
+      transform: scale(.96) rotate(-12deg);
+    }
+
+    /* one-shot scan animation */
+    .sigilRoom.rune .runeLayer{
+      animation: runeFade 1.15s ease-out both;
+    }
+    @keyframes runeFade{
+      0%{ opacity:0; }
+      20%{ opacity:.92; }
+      70%{ opacity:.35; }
+      100%{ opacity:0; }
+    }
+    .sigilRoom.rune .runeRing{
+      animation: ringPulse 1.15s ease-out both;
+    }
+    @keyframes ringPulse{
+      0%{ transform: scale(.94) rotate(-12deg); }
+      40%{ transform: scale(1.02) rotate(0deg); }
+      100%{ transform: scale(1.00) rotate(12deg); }
+    }
+    .sigilRoom.rune .scanStroke{
+      animation: scanDraw 1.15s ease-out both;
+      stroke-dasharray: 940;
+      stroke-dashoffset: 940;
+    }
+    @keyframes scanDraw{
+      0%{ stroke-dashoffset: 940; opacity:0; }
+      18%{ opacity:1; }
+      70%{ stroke-dashoffset: 120; opacity:.85; }
+      100%{ stroke-dashoffset: 0; opacity:0; }
     }
 
     /* Electric Zaps */
@@ -814,6 +857,53 @@
                 </div>
 
                 <div class="sigilZap" aria-hidden="true"></div>
+
+                <!-- Rune ring overlay -->
+                <div class="runeLayer" aria-hidden="true">
+                  <svg class="runeRing" viewBox="0 0 600 600">
+                    <defs>
+                      <linearGradient id="rg" x1="0" x2="1">
+                        <stop offset="0" stop-color="rgba(0,213,255,.95)"/>
+                        <stop offset="1" stop-color="rgba(177,0,255,.95)"/>
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="2.6" result="b"/>
+                        <feColorMatrix in="b" type="matrix"
+                          values="1 0 0 0 0
+                                  0 1 0 0 0
+                                  0 0 1 0 0
+                                  0 0 0 0.85 0" result="c"/>
+                        <feMerge>
+                          <feMergeNode in="c"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    <!-- outer faint ring -->
+                    <circle cx="300" cy="300" r="236" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2" />
+                    <!-- segmented rune dashes -->
+                    <circle cx="300" cy="300" r="214" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10"
+                      stroke-dasharray="10 18" stroke-linecap="round" opacity=".75" />
+                    <!-- inner ring -->
+                    <circle cx="300" cy="300" r="188" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="2" />
+
+                    <!-- scan stroke (one-shot draw) -->
+                    <circle class="scanStroke" cx="300" cy="300" r="214"
+                      fill="none" stroke="url(#rg)" stroke-width="6"
+                      stroke-linecap="round" filter="url(#glow)"/>
+
+                    <!-- 6 “glyph ticks” (abstract) -->
+                    <g opacity=".85" filter="url(#glow)">
+                      <path d="M300 72 L300 110" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M300 490 L300 528" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M72 300 L110 300" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M490 300 L528 300" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M140 140 L166 166" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                      <path d="M460 460 L434 434" stroke="url(#rg)" stroke-width="5" stroke-linecap="round"/>
+                    </g>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -1104,7 +1194,7 @@
       });
     })();
 
-    // Sigil: Summon + Zaps
+    // Sigil: Summon + Zaps + Rune Scan
     (()=>{
       const room = document.getElementById("sigilRoom");
       if(!room) return;
@@ -1115,29 +1205,37 @@
         room.classList.add(cls);
         setTimeout(()=> room.classList.remove("zap","zapStrong"), 650);
       }
+      function rune(){
+        room.classList.remove("rune");
+        void room.offsetWidth;
+        room.classList.add("rune");
+        setTimeout(()=> room.classList.remove("rune"), 1300);
+      }
 
-      // Summon sequence
-      // 1) start summon
       requestAnimationFrame(()=>{
         room.classList.add("summon");
-        // 2) strong zap at lock-in moment
-        setTimeout(()=> zap("zapStrong"), 820);
-        // 3) after animation: switch to loop state
+        // lock-in moment: rune scan + strong zap
+        setTimeout(()=>{
+          rune();
+          zap("zapStrong");
+        }, 820);
+
         setTimeout(()=>{
           room.classList.remove("summon");
           room.classList.add("summoned");
-          // small confirmation zap
           setTimeout(()=> zap("zap"), 220);
         }, 1650);
       });
 
-      // Ambient zaps loop (only after summoned)
+      // Ambient loop
       function loop(){
-        const next = 2600 + Math.random()*6200;
+        const next = 3200 + Math.random()*7000;
         setTimeout(()=>{
           if(room.classList.contains("summoned")){
-            zap(Math.random()<0.18 ? "zapStrong" : "zap");
-            if(Math.random() < 0.24){
+            const strong = Math.random() < 0.16;
+            zap(strong ? "zapStrong" : "zap");
+            if(strong && Math.random() < 0.45) rune();
+            if(Math.random() < 0.22){
               setTimeout(()=> zap("zap"), 160 + Math.random()*180);
             }
           }
@@ -1146,9 +1244,12 @@
       }
       loop();
 
-      // Extra zap on hover (desktop)
+      // Hover trigger (desktop)
       room.addEventListener("pointerenter", ()=>{
-        if(room.classList.contains("summoned")) zap("zapStrong");
+        if(room.classList.contains("summoned")){
+          rune();
+          zap("zapStrong");
+        }
       }, {passive:true});
     })();
 
@@ -1160,7 +1261,7 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
-    // Background FX
+    // Background FX (mist/motes/sigils)
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
@@ -1312,6 +1413,7 @@
       requestAnimationFrame(loop);
     }
 
+    // boot
     initReveal();
     resize(); seedFog(); seedMotes();
     mountTwitch();
