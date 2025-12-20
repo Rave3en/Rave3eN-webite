@@ -328,88 +328,7 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    .portalTiles{
-      margin-top: auto;
-      padding-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-    }
-    .tile{
-      grid-column: span 4;
-      border-radius: var(--rx);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      position:relative;
-      min-height: 240px;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-    .tile:hover{
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 0 26px rgba(0,213,255,.12), 0 0 30px rgba(177,0,255,.10), var(--shadow2);
-    }
-    .tile .bg{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(520px 280px at 20% 10%, rgba(0,213,255,.16), transparent 60%),
-        radial-gradient(520px 280px at 80% 0%, rgba(177,0,255,.16), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.20));
-    }
-    .tile img{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:.78;
-      mix-blend-mode: screen;
-      display:block;
-      transform: scale(1.05);
-    }
-    .tile .shade{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 320px at 30% 0%, rgba(0,0,0,.00), rgba(0,0,0,.42)),
-        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.76));
-    }
-    .tile .txt{
-      position:absolute; left:14px; right:14px; bottom:14px;
-      padding: 14px 14px;
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.30);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .tile .txt strong{
-      display:block;
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size: 12px;
-    }
-    .tile .txt span{
-      display:block;
-      margin-top:7px;
-      color: rgba(183,198,255,.92);
-      font-size: 13px;
-      line-height: 1.55;
-      font-family: Rajdhani, sans-serif;
-      letter-spacing:.04em;
-    }
-    @media (max-width: 980px){
-      .portalLeft{ min-height: 0; }
-      .tile{ grid-column: span 6; min-height: 240px; }
-      .portalTiles{ margin-top: 18px; }
-    }
-    @media (max-width: 640px){
-      .tile{ grid-column: span 12; min-height: 210px; }
-    }
-
-    /* ===== SIGIL ROOM FIX (NO MORE SQUISH) =====
-       We fill the panel with SVG but keep aspect ratio -> crop instead of distort.
-    */
+    /* SIGIL ROOM FIX */
     .sigilRoom{
       position:relative;
       overflow:hidden;
@@ -417,30 +336,17 @@
       border-radius: var(--rx);
       isolation:isolate;
     }
-
-    /* Optional: prevent “tall skinny” look on phones */
     @media (max-width: 980px){
       .sigilRoom{
         min-height: 360px;
-        aspect-ratio: 4 / 5;   /* <- makes it feel intentional on mobile */
+        aspect-ratio: 4 / 5;
       }
     }
     @media (max-width: 520px){
-      .sigilRoom{
-        aspect-ratio: 3 / 4;   /* a bit taller on very small screens */
-      }
+      .sigilRoom{ aspect-ratio: 3 / 4; }
     }
-
-    .sigilArt{
-      position:absolute;
-      inset:0;
-      z-index:0;
-    }
-    .sigilArt svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
+    .sigilArt{ position:absolute; inset:0; z-index:0; }
+    .sigilArt svg{ width:100%; height:100%; display:block; }
 
     .sigilStamp{
       position:absolute;
@@ -510,6 +416,7 @@
       opacity:.95;
     }
     .card p{ margin:0; color: rgba(183,198,255,.92); line-height:1.75; font-size: 14px; }
+
     .card.big{
       grid-column: span 8;
       min-height: 380px;
@@ -750,6 +657,7 @@
     </div>
 
     <main id="pjax-root">
+      <!-- PORTAL -->
       <section class="portal" id="portal">
         <div class="wrap">
           <div class="panel reveal">
@@ -768,43 +676,10 @@
                   <a class="btn" href="#vault">Zum Vault</a>
                   <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
                 </div>
-
-                <div class="portalTiles" aria-label="Portale">
-                  <a class="tile reveal" href="events.html" data-pjax>
-                    <div class="bg"></div>
-                    <img src="events.jpg" alt="" onerror="this.remove()">
-                    <div class="shade"></div>
-                    <div class="txt">
-                      <strong>Events</strong>
-                      <span>Anstehende & vergangene Nächte.</span>
-                    </div>
-                  </a>
-
-                  <a class="tile reveal" href="about.html" data-pjax>
-                    <div class="bg"></div>
-                    <img src="about.jpg" alt="" onerror="this.remove()">
-                    <div class="shade"></div>
-                    <div class="txt">
-                      <strong>About Me</strong>
-                      <span>Was Rave3eN ausmacht.</span>
-                    </div>
-                  </a>
-
-                  <a class="tile reveal" href="highlight-clips.html" data-pjax>
-                    <div class="bg"></div>
-                    <img src="clips.jpg" alt="" onerror="this.remove()">
-                    <div class="shade"></div>
-                    <div class="txt">
-                      <strong>Highlight Clips</strong>
-                      <span>Momente, die knallen.</span>
-                    </div>
-                  </a>
-                </div>
               </div>
 
               <div class="sigilRoom" aria-hidden="true">
                 <div class="sigilArt">
-                  <!-- IMPORTANT FIX: preserveAspectRatio slice (crop) instead of none (stretch) -->
                   <svg viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
                     <defs>
                       <radialGradient id="p1" cx="28%" cy="16%" r="90%">
@@ -856,33 +731,10 @@
               </div>
             </div>
           </div>
-
-          <div class="sectionHead" style="margin-top: 24px;">
-            <h2>Totems</h2>
-            <div class="tools">
-              <a class="pill primary" href="#stage">Live</a>
-              <a class="pill" href="#vault">Highlights</a>
-              <a class="pill" href="events.html" data-pjax>Events</a>
-            </div>
-          </div>
-
-          <div class="grid">
-            <div class="card reveal">
-              <h3>Musik</h3>
-              <p>Musik ist der Kern. EDM ist die Energie, die alles zum Leuchten bringt.</p>
-            </div>
-            <div class="card reveal">
-              <h3>Emotion</h3>
-              <p>Echte Reactions. Echte Momente. Nichts wird versteckt — alles bleibt.</p>
-            </div>
-            <div class="card reveal">
-              <h3>Tiere</h3>
-              <p>Mitgefühl ist nicht leise. Tiere sind Teil von dem, was Rave3eN bedeutet.</p>
-            </div>
-          </div>
         </div>
       </section>
 
+      <!-- STAGE -->
       <section id="stage">
         <div class="wrap">
           <div class="sectionHead">
@@ -929,6 +781,7 @@
         </div>
       </section>
 
+      <!-- VAULT -->
       <section id="vault">
         <div class="wrap">
           <div class="sectionHead">
@@ -980,6 +833,7 @@
         </div>
       </section>
 
+      <!-- LINKS -->
       <section id="portale">
         <div class="wrap">
           <div class="sectionHead">
@@ -1027,6 +881,7 @@
     </main>
   </div>
 
+  <!-- Spotify Dock -->
   <div class="dock" id="playerDock" role="region" aria-label="Spotify Player">
     <div class="wrap">
       <div class="row">
