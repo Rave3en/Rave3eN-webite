@@ -272,7 +272,7 @@
       border-color: rgba(255,255,255,.24);
     }
 
-    /* SIGIL ROOM: SUMMON + RADAR RUNE */
+    /* SIGIL ROOM */
     .sigilRoom{
       position:relative;
       overflow:hidden;
@@ -336,7 +336,6 @@
         drop-shadow(0 0 0px rgba(177,0,255,0));
     }
 
-    /* Summon sequence */
     .sigilRoom.summon .sigilHalo{
       animation: haloSummon 1.6s cubic-bezier(.14,.92,.18,1) both;
     }
@@ -372,7 +371,6 @@
       }
     }
 
-    /* After summon: breathing halo + slow rotation */
     .sigilRoom.summoned .sigilHalo{
       opacity:.84;
       transform: scale(1);
@@ -395,7 +393,6 @@
       to{ transform: translateY(0) scale(1) rotate(360deg); }
     }
 
-    /* Electric Zaps */
     .sigilZap{
       position:absolute;
       inset:0;
@@ -429,7 +426,6 @@
       100%{ opacity:0; }
     }
 
-    /* Rune Radar Overlay */
     .runeLayer{
       position:absolute;
       inset:0;
@@ -746,89 +742,6 @@
 
     .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.on{ opacity:1; transform: translateY(0); }
-
-    /* ===== Trailer Lightbox (nur hinzugefügt, Layout bleibt) ===== */
-    .modalOverlay{
-      position:fixed; inset:0;
-      z-index: 1000;
-      background: rgba(0,0,0,.64);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .modal{
-      position:fixed; inset:0;
-      z-index: 1001;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-    }
-    .modalCard{
-      width: min(980px, 100%);
-      border-radius: var(--rx);
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.72);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .modalHead{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-    }
-    .modalHead strong{
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size: 12px;
-      opacity:.95;
-    }
-    .modalClose{
-      width: 42px; height: 42px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      color: var(--ink);
-      cursor:pointer;
-    }
-    .modalClose:hover{
-      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
-      border-color: rgba(255,255,255,.22);
-    }
-    .modalBody{ padding: 14px; }
-    .modalBody .ratio{ box-shadow:none; }
-
-    .trailerTeaser{
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      cursor:pointer;
-      user-select:none;
-      background:
-        radial-gradient(520px 260px at 72% 34%, rgba(0,213,255,.12), transparent 65%),
-        radial-gradient(520px 260px at 72% 34%, rgba(177,0,255,.12), transparent 65%),
-        rgba(0,0,0,.18);
-    }
-    .trailerTeaser:before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: var(--thumb);
-      background-size: cover;
-      background-position: center;
-      opacity: .28;
-      filter: saturate(1.1) contrast(1.05);
-    }
-    .trailerPlay{
-      position:relative;
-      width: 92px; height: 92px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.28);
-      display:grid; place-items:center;
-      font-family: Orbitron, sans-serif;
-      letter-spacing:.12em;
-      box-shadow: 0 0 24px rgba(0,213,255,.12), 0 0 24px rgba(177,0,255,.10);
-    }
-    .trailerPlay span{ font-size: 30px; transform: translateX(2px); }
   </style>
 </head>
 
@@ -936,7 +849,6 @@
 
                 <div class="sigilZap" aria-hidden="true"></div>
 
-                <!-- Rune Radar Overlay -->
                 <div class="runeLayer" aria-hidden="true">
                   <svg viewBox="0 0 600 600">
                     <defs>
@@ -1048,11 +960,16 @@
           <div class="grid">
             <div class="card big reveal">
               <h3>Trailer</h3>
-              <p style="margin:0 0 12px; color: rgba(183,198,255,.92); line-height:1.7;">Klicken → öffnet als Lightbox.</p>
-              <div class="ratio" id="trailerThumbWrap">
-                <div class="trailerTeaser" id="openTrailer" role="button" tabindex="0" aria-label="Trailer ansehen">
-                  <div class="trailerPlay"><span>▶</span></div>
-                </div>
+              <p style="margin:0 0 12px; color: rgba(183,198,255,.92); line-height:1.7;">
+                Direkt eingebettet (kein Popup).
+              </p>
+              <div class="ratio">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/BGzsyhcu29U?rel=0&modestbranding=1"
+                  title="Rave3eN Trailer"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
               </div>
             </div>
 
@@ -1160,28 +1077,6 @@
     </div>
   </div>
 
-  <!-- Trailer Lightbox -->
-  <div class="modalOverlay" id="trailerOverlay" hidden></div>
-  <div class="modal" id="trailerModal" hidden role="dialog" aria-modal="true" aria-label="Trailer">
-    <div class="modalCard">
-      <div class="modalHead">
-        <strong>Trailer</strong>
-        <button class="modalClose" id="closeTrailer" type="button" aria-label="Trailer schließen">✕</button>
-      </div>
-      <div class="modalBody">
-        <div class="ratio">
-          <iframe
-            id="trailerFrame"
-            src=""
-            title="Rave3eN Trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 
   <script>
@@ -1189,18 +1084,13 @@
     const parentList = ["www.rave3en.de","rave3en.de","rave3en.github.io","localhost"];
     const TWITCH_CHANNEL = "rave3en";
 
-    const TRAILER_YT = "BGzsyhcu29U"; // dein Trailer
-    const trailerThumbUrl = `https://i.ytimg.com/vi/${TRAILER_YT}/hqdefault.jpg`;
-
     function buildParentParams(){
-      // Twitch Chat braucht parent=... mehrfach
       const uniq = Array.from(new Set(parentList.concat([location.hostname].filter(Boolean))));
       return uniq.map(p => `parent=${encodeURIComponent(p)}`).join("&");
     }
 
     function mountTwitch(){
-      const container = document.getElementById("twitchFrame");
-      if(!container || !window.Twitch) return;
+      if(!window.Twitch) return;
 
       const player = new Twitch.Player("twitchFrame", {
         width: "100%",
@@ -1213,7 +1103,6 @@
 
       const chat = document.getElementById("twitchChat");
       if(chat){
-        // WICHTIG: korrekte parent params
         chat.src = `https://www.twitch.tv/embed/${encodeURIComponent("Rave3eN")}/chat?${buildParentParams()}`;
       }
 
@@ -1248,51 +1137,6 @@
     document.getElementById("dockClose")?.addEventListener("click", () => {
       document.getElementById("playerDock")?.remove();
     });
-
-    // Trailer Lightbox
-    (()=>{
-      const openBtn = document.getElementById("openTrailer");
-      const overlay = document.getElementById("trailerOverlay");
-      const modal = document.getElementById("trailerModal");
-      const closeBtn = document.getElementById("closeTrailer");
-      const frame = document.getElementById("trailerFrame");
-      if(!openBtn || !overlay || !modal || !closeBtn || !frame) return;
-
-      // Thumbnail setzen (nur Styling)
-      openBtn.style.setProperty("--thumb", `url('${trailerThumbUrl}')`);
-
-      const ytSrc = (autoplay=false) =>
-        `https://www.youtube-nocookie.com/embed/${TRAILER_YT}?rel=0&modestbranding=1&autoplay=${autoplay?1:0}`;
-
-      let lastFocus = null;
-
-      function open(){
-        lastFocus = document.activeElement;
-        overlay.hidden = false;
-        modal.hidden = false;
-        frame.src = ytSrc(true);
-        document.documentElement.style.overflow = "hidden";
-        closeBtn.focus();
-      }
-
-      function close(){
-        overlay.hidden = true;
-        modal.hidden = true;
-        frame.src = ""; // stoppt Video zuverlässig
-        document.documentElement.style.overflow = "";
-        if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-      }
-
-      openBtn.addEventListener("click", open);
-      openBtn.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); }});
-      closeBtn.addEventListener("click", close);
-      overlay.addEventListener("click", close);
-
-      document.addEventListener("keydown", (e)=>{
-        if(modal.hidden) return;
-        if(e.key === "Escape") close();
-      });
-    })();
 
     // Ticker (slow)
     (() => {
@@ -1345,7 +1189,7 @@
       });
     })();
 
-    // Sigil: Summon + Zaps + Radar Rune (unverändert)
+    // Sigil: Summon + Zaps + Radar Rune
     (()=>{
       const room = document.getElementById("sigilRoom");
       if(!room) return;
@@ -1409,7 +1253,7 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
-    // Background FX (unverändert)
+    // Background FX
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
