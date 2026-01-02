@@ -746,6 +746,89 @@
 
     .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.on{ opacity:1; transform: translateY(0); }
+
+    /* ===== Trailer Lightbox (nur hinzugefügt, Layout bleibt) ===== */
+    .modalOverlay{
+      position:fixed; inset:0;
+      z-index: 1000;
+      background: rgba(0,0,0,.64);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .modal{
+      position:fixed; inset:0;
+      z-index: 1001;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+    }
+    .modalCard{
+      width: min(980px, 100%);
+      border-radius: var(--rx);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.72);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHead{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .modalHead strong{
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size: 12px;
+      opacity:.95;
+    }
+    .modalClose{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--ink);
+      cursor:pointer;
+    }
+    .modalClose:hover{
+      box-shadow: 0 0 18px rgba(0,213,255,.12), 0 0 18px rgba(177,0,255,.10);
+      border-color: rgba(255,255,255,.22);
+    }
+    .modalBody{ padding: 14px; }
+    .modalBody .ratio{ box-shadow:none; }
+
+    .trailerTeaser{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      cursor:pointer;
+      user-select:none;
+      background:
+        radial-gradient(520px 260px at 72% 34%, rgba(0,213,255,.12), transparent 65%),
+        radial-gradient(520px 260px at 72% 34%, rgba(177,0,255,.12), transparent 65%),
+        rgba(0,0,0,.18);
+    }
+    .trailerTeaser:before{
+      content:"";
+      position:absolute; inset:0;
+      background-image: var(--thumb);
+      background-size: cover;
+      background-position: center;
+      opacity: .28;
+      filter: saturate(1.1) contrast(1.05);
+    }
+    .trailerPlay{
+      position:relative;
+      width: 92px; height: 92px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.28);
+      display:grid; place-items:center;
+      font-family: Orbitron, sans-serif;
+      letter-spacing:.12em;
+      box-shadow: 0 0 24px rgba(0,213,255,.12), 0 0 24px rgba(177,0,255,.10);
+    }
+    .trailerPlay span{ font-size: 30px; transform: translateX(2px); }
   </style>
 </head>
 
@@ -773,8 +856,8 @@
               <a class="chip" href="#portale">Links</a>
 
               <a class="chip" href="events.html" data-pjax>Events</a>
-              <a class="chip" href="about.html" data-pjax>About Me</a>
-              <a class="chip" href="highlight-clips.html" data-pjax>Highlight Clips</a>
+              <a class="chip" href="about.html" data-pjax>Über mich</a>
+              <a class="chip" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
             </div>
           </div>
         </div>
@@ -797,7 +880,7 @@
 
                 <div class="ctaRow">
                   <a class="btn primary" href="#stage">Zur Bühne</a>
-                  <a class="btn" href="#vault">Zum Vault</a>
+                  <a class="btn" href="#vault">Zu den Highlights</a>
                   <a class="btn" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Twitch öffnen</a>
                 </div>
               </div>
@@ -873,7 +956,6 @@
                       </filter>
                     </defs>
 
-                    <!-- Static rune rings -->
                     <circle cx="300" cy="300" r="230"
                       fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
 
@@ -886,7 +968,6 @@
                     <circle cx="300" cy="300" r="182"
                       fill="none" stroke="rgba(255,255,255,.10)" stroke-width="2"/>
 
-                    <!-- RADAR SWEEP -->
                     <g class="radar">
                       <path
                         d="M300 300 L300 40 A260 260 0 0 1 560 300 Z"
@@ -908,9 +989,9 @@
           <div class="ticker reveal" id="ticker" aria-label="Ticker">
             <div class="track" id="track">
               <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-              <span>EVENTS</span><span>ABOUT</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHT-CLIPS</span><span>NEON</span><span>RAVE ON</span>
               <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-              <span>EVENTS</span><span>ABOUT</span><span>HIGHLIGHT CLIPS</span><span>NEON</span><span>RAVE ON</span>
+              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHT-CLIPS</span><span>NEON</span><span>RAVE ON</span>
             </div>
           </div>
 
@@ -922,16 +1003,16 @@
           <div class="sectionHead">
             <h2>Live</h2>
             <div class="tools">
-              <button class="pill primary" id="btnCrowd" type="button">Crowd</button>
-              <button class="pill" id="btnMute" type="button">Mute</button>
-              <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Open</a>
+              <button class="pill primary" id="btnCrowd" type="button">Chat</button>
+              <button class="pill" id="btnMute" type="button">Stumm</button>
+              <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Öffnen</a>
             </div>
           </div>
 
           <div class="grid">
             <div class="card big reveal" style="padding:0;">
               <div class="stageTop">
-                <div class="stageLabel"><span class="gem"></span> Main Stage</div>
+                <div class="stageLabel"><span class="gem"></span> Hauptbühne</div>
                 <div class="tools">
                   <a class="pill" href="highlight-clips.html" data-pjax>Clips</a>
                 </div>
@@ -959,7 +1040,7 @@
           <div class="sectionHead">
             <h2>Highlights</h2>
             <div class="tools">
-              <a class="pill" href="highlight-clips.html" data-pjax>Highlight Clips</a>
+              <a class="pill" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
               <a class="pill" href="events.html" data-pjax>Events</a>
             </div>
           </div>
@@ -967,14 +1048,11 @@
           <div class="grid">
             <div class="card big reveal">
               <h3>Trailer</h3>
-              <p style="margin:0 0 12px; color: rgba(183,198,255,.92); line-height:1.7;">YouTube-Link austauschen → fertig.</p>
-              <div class="ratio">
-                <iframe
-                  src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
-                  title="Trailer"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen></iframe>
+              <p style="margin:0 0 12px; color: rgba(183,198,255,.92); line-height:1.7;">Klicken → öffnet als Lightbox.</p>
+              <div class="ratio" id="trailerThumbWrap">
+                <div class="trailerTeaser" id="openTrailer" role="button" tabindex="0" aria-label="Trailer ansehen">
+                  <div class="trailerPlay"><span>▶</span></div>
+                </div>
               </div>
             </div>
 
@@ -1011,8 +1089,8 @@
             <h2>Links</h2>
             <div class="tools">
               <a class="pill primary" href="events.html" data-pjax>Events</a>
-              <a class="pill" href="about.html" data-pjax>About Me</a>
-              <a class="pill" href="highlight-clips.html" data-pjax>Highlight Clips</a>
+              <a class="pill" href="about.html" data-pjax>Über mich</a>
+              <a class="pill" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
             </div>
           </div>
 
@@ -1021,7 +1099,7 @@
               <h3>Discord</h3>
               <p>Backstage, Squad, Ankündigungen.</p>
               <div class="tools" style="margin-top:12px;">
-                <a class="pill primary" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noreferrer">Join</a>
+                <a class="pill primary" href="https://discord.gg/Vm2ge54c" target="_blank" rel="noreferrer">Beitreten</a>
               </div>
             </div>
 
@@ -1029,9 +1107,8 @@
               <h3>Social</h3>
               <p>Clips & Updates.</p>
               <div class="tools" style="margin-top:12px;">
-                <a class="pill" href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-                <a class="pill" href="https://tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
-                <a class="pill" href="https://youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+                <a class="pill" href="https://www.instagram.com/rave3en_/" target="_blank" rel="noreferrer">Instagram</a>
+                <a class="pill" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noreferrer">YouTube</a>
               </div>
             </div>
 
@@ -1076,8 +1153,30 @@
         <div class="dockRight">
           <button class="pill" id="dockClose" type="button" aria-label="Player schließen">✕</button>
           <a class="pill" href="events.html" data-pjax>Events</a>
-          <a class="pill" href="about.html" data-pjax>About</a>
+          <a class="pill" href="about.html" data-pjax>Über mich</a>
           <a class="pill primary" href="highlight-clips.html" data-pjax>Clips</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trailer Lightbox -->
+  <div class="modalOverlay" id="trailerOverlay" hidden></div>
+  <div class="modal" id="trailerModal" hidden role="dialog" aria-modal="true" aria-label="Trailer">
+    <div class="modalCard">
+      <div class="modalHead">
+        <strong>Trailer</strong>
+        <button class="modalClose" id="closeTrailer" type="button" aria-label="Trailer schließen">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="ratio">
+          <iframe
+            id="trailerFrame"
+            src=""
+            title="Rave3eN Trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -1090,6 +1189,15 @@
     const parentList = ["www.rave3en.de","rave3en.de","rave3en.github.io","localhost"];
     const TWITCH_CHANNEL = "rave3en";
 
+    const TRAILER_YT = "BGzsyhcu29U"; // dein Trailer
+    const trailerThumbUrl = `https://i.ytimg.com/vi/${TRAILER_YT}/hqdefault.jpg`;
+
+    function buildParentParams(){
+      // Twitch Chat braucht parent=... mehrfach
+      const uniq = Array.from(new Set(parentList.concat([location.hostname].filter(Boolean))));
+      return uniq.map(p => `parent=${encodeURIComponent(p)}`).join("&");
+    }
+
     function mountTwitch(){
       const container = document.getElementById("twitchFrame");
       if(!container || !window.Twitch) return;
@@ -1100,12 +1208,13 @@
         channel: TWITCH_CHANNEL,
         autoplay: true,
         muted: false,
-        parent: parentList
+        parent: Array.from(new Set(parentList.concat([location.hostname].filter(Boolean))))
       });
 
       const chat = document.getElementById("twitchChat");
       if(chat){
-        chat.src = `https://www.twitch.tv/embed/${encodeURIComponent("Rave3eN")}/chat?parent=${encodeURIComponent(parentList[0])}`;
+        // WICHTIG: korrekte parent params
+        chat.src = `https://www.twitch.tv/embed/${encodeURIComponent("Rave3eN")}/chat?${buildParentParams()}`;
       }
 
       player.addEventListener(Twitch.Player.ONLINE, () => {
@@ -1126,7 +1235,7 @@
           try{
             const m = player.getMuted();
             player.setMuted(!m);
-            btnMute.textContent = m ? "Mute" : "Unmute";
+            btnMute.textContent = m ? "Stumm" : "Ton an";
           }catch(e){}
         });
       }
@@ -1139,6 +1248,51 @@
     document.getElementById("dockClose")?.addEventListener("click", () => {
       document.getElementById("playerDock")?.remove();
     });
+
+    // Trailer Lightbox
+    (()=>{
+      const openBtn = document.getElementById("openTrailer");
+      const overlay = document.getElementById("trailerOverlay");
+      const modal = document.getElementById("trailerModal");
+      const closeBtn = document.getElementById("closeTrailer");
+      const frame = document.getElementById("trailerFrame");
+      if(!openBtn || !overlay || !modal || !closeBtn || !frame) return;
+
+      // Thumbnail setzen (nur Styling)
+      openBtn.style.setProperty("--thumb", `url('${trailerThumbUrl}')`);
+
+      const ytSrc = (autoplay=false) =>
+        `https://www.youtube-nocookie.com/embed/${TRAILER_YT}?rel=0&modestbranding=1&autoplay=${autoplay?1:0}`;
+
+      let lastFocus = null;
+
+      function open(){
+        lastFocus = document.activeElement;
+        overlay.hidden = false;
+        modal.hidden = false;
+        frame.src = ytSrc(true);
+        document.documentElement.style.overflow = "hidden";
+        closeBtn.focus();
+      }
+
+      function close(){
+        overlay.hidden = true;
+        modal.hidden = true;
+        frame.src = ""; // stoppt Video zuverlässig
+        document.documentElement.style.overflow = "";
+        if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+      }
+
+      openBtn.addEventListener("click", open);
+      openBtn.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); }});
+      closeBtn.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e)=>{
+        if(modal.hidden) return;
+        if(e.key === "Escape") close();
+      });
+    })();
 
     // Ticker (slow)
     (() => {
@@ -1191,7 +1345,7 @@
       });
     })();
 
-    // Sigil: Summon + Zaps + Radar Rune
+    // Sigil: Summon + Zaps + Radar Rune (unverändert)
     (()=>{
       const room = document.getElementById("sigilRoom");
       if(!room) return;
@@ -1210,17 +1364,12 @@
         setTimeout(()=> room.classList.remove("radar"), 1700);
       }
 
-      // Summon sequence
       requestAnimationFrame(()=>{
         room.classList.add("summon");
-
-        // lock-in moment: radar sweep + strong zap
         setTimeout(()=>{
           radar();
           zap("zapStrong");
         }, 820);
-
-        // after animation: switch to loop state
         setTimeout(()=>{
           room.classList.remove("summon");
           room.classList.add("summoned");
@@ -1228,7 +1377,6 @@
         }, 1650);
       });
 
-      // Ambient loop
       function loop(){
         const next = 3200 + Math.random()*7000;
         setTimeout(()=>{
@@ -1245,7 +1393,6 @@
       }
       loop();
 
-      // Hover trigger (desktop)
       room.addEventListener("pointerenter", ()=>{
         if(room.classList.contains("summoned")){
           radar();
@@ -1262,7 +1409,7 @@
       document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
     }
 
-    // Background FX
+    // Background FX (unverändert)
     const mist = document.getElementById("fxMist");
     const motes = document.getElementById("fxMotes");
     const sigils = document.getElementById("fxSigil");
@@ -1426,4 +1573,3 @@
   </script>
 </body>
 </html>
-
