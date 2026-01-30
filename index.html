@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rave3eN — EDM × Gaming × Community</title>
+  <title>Rave3eN — Arena Breakout Creator | EDM × Gaming × Community</title>
 
-  <meta name="description" content="Rave3eN: EDM × Gaming × Community. Live auf Twitch, Highlights & Events – im Neon RAVE Look." />
+  <meta name="description" content="Rave3eN: Arena Breakout Creator. EDM × Gaming × Community im Neon RAVE Look. Live auf Twitch, Highlights & Events." />
   <link rel="canonical" href="https://www.rave3en.de/" />
   <meta name="theme-color" content="#030308" />
 
-  <meta property="og:title" content="Rave3eN — EDM × Gaming × Community" />
-  <meta property="og:description" content="EDM × Gaming × Community. Neon-Blau × Neon-Lila. Live-Stream, Highlights & Events." />
+  <meta property="og:title" content="Rave3eN — Arena Breakout Creator | EDM × Gaming × Community" />
+  <meta property="og:description" content="Arena Breakout Creator. Neon-Blau × Neon-Lila. Live-Stream, Highlights & Events." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.rave3en.de/" />
   <meta property="og:image" content="https://www.rave3en.de/logo%20druck.png" />
@@ -238,7 +238,7 @@
       margin: 0 0 16px;
       color: rgba(183,198,255,.92);
       font-size: 15px;
-      line-height: 1.9;
+      line-height: 1.75;
       max-width: 64ch;
     }
     .ctaRow{
@@ -546,7 +546,7 @@
       position:relative;
       overflow:hidden;
       transition: transform .18s ease, border-color .18s ease;
-      min-height: 170px;
+      min-height: 155px;
     }
     .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); }
     .card:after{
@@ -555,7 +555,7 @@
       background:
         radial-gradient(340px 200px at 18% 10%, rgba(0,213,255,.13), transparent 62%),
         radial-gradient(340px 200px at 82% 0%, rgba(177,0,255,.13), transparent 62%);
-      opacity:.92;
+      opacity:.80;
       pointer-events:none;
     }
     .card > *{ position:relative; z-index:1; }
@@ -648,6 +648,13 @@
       font-size: 11px;
       text-align:center;
     }
+    footer a{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      opacity: .92;
+    }
+    footer a:hover{ opacity: 1; }
 
     /* Spotify Dock */
     .dock{
@@ -765,12 +772,11 @@
             <div class="navScroll">
               <a class="chip primary" href="#portal">Portal</a>
               <a class="chip" href="#stage">Live</a>
-              <a class="chip" href="#vault">Highlights</a>
+              <a class="chip" href="#vault">Clips</a>
               <a class="chip" href="#portale">Links</a>
 
               <a class="chip" href="events.html" data-pjax>Events</a>
               <a class="chip" href="about.html" data-pjax>Über mich</a>
-              <a class="chip" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
             </div>
           </div>
         </div>
@@ -783,12 +789,16 @@
           <div class="panel reveal">
             <div class="portalGrid">
               <div class="portalLeft">
-                <div class="kicker">musik • emotion • sinn • tiere</div>
-                <div class="title">Rave3eN<br>Rave On 💜💙</div>
+                <div class="kicker">creator • arena breakout • community</div>
+
+                <h1 class="title">Rave3eN<br>Rave On 💜💙</h1>
+
                 <p class="subtitle">
-                  Ich bin Creator auf Twitch. Musik ist der Kern — EDM ist Energie.
-                  Ich will Emotionen zeigen, bewahren und dem Leben über Musik Sinn geben.
-                  Und Tiere sind mir wichtig. Das ist Teil von Rave3eN.
+                  Twitch Creator mit Fokus auf <strong>Arena Breakout</strong> — ehrliche Reaktionen, ruhiger Mindset und ein Neon-EDM Vibe.
+                  Musik ist mein emotionaler Begleiter, Gaming ist das Ventil. Und Tiere sind ein Teil meiner Story.
+                </p>
+                <p class="subtitle" style="margin-top:-6px; opacity:.92;">
+                  <span style="color:rgba(0,213,255,.92);">Live</span> • Highlights • Community
                 </p>
 
                 <div class="ctaRow">
@@ -900,10 +910,10 @@
 
           <div class="ticker reveal" id="ticker" aria-label="Ticker">
             <div class="track" id="track">
-              <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHT-CLIPS</span><span>NEON</span><span>RAVE ON</span>
-              <span>RAVE3EN</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>ARENA BREAKOUT</span><span>FEEL THE BASS</span>
-              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHT-CLIPS</span><span>NEON</span><span>RAVE ON</span>
+              <span>RAVE3EN</span><span>ARENA BREAKOUT</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>FEEL THE BASS</span>
+              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHTS</span><span>NEON</span><span>RAVE ON</span>
+              <span>RAVE3EN</span><span>ARENA BREAKOUT</span><span>EDM × GAMING</span><span>COMMUNITY</span><span>FEEL THE BASS</span>
+              <span>EVENTS</span><span>ÜBER MICH</span><span>HIGHLIGHTS</span><span>NEON</span><span>RAVE ON</span>
             </div>
           </div>
 
@@ -916,7 +926,7 @@
             <h2>Live</h2>
             <div class="tools">
               <button class="pill primary" id="btnCrowd" type="button">Chat</button>
-              <button class="pill" id="btnMute" type="button">Stumm</button>
+              <button class="pill" id="btnMute" type="button">Ton an</button>
               <a class="pill" href="https://www.twitch.tv/Rave3eN" target="_blank" rel="noreferrer">Öffnen</a>
             </div>
           </div>
@@ -926,7 +936,7 @@
               <div class="stageTop">
                 <div class="stageLabel"><span class="gem"></span> Hauptbühne</div>
                 <div class="tools">
-                  <a class="pill" href="highlight-clips.html" data-pjax>Clips</a>
+                  <a class="pill" href="#vault">Clips</a>
                 </div>
               </div>
 
@@ -952,7 +962,6 @@
           <div class="sectionHead">
             <h2>Highlights</h2>
             <div class="tools">
-              <a class="pill" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
               <a class="pill" href="events.html" data-pjax>Events</a>
             </div>
           </div>
@@ -977,7 +986,7 @@
               <h3>Slot 01</h3>
               <p>Dein stärkster Moment — Link einfügen.</p>
               <div class="tools" style="margin-top:12px;">
-                <a class="pill primary" href="highlight-clips.html" data-pjax>Öffnen</a>
+                <a class="pill primary" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noreferrer">YouTube</a>
               </div>
             </div>
 
@@ -985,7 +994,7 @@
               <h3>Slot 02</h3>
               <p>Drop-Moment — Link einfügen.</p>
               <div class="tools" style="margin-top:12px;">
-                <a class="pill primary" href="highlight-clips.html" data-pjax>Öffnen</a>
+                <a class="pill primary" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noreferrer">YouTube</a>
               </div>
             </div>
 
@@ -993,7 +1002,7 @@
               <h3>Slot 03</h3>
               <p>Chaos-Moment — Link einfügen.</p>
               <div class="tools" style="margin-top:12px;">
-                <a class="pill primary" href="highlight-clips.html" data-pjax>Öffnen</a>
+                <a class="pill primary" href="https://www.youtube.com/@rave3en30" target="_blank" rel="noreferrer">YouTube</a>
               </div>
             </div>
           </div>
@@ -1007,7 +1016,6 @@
             <div class="tools">
               <a class="pill primary" href="events.html" data-pjax>Events</a>
               <a class="pill" href="about.html" data-pjax>Über mich</a>
-              <a class="pill" href="highlight-clips.html" data-pjax>Highlight-Clips</a>
             </div>
           </div>
 
@@ -1040,7 +1048,11 @@
             </div>
           </div>
 
-          <footer>© Rave3eN</footer>
+          <footer>
+            © Rave3eN •
+            <a href="impressum.html" data-pjax>Impressum</a> •
+            <a href="datenschutz.html" data-pjax>Datenschutz</a>
+          </footer>
         </div>
       </section>
     </main>
@@ -1071,7 +1083,7 @@
           <button class="pill" id="dockClose" type="button" aria-label="Player schließen">✕</button>
           <a class="pill" href="events.html" data-pjax>Events</a>
           <a class="pill" href="about.html" data-pjax>Über mich</a>
-          <a class="pill primary" href="highlight-clips.html" data-pjax>Clips</a>
+          <a class="pill primary" href="#vault">Clips</a>
         </div>
       </div>
     </div>
@@ -1097,7 +1109,7 @@
         height: "100%",
         channel: TWITCH_CHANNEL,
         autoplay: true,
-        muted: false,
+        muted: true,
         parent: Array.from(new Set(parentList.concat([location.hostname].filter(Boolean))))
       });
 
@@ -1105,6 +1117,9 @@
       if(chat){
         chat.src = `https://www.twitch.tv/embed/${encodeURIComponent("Rave3eN")}/chat?${buildParentParams()}`;
       }
+
+      const btnMute = document.getElementById("btnMute");
+      if(btnMute) btnMute.textContent = "Ton an";
 
       player.addEventListener(Twitch.Player.ONLINE, () => {
         try { player.setChannel(TWITCH_CHANNEL); } catch(e){}
@@ -1118,7 +1133,6 @@
         try { player.setVideo("v" + VOD_ID); } catch(e){}
       }, 6000);
 
-      const btnMute = document.getElementById("btnMute");
       if(btnMute){
         btnMute.addEventListener("click", () => {
           try{
