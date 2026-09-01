@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080810" />
-  <meta name="description" content="Rave3eN – Content Creator, Livestreams, Events, Partner und Community." />
+  <meta name="description" content="Rave3eN – Content Creator, Livestreams, Community, Events und Partner." />
   <title>Rave3eN — RAVE ON</title>
 
   <link rel="preconnect" href="https://player.twitch.tv">
@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://open.spotify.com">
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <div class="ambient ambient-a"></div>
   <div class="ambient ambient-b"></div>
@@ -31,30 +30,27 @@
       <a href="#feedback">Feedback</a>
     </nav>
 
-    <a class="header-cta" href="#live">LIVE AREA</a>
+    <a class="header-cta" href="#live">LIVE</a>
   </header>
 
   <main id="home">
     <section class="hero">
       <div class="hero-copy">
         <div class="eyebrow"><span class="pulse-dot"></span> CONTENT CREATOR · COMMUNITY · LIVE</div>
-        <h1>
-          Kein Hochglanz.<br />
-          <span>Echte Leidenschaft.</span>
-        </h1>
+        <h1>Kein Hochglanz.<br /><span>Echte Leidenschaft.</span></h1>
         <p>
-          Streams, Gaming, Community und jede Menge Herzblut. Hier geht es nicht darum,
-          perfekt zu wirken — sondern darum, jeden Tag alles reinzuwerfen, gemeinsam zu lachen
-          und etwas aufzubauen, das sich echt anfühlt.
+          Willkommen bei Rave3eN. Hier treffen Gaming, Musik, Community und ehrliche Momente aufeinander.
+          Nicht perfekt inszeniert, sondern mit Persönlichkeit, Energie und dem Anspruch, jeden Stream
+          ein Stück besser zu machen als den letzten.
         </p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#live">Zum Livestream</a>
-          <a class="btn btn-secondary" href="#about">Mehr über mich</a>
+          <a class="btn btn-secondary" href="#about">Meine Geschichte</a>
         </div>
 
         <div class="hero-statline">
-          <div><strong>LIVE</strong><span>direkt auf der Seite</span></div>
+          <div><strong>LIVE</strong><span>Gaming & Community</span></div>
           <div><strong>RAVE ON</strong><span>💜 💙</span></div>
           <div><strong>100%</strong><span>Leidenschaft</span></div>
         </div>
@@ -69,24 +65,17 @@
     </section>
 
     <section class="section live-section" id="live">
-      <div class="section-heading">
+      <div class="section-heading compact-heading">
         <div>
-          <span class="kicker">LIVE CENTER</span>
-          <h2>Der Stream ist hier zu Hause.</h2>
+          <span class="kicker">LIVE NOW</span>
+          <h2>Rave3eN Live</h2>
         </div>
-        <p>
-          Twitch läuft direkt auf der Seite. Der Chat lässt sich bei Bedarf ein- und ausblenden,
-          ohne dass der Player verschwindet.
-        </p>
       </div>
 
       <div class="live-shell">
         <div class="twitch-wrap">
           <div id="twitch-player" class="twitch-player" aria-label="Twitch Livestream"></div>
-
-          <button class="sound-nudge" id="soundNudge" type="button" hidden>
-            🔊 Leisen Stream-Sound aktivieren
-          </button>
+          <button class="sound-nudge" id="soundNudge" type="button" hidden>🔊 Sound aktivieren</button>
         </div>
 
         <aside class="chat-panel" id="chatPanel">
@@ -94,44 +83,30 @@
             <span>LIVE CHAT</span>
             <button id="closeChat" type="button" aria-label="Chat schließen">✕</button>
           </div>
-          <iframe
-            id="twitchChat"
-            title="Twitch Chat"
-            loading="lazy"
-            allowfullscreen>
-          </iframe>
+          <iframe id="twitchChat" title="Twitch Chat" loading="lazy" allowfullscreen></iframe>
         </aside>
 
-        <button id="openChat" class="open-chat" type="button" aria-controls="chatPanel">
-          Chat öffnen
-        </button>
+        <button id="openChat" class="open-chat" type="button" aria-controls="chatPanel">Chat öffnen</button>
       </div>
     </section>
 
     <section class="section music-section" id="music">
-      <div class="section-heading">
+      <div class="section-heading compact-heading">
         <div>
           <span class="kicker">RAVE3EN PLAYLIST</span>
-          <h2>Der Sound hinter der Community.</h2>
+          <h2>Der Sound dazu.</h2>
         </div>
-        <p>
-          Die Playlist ist fest in die Seite integriert. Du entscheidest selbst, ob du Musik
-          starten möchtest oder die Seite lieber ohne zusätzlichen Sound genießt.
-        </p>
       </div>
 
       <div class="spotify-card">
         <div class="spotify-copy">
-          <div class="music-bars" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
+          <div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <h3>Rave3eN Playlist</h3>
-          <p>Dein Soundtrack für Runs, Talks, Abende und Eskalationen.</p>
+          <p>Tracks für lange Nächte, entspannte Runs, Eskalation und alles dazwischen.</p>
           <div class="audio-choice">
             <button class="mini-btn active" id="musicOff" type="button">Ohne Sound</button>
             <button class="mini-btn" id="musicOn" type="button">Mit Sound</button>
           </div>
-          <small id="spotifyHint">Spotify bleibt sichtbar. Musik startet erst, wenn du sie aktivierst.</small>
         </div>
 
         <div class="spotify-embed-wrap">
@@ -154,25 +129,36 @@
       <div class="split-card">
         <div class="split-copy">
           <span class="kicker">ABOUT ME</span>
-          <h2>Hinter Rave3eN steckt mehr als nur ein Stream.</h2>
+          <h2>Die Geschichte hinter Rave3eN.</h2>
+
           <p>
-            Content Creation ist für mich kein Nebenprodukt, sondern ein Projekt mit Persönlichkeit.
-            Ich will nicht den perfekten Gamer spielen. Ich will echte Momente schaffen:
-            starke Runden, dumme Entscheidungen, ehrliche Gespräche und eine Community,
-            bei der man gern bleibt.
+            Rave3eN steht für mehr als nur Gameplay. Es ist aus der Idee entstanden, einen Ort zu schaffen,
+            an dem Menschen nicht wegen einer perfekten Fassade bleiben, sondern wegen der Stimmung,
+            der Gespräche und der Momente, die man nicht planen kann.
           </p>
+
           <p>
-            Vieles entsteht spät abends, zwischen Arbeit, Planung, Schnitt, Technik und dem nächsten
-            Stream. Genau dieser Aufwand soll sich auf dieser Seite auch anfühlen: hochwertig,
-            fokussiert und mit sichtbarer Liebe zum Detail.
+            Jeder Stream ist eine Mischung aus Fokus, Chaos, Humor und echtem Ehrgeiz. Gute Runden gehören
+            genauso dazu wie komplette Fehlentscheidungen. Genau das macht den Reiz aus: gemeinsam erleben,
+            gemeinsam lachen und auch dann weitermachen, wenn ein Abend einmal überhaupt nicht nach Plan läuft.
+          </p>
+
+          <p>
+            Hinter jedem Live-Moment steckt viel Arbeit. Technik, Planung, Ideen, Schnitt, Gestaltung und
+            unzählige Kleinigkeiten passieren lange bevor der Stream überhaupt startet. Rave3eN ist deshalb
+            nicht einfach nur ein Kanal, sondern ein Projekt, das mit jeder Woche weiter wächst.
+          </p>
+
+          <p>
+            Im Mittelpunkt steht dabei immer die Community. Menschen, die einschalten, mitschreiben,
+            mitlachen, diskutieren und aus einem Stream mehr machen als nur bewegte Bilder auf einem Bildschirm.
+            Genau daraus entsteht das, was Rave3eN ausmacht.
           </p>
         </div>
 
         <div class="quote-card">
           <span>RAVE3EN DNA</span>
-          <blockquote>
-            „Nicht perfekt sein. Nicht stehen bleiben. Immer weiterbauen.“
-          </blockquote>
+          <blockquote>„Nicht perfekt sein. Nicht stehen bleiben. Immer weiterbauen.“</blockquote>
           <div class="signature">RAVE ON 💜💙</div>
         </div>
       </div>
@@ -182,30 +168,30 @@
       <div class="section-heading">
         <div>
           <span class="kicker">EVENTS</span>
-          <h2>Mehr als nur online sein.</h2>
+          <h2>Gemeinsam mehr erleben.</h2>
         </div>
-        <p>Hier können aktuelle Community-Events, Specials, Charity-Aktionen und IRL-Termine erscheinen.</p>
+        <p>Besondere Streams, Community-Abende und Aktionen bekommen hier ihren eigenen Platz.</p>
       </div>
 
       <div class="event-grid">
         <article class="event-card featured">
           <span class="event-tag">COMMUNITY</span>
           <h3>Community Nights</h3>
-          <p>Gemeinsam spielen, lachen, eskalieren — ohne Leistungsdruck.</p>
+          <p>Gemeinsam spielen, lachen und einfach einen guten Abend haben.</p>
           <span class="event-meta">Regelmäßig im Stream</span>
         </article>
 
         <article class="event-card">
           <span class="event-tag">SPECIAL</span>
           <h3>Rave Specials</h3>
-          <p>Besondere Streams, Challenges und Aktionen bekommen hier ihren festen Platz.</p>
-          <span class="event-meta">Ankündigungen folgen</span>
+          <p>Challenges, besondere Streams und spontane Ideen, die aus einem normalen Abend etwas Besonderes machen.</p>
+          <span class="event-meta">Immer wieder neu</span>
         </article>
 
         <article class="event-card">
           <span class="event-tag">HEART</span>
           <h3>Community & Charity</h3>
-          <p>Wenn Reichweite etwas bewegen kann, soll sie genau dafür genutzt werden.</p>
+          <p>Reichweite bedeutet auch Verantwortung. Wenn daraus etwas Gutes entstehen kann, wird sie dafür genutzt.</p>
           <span class="event-meta">Mit Herzblut</span>
         </article>
       </div>
@@ -215,39 +201,28 @@
       <div class="section-heading">
         <div>
           <span class="kicker">PARTNER</span>
-          <h2>Zusammenarbeit, die zur Community passt.</h2>
+          <h2>Gemeinsam stärker.</h2>
         </div>
-        <p>
-          Raum für Partner, Creator-Codes und Kooperationen — hochwertig präsentiert,
-          ohne die Seite in eine Werbefläche zu verwandeln.
-        </p>
+        <p>Kooperationen und Partner, die zu Rave3eN, dem Content und vor allem zur Community passen.</p>
       </div>
 
       <div class="partner-grid">
-        <div class="partner-slot"><span>GAMING</span><strong>Partner Slot</strong></div>
-        <div class="partner-slot"><span>HARDWARE</span><strong>Partner Slot</strong></div>
-        <div class="partner-slot"><span>COMMUNITY</span><strong>Partner Slot</strong></div>
-        <div class="partner-slot"><span>CREATOR</span><strong>Partner Slot</strong></div>
+        <div class="partner-slot"><span>GAMING</span><strong>Partner</strong></div>
+        <div class="partner-slot"><span>HARDWARE</span><strong>Partner</strong></div>
+        <div class="partner-slot"><span>COMMUNITY</span><strong>Partner</strong></div>
+        <div class="partner-slot"><span>CREATOR</span><strong>Partner</strong></div>
       </div>
     </section>
 
     <section class="section feedback-section" id="feedback">
       <div class="feedback-card">
         <div class="feedback-copy">
-          <span class="kicker">ANONYMES FEEDBACK</span>
-          <h2>Was denkst du wirklich?</h2>
+          <span class="kicker">FEEDBACK</span>
+          <h2>Deine ehrliche Meinung.</h2>
           <p>
-            Kein Username, kein öffentlicher Kommentarbereich. Schreib offen, ehrlich und direkt.
-            Das Feedback ist für die persönliche Auswertung gedacht und wird nicht auf der Seite angezeigt.
+            Lob, Kritik, Ideen oder etwas, das dir schon länger auf dem Herzen liegt:
+            Schreib es so, wie du es wirklich meinst.
           </p>
-
-          <div class="privacy-note">
-            <span>◉</span>
-            <div>
-              <strong>Privat gedacht</strong>
-              <small>Für echte Privatsphäre muss der Feedback-Endpunkt einmal mit deinem privaten Postfach verbunden werden.</small>
-            </div>
-          </div>
         </div>
 
         <form id="feedbackForm" class="feedback-form">
@@ -263,22 +238,16 @@
           </label>
 
           <label>
-            Dein Feedback
-            <textarea
-              name="message"
-              rows="7"
-              minlength="10"
-              maxlength="3000"
-              placeholder="Schreib so, wie du es wirklich meinst..."
-              required></textarea>
+            Deine Nachricht
+            <textarea name="message" rows="7" minlength="10" maxlength="3000" placeholder="Was möchtest du mir sagen?" required></textarea>
           </label>
 
           <label class="check-row">
             <input type="checkbox" name="consent" required />
-            <span>Ich weiß, dass meine Nachricht privat an Rave3eN gesendet wird.</span>
+            <span>Ich bin damit einverstanden, dass meine Nachricht zur persönlichen Auswertung übermittelt wird.</span>
           </label>
 
-          <button class="btn btn-primary" type="submit">Feedback anonym senden</button>
+          <button class="btn btn-primary" type="submit">Feedback senden</button>
           <p class="form-status" id="formStatus" aria-live="polite"></p>
         </form>
       </div>
@@ -288,10 +257,7 @@
   <footer>
     <div class="footer-brand">
       <img src="assets/rave3en-logo.png" alt="Rave3eN Logo" />
-      <div>
-        <strong>Rave3eN</strong>
-        <span>RAVE ON 💜💙</span>
-      </div>
+      <div><strong>Rave3eN</strong><span>RAVE ON 💜💙</span></div>
     </div>
 
     <div class="footer-links">
@@ -301,7 +267,7 @@
       <a href="#feedback">Feedback</a>
     </div>
 
-    <p>© <span id="year"></span> Rave3eN. Built with passion.</p>
+    <p>© <span id="year"></span> Rave3eN.</p>
   </footer>
 
   <script src="https://player.twitch.tv/js/embed/v1.js"></script>
